@@ -15,7 +15,6 @@ public class UserService {
         User user = userRepository.findByEmail(email);
 
         if (user != null && user.getPassword().equals(password)) {
-            // Password matches, user authenticated
             return true;
         }
 
