@@ -8,7 +8,7 @@
 <body>
 <h1>User Registration</h1>
 
-<form action="/register" method="post" th:object="${user}">
+<form action="/register" method="post" enctype="multipart/form-data" th:object="${user}">
     <label for="username">Username:</label>
     <input id="username" name="username" type="text" th:field="*{username}" required><br>
 
@@ -21,6 +21,9 @@
     <label for="confirmPassword">Confirm Password</label>
     <input id="confirmPassword" name="confirmPassword" type="password" required><br>
 
+
+    <label for="file">Profile Picture:</label>
+    <input id="file" name="file" type="file"><br>
 
     <button type="submit">Register</button>
 
