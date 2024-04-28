@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - MathEase</title>
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+</head>
+<body>
+<h2>Login to MathEase</h2>
+<form th:action="@{/login}" method="post">
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+    </div>
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+    </div>
+    <div>
+        <button type="submit">Login</button>
+    </div>
+    <p th:text="${error}" class="error-message"></p>
+</form>
+</body>
+</html>
