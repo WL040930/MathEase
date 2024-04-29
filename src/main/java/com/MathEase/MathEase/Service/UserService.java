@@ -22,6 +22,18 @@ public class UserService {
         return false;
     }
 
+    public User activateUserByToken(String token) {
+        User user = userRepository.findByActivationToken(token);
+
+        if (user != null) {
+            user.setActivated(true);
+            user.setActivationToken(null);
+            userRepository.save(user);
+        }
+
+        return user;
+    }
+
     public boolean isEmailTaken(String email) {
         User user = userRepository.findByEmail(email);
         return user != null;

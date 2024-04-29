@@ -11,18 +11,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import com.MathEase.MathEase.Service.RoleService;
 import com.MathEase.MathEase.Model.Role;
-
+import java.util.UUID;
 import java.io.IOException;
+import com.MathEase.MathEase.Service.EmailService;
 
 @Controller
 public class RegisterController {
 
     private final UserRepository userRepository;
     private final RoleService roleService;
+    private final EmailService emailService;
 
-    public RegisterController(UserRepository userRepository, RoleService roleService) {
+    public RegisterController(UserRepository userRepository, RoleService roleService, EmailService emailService) {
         this.userRepository = userRepository;
         this.roleService = roleService;
+        this.emailService = emailService;
     }
 
     @GetMapping("/register")
@@ -39,9 +42,6 @@ public class RegisterController {
                                @RequestParam("file") MultipartFile file,
                                Model model) throws IOException {
 
-        User user = new User();
-        Role studentRole = roleService.getRoleByRoleName("student");
-
         if (userRepository.findByEmail(email) != null) {
             model.addAttribute("error", "Email already exists");
             return "register";
@@ -52,27 +52,29 @@ public class RegisterController {
             return "register";
         }
 
-        if (file.isEmpty()) {
-            user.setProfilePicture("default.jpg");
-        } else {
-            user.setProfilePicture(DataStorage.saveFile(file, DataStorage.UPLOAD_DIRECTORY));
-        }
-
+        User user = new User();
         user.setUsername(username);
         user.setEmail(email);
         user.setPassword(password);
-        user.setActivated(false);
-        user.setRole(studentRole);
+        user.setActivated(false); // User is not activated until they verify email
 
+        // Save the user to database
         User savedUser = userRepository.save(user);
 
-        if (savedUser != null && savedUser.getUserId() != null) {
-            model.addAttribute("success", "User registered successfully!");
+        if (savedUser != null) {
+            // Generate unique activation token
+            String activationToken = UUID.randomUUID().toString();
+            savedUser.setActivationToken(activationToken);
+            userRepository.save(savedUser); // Update user with activation token
+
+            // Send verification email
+            emailService.sendVerificationEmail(savedUser);
+
+            model.addAttribute("success", "User registered successfully! Please check your email to activate your account.");
             return "verification";
         } else {
             model.addAttribute("error", "Failed to register user!");
             return "register";
         }
-
     }
 }

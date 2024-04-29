@@ -39,4 +39,7 @@ public class User {
     @Column(name = "is_activated", nullable = false)
     private boolean activated;
 
+    @Column(name = "activation_token")
+    private String activationToken;
+
 }
