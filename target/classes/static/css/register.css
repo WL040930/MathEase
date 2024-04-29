@@ -171,3 +171,14 @@ button[type="submit"].disabled {
     font-size: 14px;
     margin-top: 5px; /* Add spacing between input and message */
 }
+
+.login-link {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.login-link:hover {
+    color: #6b3b99;
+    text-decoration: underline;
+}

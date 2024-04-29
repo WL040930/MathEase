@@ -6,6 +6,7 @@
     <link rel="stylesheet" th:href="@{/css/register.css}">
     <script th:src="@{/js/registerValidation.js}"></script>
 </head>
+
 <body>
 
 <div class="bg"></div>
@@ -35,7 +36,13 @@
         <img id="previewImage" style="width: 150px; height: 150px; border-radius: 50%; display: none;">
 
         <button type="submit" id="buttonRegister">Register</button>
+
+
     </form>
+
+    <div>
+        <p>Already have an account? <a href="/login" class="login-link">Login here.</a></p>
+    </div>
 
     <div id="input-message"></div>
 
