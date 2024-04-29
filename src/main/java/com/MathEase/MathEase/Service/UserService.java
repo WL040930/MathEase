@@ -21,4 +21,10 @@ public class UserService {
         // Invalid credentials
         return false;
     }
+
+    public boolean isEmailTaken(String email) {
+        User user = userRepository.findByEmail(email);
+        return user != null;
+    }
+
 }

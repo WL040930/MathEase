@@ -1,76 +1,79 @@
+/* Styling for the registration form */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
+    background-color: #f8f9fa;
     padding: 20px;
 }
+
 h1 {
     text-align: center;
-    color: #333;
+    color: #007bff;
 }
+
 form {
     max-width: 400px;
     margin: 0 auto;
-    background-color: #fff;
+    background-color: #ffffff;
     padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
+
 label {
-    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
 }
+
 input[type="text"],
 input[type="email"],
-input[type="password"] {
+input[type="password"],
+input[type="file"],
+button[type="submit"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
-    border: 1px solid #ddd;
+    border: 1px solid #ced4da;
     border-radius: 4px;
     box-sizing: border-box;
 }
+
 button[type="submit"] {
     background-color: #007bff;
-    color: #fff;
+    color: #ffffff;
     border: none;
-    padding: 12px 20px;
     border-radius: 4px;
+    padding: 12px 20px;
     cursor: pointer;
-    width: 100%;
+    transition: background-color 0.3s ease;
 }
+
 button[type="submit"]:hover {
     background-color: #0056b3;
 }
-.alert {
-    padding: 15px;
-    margin-bottom: 20px;
-    border: 1px solid transparent;
-    border-radius: 4px;
-}
-.alert-success {
-    background-color: #d4edda;
-    color: #155724;
-    border-color: #c3e6cb;
+
+/* Animation for form elements */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-a {
-    color: #007bff;
-    text-decoration: none;
+input,
+button {
+    animation: fadeIn 0.5s ease-in-out;
 }
 
-a:hover {
-    text-decoration: underline;
+input.invalid {
+    border-color: #dc3545;
 }
 
-#password {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc; /* Default border color */
-    border-radius: 4px;
-    box-sizing: border-box;
-    transition: border-color 0.3s ease; /* Smooth transition for border color change */
-}
-
-#password.invalid {
-    border-color: red; /* Red border for invalid input */
+/* Style for disabled button */
+.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }

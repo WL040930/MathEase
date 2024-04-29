@@ -1,33 +1,36 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>User Registration</title>
+    <title>Registration</title>
     <link rel="stylesheet" th:href="@{/css/register.css}">
+    <script th:src="@{/js/registerValidation.js}"></script>
 </head>
 <body>
 <h1>User Registration</h1>
 
-<form action="/register" method="post" enctype="multipart/form-data" th:object="${user}">
+<div th:if="${message}" th:text="${message}"></div>
+<div th:if="${error}" th:text="${error}"></div>
+<div th:if="${success}" th:text="${success}"></div>
+
+<form action="/register" method="post" enctype="multipart/form-data">
     <label for="username">Username:</label>
-    <input id="username" name="username" type="text" th:field="*{username}" required><br>
+    <input type="text" id="username" name="username" required><br>
 
     <label for="email">Email:</label>
-    <input id="email" name="email" type="email" th:field="*{email}" required><br>
+    <input type="email" id="email" name="email" required onblur="validateEmail()"><br>
 
     <label for="password">Password:</label>
-    <input id="password" name="password" type="password" th:field="*{password}" required><br>
+    <input type="password" id="password" name="password" required><br>
 
-    <label for="confirmPassword">Confirm Password</label>
-    <input id="confirmPassword" name="confirmPassword" type="password" required><br>
-
+    <label for="confirmPassword">Confirm Password:</label>
+    <input type="password" id="confirmPassword" name="confirmPassword" required onblur="validatePassword()"><br>
 
     <label for="file">Profile Picture:</label>
-    <input id="file" name="file" type="file"><br>
+    <input type="file" id="file" name="file"><br>
 
-    <button type="submit">Register</button>
+    <button type="submit" id="buttonRegister">Register</button>
 
-    <script src="/js/register.validation.js"></script>
 </form>
 </body>
 </html>
