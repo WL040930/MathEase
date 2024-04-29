@@ -16,10 +16,10 @@
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required>
     </div>
+    <p th:text="${error}" class="error-message"></p>
     <div>
         <button type="submit">Login</button>
     </div>
-    <p th:text="${error}" class="error-message"></p>
 </form>
 </body>
 </html>
