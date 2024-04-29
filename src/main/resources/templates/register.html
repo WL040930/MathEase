@@ -1,36 +1,48 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Registration</title>
+    <title>User Registration</title>
     <link rel="stylesheet" th:href="@{/css/register.css}">
     <script th:src="@{/js/registerValidation.js}"></script>
 </head>
 <body>
-<h1>User Registration</h1>
 
-<div th:if="${message}" th:text="${message}"></div>
-<div th:if="${error}" th:text="${error}"></div>
-<div th:if="${success}" th:text="${success}"></div>
+<div class="bg"></div>
+<div class="bg bg2"></div>
+<div class="bg bg3"></div>
 
-<form action="/register" method="post" enctype="multipart/form-data">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username" required><br>
+<div class="container">
+    <img class="logo" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/picture/logo-removebg-preview.png" alt="MathEase+ Logo">
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required onblur="validateEmail()"><br>
+    <h1>User Registration</h1>
 
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required><br>
+    <form action="/register" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" onblur="validateUsername()" required>
 
-    <label for="confirmPassword">Confirm Password:</label>
-    <input type="password" id="confirmPassword" name="confirmPassword" required onblur="validatePassword()"><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required onblur="validateEmail()">
 
-    <label for="file">Profile Picture:</label>
-    <input type="file" id="file" name="file"><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" onblur="validatePassword()" required>
 
-    <button type="submit" id="buttonRegister">Register</button>
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" oninput="validateConfirmPassword()" required>
 
-</form>
+        <label for="file">Profile Picture:</label>
+        <input type="file" id="file" name="file" accept=".jpg, .jpeg, .png" onchange="handleFileInput()">
+        <img id="previewImage" style="width: 150px; height: 150px; border-radius: 50%; display: none;">
+
+        <button type="submit" id="buttonRegister">Register</button>
+    </form>
+
+    <div id="input-message"></div>
+
+    <div th:if="${message}" class="message" th:text="${message}"></div>
+    <div th:if="${error}" class="error" th:text="${error}"></div>
+    <div th:if="${success}" class="success" th:text="${success}"></div>
+</div>
+
 </body>
 </html>
