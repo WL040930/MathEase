@@ -6,6 +6,10 @@
     <link rel="stylesheet" th:href="@{/css/login.css}">
 </head>
 <body>
+
+<div th:if="${param.successMessage}" class="success-message" th:text="${param.successMessage}">
+    Your password has been updated successfully. Please login with your new password.
+</div>
 <div id="container">
     <div id="left">
         <img id="logo" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/picture/logo-small.png" alt="MathEase Logo">

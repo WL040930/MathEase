@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.UUID;
 
@@ -75,7 +76,8 @@ public class ForgetPasswordController {
     public String updatePassword(@RequestParam("token") String token,
                                  @RequestParam("password") String password,
                                  @RequestParam("confirmPassword") String confirmPassword,
-                                 Model model) {
+                                 Model model,
+                                 RedirectAttributes redirectAttributes) {
 
         if (!password.equals(confirmPassword)) {
             model.addAttribute("message", "Passwords do not match.");
@@ -92,7 +94,7 @@ public class ForgetPasswordController {
             user.setResetToken(null);
             userRepository.save(user);
 
-            model.addAttribute("message", "Password reset successfully.");
+            redirectAttributes.addFlashAttribute("successMessage", "Your password has been updated. Please login with your new password.");
             return "redirect:/login"; // Redirect to login page after password reset
         } else {
             model.addAttribute("message", "Invalid reset token.");

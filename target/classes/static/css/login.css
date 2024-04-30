@@ -94,6 +94,19 @@ a {
     transition: color 0.3s ease;
 }
 
+.success-message {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 9999; /* Ensure the message is above other content */
+}
+
 a:hover {
     color: #6b3b99;
     text-decoration: underline;
