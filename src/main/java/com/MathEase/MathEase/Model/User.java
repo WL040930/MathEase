@@ -42,4 +42,6 @@ public class User {
     @Column(name = "activation_token")
     private String activationToken;
 
+    @Column(name = "reset_token")
+    private String resetToken;
 }

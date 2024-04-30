@@ -44,4 +44,12 @@ public class UserService {
         return user != null && user.isActivated();
     }
 
+    public boolean isUserExists(String email) {
+        return userRepository.existsByEmail(email);
+    }
+
+    public User getUserByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
 }
