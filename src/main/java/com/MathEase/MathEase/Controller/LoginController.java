@@ -1,15 +1,16 @@
 package com.MathEase.MathEase.Controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import com.MathEase.MathEase.Service.UserService;
 import com.MathEase.MathEase.Model.User;
 import com.MathEase.MathEase.Repository.UserRepository;
 import com.MathEase.MathEase.Service.EmailService;
+import com.MathEase.MathEase.Service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import jakarta.servlet.http.HttpSession;
 import java.util.UUID;
 
 @Controller
@@ -30,36 +31,47 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestParam("email") String email, @RequestParam("password") String password, Model model) {
+    public String login(@RequestParam("email") String email, @RequestParam("password") String password,
+                        RedirectAttributes redirectAttributes,  HttpSession session) {
+
+        // Authenticate user
         boolean loginSuccess = userService.authenticateUser(email, password);
 
         if (loginSuccess) {
             User user = userRepository.findByEmail(email);
 
             if (user == null) {
-                model.addAttribute("error", "User not Found");
-                return "login"; // Return to login page with error message
+                redirectAttributes.addFlashAttribute("error", "User not found");
+                return "redirect:/login"; // Redirect with error message
             }
 
             if (userService.isUserActivated(email)) {
-                model.addAttribute("user", user);
-                return "redirect:/admin-dashboard"; // Return the admin-dashboard.html Thymeleaf template
+                session.setAttribute("userId", user.getUserId());
+                session.setAttribute("email", user.getEmail());
+                session.setAttribute("username", user.getUsername());
+                String roleName = user.getRole().getRoleName();
+                session.setAttribute("role", roleName);
+
+                if (roleName.equals("admin")) {
+                    return "redirect:/admin/dashboard";
+                } else {
+                    return "redirect:/student/dashboard";
+                }
+                
             } else {
+                // Generate activation token and send verification email
                 String activationToken = UUID.randomUUID().toString();
                 user.setActivationToken(activationToken);
-                userRepository.save(user); // Update user with activation token
+                userRepository.save(user);
 
-                // Send verification email
                 emailService.sendVerificationEmail(user);
 
-                model.addAttribute("error", "Account not activated. Please check your email for activation link.");
-                return "login"; // Return to login page with error message
+                redirectAttributes.addFlashAttribute("error", "Account not activated. Please check your email for activation link.");
+                return "redirect:/login"; // Redirect with error message
             }
-
-
         } else {
-            model.addAttribute("error", "Invalid email or password");
-            return "login"; // Return to login page with error message
+            redirectAttributes.addFlashAttribute("error", "Invalid email or password");
+            return "redirect:/login"; // Redirect with error message
         }
     }
 }

@@ -1,19 +1,18 @@
 package com.MathEase.MathEase.Controller;
 
-import com.MathEase.MathEase.Repository.UserRepository;
-import com.MathEase.MathEase.Storage.DataStorage;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.ui.Model;
 import com.MathEase.MathEase.Model.User;
+import com.MathEase.MathEase.Repository.UserRepository;
+import com.MathEase.MathEase.Service.EmailService;
+import com.MathEase.MathEase.Service.RoleService;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import com.MathEase.MathEase.Service.RoleService;
-import com.MathEase.MathEase.Model.Role;
-import java.util.UUID;
+
 import java.io.IOException;
-import com.MathEase.MathEase.Service.EmailService;
+import java.util.UUID;
 
 @Controller
 public class RegisterController {
@@ -56,6 +55,7 @@ public class RegisterController {
         user.setUsername(username);
         user.setEmail(email);
         user.setPassword(password);
+        user.setRole(roleService.getRoleById(2L));
         user.setActivated(false); // User is not activated until they verify email
 
         // Save the user to database
