@@ -39,4 +39,9 @@ public class UserService {
         return user != null;
     }
 
+    public boolean isUserActivated(String email) {
+        User user = userRepository.findByEmail(email);
+        return user != null && user.isActivated();
+    }
+
 }
