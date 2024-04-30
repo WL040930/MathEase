@@ -34,6 +34,27 @@ public class UserService {
         return user;
     }
 
+    public User changePasswordByResetToken(String token, String password) {
+        User user = userRepository.findByResetToken(token);
+
+        if (user != null) {
+            user.setPassword(password);
+            user.setResetToken(null);
+            userRepository.save(user);
+        }
+
+        return user;
+    }
+
+    public User getUserByResetToken(String token) {
+        return userRepository.findByResetToken(token);
+    }
+
+    public void updateUserPassword(User user, String password) {
+        user.setPassword(password);
+        userRepository.save(user);
+    }
+
     public boolean isEmailTaken(String email) {
         User user = userRepository.findByEmail(email);
         return user != null;

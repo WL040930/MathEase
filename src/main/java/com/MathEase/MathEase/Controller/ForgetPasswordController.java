@@ -52,6 +52,53 @@ public class ForgetPasswordController {
         }
     }
 
+    @GetMapping("/reset-password")
+    public String resetPassword(@RequestParam(value = "token", required = false) String token, Model model) {
+        if (token == null) {
+            model.addAttribute("message", "Reset token is missing.");
+            return "email_message/failed-reset-password"; // Redirect to an error page
+        }
+
+        User user = userService.getUserByResetToken(token);
+        if (user == null) {
+            // Handle invalid token scenario
+            model.addAttribute("message", "Invalid reset token.");
+            return "email_message/failed-reset-password"; // Redirect to an error page
+        }
+
+        model.addAttribute("token", token);
+        return "email_message/reset-password";
+    }
+
+
+    @PostMapping("/reset-password")
+    public String updatePassword(@RequestParam("token") String token,
+                                 @RequestParam("password") String password,
+                                 @RequestParam("confirmPassword") String confirmPassword,
+                                 Model model) {
+
+        if (!password.equals(confirmPassword)) {
+            model.addAttribute("message", "Passwords do not match.");
+            return "email_message/reset-password";
+        }
+
+        User user = userService.getUserByResetToken(token);
+
+        if (user != null) {
+            // Update user's password
+            userService.updateUserPassword(user, password);
+
+            // Clear the reset token after password update
+            user.setResetToken(null);
+            userRepository.save(user);
+
+            model.addAttribute("message", "Password reset successfully.");
+            return "redirect:/login"; // Redirect to login page after password reset
+        } else {
+            model.addAttribute("message", "Invalid reset token.");
+            return "forget-password";
+        }
+    }
 
 
 }
