@@ -31,10 +31,11 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestParam("email") String email, @RequestParam("password") String password,
-                        RedirectAttributes redirectAttributes,  HttpSession session) {
+    public String login(@RequestParam("email") String email,
+                        @RequestParam("password") String password,
+                        RedirectAttributes redirectAttributes,
+                        HttpSession session) {
 
-        // Authenticate user
         boolean loginSuccess = userService.authenticateUser(email, password);
 
         if (loginSuccess) {

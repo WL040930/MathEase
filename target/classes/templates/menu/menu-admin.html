@@ -8,10 +8,11 @@
         --background: #9c88ff;
         --navbar-width: 256px;
         --navbar-width-min: 80px;
-        --navbar-dark-primary: #18283b;
-        --navbar-dark-secondary: #2c3e50;
-        --navbar-light-primary: #f5f6fa;
-        --navbar-light-secondary: #8392a5;
+        --navbar-dark-primary: #ffffff;
+        --navbar-dark-secondary: #f6f5fd;
+        --navbar-light-primary: #5f5186;
+        --navbar-light-secondary: #3e1c94;
+        --navbar-hover-color: #f6f5fd;
     }
 
     html, body {
@@ -195,38 +196,8 @@
         height: 16px;
     }
 
-    #nav-content-highlight {
-        position: absolute;
-        left: 16px;
-        top: -54 - 16px;
-        width: calc(100% - 16px);
-        height: 54px;
-        background: var(--background);
-        background-attachment: fixed;
-        border-radius: 16px 0 0 16px;
-        transition: top 0.2s;
-    }
-
-    #nav-content-highlight:before,
-    #nav-content-highlight:after {
-        content: '';
-        position: absolute;
-        right: 0;
-        bottom: 100%;
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        box-shadow: 16px 16px var(--background);
-    }
-
-    #nav-content-highlight:after {
-        top: 100%;
-        box-shadow: 16px -16px var(--background);
-    }
-
     .nav-button {
         position: relative;
-        margin-left: 16px;
         height: 54px;
         display: flex;
         align-items: center;
@@ -235,6 +206,7 @@
         cursor: pointer;
         z-index: 1;
         transition: color 0.2s;
+        margin-left: 20px;
     }
 
     .nav-button span {
@@ -335,6 +307,12 @@
         background-color: #D62929;
     }
 
+    .nav-button:hover {
+        color: var(--navbar-light-primary);
+        background: var(--navbar-hover-color);
+        border-radius: 16px;
+    }
+
 </style>
 
 <body>
@@ -358,7 +336,7 @@
         <div class="nav-button"><i class="fas fa-magic"></i><span>Spark</span></div>
         <hr>
         <div class="nav-button"><i class="fas fa-gem"></i><span>Codepen Pro</span></div>
-        <div id="nav-content-highlight"></div>
+<!--        <div id="nav-content-highlight"></div>-->
     </div>
     <input id="nav-footer-toggle" type="checkbox">
     <div id="nav-footer">
@@ -379,33 +357,6 @@
         </div>
     </div>
 </div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const navContentHighlight = document.getElementById('nav-content-highlight');
-        const navBar = document.getElementById('nav-bar');
-
-        // Track mouse movement to update highlight position
-        document.addEventListener('mousemove', function(event) {
-            // Find the hovered nav button
-            const hoveredButton = event.target.closest('.nav-button');
-            if (hoveredButton) {
-                // Calculate the center vertical position of the hovered button relative to the nav bar
-                const buttonRect = hoveredButton.getBoundingClientRect();
-                const navBarRect = navBar.getBoundingClientRect();
-                const centerY = buttonRect.top + buttonRect.height / 2 - navBarRect.top;
-
-                // Update highlight position to center vertically on the hovered button
-                navContentHighlight.style.top = `${centerY}px`;
-            }
-        });
-
-        // Reset highlight position when leaving the nav content area
-        document.getElementById('nav-content').addEventListener('mouseleave', function() {
-            navContentHighlight.style.top = '-54px'; // Reset to initial position
-        });
-    });
-</script>
 
 </body>
 </html>

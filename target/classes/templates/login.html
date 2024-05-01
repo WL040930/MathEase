@@ -7,10 +7,13 @@
 </head>
 <body>
 
-<div th:if="${successMessage}" class="success-message">
+<div th:if="${successMessage}" class="message success-message">
     <span th:text="${successMessage}"></span>
 </div>
 
+<div th:if="${errorMessage}" class="message error-message">
+    <span th:text="${errorMessage}"></span>
+</div>
 
 <div id="container">
     <div id="left">
@@ -41,17 +44,21 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         var successMessage = document.querySelector('.success-message');
+        var errorMessage = document.querySelector('.error-message');
 
-        function showSuccessMessage(message) {
-            successMessage.querySelector('span').innerText = message;
-            successMessage.style.display = 'block';
+        function showMessage(element, message) {
+            element.querySelector('span').innerText = message;
+            element.style.display = 'block';
             setTimeout(function() {
-                successMessage.style.display = 'none';
-            }, 8000);
+                element.style.display = 'none';
+            }, 10000);
         }
 
         // Example usage: Call this function to display the success message
-        showSuccessMessage('Your password has been updated successfully.');
+        showMessage(successMessage, 'Your password has been updated successfully.');
+
+        // Call this function to display the error message
+        showMessage(errorMessage, 'Invalid email or password.');
     });
 </script>
 
