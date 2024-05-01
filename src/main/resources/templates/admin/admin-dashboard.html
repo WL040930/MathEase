@@ -7,9 +7,10 @@
 </head>
 <body>
 <div>
+    <div th:replace="menu :: menu-admin"></div>
     <h1>Welcome, <span th:text="${userName}"></span>!</h1>
     <p>This is the admin dashboard.</p>
-    <!-- Add more content specific to the admin dashboard -->
+
 </div>
 </body>
 </html>

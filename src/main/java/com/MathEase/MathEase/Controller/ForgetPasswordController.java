@@ -85,12 +85,10 @@ public class ForgetPasswordController {
         }
 
         User user = userService.getUserByResetToken(token);
+        System.out.println(token);
 
         if (user != null) {
-            // Update user's password
             userService.updateUserPassword(user, password);
-
-            // Clear the reset token after password update
             user.setResetToken(null);
             userRepository.save(user);
 

@@ -95,16 +95,36 @@ a {
 }
 
 .success-message {
+    display: none; /* Hide by default */
     position: fixed;
-    top: 20px;
+    top: 0;
     left: 50%;
     transform: translateX(-50%);
     background-color: #4CAF50;
     color: white;
-    padding: 10px 20px;
+    padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    z-index: 9999; /* Ensure the message is above other content */
+    animation: slideDownAndFade 1s ease forwards;
+}
+
+@keyframes slideDownAndFade {
+    0% {
+        top: -50px; /* Initial position off-screen */
+        opacity: 0;
+    }
+    50% {
+        top: 50px; /* Drop down to this position */
+        opacity: 1;
+    }
+    85%, 100% {
+        top: 50px; /* Stay visible at this position */
+        opacity: 1;
+    }
+    100% {
+        top: -50px; /* Fade out and move back off-screen */
+        opacity: 0;
+    }
 }
 
 a:hover {
