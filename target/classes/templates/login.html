@@ -11,6 +11,10 @@
     <span th:text="${successMessage}"></span>
 </div>
 
+<div th:if="${logoutMessage}" class="message logout-message">
+    <span th:text="${logoutMessage}"></span>
+</div>
+
 <div th:if="${errorMessage}" class="message error-message">
     <span th:text="${errorMessage}"></span>
 </div>
@@ -45,6 +49,7 @@
     document.addEventListener('DOMContentLoaded', function() {
         var successMessage = document.querySelector('.success-message');
         var errorMessage = document.querySelector('.error-message');
+        var logoutMessage = document.querySelector('.logout-message');
 
         function showMessage(element, message) {
             element.querySelector('span').innerText = message;
@@ -53,6 +58,8 @@
                 element.style.display = 'none';
             }, 10000);
         }
+
+        showMessage(logoutMessage, 'You have been logged out successfully.');
 
         // Example usage: Call this function to display the success message
         showMessage(successMessage, 'Your password has been updated successfully.');

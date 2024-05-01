@@ -94,8 +94,8 @@ a {
     transition: color 0.3s ease;
 }
 
-.success-message {
-    display: none; /* Hide by default */
+.success-message, .logout-message {
+    display: none;
     position: fixed;
     top: 0;
     left: 50%;
@@ -105,7 +105,7 @@ a {
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    animation: slideDownAndFade 1s ease forwards;
+    animation: slideDownAndFade 8s ease forwards;
 }
 
 @keyframes slideDownAndFade {

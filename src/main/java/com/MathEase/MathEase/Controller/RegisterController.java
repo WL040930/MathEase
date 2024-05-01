@@ -4,6 +4,7 @@ import com.MathEase.MathEase.Model.User;
 import com.MathEase.MathEase.Repository.UserRepository;
 import com.MathEase.MathEase.Service.EmailService;
 import com.MathEase.MathEase.Service.RoleService;
+import com.MathEase.MathEase.Util.FileNameUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +21,7 @@ public class RegisterController {
     private final UserRepository userRepository;
     private final RoleService roleService;
     private final EmailService emailService;
+    private FileNameUtil fileNameUtil = new FileNameUtil();
 
     public RegisterController(UserRepository userRepository, RoleService roleService, EmailService emailService) {
         this.userRepository = userRepository;
@@ -56,7 +58,21 @@ public class RegisterController {
         user.setEmail(email);
         user.setPassword(password);
         user.setRole(roleService.getRoleById(2L));
-        user.setActivated(false); // User is not activated until they verify email
+        user.setActivated(false);
+
+        if (file != null && !file.isEmpty()) {
+            String originalFileName = file.getOriginalFilename();
+            assert originalFileName != null;
+            String fileName = FileNameUtil.generateFileName(originalFileName);
+
+            // Transfer the file to the target directory with the generated filename
+            fileNameUtil.transferFile(file, fileName, fileNameUtil.UPLOAD_DIR);
+
+            // Set the profile picture filename in the user object
+            user.setProfilePicture(fileName);
+        } else {
+            user.setProfilePicture("default_profile_picture.jpg");
+        }
 
         // Save the user to database
         User savedUser = userRepository.save(user);

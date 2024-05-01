@@ -313,9 +313,79 @@
         border-radius: 16px;
     }
 
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .modal.active {
+        display: flex;
+        opacity: 1;
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        opacity: 0;
+        transform: translateY(-50px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .modal.active .modal-content {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    #yesButton,
+    #noButton {
+        padding: 10px 20px;
+        margin: 10px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    #yesButton {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    #noButton {
+        background-color: #f44336;
+        color: white;
+        margin-left: 60px;
+    }
+
+    #yesButton:hover,
+    #noButton:hover {
+        opacity: 0.8;
+    }
+
 </style>
 
 <body>
+
+<div id="logoutModal" class="modal">
+    <div class="modal-content">
+        <p>Are you sure you want to logout?</p>
+        <button onclick="confirmLogout()" id="yesButton">Yes</button>
+        <button onclick="cancelLogout()" id="noButton">No</button>
+    </div>
+</div>
+
+
 <div id="nav-bar">
     <input id="nav-toggle" type="checkbox" checked>
     <div id="nav-header">
@@ -342,21 +412,40 @@
     <div id="nav-footer">
         <div id="nav-footer-heading">
             <div id="nav-footer-avatar">
-                <img src="https://gravatar.com/avatar/4474ca42d303761c2901fa819c4f2547">
+                <img th:src="${menuProfilePictureUrl}" alt="User Avatar">
             </div>
-            <div id="nav-footer-titlebox">
-                <a id="nav-footer-title" href="https://codepen.io/uahnbu/pens/public" target="_blank">uahnbu</a>
-                <span id="nav-footer-subtitle">Admin</span>
+            <div id="nav-footer-titlebox" style="overflow: hidden; width: 150px" >
+                <p id="nav-footer-title" th:text="${menuUsername}" style="margin-bottom: 5px; width: 150px; overflow: hidden; height: 20px"></p>
+                <span id="nav-footer-subtitle" th:text="${menuRole}" style="margin-bottom: 15px"></span>
             </div>
             <label for="nav-footer-toggle"><i class="fas fa-caret-up"></i></label>
         </div>
         <div id="nav-footer-content">
-            <p>Settings</p>
-            <p>Profile</p>
-            <p>Sign Out</p>
+            <p><a th:href="@{settings}">Settings</a></p>
+            <p><a href="#" onclick="openModal()">Logout</a></p>
         </div>
     </div>
 </div>
+
+<script th:inline="javascript">
+    function openModal() {
+        var modal = document.getElementById('logoutModal');
+        modal.classList.add('active');
+    }
+
+    function closeModal() {
+        var modal = document.getElementById('logoutModal');
+        modal.classList.remove('active');
+    }
+
+    function confirmLogout() {
+        window.location.href = /*[[ @{/logout} ]]*/ '/logout';
+    }
+
+    function cancelLogout() {
+        closeModal();
+    }
+</script>
 
 </body>
 </html>

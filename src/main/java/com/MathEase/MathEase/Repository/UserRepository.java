@@ -7,6 +7,8 @@ import com.MathEase.MathEase.Model.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
+    User findByUserId(Long userId);
+
     User findByEmail(String email);
 
     User findByActivationToken(String token);

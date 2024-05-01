@@ -30,6 +30,13 @@ public class LoginController {
         return "login"; // Return the login.html Thymeleaf template
     }
 
+    @GetMapping("/logout")
+    public String logout(HttpSession session, RedirectAttributes redirectAttributes) {
+        redirectAttributes.addFlashAttribute("logoutMessage", "You have been logged out");
+        session.invalidate();
+        return "redirect:/login";
+    }
+
     @PostMapping("/login")
     public String login(@RequestParam("email") String email,
                         @RequestParam("password") String password,
