@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile and Settings</title>
+    <link rel="stylesheet" th:href="@{/css/settings.css}">
+</head>
+
+<body>
+<section class="content-header" th:replace="menu/menu-admin::IncludeMenu"></section>
+
+<div class="container">
+    <h1>Settings</h1>
+    <div class="tabs">
+        <button id="profileTab" class="tab-button active" onclick="toggleTab('profile')">
+            User Profile
+            <div class="tab-line"></div>
+        </button>
+        <button id="settingsTab" class="tab-button" onclick="toggleTab('settings')">
+            Settings
+            <div class="tab-line"></div>
+        </button>
+    </div>
+
+    <div id="profileContent" class="content">
+        <h2>User Profile</h2>
+        <p>Profile information goes here...</p>
+    </div>
+    <div id="settingsContent" class="content" style="display: none;">
+        <h2>Settings</h2>
+        <p>Settings options go here...</p>
+    </div>
+</div>
+
+<script>
+    function toggleTab(tabName) {
+        // Get all tab buttons and contents
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.content');
+
+        // Hide all tab contents
+        tabContents.forEach(content => {
+            content.classList.remove('active');
+        });
+
+        // Deactivate all tab buttons
+        tabButtons.forEach(button => {
+            button.classList.remove('active');
+        });
+
+        // Show the selected tab content
+        document.getElementById(tabName + 'Content').classList.add('active');
+
+        // Activate the clicked tab button
+        document.getElementById(tabName + 'Tab').classList.add('active');
+    }
+
+</script>
+</body>
+</html>

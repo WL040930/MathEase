@@ -1,0 +1,63 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 12%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.tabs {
+    display: flex;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.tab-button.active {
+    border-bottom-color: #007bff; /* Active button color */
+}
+
+.content {
+    display: none;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+.content.active {
+    display: block;
+}
+
+.tab-button {
+    flex: 1;
+    padding: 10px 0;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    position: relative; /* Position relative for absolute line */
+    text-align: center;
+    overflow: hidden; /* Hide overflow to prevent line from appearing outside button */
+}
+
+.tab-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0; /* Initial width set to zero */
+    height: 3px;
+    background-color: #007bff; /* Line color */
+    transition: width 0.3s ease; /* Transition for width change */
+}
+
+.tab-button.active .tab-line {
+    width: 100%; /* Expand line to cover entire active tab */
+}
+
