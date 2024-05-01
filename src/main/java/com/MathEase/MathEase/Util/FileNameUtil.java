@@ -12,20 +12,32 @@ public class FileNameUtil {
 
     public final String UPLOAD_DIR = "src/main/resources/static/data/";
 
-    public static String generateFileName(String originalFileName) {
-        String extension = originalFileName.substring(originalFileName.lastIndexOf("."));
-        String fileName = UUID.randomUUID().toString() + extension;
-        return fileName;
-    }
+    public String transferFile(MultipartFile sourceFile, String targetDirectory) {
+        if (sourceFile == null || sourceFile.isEmpty()) {
+            return null; // Handle case where sourceFile is null or empty
+        }
 
-    public void transferFile(MultipartFile sourceFile, String fileName, String targetDirectory) {
-        Path targetPath = Paths.get(targetDirectory, fileName);
+        String originalFileName = sourceFile.getOriginalFilename();
+        if (originalFileName == null || originalFileName.isEmpty()) {
+            return null; // Handle case where original filename is missing
+        }
+
+        String uniqueFileName = generateUniqueFileName(originalFileName);
 
         try {
+            Path targetPath = Paths.get(targetDirectory, uniqueFileName);
             Files.createDirectories(targetPath.getParent());
-            sourceFile.transferTo(targetPath.toFile());
+            Files.copy(sourceFile.getInputStream(), targetPath);
+            return uniqueFileName;
         } catch (IOException e) {
             e.printStackTrace();
+            return null; // Handle file transfer failure
         }
+    }
+
+    private String generateUniqueFileName(String originalFileName) {
+        String extension = originalFileName.substring(originalFileName.lastIndexOf("."));
+        String uniqueName = UUID.randomUUID().toString() + extension;
+        return uniqueName;
     }
 }

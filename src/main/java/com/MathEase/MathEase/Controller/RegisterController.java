@@ -63,10 +63,8 @@ public class RegisterController {
         if (file != null && !file.isEmpty()) {
             String originalFileName = file.getOriginalFilename();
             assert originalFileName != null;
-            String fileName = FileNameUtil.generateFileName(originalFileName);
 
-            // Transfer the file to the target directory with the generated filename
-            fileNameUtil.transferFile(file, fileName, fileNameUtil.UPLOAD_DIR);
+            String fileName = fileNameUtil.transferFile(file, fileNameUtil.UPLOAD_DIR);
 
             // Set the profile picture filename in the user object
             user.setProfilePicture(fileName);
