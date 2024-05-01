@@ -1,3 +1,4 @@
+<section class="content-header" th:fragment="breadcrumbfragment">
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -77,7 +78,7 @@
     }
 
     #nav-bar {
-        position: absolute;
+        position: fixed;
         left: 1vw;
         top: 1vw;
         height: calc(100% - 2vw);
@@ -344,7 +345,7 @@
 
 <body>
 <div id="nav-bar">
-    <input id="nav-toggle" type="checkbox">
+    <input id="nav-toggle" type="checkbox" checked>
     <div id="nav-header">
         <a id="nav-title" href="https://codepen.io" target="_blank">C<i class="fab fa-codepen"></i>DEPEN</a>
         <label for="nav-toggle">
@@ -412,3 +413,4 @@
 
 </body>
 </html>
+</section>

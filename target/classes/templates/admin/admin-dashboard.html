@@ -7,7 +7,7 @@
 </head>
 <body>
 <div>
-    <div th:replace="menu :: menu-admin"></div>
+    <section class="content-header" th:replace="menu/menu-admin::breadcrumbfragment"></section>
     <h1>Welcome, <span th:text="${userName}"></span>!</h1>
     <p>This is the admin dashboard.</p>
 
