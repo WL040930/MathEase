@@ -1,12 +1,7 @@
 <section class="content-header" th:fragment="breadcrumbfragment">
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Codepen</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-</head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
 <style>
     :root {
@@ -117,7 +112,6 @@
         width: calc(var(--navbar-width) - 16px);
         min-height: 80px;
         background: var(--navbar-dark-primary);
-        border-radius: 16px;
         z-index: 2;
         display: flex;
         align-items: center;
@@ -379,7 +373,9 @@
             <label for="nav-footer-toggle"><i class="fas fa-caret-up"></i></label>
         </div>
         <div id="nav-footer-content">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            <p>Settings</p>
+            <p>Profile</p>
+            <p>Sign Out</p>
         </div>
     </div>
 </div>
@@ -397,7 +393,7 @@
                 // Calculate the center vertical position of the hovered button relative to the nav bar
                 const buttonRect = hoveredButton.getBoundingClientRect();
                 const navBarRect = navBar.getBoundingClientRect();
-                const centerY = buttonRect.top + (buttonRect.height / 2) - navBarRect.top - 90;
+                const centerY = buttonRect.top + buttonRect.height / 2 - navBarRect.top;
 
                 // Update highlight position to center vertically on the hovered button
                 navContentHighlight.style.top = `${centerY}px`;
