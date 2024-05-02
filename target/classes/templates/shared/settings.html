@@ -94,6 +94,12 @@
             font-size: 18px;
             color: #666;
         }
+
+        .separator {
+            height: 1px;
+            background-color: #ddd;
+            margin: 20px 0;
+        }
     </style>
 </head>
 <body>
@@ -119,11 +125,11 @@
         <div class="profile-info">
             <img th:src="${profilePicture}" alt="Profile Picture">
             <div>
-                <h2 th:text="${usernameTitle}">Username</h2>
-                <h3 th:text="${emailTitle}">Email Address</h3>
+                <h2 th:text="${emailTitle}">Email Address</h2>
                 <h3 th:text="${roleTitle}">Role</h3>
             </div>
         </div>
+        <div class="separator"></div>
     </div>
 
     <!-- THE CONTENT FOR SETTINGS -->

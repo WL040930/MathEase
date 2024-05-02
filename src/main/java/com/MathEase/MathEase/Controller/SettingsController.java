@@ -26,8 +26,10 @@ public class SettingsController {
         String username = userService.getUsername(userId);
         String role = userService.getRoleName(userId);
         String profilePicture = userService.getProfilePicture(userId);
+        String email = userService.getEmail(userId);
 
         model.addAttribute("usernameTitle", username);
+        model.addAttribute("emailTitle", email);
         model.addAttribute("roleTitle", role);
         model.addAttribute("profilePicture", "/data/" + profilePicture);
 

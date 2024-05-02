@@ -88,4 +88,9 @@ public class UserService {
         return user.getProfilePicture();
     }
 
+    public String getEmail(Long userId) {
+        User user = userRepository.findById(userId).get();
+        return user.getEmail();
+    }
+
 }
