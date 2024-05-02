@@ -1,4 +1,20 @@
-#container {
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+    /*.container {*/
+    /*    width: 80%;*/
+    /*    margin: 0 12%;*/
+    /*    padding: 20px;*/
+    /*    background-color: #fff;*/
+    /*    border-radius: 8px;*/
+    /*    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);*/
+    /*}*/
+
+.container {
     background-color: white;
     height: 100%;
     margin-left: 11%;
@@ -9,5 +25,104 @@
     padding: 20px;
     box-sizing: border-box;
     border-radius: 10px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.tabs {
+    display: flex;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.tab-button.active {
+    border-bottom-color: #007bff; /* Active button color */
+}
+
+.content {
+    display: none;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+.content.active {
+    display: block;
+}
+
+.tab-button {
+    flex: 1;
+    padding: 10px 0;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    position: relative; /* Position relative for absolute line */
+    text-align: center;
+    overflow: hidden; /* Hide overflow to prevent line from appearing outside button */
+}
+
+.tab-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0; /* Initial width set to zero */
+    height: 3px;
+    background-color: #007bff; /* Line color */
+    transition: width 0.3s ease; /* Transition for width change */
+    z-index: 2;
+}
+
+.tab-button.active .tab-line {
+    width: 100%; /* Expand line to cover entire active tab */
+}
+
+.separator {
+    margin: 0 10px;
+}
+
+.profile_picture {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 20px;
+    z-index: 10;
+}
+
+input[type="file"] {
+    display: none; /* Hide the default file input */
+}
+
+.custom-file-input {
+    display: inline-block;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #edf1f7;
+    border: none;
+    cursor: pointer;
+}
+
+.custom-file-input::before {
+    content: "Choose Picture";
+    display: inline-block;
+    padding: 10px;
+    background-color: #7E6E57;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.custom-file-input:hover::before {
+    background-color: #6C5D4D;
+}
+
+.custom-file-input:active::before {
+    background-color: #5A4B3D;
+}
+
+.custom-file-input:focus::before {
+    outline: none;
+    box-shadow: 0 0 0 2px #D0E2F5;
 }
