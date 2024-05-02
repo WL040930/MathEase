@@ -4,14 +4,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile and Settings</title>
-    <link rel="stylesheet" th:href="@{/css/settings.css}">
+<!--    <link rel="stylesheet" th:href="@{/css/settings.css}">-->
     <script th:src="@{/js/imageChanger.js}"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            background-color: white;
+            margin-left: 11%;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            width: 85%;
+            min-height: 94vh;
+            padding: 20px;
+            box-sizing: border-box;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .tab-button {
+            flex: 1;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            background-color: transparent;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .tab-line {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background-color: #007bff;
+            transition: width 0.3s ease;
+        }
+
+        .tab-button.active .tab-line {
+            width: 100%;
+        }
+
+        .content {
+            display: none;
+            padding: 20px;
+            border-top: none;
+        }
+
+        .active {
+            display: block;
+        }
+
+        #profileContent {
+            display: block;
+        }
+
+        #profileContent .profile-info {
+            display: flex;
+            align-items: center;
+        }
+
+        #profileContent .profile-info img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+
+        #profileContent .profile-info h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        #profileContent .profile-info h3 {
+            font-size: 18px;
+            color: #666;
+        }
+    </style>
 </head>
 <body>
 <section class="content-header" th:replace="menu/menu-admin::IncludeMenu" style="z-index: 9999"></section>
 
 <div class="container">
     <h1>Settings</h1>
+
+    <!-- THE MENU BAR -->
     <div class="tabs">
         <button id="profileTab" class="tab-button active" onclick="toggleTab('profile')">
             User Profile
@@ -23,51 +114,66 @@
         </button>
     </div>
 
-    <div id="profileContent" class="content">
-        <h2>User Profile</h2>
-
-        <h2 th:text="${usernameTitle}"></h2>
-        <h3 th:text="${roleTitle}"></h3>
-
-        <div class="separator"></div>
-
-        <div>
-            <img th:src="${profilePicture}" style="width: 150px; height: 150px; border-radius: 50%;" id="previewImage"> <br>
-            <label for="image" class="custom-file-input">
-                <input type="file" name="image" id="image" accept=".jpg, .jpeg, .png" onchange="handleFileInput()">
-            </label>
+    <!-- THE CONTENT FOR PROFILE -->
+    <div id="profileContent" class="content active">
+        <div class="profile-info">
+            <img th:src="${profilePicture}" alt="Profile Picture">
+            <div>
+                <h2 th:text="${usernameTitle}">Username</h2>
+                <h3 th:text="${emailTitle}">Email Address</h3>
+                <h3 th:text="${roleTitle}">Role</h3>
+            </div>
         </div>
-
     </div>
-    <div id="settingsContent" class="content" style="display: none;">
+
+    <!-- THE CONTENT FOR SETTINGS -->
+    <div id="settingsContent" class="content">
         <h2>Settings</h2>
         <p>Settings options go here...</p>
     </div>
 </div>
 
 <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Set the default tab as active
+        document.getElementById('profileTab').classList.add('active');
+        document.getElementById('profileContent').classList.add('active');
+
+        // Add click event listeners to tab buttons
+        const tabButtons = document.querySelectorAll('.tab-button');
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const tabName = button.id.replace('Tab', ''); // Extract tab name from button id
+                toggleTab(tabName);
+            });
+        });
+    });
+
     function toggleTab(tabName) {
         // Get all tab buttons and contents
         const tabButtons = document.querySelectorAll('.tab-button');
         const tabContents = document.querySelectorAll('.content');
 
-        // Hide all tab contents
+        // Hide all tab contents and deactivate all tab buttons
         tabContents.forEach(content => {
             content.classList.remove('active');
         });
-
-        // Deactivate all tab buttons
         tabButtons.forEach(button => {
             button.classList.remove('active');
         });
 
-        // Show the selected tab content
+        // Show the selected tab content and activate the clicked tab button
         document.getElementById(tabName + 'Content').classList.add('active');
-
-        // Activate the clicked tab button
         document.getElementById(tabName + 'Tab').classList.add('active');
-    }
 
+        // Hide the profileContent if switching to settingsTab
+        if (tabName === 'settings') {
+            document.getElementById('profileContent').style.display = 'none';
+        } else {
+            document.getElementById('profileContent').style.display = 'block';
+        }
+    }
 </script>
+
 </body>
 </html>
