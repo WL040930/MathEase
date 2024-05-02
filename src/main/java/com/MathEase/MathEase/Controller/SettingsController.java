@@ -55,6 +55,7 @@ public class SettingsController {
             newUsername = JsonParser.extractUsername(newUsername);
             user.setUsername(newUsername);
             userRepository.save(user);
+
             return ResponseEntity.ok("Username updated successfully");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to update username");

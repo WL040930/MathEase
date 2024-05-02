@@ -30,18 +30,4 @@ public class JsonParser {
         }
         return null; // Return null if username not found or error occurred
     }
-
-    public static void main(String[] args) {
-        String jsonString = "{\"username\":\"admin\"}";
-
-        // Call the extractUsername function
-        String username = extractUsername(jsonString);
-
-        // Print the retrieved username
-        if (username != null) {
-            System.out.println("Retrieved Username: " + username);
-        } else {
-            System.out.println("Failed to retrieve username.");
-        }
-    }
 }

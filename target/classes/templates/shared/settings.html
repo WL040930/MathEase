@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile and Settings</title>
 <!--    <link rel="stylesheet" th:href="@{/css/settings.css}">-->
+    <link rel="stylesheet" th:href="@{/css/popup_message.css}">
     <script th:src="@{/js/imageChanger.js}"></script>
+    <script th:src="@{/js/messageListener.js}"></script>
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -109,6 +112,41 @@
             box-sizing: border-box;
             margin-bottom: 10px;
         }
+
+        /* Style for the username label */
+        label {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        /* Animation for AJAX loading effect */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loading-spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 4px solid #ffffff;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
@@ -152,6 +190,14 @@
     </div>
 </div>
 
+<div th:if="${successMessage}" class="message success-message">
+    <span th:text="${successMessage}"></span>
+</div>
+
+<div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-spinner"></div>
+</div>
+
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         // Set the default tab as active
@@ -189,9 +235,6 @@
         }
     }
 
-</script>
-
-<script>
     function handleKeyPress(event) {
         if (event.keyCode === 13) { // Check if Enter key is pressed
             event.preventDefault(); // Prevent default form submission
@@ -201,11 +244,18 @@
 
             // Perform AJAX request to update username
             updateUsername(userId, newUsername);
+
+            // Remove focus from the input box
+            event.target.blur(); // Blur the input element to remove focus
         }
     }
 
+
     function updateUsername(userId, newUsername) {
         const url = `/update-username/${userId}`;
+
+        // Display loading overlay
+        document.getElementById('loadingOverlay').style.display = 'flex';
 
         fetch(url, {
             method: 'POST',
@@ -220,9 +270,13 @@
                 } else {
                     console.error('Failed to update username');
                 }
+                // Hide loading overlay after request completes
+                document.getElementById('loadingOverlay').style.display = 'none';
             })
             .catch(error => {
                 console.error('Error updating username:', error);
+                // Hide loading overlay on error
+                document.getElementById('loadingOverlay').style.display = 'none';
             });
     }
 

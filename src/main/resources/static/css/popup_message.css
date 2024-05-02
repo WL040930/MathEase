@@ -1,0 +1,32 @@
+.success-message {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    animation: slideDownAndFade 8s ease forwards;
+}
+
+@keyframes slideDownAndFade {
+    0% {
+        top: -50px; /* Initial position off-screen */
+        opacity: 0;
+    }
+    50% {
+        top: 50px; /* Drop down to this position */
+        opacity: 1;
+    }
+    85%, 100% {
+        top: 50px; /* Stay visible at this position */
+        opacity: 1;
+    }
+    100% {
+        top: -50px; /* Fade out and move back off-screen */
+        opacity: 0;
+    }
+}
