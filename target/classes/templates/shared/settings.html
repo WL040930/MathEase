@@ -29,7 +29,6 @@
 
         .tabs {
             display: flex;
-            margin-bottom: 20px;
         }
 
         .tab-button {
@@ -98,7 +97,17 @@
         .separator {
             height: 1px;
             background-color: #ddd;
-            margin: 20px 0;
+            margin: 10px 0;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -106,9 +115,8 @@
 <section class="content-header" th:replace="menu/menu-admin::IncludeMenu" style="z-index: 9999"></section>
 
 <div class="container">
-    <h1>Settings</h1>
+    <div style="width: 100%; text-align: center"><h1>Settings</h1></div>
 
-    <!-- THE MENU BAR -->
     <div class="tabs">
         <button id="profileTab" class="tab-button active" onclick="toggleTab('profile')">
             User Profile
@@ -122,6 +130,7 @@
 
     <!-- THE CONTENT FOR PROFILE -->
     <div id="profileContent" class="content active">
+        <input type="hidden" name="userId" th:value="${userId}">
         <div class="profile-info">
             <img th:src="${profilePicture}" alt="Profile Picture">
             <div>
@@ -130,6 +139,10 @@
             </div>
         </div>
         <div class="separator"></div>
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" th:value="${usernameInput}" onkeypress="handleKeyPress(event)">
+        </div>
     </div>
 
     <!-- THE CONTENT FOR SETTINGS -->
@@ -156,11 +169,9 @@
     });
 
     function toggleTab(tabName) {
-        // Get all tab buttons and contents
         const tabButtons = document.querySelectorAll('.tab-button');
         const tabContents = document.querySelectorAll('.content');
 
-        // Hide all tab contents and deactivate all tab buttons
         tabContents.forEach(content => {
             content.classList.remove('active');
         });
@@ -168,18 +179,54 @@
             button.classList.remove('active');
         });
 
-        // Show the selected tab content and activate the clicked tab button
         document.getElementById(tabName + 'Content').classList.add('active');
         document.getElementById(tabName + 'Tab').classList.add('active');
 
-        // Hide the profileContent if switching to settingsTab
         if (tabName === 'settings') {
             document.getElementById('profileContent').style.display = 'none';
         } else {
             document.getElementById('profileContent').style.display = 'block';
         }
     }
+
 </script>
+
+<script>
+    function handleKeyPress(event) {
+        if (event.keyCode === 13) { // Check if Enter key is pressed
+            event.preventDefault(); // Prevent default form submission
+
+            const newUsername = event.target.value; // Get the new username
+            const userId = document.querySelector('input[name="userId"]').value;
+
+            // Perform AJAX request to update username
+            updateUsername(userId, newUsername);
+        }
+    }
+
+    function updateUsername(userId, newUsername) {
+        const url = `/update-username/${userId}`;
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ username: newUsername }),
+        })
+            .then(response => {
+                if (response.ok) {
+                    console.log('Username updated successfully');
+                } else {
+                    console.error('Failed to update username');
+                }
+            })
+            .catch(error => {
+                console.error('Error updating username:', error);
+            });
+    }
+</script>
+
 
 </body>
 </html>

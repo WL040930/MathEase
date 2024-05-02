@@ -92,5 +92,9 @@ public class UserService {
         User user = userRepository.findById(userId).get();
         return user.getEmail();
     }
+    public void updateUsername(Long userId, String newUsername) {
+        userRepository.updateUsername(userId, newUsername);
+    }
+
 
 }
