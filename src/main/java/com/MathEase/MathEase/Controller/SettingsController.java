@@ -51,6 +51,7 @@ public class SettingsController {
     public ResponseEntity<String> updateUsername(@PathVariable Long userId, @RequestBody String newUsername) {
         try {
             User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
+
             user.setUsername(newUsername);
             userRepository.save(user);
             return ResponseEntity.ok("Username updated successfully");
