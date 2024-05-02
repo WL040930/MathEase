@@ -102,21 +102,28 @@
         }
 
         input[type="text"] {
-            width: 100%;
+            width: 90%;
             padding: 8px;
             font-size: 16px;
             border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box;
             margin-bottom: 10px;
+            margin-top: 5px;
         }
 
-        /* Style for the username label */
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #007bff;
+            background-color: #f9f9f9;
+        }
+
         label {
-            font-size: 18px;
+            font-size: 17px;
             font-weight: bold;
             color: #333;
             margin-bottom: 8px;
+            margin-top: 10px;
         }
 
         /* Animation for AJAX loading effect */
@@ -145,6 +152,112 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+
+        #resetButton {
+            padding: 8px 16px;
+            font-size: 16px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 3px;
+        }
+
+        #resetButton:hover {
+            background-color: darkred;
+        }
+
+        /* Popup styles */
+        .popup {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .popup-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 50%;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: slideIn 0.3s ease;
+        }
+
+        /* Animation for popup entry */
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Style for input fields and buttons */
+        .popup-content input[type="password"],
+        .popup-content button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+            outline: none;
+        }
+
+        .popup-content button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .popup-content button:hover {
+            background-color: #0056b3;
+        }
+
+        .popup-content label {
+            font-size: 17px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .left-box {
+            border-right: 1px solid #dddddd;
+        }
+
+
     </style>
 </head>
 <body>
@@ -175,10 +288,28 @@
             </div>
         </div>
         <div class="separator"></div>
-        <div>
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" th:value="${usernameInput}" onkeypress="handleKeyPress(event)">
+        <p><b>Please click on "Enter" after entering your information.</b></p>
+        <div style="float: left; width:49%" class="left-box">
+            <div>
+                <label for="username">Username:</label> <br>
+                <input type="text" id="username" name="username" th:value="${usernameInput}" onkeypress="handleKeyPress(event)">
+                <div id="errorMessage"></div>
+            </div>
+            <br>
+            <div>
+                <label for="joinedDate">Joined Date:</label> <br>
+                <input type="text" id="joinedDate" name="joinedDate" th:value="${joinedDateInput}" disabled>
+            </div>
+            <br>
+            <div>
+                <label for="resetButton">Reset Password:</label> <br>
+                <button id="resetButton">Reset Password</button>
+            </div>
         </div>
+        <div style="float: right; width: 48%" class="right-box">
+
+        </div>
+        <div style="clear: both"></div>
     </div>
 
     <!-- THE CONTENT FOR SETTINGS -->
@@ -192,7 +323,24 @@
     <div class="loading-spinner"></div>
 </div>
 
+<div id="passwordResetPopup" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePasswordResetPopup()">&times;</span>
+        <h2>Reset Password</h2>
+        <div>
+            <label for="newPassword" style="margin-bottom: 0px">New Password:</label><br>
+            <input type="password" id="newPassword" name="newPassword" required><br><br>
+            <label for="confirmPassword" style="margin-bottom: 0px">Confirm Password:</label><br>
+            <input type="password" id="confirmPassword" name="confirmPassword" required><br><br>
+            <div id="errorPassword" style="margin-bottom: 10px"></div>
+            <button onclick="confirmPasswordReset()">Reset Password</button>
+        </div>
+    </div>
+</div>
+
+
 <script>
+
     document.addEventListener("DOMContentLoaded", function() {
         // Set the default tab as active
         document.getElementById('profileTab').classList.add('active');
@@ -230,17 +378,24 @@
     }
 
     function handleKeyPress(event) {
-        if (event.keyCode === 13) { // Check if Enter key is pressed
-            event.preventDefault(); // Prevent default form submission
+        if (event.keyCode === 13) {
+            event.preventDefault();
 
             const newUsername = event.target.value; // Get the new username
             const userId = document.querySelector('input[name="userId"]').value;
 
-            // Perform AJAX request to update username
+            if (newUsername.length < 6) {
+                document.getElementById('errorMessage').innerText = 'Username must be at least 6 characters long.';
+                document.getElementById('errorMessage').style.color = 'red';
+                return;
+            } else {
+                document.getElementById('errorMessage').innerText = '';
+                document.getElementById('errorMessage').style.color = 'black';
+            }
+
             updateUsername(userId, newUsername);
 
-            // Remove focus from the input box
-            event.target.blur(); // Blur the input element to remove focus
+            event.target.blur();
         }
     }
 
@@ -274,8 +429,94 @@
             });
     }
 
+    function updatePassword(userId, newPassword) {
+        const url = `/update-password/${userId}`;
+
+        document.getElementById('loadingOverlay').style.display = 'flex';
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ password: newPassword }),
+        })
+            .then(response => {
+                if (response.ok) {
+                    console.log('Password updated successfully');
+                } else {
+                    console.error('Failed to update Password');
+                }
+                // Hide loading overlay after request completes
+                document.getElementById('loadingOverlay').style.display = 'none';
+            })
+            .catch(error => {
+                console.error('Error updating password:', error);
+                document.getElementById('loadingOverlay').style.display = 'none';
+            });
+    }
+
 </script>
 
+<script>
+    // Function to open the password reset popup
+    function openPasswordResetPopup() {
+        const popup = document.getElementById('passwordResetPopup');
+        if (popup) {
+            popup.style.display = 'block';
+            // Scroll to top of the popup
+            popup.scrollTop = 0;
+        }
+    }
+
+    // Function to close the password reset popup
+    function closePasswordResetPopup() {
+        const popup = document.getElementById('passwordResetPopup');
+        if (popup) {
+            popup.style.display = 'none';
+        }
+    }
+
+    // Function to handle password reset confirmation
+    function confirmPasswordReset() {
+        var newPassword = document.getElementById('newPassword').value;
+        var confirmPassword = document.getElementById('confirmPassword').value;
+        var errorPassword = document.getElementById('errorPassword');
+        const userId = document.querySelector('input[name="userId"]').value;
+
+        if (newPassword.length < 8) {
+            errorPassword.innerText = 'Password must be at least 8 characters long.';
+            errorPassword.style.color = 'red';
+            return;
+        } else {
+            errorPassword.innerText = '';
+            errorPassword.style.color = 'black';
+        }
+
+        if (newPassword !== confirmPassword) {
+            errorPassword.innerText = 'Passwords do not match.';
+            errorPassword.style.color = 'red';
+            return;
+        } else {
+            errorPassword.innerText = '';
+            errorPassword.style.color = 'black';
+        }
+
+        updatePassword(userId, newPassword);
+
+        document.getElementById('newPassword').value = '';
+        document.getElementById('confirmPassword').value = '';
+
+        closePasswordResetPopup();
+    }
+
+
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById('resetButton').addEventListener('click', openPasswordResetPopup);
+    });
+</script>
 
 </body>
 </html>

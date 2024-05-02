@@ -96,5 +96,10 @@ public class UserService {
         userRepository.updateUsername(userId, newUsername);
     }
 
+    public String getJoinedDate(Long userId) {
+        User user = userRepository.findById(userId).get();
+        return user.getJoinedDate();
+    }
+
 
 }

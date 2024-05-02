@@ -38,11 +38,13 @@ public class SettingsController {
         String role = userService.getRoleName(userId);
         String profilePicture = userService.getProfilePicture(userId);
         String email = userService.getEmail(userId);
+        String joinedDate = userService.getJoinedDate(userId);
 
         model.addAttribute("userId", userId);
         model.addAttribute("usernameInput", username);
         model.addAttribute("emailTitle", email);
         model.addAttribute("roleTitle", role);
+        model.addAttribute("joinedDateInput", joinedDate);
         model.addAttribute("profilePicture", "/data/" + profilePicture);
 
         return "shared/settings";
@@ -59,6 +61,20 @@ public class SettingsController {
             return ResponseEntity.ok("Username updated successfully");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to update username");
+        }
+    }
+
+    @PostMapping("/update-password/{userId}")
+    public ResponseEntity<String> updatePassword(@PathVariable Long userId, @RequestBody String newPassword) {
+        try {
+            User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
+            newPassword = JsonParser.extractPassword(newPassword);
+            user.setPassword(newPassword);
+            userRepository.save(user);
+
+            return ResponseEntity.ok("Password updated successfully");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to update password");
         }
     }
 

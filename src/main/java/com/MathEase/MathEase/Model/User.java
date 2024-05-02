@@ -44,4 +44,7 @@ public class User {
 
     @Column(name = "reset_token")
     private String resetToken;
+
+    @Column(name = "joined_date")
+    private String joinedDate;
 }
