@@ -361,13 +361,13 @@
         <div style="float: right; width: 48%" class="right-box">
             <div style="float: left; width: 49%">
                 <label for="profilePictureInput" class="profile-picture-label">Change Picture</label>
-                <input type="file" id="profilePictureInput" style="display: none" onchange="previewProfilePicture(event)">
+                <input type="file" id="profilePictureInput" style="display: none"  accept="image/png, image/jpeg, image/jpg" onchange="previewProfilePicture(event)">
                 <br>
-                <button id="saveButton">Save</button>
+                <button id="saveButton" onclick="saveProfileChanges()">Save</button>
             </div>
             <div style="float: right; width: 49%">
                 <div class="profile-picture-preview">
-                    <img th:src="${profilePicture}" style="width: 200px; border-radius: 50%;" id="previewImage">
+                    <img th:src="${profilePicture}" style="width: 200px; border-radius: 50%;" id="previewImage" >
                 </div>
             </div>
             <div style="clear: both"></div>
@@ -594,8 +594,48 @@
             reader.readAsDataURL(input.files[0]); // Read the uploaded file as a data URL
         }
     }
-</script>
 
+
+    function saveProfileChanges() {
+        const fileInput = document.getElementById('profilePictureInput');
+        const file = fileInput.files[0];
+
+        if (!file) {
+            console.error('No file selected.');
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('profilePicture', file);
+
+        const userId = document.querySelector('input[name="userId"]').value;
+        const url = `/upload-profile-picture/${userId}`;
+
+        const xhr = new XMLHttpRequest();
+
+        // Configure AJAX request
+        xhr.open('POST', url, true);
+
+        // Set up handler for successful upload
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                console.log('Profile picture uploaded successfully');
+                window.location.reload(true); 
+            } else {
+                console.error('Failed to upload profile picture');
+            }
+        };
+
+        // Set up handler for network errors
+        xhr.onerror = function () {
+            console.error('Network error during profile picture upload');
+        };
+
+        // Send the FormData
+        xhr.send(formData);
+    }
+
+</script>
 
 </body>
 </html>

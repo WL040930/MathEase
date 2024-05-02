@@ -14,12 +14,12 @@ public class FileNameUtil {
 
     public String transferFile(MultipartFile sourceFile, String targetDirectory) {
         if (sourceFile == null || sourceFile.isEmpty()) {
-            return null; // Handle case where sourceFile is null or empty
+            return null;
         }
 
         String originalFileName = sourceFile.getOriginalFilename();
         if (originalFileName == null || originalFileName.isEmpty()) {
-            return null; // Handle case where original filename is missing
+            return null;
         }
 
         String uniqueFileName = generateUniqueFileName(originalFileName);
@@ -31,11 +31,11 @@ public class FileNameUtil {
             return uniqueFileName;
         } catch (IOException e) {
             e.printStackTrace();
-            return null; // Handle file transfer failure
+            return null;
         }
     }
 
-    private String generateUniqueFileName(String originalFileName) {
+    public String generateUniqueFileName(String originalFileName) {
         String extension = originalFileName.substring(originalFileName.lastIndexOf("."));
         String uniqueName = UUID.randomUUID().toString() + extension;
         return uniqueName;

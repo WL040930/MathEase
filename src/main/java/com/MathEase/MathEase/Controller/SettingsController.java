@@ -3,6 +3,7 @@ package com.MathEase.MathEase.Controller;
 import com.MathEase.MathEase.Model.User;
 import com.MathEase.MathEase.Repository.UserRepository;
 import com.MathEase.MathEase.Service.UserService;
+import com.MathEase.MathEase.Util.FileNameUtil;
 import com.MathEase.MathEase.Util.JsonParser;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class SettingsController {
@@ -26,6 +25,8 @@ public class SettingsController {
 
     @Autowired
     private UserRepository userRepository;
+
+    private FileNameUtil fileNameUtil = new FileNameUtil();
 
     @GetMapping("/admin/settings")
     public String settings(HttpSession session, Model model) {
@@ -48,6 +49,23 @@ public class SettingsController {
         model.addAttribute("profilePicture", "/data/" + profilePicture);
 
         return "shared/settings";
+    }
+
+    public void setSettings (HttpSession session, Model model) {
+        Long userId = (Long) session.getAttribute("userId");
+
+        String username = userService.getUsername(userId);
+        String role = userService.getRoleName(userId);
+        String profilePicture = userService.getProfilePicture(userId);
+        String email = userService.getEmail(userId);
+        String joinedDate = userService.getJoinedDate(userId);
+
+        model.addAttribute("userId", userId);
+        model.addAttribute("usernameInput", username);
+        model.addAttribute("emailTitle", email);
+        model.addAttribute("roleTitle", role);
+        model.addAttribute("joinedDateInput", joinedDate);
+        model.addAttribute("profilePicture", "/data/" + profilePicture);
     }
 
     @PostMapping("/update-username/{userId}")
@@ -78,5 +96,24 @@ public class SettingsController {
         }
     }
 
+    @PostMapping("/upload-profile-picture/{userId}")
+    public ResponseEntity<String> uploadProfilePicture(@PathVariable Long userId,
+                                                       @RequestParam("profilePicture") MultipartFile file,
+                                                       Model model,
+                                                       HttpSession session) {
+        if (file.isEmpty()) {
+            return ResponseEntity.badRequest().body("Please select a file to upload");
+        }
+
+        try {
+            User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
+            String fileName = fileNameUtil.transferFile(file, fileNameUtil.UPLOAD_DIR);
+            user.setProfilePicture(fileName);
+            userRepository.save(user);
+            return ResponseEntity.ok("Profile picture uploaded successfully");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to upload profile picture");
+        }
+    }
 
 }
