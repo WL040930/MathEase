@@ -250,13 +250,13 @@
         width: 32px;
         height: 32px;
         border-radius: 50%;
-        overflow: hidden;
         transform: translate(0);
         transition: 0.2s;
     }
 
     #nav-footer-avatar img {
         height: 100%;
+        border-radius: 50%;
     }
 
     #nav-footer-titlebox {
@@ -366,7 +366,7 @@
     #noButton {
         background-color: #f44336;
         color: white;
-        margin-left: 60px;
+        margin-left: 80px;
     }
 
     #yesButton:hover,
@@ -374,23 +374,72 @@
         opacity: 0.8;
     }
 
+
+    @keyframes modalAnimation {
+        0% {
+            transform: scale(0.8);
+            opacity: 0;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        animation: modalAnimation 0.3s ease-in-out;
+        opacity: 0;
+        transform: translateY(-50px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .modal.active .modal-content {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    @keyframes modalCloseAnimation {
+        0% {
+            transform: scale(1);
+            opacity: 1;
+        }
+        100% {
+            transform: scale(0.8);
+            opacity: 0;
+        }
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        animation: modalAnimation 0.3s ease-in-out;
+        opacity: 0;
+        transform: translateY(-50px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .modal.active .modal-content {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .modal.closing .modal-content {
+        animation: modalCloseAnimation 0.3s ease-in-out forwards;
+    }
 </style>
 
 <body>
 
-<div id="logoutModal" class="modal">
-    <div class="modal-content">
-        <p>Are you sure you want to logout?</p>
-        <button onclick="confirmLogout()" id="yesButton">Yes</button>
-        <button onclick="cancelLogout()" id="noButton">No</button>
-    </div>
-</div>
-
-
 <div id="nav-bar">
     <input id="nav-toggle" type="checkbox" checked>
     <div id="nav-header">
-        <a id="nav-title" href="https://codepen.io" target="_blank">C<i class="fab fa-codepen"></i>DEPEN</a>
+        <a id="nav-title" href="/" target="_blank"><img src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/picture/logo-small.png" alt="" style="width: 50px; height:50px; margin-top: 10px"></a>
         <label for="nav-toggle">
             <span id="nav-toggle-burger"></span>
         </label>
@@ -406,13 +455,13 @@
         <div class="nav-button"><i class="fas fa-fire"></i><span>Challenges</span></div>
         <div class="nav-button"><i class="fas fa-magic"></i><span>Spark</span></div>
         <hr>
-        <div class="nav-button"><i class="fas fa-gem"></i><span>Codepen Pro</span></div>
+        <div class="nav-button"><i class="fas fa-gem"></i><span>dd</span></div>
 <!--        <div id="nav-content-highlight"></div>-->
     </div>
     <input id="nav-footer-toggle" type="checkbox">
     <div id="nav-footer">
         <div id="nav-footer-heading">
-            <div id="nav-footer-avatar">
+            <div id="nav-footer-avatar" >
                 <img th:src="${menuProfilePictureUrl}" alt="User Avatar">
             </div>
             <div id="nav-footer-titlebox" style="overflow: hidden; width: 150px" >
@@ -425,6 +474,15 @@
             <p><a th:href="@{settings}">Settings</a></p>
             <p><a href="#" onclick="openModal()">Logout</a></p>
         </div>
+    </div>
+</div>
+
+
+<div id="logoutModal" class="modal">
+    <div class="modal-content">
+        <p>Are you sure you want to logout?</p>
+        <button onclick="confirmLogout()" id="yesButton">Yes</button>
+        <button onclick="cancelLogout()" id="noButton">No</button>
     </div>
 </div>
 
@@ -444,7 +502,11 @@
     }
 
     function cancelLogout() {
-        closeModal();
+        var modal = document.getElementById('logoutModal');
+        modal.classList.add('closing');
+        setTimeout(function() {
+            modal.classList.remove('active', 'closing');
+        }, 300);
     }
 </script>
 
