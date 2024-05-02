@@ -5,14 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile and Settings</title>
     <link rel="stylesheet" th:href="@{/css/settings.css}">
-    <script th:src="@{/js/imageChanger.js}"></script>
 </head>
 <body>
 <section class="content-header" th:replace="menu/menu-admin::IncludeMenu" style="z-index: 9999"></section>
 
-<div id="container">
-    h1h1
+<div id="container" class="container">
+    <div id="profilePanel" class="panel active">
+        <!-- User Profile content -->
+        <h1>User Profile</h1>
+        <!-- Add profile details here -->
+    </div>
+    <div id="settingsPanel" class="panel">
+        <!-- Settings content -->
+        <h1>Settings</h1>
+        <!-- Add settings options here -->
+    </div>
+
+    <div class="buttons-container">
+        <button id="profileButton" onclick="showProfilePanel()">User Profile</button>
+        <button id="settingsButton" onclick="showSettingsPanel()">Settings</button>
+    </div>
 </div>
 
+<script>
+    // JavaScript to handle panel switching
+    function showProfilePanel() {
+        document.getElementById('profilePanel').classList.add('active');
+        document.getElementById('settingsPanel').classList.remove('active');
+    }
+
+    function showSettingsPanel() {
+        document.getElementById('settingsPanel').classList.add('active');
+        document.getElementById('profilePanel').classList.remove('active');
+    }
+</script>
 </body>
 </html>
