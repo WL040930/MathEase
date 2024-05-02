@@ -73,4 +73,19 @@ public class UserService {
         return userRepository.findByEmail(email);
     }
 
+    public String getUsername(Long userId) {
+        User user = userRepository.findById(userId).get();
+        return user.getUsername();
+    }
+
+    public String getRoleName(Long userId) {
+        User user = userRepository.findById(userId).get();
+        return user.getRole().getRoleName();
+    }
+
+    public String getProfilePicture(Long userId) {
+        User user = userRepository.findById(userId).get();
+        return user.getProfilePicture();
+    }
+
 }

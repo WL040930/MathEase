@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile and Settings</title>
     <link rel="stylesheet" th:href="@{/css/settings.css}">
+    <script th:src="@{/js/imageChanger.js}"></script>
 </head>
-
 <body>
-<section class="content-header" th:replace="menu/menu-admin::IncludeMenu"></section>
+<section class="content-header" th:replace="menu/menu-admin::IncludeMenu" style="z-index: 9999"></section>
 
 <div class="container">
     <h1>Settings</h1>
@@ -25,7 +25,19 @@
 
     <div id="profileContent" class="content">
         <h2>User Profile</h2>
-        <p>Profile information goes here...</p>
+
+        <h2 th:text="${usernameTitle}"></h2>
+        <h3 th:text="${roleTitle}"></h3>
+
+        <div class="separator"></div>
+
+        <div>
+            <img th:src="${profilePicture}" style="width: 150px; height: 150px; border-radius: 50%;" id="previewImage"> <br>
+            <label for="image" class="custom-file-input">
+                <input type="file" name="image" id="image" accept=".jpg, .jpeg, .png" onchange="handleFileInput()">
+            </label>
+        </div>
+
     </div>
     <div id="settingsContent" class="content" style="display: none;">
         <h2>Settings</h2>
