@@ -7,6 +7,4 @@ import org.springframework.session.data.mongo.config.annotation.web.reactive.Ena
 @EnableMongoWebSession
 public class SessionConfig {
 
-
-
 }
