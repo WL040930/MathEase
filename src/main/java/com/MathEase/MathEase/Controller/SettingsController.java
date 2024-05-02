@@ -3,6 +3,7 @@ package com.MathEase.MathEase.Controller;
 import com.MathEase.MathEase.Model.User;
 import com.MathEase.MathEase.Repository.UserRepository;
 import com.MathEase.MathEase.Service.UserService;
+import com.MathEase.MathEase.Util.JsonParser;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -51,7 +52,7 @@ public class SettingsController {
     public ResponseEntity<String> updateUsername(@PathVariable Long userId, @RequestBody String newUsername) {
         try {
             User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
-
+            newUsername = JsonParser.extractUsername(newUsername);
             user.setUsername(newUsername);
             userRepository.save(user);
             return ResponseEntity.ok("Username updated successfully");
