@@ -1,0 +1,12 @@
+.container {
+    background-color: white;
+    margin-left: 11%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 85%;
+    min-height: 94vh;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}

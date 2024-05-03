@@ -32,6 +32,10 @@ public class SettingsController {
     @GetMapping("/admin/settings")
     public String settings(HttpSession session, Model model) {
 
+        if (session.getAttribute("userId") == null) {
+            return "redirect:/login";
+        }
+
         menuController.setMenuBar(session, model);
 
         Long userId = (Long) session.getAttribute("userId");

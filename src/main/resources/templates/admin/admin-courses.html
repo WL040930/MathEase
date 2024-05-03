@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/container.css}">
+</head>
+<body>
+
+<section class="content-header" th:replace="menu/menu-admin::IncludeMenu"></section>
+
+<div class="container">
+    <section class="content" th:replace="shared/courses-selection::IncludeCourse"></section>
+</div>
+
+
+</body>
+</html>
