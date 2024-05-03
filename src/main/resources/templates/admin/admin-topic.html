@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/container.css}">
+    <link rel="stylesheet" th:href="@{/css/back-button.css}">
+</head>
+<body>
+
+<section class="content-header" th:replace="menu/menu-admin::IncludeMenu"></section>
+
+<div class="container">
+    <button class="back-button" onclick="window.history.back()">Back</button>
+    <div th:replace="${chapterTemplateName}"></div>
+</div>
+
+</body>
+</html>

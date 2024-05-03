@@ -27,7 +27,7 @@ public class SettingsController {
     @Autowired
     private UserRepository userRepository;
 
-    private FileNameUtil fileNameUtil = new FileNameUtil();
+    private final FileNameUtil fileNameUtil = new FileNameUtil();
 
     @GetMapping("/admin/settings")
     public String settings(HttpSession session, Model model) {
