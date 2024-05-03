@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class SettingsController {
@@ -100,7 +101,8 @@ public class SettingsController {
     public ResponseEntity<String> uploadProfilePicture(@PathVariable Long userId,
                                                        @RequestParam("profilePicture") MultipartFile file,
                                                        Model model,
-                                                       HttpSession session) {
+                                                       HttpSession session,
+                                                       RedirectAttributes redirectAttributes) {
         if (file.isEmpty()) {
             return ResponseEntity.badRequest().body("Please select a file to upload");
         }

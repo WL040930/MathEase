@@ -7,7 +7,6 @@ body {
 
 .container {
     background-color: white;
-    height: 100%;
     margin-left: 11%;
     margin-top: 15px;
     margin-bottom: 15px;
@@ -21,12 +20,33 @@ body {
 
 .tabs {
     display: flex;
-    width: 100%;
-    margin-bottom: 20px;
 }
 
-.tab-button.active {
-    border-bottom-color: #007bff; /* Active button color */
+.tab-button {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+}
+
+.tab-line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background-color: #007bff;
+    transition: width 0.3s ease;
+}
+
+.tab-button.active .tab-line {
+    width: 100%;
 }
 
 .content {
@@ -35,94 +55,247 @@ body {
     border-top: none;
 }
 
-.content.active {
+.active {
     display: block;
 }
 
-.tab-button {
-    flex: 1;
-    padding: 10px 0;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    background-color: transparent;
-    position: relative; /* Position relative for absolute line */
-    text-align: center;
-    overflow: hidden; /* Hide overflow to prevent line from appearing outside button */
+#profileContent {
+    display: block;
 }
 
-.tab-line {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0; /* Initial width set to zero */
-    height: 3px;
-    background-color: #007bff; /* Line color */
-    transition: width 0.3s ease; /* Transition for width change */
-    z-index: 2;
+#profileContent .profile-info {
+    display: flex;
+    align-items: center;
 }
 
-.tab-button.active .tab-line {
-    width: 100%; /* Expand line to cover entire active tab */
+#profileContent .profile-info img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+#profileContent .profile-info h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+#profileContent .profile-info h3 {
+    font-size: 18px;
+    color: #666;
 }
 
 .separator {
-    margin: 0 10px;
+    height: 1px;
+    background-color: #ddd;
+    margin: 10px 0;
 }
 
-.profile_picture {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin: 0 auto;
-    display: block;
-    margin-bottom: 20px;
-    z-index: 10;
-}
-
-input[type="file"] {
-    display: none; /* Hide the default file input */
-}
-
-.custom-file-input {
-    display: inline-block;
-    padding: 10px;
+input[type="text"] {
+    width: 90%;
+    padding: 8px;
     font-size: 16px;
-    background-color: #edf1f7;
-    border: none;
-    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    margin-top: 5px;
 }
 
-.custom-file-input::before {
-    content: "Choose Picture";
-    display: inline-block;
-    padding: 10px;
-    background-color: #7E6E57;
+input[type="text"]:focus {
+    outline: none;
+    border-color: #007bff;
+    background-color: #f9f9f9;
+}
+
+label {
+    font-size: 17px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+    margin-top: 10px;
+}
+
+/* Animation for AJAX loading effect */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading-spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top: 4px solid #ffffff;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#resetButton {
+    padding: 8px 16px;
+    font-size: 16px;
+    background-color: red;
     color: white;
     border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 3px;
+}
+
+#resetButton:hover {
+    background-color: darkred;
+}
+
+/* Popup styles */
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.popup-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
     border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: slideIn 0.3s ease;
+}
+
+/* Animation for popup entry */
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
     cursor: pointer;
 }
 
-.custom-file-input:hover::before {
-    background-color: #6C5D4D;
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
 }
 
-.custom-file-input:active::before {
-    background-color: #5A4B3D;
-}
-
-.custom-file-input:focus::before {
+/* Style for input fields and buttons */
+.popup-content input[type="password"],
+.popup-content button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
     outline: none;
-    box-shadow: 0 0 0 2px #D0E2F5;
 }
 
-#imageColumn {
-    float: left;
-    width: 30%;
+.popup-content button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-#contentColumn {
-    float: right;
-    width: 70%;
+.popup-content button:hover {
+    background-color: #0056b3;
+}
+
+.popup-content label {
+    font-size: 17px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.left-box {
+    border-right: 1px solid #dddddd;
+}
+
+/* Style for the profile picture label */
+.profile-picture-label {
+    border: 1px solid #007bff;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+    margin-bottom: 10px;
+    background-color: #007bff;
+    width: 125px;
+}
+
+/* Hover effect for the profile picture label */
+.profile-picture-label:hover {
+    background-color: #0056b3;
+}
+
+/* Style for the profile picture preview container */
+.profile-picture-preview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px; /* Set a fixed height for the preview container */
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #f0f0f0; /* Light gray background */
+    margin-bottom: 10px;
+}
+
+/* Styling for the profile picture within the preview container */
+.profile-picture-preview img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover; /* Ensure the image covers the container */
+}
+
+#saveButton {
+    padding: 8px 16px;
+    font-size: 16px;
+    background-color: #32CD32;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 30px;
+    width: 159px;
+}
+
+#saveButton:hover {
+    background-color: #228B22;
 }
