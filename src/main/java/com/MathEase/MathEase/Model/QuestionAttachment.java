@@ -23,5 +23,5 @@ public class QuestionAttachment {
 
     @Column(name = "attachment_filename", nullable = false)
     private String attachmentFilename;
-    
+
 }

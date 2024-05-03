@@ -1,24 +1,24 @@
 .topic-grid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .clickable-topic {
-    width: calc(50% - 20px);
-    margin-bottom: 20px;
-    padding: 15px;
+    width: calc(35% - 20px);
+    margin: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
     box-sizing: border-box;
-    background-color: #f8f9fa; /* Light gray background */
+    background-color: #f8f9fa;
+    padding: 20px;
 }
 
 .clickable-topic:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow on hover */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .clickable-topic a {
