@@ -20,4 +20,6 @@ public class Topic {
     @Column(name = "topic_name", nullable = false)
     private String topicName;
 
+    @Column(name= "PicturePath")
+    private String picturePath;
 }

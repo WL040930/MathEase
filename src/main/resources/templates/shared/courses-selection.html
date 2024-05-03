@@ -1,3 +1,16 @@
 <section class="content-header" th:fragment="IncludeCourse">
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" th:href="@{/css/topic.css}">
 
+    <!-- Define a grid layout for topics -->
+    <div class="topic-grid">
+
+        <div th:each="topic, iterStat : ${topics}" class="clickable-topic">
+            <a th:href="@{'/topic/' + ${topic.topicId}}">
+<!--                <img th:src="@{${topic.topicImage}}" alt="topic image" class="topic-image">-->
+                <span th:text="'Chapter '+ ${topic.topicId}"></span> <br>
+                <span th:text="${topic.topicName}"></span>
+            </a>
+        </div>
+    </div>
 </section>

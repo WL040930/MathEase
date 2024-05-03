@@ -1,0 +1,32 @@
+.topic-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.clickable-topic {
+    width: calc(50% - 20px);
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    box-sizing: border-box;
+    background-color: #f8f9fa; /* Light gray background */
+}
+
+.clickable-topic:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow on hover */
+}
+
+.clickable-topic a {
+    text-decoration: none;
+}
+
+.clickable-topic span {
+    color: #333; /* Text color */
+    font-weight: bold;
+    font-size: 16px;
+}
