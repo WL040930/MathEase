@@ -5,7 +5,7 @@
 }
 
 .clickable-topic {
-    width: calc(35% - 20px);
+    width: calc(40% - 20px);
     margin: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -29,4 +29,9 @@
     color: #333; /* Text color */
     font-weight: bold;
     font-size: 16px;
+}
+
+.topic-image {
+    width: 90px;
+    height: 90px;
 }

@@ -12,4 +12,6 @@ public interface TopicRepository extends JpaRepository<Topic, Long>{
     // sort by topicID
     @Query("SELECT t FROM Topic t ORDER BY t.topicId ASC")
     List<Topic> getAllTopics();
+
+    Topic getTopicByTopicId(Long topicId);
 }

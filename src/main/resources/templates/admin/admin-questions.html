@@ -1,12 +1,116 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/container.css}">
+    <link rel="stylesheet" th:href="@{/css/admin_question.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+    }
+
+    .left-panel {
+        flex: 0 0 30%;
+        padding: 20px;
+        max-height: 85vh;
+        overflow-y: auto;
+        overflow-x: hidden; /* Hide horizontal overflow */
+    }
+
+    .right-panel {
+        flex: 1;
+        padding: 20px;
+    }
+
+    .clickable-topic {
+        cursor: pointer;
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        overflow: hidden; /* Ensure content does not overflow the topic container */
+    }
+
+    .clickable-topic:hover {
+        background-color: #f0f0f0;
+    }
+
+    .topic-info {
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f0f0f0;
+    }
+</style>
+
 <body>
 
 <section class="content-header" th:replace="menu/menu-admin::IncludeMenu"></section>
+
+<div class="container">
+    <!-- Left Panel: Topics -->
+    <div class="left-panel">
+        <div th:each="topic : ${topics}" class="clickable-topic" th:data-topic-id="${topic.topicId}">
+            <div style="float: left; width: 30%">
+                <img th:src="@{${topic.picturePath}}" alt="topic image" class="topic-image">
+            </div>
+            <div style="float: right; width: 65%;">
+                <div class="topic-info-container">
+                    <span th:text="'Chapter ' + ${topic.topicId}"></span><br>
+                    <span th:text="${topic.topicName}"></span>
+                </div>
+            </div>
+            <div style="clear: both"></div>
+        </div>
+    </div>
+
+    <!-- Right Panel: Topic Information -->
+    <div class="right-panel" id="topicInfoPanel">
+        <p>Select a topic to view details...</p>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const topicList = document.querySelectorAll('.clickable-topic');
+        const topicInfoPanel = document.getElementById('topicInfoPanel');
+
+        topicList.forEach(topic => {
+            topic.addEventListener('click', async () => {
+                const topicId = topic.dataset.topicId;
+
+                try {
+                    // Simulate fetching topic details based on the selected topicId
+                    const response = await fetch(`/api/topics/${topicId}`);
+                    const topicDetails = await response.json();
+
+                    // Update the topic information panel with the retrieved details
+                    topicInfoPanel.innerHTML = `
+                        <div class="topic-info">
+                            <h2>Chapter ${topicDetails.topicId}</h2>
+                            <!-- Add more details as needed -->
+                        </div>
+                    `;
+                } catch (error) {
+                    console.error('Error fetching topic details:', error);
+                }
+            });
+        });
+    });
+</script>
 
 </body>
 </html>

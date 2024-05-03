@@ -4,9 +4,17 @@
     <div class="topic-grid">
         <div th:each="topic, iterStat : ${topics}" class="clickable-topic">
             <a th:href="@{'/topic/' + ${topic.topicId}}" class="topicATag">
-                <!-- <img th:src="@{${topic.topicImage}}" alt="topic image" class="topic-image"> -->
-                <span th:text="'Chapter ' + ${topic.topicId}"></span> <br>
-                <span th:text="${topic.topicName}"></span>
+                <div style="float: left; width: 30%">
+                    <img th:src="@{${topic.picturePath}}" alt="topic image" class="topic-image">
+                </div>
+                <div style="float: right; width: 70%">
+                    <span th:text="'Chapter ' + ${topic.topicId}"></span> <br>
+                    <span th:text="${topic.topicName}"></span>
+                </div>
+                <div>
+
+                </div>
+                <div style="clear: both"></div>
             </a>
         </div>
     </div>
