@@ -33,18 +33,17 @@ public class AdminQuestionController {
         return "admin/admin-questions";
     }
 
-    @GetMapping("/admin/questions/{topicId}")
+    @GetMapping("/api/topics/{topicId}")
     public ResponseEntity<Topic> getTopicById(@PathVariable Long topicId) {
-        System.out.println("topicId: " + topicId);
         try {
             Topic topic = topicService.getTopicById(topicId);
             if (topic != null) {
-                return new ResponseEntity<>(topic, HttpStatus.OK);
+                return ResponseEntity.ok(topic);
             } else {
-                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+                return ResponseEntity.notFound().build();
             }
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 }
