@@ -53,8 +53,24 @@
                     // Update the topic information panel with the retrieved details
                     topicInfoPanel.innerHTML = `
                         <div class="topic-info">
-                            <h2>Chapter ${topicDetails.topicId}</h2>
-                            <p>Topic Name: ${topicDetails.topicName}</p>
+                            <div class="top-panel">
+                                <div style="float: left; width: 20%">
+                                    <img src="${topicDetails.picturePath}" alt="topic image" class="topicTop">
+                                </div>
+                                <div style="float: right; width: 79%">
+                                    <h2>Chapter ${topicDetails.topicId}</h2>
+                                    <p>Topic Name: ${topicDetails.topicName}</p>
+                                </div>
+                                <div style="clear: both"></div>
+                            </div>
+                            <div class="table-panel">
+                                <!-- Add content for table panel here -->
+                            </div>
+                            <div class="controller">
+                                <button class="control-button add-button">Add</button>
+                                <button class="control-button edit-button">Edit</button>
+                                <button class="control-button delete-button">Delete</button>
+                            </div>
                         </div>
                     `;
 

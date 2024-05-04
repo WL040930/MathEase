@@ -95,3 +95,68 @@ body {
 .clickable-topic.active span {
     color: white;
 }
+
+.topic-info {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.top-panel {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.top-panel img {
+    width: 100%;
+    max-width: 100px;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+
+.controller {
+    margin-top: 20px;
+}
+
+.control-button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.control-button.add-button {
+    background-color: #28a745; /* Green color for Add button */
+    color: #fff;
+}
+
+.control-button.delete-button {
+    background-color: #dc3545; /* Red color for Edit/Delete buttons */
+    color: #fff;
+}
+
+.control-button.edit-button {
+    background-color: #ffc107; /* Yellow color for Edit button */
+    color: #fff;
+}
+
+.control-button.add-button:hover {
+    background-color: #218838;
+}
+
+.control-button.delete-button:hover {
+    background-color: #c82333;
+}
+
+.control-button.edit-button:hover {
+    background-color: #e0a800;
+}
+
+.controller {
+    height: 10vh;
+    padding: 10px;
+}
