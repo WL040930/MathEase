@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.MathEase.MathEase.Repository.OptionRepository;
 import com.MathEase.MathEase.Util.FileNameUtil;
 import com.MathEase.MathEase.Repository.QuestionAttachmentRepository;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @RestController
 @RequestMapping("/api")
@@ -40,7 +41,8 @@ public class QuestionUploadController {
             @RequestParam("wrongAnswer2") String wrongAnswer2,
             @RequestParam("wrongAnswer3") String wrongAnswer3,
             @RequestParam("topicId") Long topicId,
-            @RequestParam(value = "picture", required = false) MultipartFile pictureFile) {
+            @RequestParam(value = "picture", required = false) MultipartFile pictureFile,
+            RedirectAttributes redirectAttributes) {
         try {
             Topic topic = new Topic();
             topic.setTopicId(topicId);
@@ -86,6 +88,7 @@ public class QuestionUploadController {
                 questionAttachmentRepository.save(qa);
             }
 
+            redirectAttributes.addFlashAttribute("successMessage", "Question added successfully");
             return ResponseEntity.ok("Item added successfully");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to add item");

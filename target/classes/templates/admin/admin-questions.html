@@ -5,8 +5,10 @@
     <title>Title</title>
     <link rel="stylesheet" th:href="@{/css/container.css}">
     <link rel="stylesheet" th:href="@{/css/admin_question.css}">
+    <link rel="stylesheet" th:href="@{/css/popup_message.css}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script th:src="@{/js/admin_question.js}"></script>
+    <script th:src="@{/js/popup_message.js}"></script>
 </head>
 <body>
 
@@ -72,6 +74,12 @@
         </form>
     </div>
 </div>
+
+
+<div th:if="${successMessage}" class="message success-message">
+    <span th:text="${successMessage}"></span>
+</div>
+
 
 </body>
 </html>
