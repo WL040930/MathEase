@@ -1,5 +1,6 @@
 package com.MathEase.MathEase.Controller;
 
+import com.MathEase.MathEase.Model.Questions;
 import com.MathEase.MathEase.Model.Topic;
 import com.MathEase.MathEase.Service.TopicService;
 import jakarta.servlet.http.HttpSession;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import com.MathEase.MathEase.Service.QuestionService;
 
 import java.util.List;
 
@@ -21,6 +23,9 @@ public class AdminQuestionController {
 
     @Autowired
     private TopicService topicService;
+    
+    @Autowired
+    private QuestionService questionService;
 
     @GetMapping("/admin/questions")
     public String getAdminQuestions(HttpSession session, Model model) {
@@ -39,6 +44,21 @@ public class AdminQuestionController {
             Topic topic = topicService.getTopicById(topicId);
             if (topic != null) {
                 return ResponseEntity.ok(topic);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    @GetMapping("/api/questions/{topicId}")
+    public ResponseEntity<List<Questions>> getQuestionsByTopicId(@PathVariable Long topicId) {
+        try {
+            Topic topic = topicService.getTopicById(topicId);
+            List<Questions> questions = questionService.getQuestionsByTopicId(topic);
+            if (!questions.isEmpty()) {
+                return ResponseEntity.ok(questions);
             } else {
                 return ResponseEntity.notFound().build();
             }

@@ -19,7 +19,7 @@ public class Questions {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "topic_id", referencedColumnName = "topic_id")
-    private Topic topic;
+    private Topic topicId;
 
     @Column(name = "question", nullable = false)
     private String question;

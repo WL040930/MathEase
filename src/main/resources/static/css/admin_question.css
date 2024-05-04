@@ -157,6 +157,15 @@ body {
 }
 
 .controller {
-    height: 10vh;
+    height: 5vh;
     padding: 10px;
+    border: 1px solid black;
+}
+
+.table-panel {
+    max-height: 47vh;
+    min-height: 47vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: 1px solid black;
 }
