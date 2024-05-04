@@ -10,8 +10,3 @@ After submitting the picture, the user require to open the IDE again to
 load the picture, which might be a bug in the IDE. This issue can be solved
 if the user use VS Code instead of Intellij IDEA. (VS Code only require to 
 reload the page only)
-
-
-# Admin Question
-If 0 question is added, the admin will not be able to view the question.
-(Javascript issue)
