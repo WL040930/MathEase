@@ -2,6 +2,9 @@ package com.MathEase.MathEase.Controller;
 
 import com.MathEase.MathEase.Model.Questions;
 import com.MathEase.MathEase.Model.Topic;
+import com.MathEase.MathEase.Repository.OptionRepository;
+import com.MathEase.MathEase.Repository.QuestionRepository;
+import com.MathEase.MathEase.Service.QuestionService;
 import com.MathEase.MathEase.Service.TopicService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +14,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import com.MathEase.MathEase.Service.QuestionService;
 
 import java.util.List;
 
@@ -26,6 +28,13 @@ public class AdminQuestionController {
     
     @Autowired
     private QuestionService questionService;
+
+    @Autowired
+    private QuestionRepository questionRepository;
+
+    @Autowired
+    private OptionRepository optionRepository;
+
 
     @GetMapping("/admin/questions")
     public String getAdminQuestions(HttpSession session, Model model) {
@@ -62,4 +71,5 @@ public class AdminQuestionController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+
 }

@@ -21,7 +21,7 @@
             </div>
             <div style="float: right; width: 65%;">
                 <div class="topic-info-container">
-                    <span th:text="'Chapter ' + ${topic.topicId}"></span><br>
+                    <span th:text="'Chapter ' + ${topic.topicId}" id="test"></span><br>
                     <span th:text="${topic.topicName}"></span>
                 </div>
             </div>
@@ -67,6 +67,7 @@
                 <input type="file" id="add-image" name="add-image" accept=".jpg, .jpeg, .png">
             </div>
 
+            <div id="validation-text"></div>
             <button type="button" onclick="submitItem()">Submit</button>
         </form>
     </div>

@@ -287,6 +287,8 @@ body {
     width: 80%; /* Adjust width of the form container */
     max-width: 500px; /* Set maximum width */
     margin: 0 auto; /* Center the form horizontally */
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .add-modal-content h2 {

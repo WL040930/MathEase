@@ -70,7 +70,7 @@ function generateTopicInfoHTML(topicDetails, questions) {
                 </div>
                 <div class="controller">
                     <button class="control-button view-button">View</button>
-                    <button class="control-button add-button">Add</button>
+                    <button class="control-button add-button" onclick="openAddModal()">Add</button>
                     <button class="control-button edit-button">Edit</button>
                     <button class="control-button delete-button">Delete</button>
                 </div>
@@ -138,10 +138,6 @@ function closeAddModal() {
     }
 }
 
-function submitItem() {
-    closeAddModal();
-}
-
 document.addEventListener("DOMContentLoaded", function() {
     const addButton = document.querySelector('.add-button');
     if (addButton) {
@@ -153,3 +149,55 @@ document.addEventListener("DOMContentLoaded", function() {
         closeButton.addEventListener('click', closeAddModal);
     }
 });
+
+function submitItem() {
+    const validationText = document.getElementById('validation-text');
+    const questionText = document.getElementById('question').value.trim();
+    const correctAnswer = document.getElementById('answer1').value.trim();
+    const wrongAnswer1 = document.getElementById('answer2').value.trim();
+    const wrongAnswer2 = document.getElementById('answer3').value.trim();
+    const wrongAnswer3 = document.getElementById('answer4').value.trim();
+    const pictureFile = document.getElementById('add-image').files[0];
+    var topicId = document.querySelector('.active').dataset.topicId;
+
+    // Perform form validation
+    if (!questionText) {
+        validationText.innerHTML = 'Question cannot be empty';
+        validationText.style.color = 'red';
+        return;
+    } else {
+        validationText.innerHTML = '';
+    }
+
+    // Prepare the data to be sent to the backend
+    const formData = new FormData();
+    formData.append('questionText', questionText);
+    formData.append('correctAnswer', correctAnswer);
+    formData.append('wrongAnswer1', wrongAnswer1);
+    formData.append('wrongAnswer2', wrongAnswer2);
+    formData.append('wrongAnswer3', wrongAnswer3);
+    formData.append('topicId', topicId);
+
+    if (pictureFile) {
+        formData.append('picture', pictureFile);
+    }
+
+    // Send the data to the backend using fetch and a POST request
+    fetch('/api/addItem', {
+        method: 'POST',
+        body: formData
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to add item');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Item added successfully:', data);
+        })
+        .catch(error => {
+            console.error('Error adding item:', error);
+        });
+}
+
