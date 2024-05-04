@@ -159,7 +159,6 @@ body {
 .controller {
     height: 5vh;
     padding: 10px;
-    border: 1px solid black;
 }
 
 .table-panel {
@@ -167,5 +166,101 @@ body {
     min-height: 47vh;
     overflow-y: auto;
     overflow-x: hidden;
-    border: 1px solid black;
+}
+
+/* Update styles for the table within .table-panel */
+.table-panel table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.table-panel th, .table-panel td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.table-panel th {
+    background-color: #f2f2f2;
+}
+
+/* Update styles for the buttons within .controller */
+.controller {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.control-button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    font-weight: bold;
+}
+
+.control-button.add-button {
+    background-color: #28a745; /* Green color for Add button */
+    color: #fff;
+}
+
+.control-button.edit-button {
+    background-color: #ffc107; /* Yellow color for Edit button */
+    color: #fff;
+}
+
+.control-button.delete-button {
+    background-color: #dc3545; /* Red color for Delete button */
+    color: #fff;
+}
+
+.control-button.view-button {
+    background-color: #007bff; /* Blue color for View button */
+    color: #fff;
+}
+
+
+/* Hover styles for buttons */
+.control-button:hover {
+    opacity: 0.8;
+}
+
+.control-button.view-button:hover {
+    background-color: #0056b3;
+}
+
+.control-button.add-button:hover {
+    background-color: #218838;
+}
+
+.control-button.edit-button:hover {
+    background-color: #e0a800;
+}
+
+.control-button.delete-button:hover {
+    background-color: #c82333;
+}
+
+#table-column1 {
+    width: 10%;
+}
+
+#table-column2 {
+    width: 90%;
+}
+
+.selected {
+    background-color: lightblue;
+}
+
+#topicInfoPanel table tbody tr {
+    cursor: pointer;
+}
+
+#topicInfoPanel table tbody tr.selected {
+    background-color: lightblue;
 }

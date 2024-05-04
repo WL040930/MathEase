@@ -57,11 +57,7 @@ public class AdminQuestionController {
         try {
             Topic topic = topicService.getTopicById(topicId);
             List<Questions> questions = questionService.getQuestionsByTopicId(topic);
-            if (!questions.isEmpty()) {
-                return ResponseEntity.ok(questions);
-            } else {
-                return ResponseEntity.notFound().build();
-            }
+            return ResponseEntity.ok(questions);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
