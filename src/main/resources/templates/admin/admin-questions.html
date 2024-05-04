@@ -35,8 +35,41 @@
     </div>
 </div>
 
-<div class="view-container">
-    
+<div id="addModal" class="question-modal">
+    <div class="add-modal-content">
+        <span class="close" onclick="closeAddModal()">&times;</span>
+        <h2>Add New Item</h2>
+        <!-- Add your form inputs here -->
+        <form id="addItemForm">
+            <label for="question">Question:</label><br>
+            <textarea id="question" name="question" rows="2" cols="30"></textarea><br>
+
+            <p><b>Answer: </b></p>
+            <div class="add-answer-box">
+                <label for="answer1">Correct Answer: </label>
+                <input type="text" id="answer1" name="answer1"><br>
+            </div>
+            <div class="add-answer-box">
+                <label for="answer2">Wrong Answer 1:</label>
+                <input type="text" id="answer2" name="answer2"><br>
+            </div>
+            <div class="add-answer-box">
+                <label for="answer3">Wrong Answer 2:</label>
+                <input type="text" id="answer3" name="answer3"><br>
+            </div>
+            <div class="add-answer-box">
+                <label for="answer4">Wrong Answer 3:</label>
+                <input type="text" id="answer4" name="answer4"><br>
+            </div>
+
+            <div class="add-answer-box">
+                <label for="add-image">Picture</label>
+                <input type="file" id="add-image" name="add-image" accept=".jpg, .jpeg, .png">
+            </div>
+
+            <button type="button" onclick="submitItem()">Submit</button>
+        </form>
+    </div>
 </div>
 
 </body>

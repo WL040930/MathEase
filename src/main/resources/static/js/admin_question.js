@@ -1,5 +1,4 @@
-
-    document.addEventListener("DOMContentLoaded", async function() {
+document.addEventListener("DOMContentLoaded", async function() {
     const topicList = document.querySelectorAll('.clickable-topic');
     const topicInfoPanel = document.getElementById('topicInfoPanel');
 
@@ -14,19 +13,19 @@
     const topicId = topic.dataset.topicId;
 
     try {
-    const topicResponse = await fetch(`/api/topics/${topicId}`);
-    if (!topicResponse.ok) {
-    throw new Error('Failed to fetch topic details');
-}
-    const topicDetails = await topicResponse.json();
+        const topicResponse = await fetch(`/api/topics/${topicId}`);
+        if (!topicResponse.ok) {
+            throw new Error('Failed to fetch topic details');
+        }
+        const topicDetails = await topicResponse.json();
 
-    const questionResponse = await fetch(`/api/questions/${topicId}`);
-    if (!questionResponse.ok) {
-    throw new Error('Failed to fetch questions');
-}
-    const questions = await questionResponse.json();
+        const questionResponse = await fetch(`/api/questions/${topicId}`);
+        if (!questionResponse.ok) {
+            throw new Error('Failed to fetch questions');
+        }
+        const questions = await questionResponse.json();
 
-    topicInfoPanel.innerHTML = generateTopicInfoHTML(topicDetails, questions);
+        topicInfoPanel.innerHTML = generateTopicInfoHTML(topicDetails, questions);
 
     // Add click event listeners to table rows for edit/delete actions
     const tableRows = document.querySelectorAll('#topicInfoPanel table tbody tr');
@@ -44,10 +43,10 @@
     console.log(`Clicked on question ID: ${questionId}`);
 });
 });
-} catch (error) {
-    console.error('Error fetching data:', error);
-}
-});
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    });
 });
 
 function generateTopicInfoHTML(topicDetails, questions) {
@@ -79,7 +78,6 @@ function generateTopicInfoHTML(topicDetails, questions) {
             `;
 }
 
-    // Generate table rows for each question
     const questionsHTML = `
             <table>
                 <thead>
@@ -116,11 +114,42 @@ function generateTopicInfoHTML(topicDetails, questions) {
                 </div>
                 <div class="controller">
                     <button class="control-button view-button">View</button>
-                    <button class="control-button add-button">Add</button>
+                    <button class="control-button add-button" onclick="openAddModal()">Add</button>
                     <button class="control-button edit-button">Edit</button>
                     <button class="control-button delete-button">Delete</button>
                 </div>
             </div>
         `;
 }
+});
+
+
+function openAddModal() {
+    const modal = document.getElementById('addModal');
+    if (modal) {
+        modal.style.display = 'block';
+    }
+}
+
+function closeAddModal() {
+    const modal = document.getElementById('addModal');
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
+
+function submitItem() {
+    closeAddModal();
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    const addButton = document.querySelector('.add-button');
+    if (addButton) {
+        addButton.addEventListener('click', openAddModal);
+    }
+
+    const closeButton = document.querySelector('.close');
+    if (closeButton) {
+        closeButton.addEventListener('click', closeAddModal);
+    }
 });
