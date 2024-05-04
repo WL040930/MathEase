@@ -1,9 +1,12 @@
 package com.MathEase.MathEase.Controller;
 
+import com.MathEase.MathEase.Model.Options;
+import com.MathEase.MathEase.Model.QuestionDTO;
 import com.MathEase.MathEase.Model.Questions;
 import com.MathEase.MathEase.Model.Topic;
-import com.MathEase.MathEase.Repository.OptionRepository;
 import com.MathEase.MathEase.Repository.QuestionRepository;
+import com.MathEase.MathEase.Service.OptionService;
+import com.MathEase.MathEase.Service.QuestionAttachmentService;
 import com.MathEase.MathEase.Service.QuestionService;
 import com.MathEase.MathEase.Service.TopicService;
 import jakarta.servlet.http.HttpSession;
@@ -15,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -33,8 +37,10 @@ public class AdminQuestionController {
     private QuestionRepository questionRepository;
 
     @Autowired
-    private OptionRepository optionRepository;
+    private OptionService optionService;
 
+    @Autowired
+    private QuestionAttachmentService questionAttachmentService;
 
     @GetMapping("/admin/questions")
     public String getAdminQuestions(HttpSession session, Model model) {
@@ -67,6 +73,40 @@ public class AdminQuestionController {
             Topic topic = topicService.getTopicById(topicId);
             List<Questions> questions = questionService.getQuestionsByTopicId(topic);
             return ResponseEntity.ok(questions);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    @GetMapping("/api/question/{questionId}")
+    public ResponseEntity<QuestionDTO> getQuestionById(@PathVariable Long questionId) {
+        try {
+            Questions questions = questionRepository.findById(questionId).orElse(null);
+
+            if (questions != null) {
+                QuestionDTO questionDTO = new QuestionDTO();
+
+                questionDTO.setQuestionId(questions.getQuestionId());
+                questionDTO.setQuestion(questions.getQuestion());
+                questionDTO.setCorrectAnswer(optionService.getCorrectOption(questions).getOption());
+
+                System.out.println(questionDTO.getQuestionId());
+                System.out.println(questionDTO.getQuestion());
+                System.out.println(questionDTO.getCorrectAnswer());
+
+                ArrayList<Options> wrongOptions = optionService.getWrongOptions(questions);
+                questionDTO.setWrongAnswer1(wrongOptions.get(0).getOption());
+                questionDTO.setWrongAnswer2(wrongOptions.get(1).getOption());
+                questionDTO.setWrongAnswer3(wrongOptions.get(2).getOption());
+
+                if (questionAttachmentService.getAttachmentPath(questions) != null) {
+                    questionDTO.setPicturePath(questionAttachmentService.getAttachmentPath(questions));
+                }
+                
+                return ResponseEntity.ok(questionDTO);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }

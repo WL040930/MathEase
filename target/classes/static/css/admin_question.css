@@ -266,7 +266,7 @@ body {
 }
 
 /* Modal container */
-.question-modal {
+.question-modal{
     display: none;
     position: fixed;
     z-index: 1;
@@ -279,7 +279,8 @@ body {
 }
 
 /* Modal content */
-.add-modal-content {
+.add-modal-content,
+.view-model-content {
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;

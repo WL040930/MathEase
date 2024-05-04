@@ -19,6 +19,8 @@ public class QuestionService {
         return questionRepository.findByTopicId(topic);
     }
 
-
+    public Questions getQuestionById(Long questionId) {
+        return questionRepository.findById(questionId).orElse(null);
+    }
 
 }

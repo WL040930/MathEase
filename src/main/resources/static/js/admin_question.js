@@ -4,10 +4,9 @@ document.addEventListener("DOMContentLoaded", async function() {
 
     topicList.forEach(topic => {
     topic.addEventListener('click', async () => {
-    // Remove 'active' class from all topics initially
+
     topicList.forEach(t => t.classList.remove('active'));
 
-    // Add 'active' class to the clicked topic
     topic.classList.add('active');
 
     const topicId = topic.dataset.topicId;
@@ -27,27 +26,38 @@ document.addEventListener("DOMContentLoaded", async function() {
 
         topicInfoPanel.innerHTML = generateTopicInfoHTML(topicDetails, questions);
 
-    // Add click event listeners to table rows for edit/delete actions
-    const tableRows = document.querySelectorAll('#topicInfoPanel table tbody tr');
-    tableRows.forEach(row => {
-    row.addEventListener('click', () => {
-    // Remove 'selected' class from all rows
-    tableRows.forEach(r => r.classList.remove('selected'));
+        const tableRows = document.querySelectorAll('#topicInfoPanel table tbody tr');
+        tableRows.forEach(row => {
+            row.addEventListener('click', () => {
+                tableRows.forEach(r => r.classList.remove('selected'));
+                row.classList.add('selected');
+                const questionId = questions[row.rowIndex - 1].questionId;
+                fetch(`/api/question/${questionId}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Failed to fetch question details');
+                        }
+                        return response.json();
+                    })
+                    .then(questionDetails => {
 
-    // Add 'selected' class to the clicked row
-    row.classList.add('selected');
+                        console.log('Question details:', questionDetails);
+                    })
+                    .catch(error => {
+                        console.error('Error fetching question details:', error);
+                    });
+            });
+        });
 
-    // Retrieve question ID and perform action (e.g., edit/delete)
-    const questionId = questions[row.rowIndex].questionId;
-    // Replace this with your specific action (e.g., editQuestion(questionId) or deleteQuestion(questionId))
-    console.log(`Clicked on question ID: ${questionId}`);
-});
-});
         } catch (error) {
             console.error('Error fetching data:', error);
         }
     });
 });
+
+
+
+
 
 function generateTopicInfoHTML(topicDetails, questions) {
     const hasQuestions = questions && questions.length > 0;
@@ -69,7 +79,7 @@ function generateTopicInfoHTML(topicDetails, questions) {
                     <p>No questions for this chapter.</p>
                 </div>
                 <div class="controller">
-                    <button class="control-button view-button">View</button>
+                    <button class="control-button view-button" onclick="openViewModel()">View</button>
                     <button class="control-button add-button" onclick="openAddModal()">Add</button>
                     <button class="control-button edit-button">Edit</button>
                     <button class="control-button delete-button">Delete</button>
@@ -113,7 +123,7 @@ function generateTopicInfoHTML(topicDetails, questions) {
                     ${questionsHTML}
                 </div>
                 <div class="controller">
-                    <button class="control-button view-button">View</button>
+                    <button class="control-button view-button" onclick="openViewModel()">View</button>
                     <button class="control-button add-button" onclick="openAddModal()">Add</button>
                     <button class="control-button edit-button">Edit</button>
                     <button class="control-button delete-button">Delete</button>
@@ -122,6 +132,10 @@ function generateTopicInfoHTML(topicDetails, questions) {
         `;
 }
 });
+
+
+
+
 
 
 function openAddModal() {
@@ -195,123 +209,35 @@ function submitItem() {
         })
         .then(data => {
             console.log('Item added successfully:', data);
-            refreshTopicInfo(topicId);
+            closeAddModal();
         })
         .catch(error => {
             console.error('Error adding item:', error);
         });
 }
 
-function refreshTopicInfo(topicId) {
-    const topicInfoPanel = document.getElementById('topicInfoPanel');
-
-    // Fetch updated topic details and questions
-    Promise.all([
-        fetch(`/api/topics/${topicId}`).then(response => response.json()),
-        fetch(`/api/questions/${topicId}`).then(response => response.json())
-    ])
-        .then(([topicDetails, questions]) => {
-            console.log('Fetched updated data:', { topicDetails, questions });
-            topicInfoPanel.innerHTML = generateTopicInfoHTML(topicDetails, questions);
-            attachRowEventListeners(questions);
-        })
-        .catch(error => {
-            console.error('Error fetching updated data:', error);
-        });
+function openViewModel() {
+    const modal = document.getElementById('viewModal');
+    if (modal) {
+        modal.style.display = 'block';
+    }
 }
 
+function closeViewModal() {
+    const modal = document.getElementById('viewModal');
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
 
-function generateTopicInfoHTML(topicDetails, questions){
-    const hasQuestions = questions && questions.length > 0;
-
-    if (!hasQuestions) {
-        return `
-            <div class="topic-info">
-                <div class="top-panel">
-                    <div style="float: left; width: 20%">
-                        <img src="${topicDetails.picturePath}" alt="topic image" class="topicTop">
-                    </div>
-                    <div style="float: right; width: 79%">
-                        <h2>Chapter ${topicDetails.topicId}</h2>
-                        <p>Topic Name: ${topicDetails.topicName}</p>
-                    </div>
-                    <div style="clear: both"></div>
-                </div>
-                <div class="table-panel">
-                    <p>No questions for this chapter.</p>
-                </div>
-                <div class="controller">
-                    <button class="control-button view-button">View</button>
-                    <button class="control-button add-button" onclick="openAddModal()">Add</button>
-                    <button class="control-button edit-button">Edit</button>
-                    <button class="control-button delete-button">Delete</button>
-                </div>
-            </div>
-            `;
+document.addEventListener("DOMContentLoaded", function() {
+    const viewButton = document.querySelector('.view-button');
+    if (viewButton) {
+        viewButton.addEventListener('click', openViewModel);
     }
 
-    const questionsHTML = `
-            <table>
-                <thead>
-                    <tr>
-                        <th id="table-column1">Number</th>
-                        <th id="table-column2">Question Text</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    ${questions.map((question, index) => `
-                        <tr>
-                            <td>${index + 1}</td>
-                            <td>${question.question}</td>
-                        </tr>
-                    `).join('')}
-                </tbody>
-            </table>
-        `;
-
-    return `
-            <div class="topic-info">
-                <div class="top-panel">
-                    <div style="float: left; width: 20%">
-                        <img src="${topicDetails.picturePath}" alt="topic image" class="topicTop">
-                    </div>
-                    <div style="float: right; width: 79%">
-                        <h2>Chapter ${topicDetails.topicId}</h2>
-                        <p>Topic Name: ${topicDetails.topicName}</p>
-                    </div>
-                    <div style="clear: both"></div>
-                </div>
-                <div class="table-panel">
-                    ${questionsHTML}
-                </div>
-                <div class="controller">
-                    <button class="control-button view-button">View</button>
-                    <button class="control-button add-button" onclick="openAddModal()">Add</button>
-                    <button class="control-button edit-button">Edit</button>
-                    <button class="control-button delete-button">Delete</button>
-                </div>
-            </div>
-        `;
-}
-
-function attachRowEventListeners(questions) {
-    const tableRows = document.querySelectorAll('#topicInfoPanel table tbody tr');
-
-    tableRows.forEach((row, index) => {
-        row.addEventListener('click', () => {
-            // Remove 'selected' class from all rows
-            tableRows.forEach(r => r.classList.remove('selected'));
-
-            // Add 'selected' class to the clicked row
-            row.classList.add('selected');
-
-            // Retrieve question ID from the questions array based on row index
-            const questionId = questions[index].questionId;
-            console.log(`Clicked on question ID: ${questionId}`);
-
-            // Perform your specific action here (e.g., editQuestion(questionId))
-            // Example: open modal to edit the selected question
-            openEditModal(questionId);
-        });
-    });
-}
+    const closeButton = document.querySelector('.close');
+    if (closeButton) {
+        closeButton.addEventListener('click', closeViewModel);
+    }
+});
