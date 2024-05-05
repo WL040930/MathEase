@@ -282,7 +282,9 @@ body {
 /* Modal content */
 .add-modal-content,
 .view-model-content,
-.edit-model-content {
+.edit-model-content,
+.question-modal-content,
+.delete-model-content{
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -458,3 +460,23 @@ input[type="text"]:focus {
     }
 }
 
+.delete-button {
+    background-color: #dc3545;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    font-weight: bold;
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+}
+
+.deleteActionButton {
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+}

@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", async function() {
                     }
                     const questionDetails = await questionDetailsResponse.json();
 
+                    displayDeleteQuestionDetails(questionDetails)
                     displayQuestionDetails(questionDetails);
                     DisplayEditQuestionDetails(questionDetails);
                 } catch (error) {
@@ -81,7 +82,7 @@ function generateTopicInfoHTML(topicDetails, questions) {
                     <button class="control-button view-button" onclick="openViewModel()">View</button>
                     <button class="control-button add-button" onclick="openAddModal()">Add</button>
                     <button class="control-button edit-button" onclick="openEditModel()">Edit</button>
-                    <button class="control-button delete-button">Delete</button>
+                    <button class="control-button delete-button" onclick="openDeleteModel()">Delete</button>
                 </div>
             </div>
             `;
@@ -125,7 +126,7 @@ function generateTopicInfoHTML(topicDetails, questions) {
                     <button class="control-button view-button" onclick="openViewModel()">View</button>
                     <button class="control-button add-button" onclick="openAddModal()">Add</button>
                     <button class="control-button edit-button" onclick="openEditModel()">Edit</button>
-                    <button class="control-button delete-button">Delete</button>
+                    <button class="control-button delete-button" onclick="openDeleteModel()">Delete</button>
                 </div>
             </div>
         `;
@@ -210,13 +211,31 @@ function submitItem() {
         .then(data => {
             var topicId = document.querySelector('.active').dataset.topicId;
             closeAddModal();
+            clearAddModal();
             reloadQuestionTable(topicId).then(r => console.log('Reloaded question table'));
         })
         .catch(error => {
             var topicId = document.querySelector('.active').dataset.topicId;
             closeAddModal();
+            clearAddModal();
             reloadQuestionTable(topicId).then(r => console.log('Reloaded question table'));
         });
+}
+
+function clearAddModal() {
+    const questionText = document.getElementById('question');
+    const correctAnswer = document.getElementById('answer1');
+    const wrongAnswer1 = document.getElementById('answer2');
+    const wrongAnswer2 = document.getElementById('answer3');
+    const wrongAnswer3 = document.getElementById('answer4');
+    const validationText = document.getElementById('validation-text');
+
+    questionText.value = '';
+    correctAnswer.value = '';
+    wrongAnswer1.value = '';
+    wrongAnswer2.value = '';
+    wrongAnswer3.value = '';
+    validationText.innerHTML = '';
 }
 
 
@@ -440,6 +459,7 @@ async function reloadQuestionTable(topicId) {
 
                     displayQuestionDetails(questionDetails);
                     DisplayEditQuestionDetails(questionDetails);
+                    displayDeleteQuestionDetails(questionDetails);
                 } catch (error) {
                     console.error('Error fetching question details:', error);
                 }
@@ -448,4 +468,113 @@ async function reloadQuestionTable(topicId) {
     } catch (error) {
         console.error('Error reloading question table:', error);
     }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function openDeleteModel() {
+    const modal = document.getElementById('deleteModal');
+    if (modal) {
+        modal.style.display = 'block';
+    }
+}
+
+function closeDeleteModal() {
+    const modal = document.getElementById('deleteModal');
+    if (modal) {
+        modal.classList.add('fadeOut');
+        setTimeout(() => {
+            modal.style.display = 'none';
+            modal.classList.remove('fadeOut');
+            clearDeleteModal();
+        }, 300);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    const viewButton = document.querySelector('.delete-button');
+    if (viewButton) {
+        viewButton.addEventListener('click', openDeleteModel);
+    }
+
+    const closeButton = document.querySelector('.close');
+    if (closeButton) {
+        closeButton.addEventListener('click', closeDeleteModal);
+    }
+});
+
+function displayDeleteQuestionDetails(questionDetails) {
+    var modalContent = document.querySelector('.deleteContainer');
+
+    // Use questionDetails to get the questionId
+    var questionId = questionDetails.questionId;
+
+    modalContent.innerHTML = `
+        <div class="deleteContainer">
+            <p><strong>Question:</strong> <br>${questionDetails.question}</p>
+            <p><strong>Correct Answer:</strong> <span style="color: #32CD32">${questionDetails.correctAnswer}</span></p>
+            <p><strong>Wrong Answers:</strong> 
+                <span style="color: red;"><br>1. ${questionDetails.wrongAnswer1}</span>
+                <span style="color: red;"><br>2. ${questionDetails.wrongAnswer2}</span>
+                <span style="color: red;"><br>3. ${questionDetails.wrongAnswer3}</span>
+            </p>
+            ${questionDetails.picturePath ? `<img style="width: 90%; margin: 0 auto;" src="/data/${questionDetails.picturePath}" alt="question image">` : ''} 
+            <br>
+            <div class="deleteActionButton">
+                <button class="delete-button" onclick="deleteItem(${questionId})">Delete</button>
+            </div>
+        </div>
+    `;
+}
+
+
+function clearDeleteModal() {
+    const modalContent = document.querySelector('.deleteContainer');
+    modalContent.innerHTML = 'Please select a question to delete.';
+}
+
+function deleteItem(questionId) {
+
+    if (!questionId) {
+        console.error('Invalid question ID');
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append('questionId', questionId);
+
+    fetch('/api/deleteQuestion', {
+        method: 'POST',
+        body: formData
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to delete item');
+            }
+            return response.json();
+        })
+        .then(data => {
+            var topicId = document.querySelector('.active').dataset.topicId;
+            clearDeleteModal()
+            closeDeleteModal();
+            reloadQuestionTable(topicId).then(r => console.log('Reloaded question table'));
+        })
+        .catch(error => {
+            var topicId = document.querySelector('.active').dataset.topicId;
+            clearDeleteModal()
+            closeDeleteModal();
+            reloadQuestionTable(topicId).then(r => console.log('Reloaded question table'));
+        });
+
 }

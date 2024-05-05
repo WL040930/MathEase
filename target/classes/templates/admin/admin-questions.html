@@ -95,6 +95,16 @@
     </div>
 </div>
 
+<div id="deleteModal" class="question-modal">
+    <div class="delete-model-content">
+        <span class="close" onclick="closeDeleteModal()">&times;</span>
+        <h2>Delete Question</h2>
+        <div class="deleteContainer">
+            <div style="width: 100%; text-align: center">Please select a question</div>
+        </div>
+    </div>
+</div>
+
 
 <div th:if="${successMessage}" class="message success-message">
     <span th:text="${successMessage}"></span>

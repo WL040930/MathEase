@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -103,6 +104,16 @@ public class AdminQuestionController {
             } else {
                 return ResponseEntity.notFound().build();
             }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    @PostMapping("/api/deleteQuestion")
+    public ResponseEntity<String> deleteQuestion(Long questionId) {
+        try {
+            questionService.deleteQuestionById(questionId);
+            return ResponseEntity.ok("Question deleted successfully");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }

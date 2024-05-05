@@ -23,4 +23,12 @@ public class QuestionService {
         return questionRepository.findById(questionId).orElse(null);
     }
 
+    public Questions deleteQuestionById(Long questionId) {
+        Questions question = questionRepository.findById(questionId).orElse(null);
+        if (question != null) {
+            questionRepository.delete(question);
+        }
+        return question;
+    }
+
 }
