@@ -204,11 +204,14 @@ function submitItem() {
             return response.json();
         })
         .then(data => {
-            console.log('Item added successfully:', data);
+            var topicId = document.querySelector('.active').dataset.topicId;
             closeAddModal();
+            reloadQuestionTable(topicId).then(r => console.log('Reloaded question table'));
         })
         .catch(error => {
-            console.error('Error adding item:', error);
+            var topicId = document.querySelector('.active').dataset.topicId;
+            closeAddModal();
+            reloadQuestionTable(topicId).then(r => console.log('Reloaded question table'));
         });
 }
 
@@ -352,7 +355,7 @@ function submitEditItem(questionId) {
 
     // Prepare FormData object to send to the server
     const formData = new FormData();
-    formData.append('questionId', questionId); // Include the questionId
+    formData.append('questionId', questionId);
     formData.append('questionText', questionText);
     formData.append('correctAnswer', correctAnswer);
     formData.append('wrongAnswer1', wrongAnswer1);
@@ -375,16 +378,62 @@ function submitEditItem(questionId) {
             return response.json();
         })
         .then(data => {
-            // Handle successful response from the server
-            console.log('Item edited successfully:', data);
-            closeEditModal(); // Close the edit modal after successful edit
+            var topicId = document.querySelector('.active').dataset.topicId;
+            closeEditModal();
+            reloadQuestionTable(topicId).then(r => console.log('Reloaded question table'));
         })
         .catch(error => {
-            // Handle errors (e.g., network error, server-side error)
-            validationText.innerHTML = 'Failed to edit item.';
-            validationText.style.color = 'red';
-            console.error('Error editing item:', error);
+            var topicId = document.querySelector('.active').dataset.topicId;
+            closeEditModal();
+            reloadQuestionTable(topicId).then(r => console.log('Reloaded question table'));
         });
 }
 
+async function reloadQuestionTable(topicId) {
+    try {
+        const questionResponse = await fetch(`/api/questions/${topicId}`);
+        if (!questionResponse.ok) {
+            throw new Error('Failed to fetch updated questions');
+        }
+        const questions = await questionResponse.json();
 
+        const tableBody = document.querySelector('#topicInfoPanel table tbody');
+        tableBody.innerHTML = ''; // Clear existing table rows
+
+        questions.forEach((question, index) => {
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td>${index + 1}</td>
+                <td>${question.question}</td>
+            `;
+            tableBody.appendChild(newRow);
+
+            // Add click event listener to the new row
+            newRow.addEventListener('click', async () => {
+                // Remove 'selected' class from all table rows
+                const tableRows = document.querySelectorAll('#topicInfoPanel table tbody tr');
+                tableRows.forEach(r => r.classList.remove('selected'));
+
+                // Add 'selected' class to the clicked row
+                newRow.classList.add('selected');
+
+                const questionId = questions[index].questionId;
+
+                try {
+                    const questionDetailsResponse = await fetch(`/api/question/${questionId}`);
+                    if (!questionDetailsResponse.ok) {
+                        throw new Error('Failed to fetch question details');
+                    }
+                    const questionDetails = await questionDetailsResponse.json();
+
+                    displayQuestionDetails(questionDetails);
+                    DisplayEditQuestionDetails(questionDetails);
+                } catch (error) {
+                    console.error('Error fetching question details:', error);
+                }
+            });
+        });
+    } catch (error) {
+        console.error('Error reloading question table:', error);
+    }
+}
