@@ -4,16 +4,22 @@ import com.MathEase.MathEase.Model.Options;
 import com.MathEase.MathEase.Model.QuestionAttachment;
 import com.MathEase.MathEase.Model.Questions;
 import com.MathEase.MathEase.Model.Topic;
+import com.MathEase.MathEase.Repository.OptionRepository;
+import com.MathEase.MathEase.Repository.QuestionAttachmentRepository;
 import com.MathEase.MathEase.Repository.QuestionRepository;
+import com.MathEase.MathEase.Service.OptionService;
+import com.MathEase.MathEase.Util.FileNameUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-import com.MathEase.MathEase.Repository.OptionRepository;
-import com.MathEase.MathEase.Util.FileNameUtil;
-import com.MathEase.MathEase.Repository.QuestionAttachmentRepository;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -29,6 +35,8 @@ public class QuestionUploadController {
     private QuestionAttachmentRepository questionAttachmentRepository;
 
     private final FileNameUtil fileNameUtil = new FileNameUtil();
+    @Autowired
+    private OptionService optionService;
 
     @PostMapping("/addItem")
     public ResponseEntity<String> addItem(
@@ -91,24 +99,49 @@ public class QuestionUploadController {
         }
     }
 
-    @PostMapping("/editItem")
-    public ResponseEntity<String> editItem(
-            @RequestParam("questionId") Long questionId,
-            @RequestParam("question") String questionText,
-            @RequestParam("correctAnswer") String correctAnswer,
-            @RequestParam("wrongAnswer1") String wrongAnswer1,
-            @RequestParam("wrongAnswer2") String wrongAnswer2,
-            @RequestParam("wrongAnswer3") String wrongAnswer3,
-            @RequestParam(value = "picture", required = false) MultipartFile pictureFile) {
+    @PostMapping("/addQuestion")
+    public ResponseEntity<String> editData(@RequestParam("questionId") Long questionId,
+                                           @RequestParam("questionText") String questionText,
+                                           @RequestParam("correctAnswer") String correctAnswer,
+                                           @RequestParam("wrongAnswer1") String wrongAnswer1,
+                                           @RequestParam("wrongAnswer2") String wrongAnswer2,
+                                           @RequestParam("wrongAnswer3") String wrongAnswer3,
+                                           @RequestParam(value = "picture", required = false) MultipartFile pictureFile){
 
         try {
-            System.out.println("Question ID: " + questionId);
-            return ResponseEntity.ok("Item edited successfully");
+            Questions question = questionRepository.findByQuestionId(questionId);
+            question.setQuestion(questionText);
+            questionRepository.save(question);
+
+            Options correctOptions =  optionService.getCorrectOption(question);
+            correctOptions.setOption(correctAnswer);
+            optionRepository.save(correctOptions);
+
+            List<Options> wrongOptions = optionService.getWrongOptions(question);
+            wrongOptions.get(0).setOption(wrongAnswer1);
+            wrongOptions.get(1).setOption(wrongAnswer2);
+            wrongOptions.get(2).setOption(wrongAnswer3);
+
+            optionRepository.saveAll(wrongOptions);
+
+            if (pictureFile != null && !pictureFile.isEmpty()) {
+                if (questionAttachmentRepository.existsByQuestion(question)) {
+                    QuestionAttachment qa = questionAttachmentRepository.findByQuestion(question);
+                    String fileName = fileNameUtil.transferFile(pictureFile, fileNameUtil.UPLOAD_DIR);
+                    qa.setAttachmentFilename(fileName);
+                    questionAttachmentRepository.save(qa);
+                } else {
+                    String fileName = fileNameUtil.transferFile(pictureFile, fileNameUtil.UPLOAD_DIR);
+                    QuestionAttachment qa = new QuestionAttachment();
+                    qa.setAttachmentFilename(fileName);
+                    qa.setQuestion(question);
+                    questionAttachmentRepository.save(qa);
+                }
+            }
+
+            return ResponseEntity.ok("Question added successfully");
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to update question");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to add item");
         }
     }
-
-
-
 }

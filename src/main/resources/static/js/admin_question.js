@@ -341,6 +341,7 @@ function submitEditItem(questionId) {
     const wrongAnswer3 = document.getElementById('edit-answer4').value.trim();
     const pictureFile = document.getElementById('edit-image').files[0];
 
+    // Basic client-side validation
     if (!questionText || !correctAnswer || !wrongAnswer1 || !wrongAnswer2 || !wrongAnswer3) {
         validationText.innerHTML = 'Please fill in all fields.';
         validationText.style.color = 'red';
@@ -349,8 +350,9 @@ function submitEditItem(questionId) {
         validationText.innerHTML = '';
     }
 
+    // Prepare FormData object to send to the server
     const formData = new FormData();
-    formData.append('questionId', questionId);
+    formData.append('questionId', questionId); // Include the questionId
     formData.append('questionText', questionText);
     formData.append('correctAnswer', correctAnswer);
     formData.append('wrongAnswer1', wrongAnswer1);
@@ -361,7 +363,8 @@ function submitEditItem(questionId) {
         formData.append('picture', pictureFile);
     }
 
-    fetch('/api/editItem', {
+    // Send POST request to the server
+    fetch('/api/addQuestion', {
         method: 'POST',
         body: formData
     })
@@ -372,10 +375,12 @@ function submitEditItem(questionId) {
             return response.json();
         })
         .then(data => {
+            // Handle successful response from the server
             console.log('Item edited successfully:', data);
-            closeEditModal();
+            closeEditModal(); // Close the edit modal after successful edit
         })
         .catch(error => {
+            // Handle errors (e.g., network error, server-side error)
             validationText.innerHTML = 'Failed to edit item.';
             validationText.style.color = 'red';
             console.error('Error editing item:', error);
