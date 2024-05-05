@@ -276,6 +276,7 @@ body {
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.4);
+    animation: fadeIn 0.3s ease;
 }
 
 /* Modal content */
@@ -291,6 +292,7 @@ body {
     margin: 0 auto; /* Center the form horizontally */
     margin-top: 20px;
     margin-bottom: 20px;
+    animation: fadeIn 0.3s ease;
 }
 
 .add-modal-content h2 {
@@ -423,3 +425,36 @@ input[type="text"]:focus {
 .edit-button:hover {
     background-color: #1e7e34;
 }
+
+/* Animation for showing modal */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Apply fadeOut animation when closing */
+.question-modal.fadeOut,
+.add-modal-content.fadeOut,
+.view-model-content.fadeOut,
+.edit-model-content.fadeOut {
+    animation: fadeOut 0.3s ease forwards; /* Ensure animation fills end state */
+}
+
+/* Keyframes for fadeOut animation */
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+

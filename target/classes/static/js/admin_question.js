@@ -147,7 +147,11 @@ function openAddModal() {
 function closeAddModal() {
     const modal = document.getElementById('addModal');
     if (modal) {
-        modal.style.display = 'none';
+        modal.classList.add('fadeOut');
+        setTimeout(() => {
+            modal.style.display = 'none';
+            modal.classList.remove('fadeOut');
+        }, 300);
     }
 }
 
@@ -236,7 +240,11 @@ function openViewModel() {
 function closeViewModal() {
     const modal = document.getElementById('viewModal');
     if (modal) {
-        modal.style.display = 'none';
+        modal.classList.add('fadeOut');
+        setTimeout(() => {
+            modal.style.display = 'none';
+            modal.classList.remove('fadeOut');
+        }, 300);
     }
 }
 
@@ -248,7 +256,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const closeButton = document.querySelector('.close');
     if (closeButton) {
-        closeButton.addEventListener('click', closeViewModel);
+        closeButton.addEventListener('click', closeViewModal);
     }
 });
 
@@ -287,7 +295,11 @@ function openEditModel() {
 function closeEditModal() {
     const modal = document.getElementById('editModal');
     if (modal) {
-        modal.style.display = 'none';
+        modal.classList.add('fadeOut');
+        setTimeout(() => {
+            modal.style.display = 'none';
+            modal.classList.remove('fadeOut');
+        }, 300);
     }
 }
 
