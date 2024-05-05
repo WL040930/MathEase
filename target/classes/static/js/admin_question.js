@@ -173,8 +173,8 @@ function submitItem() {
     var topicId = document.querySelector('.active').dataset.topicId;
 
     // Perform form validation
-    if (!questionText) {
-        validationText.innerHTML = 'Question cannot be empty';
+    if (!questionText || !correctAnswer || !wrongAnswer1 || !wrongAnswer2 || !wrongAnswer3) {
+        validationText.innerHTML = 'Please fill in all fields.';
         validationText.style.color = 'red';
         return;
     } else {
