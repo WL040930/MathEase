@@ -77,6 +77,80 @@
             background-color: #007bff;
             color: #fff;
         }
+
+        .edit-button:hover {
+            background-color: #0056b3;
+        }
+
+
+
+        /* Edit Panel Styles */
+        .editPanel {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            z-index: 999; /* Ensure it's on top of other elements */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .editPanelContent {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            text-align: center;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+        }
+
+        .editPanelContent img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        .editPanelContent input[type="text"],
+        .editPanelContent input[type="email"],
+        .editPanelContent input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .editPanelContent button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .editPanelContent button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -121,18 +195,112 @@
             </td>
             <td>
                 <!-- Edit button -->
-                <button class="edit-button" th:data-id="${user.userId}" onclick="handleEditClick(this)">Edit</button>
+                <button class="edit-button" th:image="${user.profilePicture}" th:data-id="${user.userId}" onclick="handleEditClick(this)">Edit</button>
             </td>
         </tr>
         </tbody>
     </table>
 </div>
 
+<div class="editPanel" id="editPanel">
+    <div class="editPanelContent">
+        <span class="close" onclick="closeEditPanel()">&times;</span>
+        <h2 style="margin-left: 10px">Edit User</h2>
+        <img id="userImage" alt="User Image">
+        <form id="editForm" onsubmit="submitForm(event)">
+            <input type="hidden" name="userId" id="editUserId">
+            <label for="editUsername">Username:</label>
+            <input type="text" name="username" id="editUsername">
+            <label for="editEmail">Email:</label>
+            <input type="email" name="email" id="editEmail" readonly>
+            <label for="editPassword">Password:</label>
+            <input type="password" name="password" id="editPassword">
+            <div style="margin-top: 10px; margin-bottom: 10px" class="validationText"></div>
+            <button type="submit">Save</button>
+        </form>
+    </div>
+</div>
+
 <script>
     function handleEditClick(button) {
         const userId = button.getAttribute('data-id');
+        const profilePicture = button.getAttribute('image');
+        const username = button.parentElement.parentElement.cells[1].textContent;
+        const email = button.parentElement.parentElement.cells[2].textContent;
+        const userImageSrc = '/data/' + profilePicture;
+
+        document.getElementById('editUserId').value = userId;
+        document.getElementById('editUsername').value = username;
+        document.getElementById('editEmail').value = email;
+        document.getElementById('userImage').src = userImageSrc;
+
+        document.getElementById('editPanel').style.display = 'flex';
+    }
+
+    function closeEditPanel() {
+        document.getElementById('editPanel').style.display = 'none';
+    }
+
+    function submitForm(event) {
+        event.preventDefault();
+        const userId = document.getElementById('editUserId').value;
+        const validationText = document.getElementsByClassName('validationText')[0];
+        const username = document.getElementById('editUsername').value;
+        const password = document.getElementById('editPassword').value;
+
+        if (username.length < 6) {
+            validationText.textContent = 'Username must be at least 6 characters long.';
+            validationText.style.color = 'red';
+            return;
+        } else {
+            validationText.textContent = '';
+        }
+
+        if (password !== "") {
+            if (password.length < 8) {
+                validationText.textContent = 'Password must be at least 8 characters long.';
+                validationText.style.color = 'red';
+                return;
+            } else {
+                validationText.textContent = '';
+            }
+        }
 
 
+        const formData = new FormData();
+
+        formData.append('userId', userId);
+        formData.append('username', username);
+        formData.append('password', password);
+
+        fetch('/api/updateUser', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('User updated successfully:', data);
+                closeEditPanel();
+                clearPassword();
+                // refreshTable();
+                window.location.reload();
+            })
+            .catch(error => {
+                console.error('Error updating user:', error);
+                closeEditPanel();
+                clearPassword();
+                // refreshTable();
+                window.location.reload();
+            });
+    }
+
+    function clearPassword() {
+        document.getElementById('editPassword').value = '';
     }
 
     function handleStatusClick(button) {
@@ -195,6 +363,50 @@
             }
         });
     });
+
+    // function refreshTable() {
+    //     fetch('/api/getUsers')
+    //         .then(response => {
+    //             if (!response.ok) {
+    //                 throw new Error('Network response was not ok');
+    //             }
+    //             return response.json();
+    //         })
+    //         .then(users => {
+    //             const tbody = document.querySelector('#userTable tbody');
+    //             tbody.innerHTML = ''; // Clear existing table rows
+    //
+    //             users.forEach((user, index) => {
+    //                 const isActive = user.isActivated;
+    //                 const statusClass = isActive ? 'active-button' : 'inactive-button';
+    //                 const statusText = isActive ? 'Active' : 'Inactive';
+    //
+    //                 const row = `
+    //                 <tr>
+    //                     <td>${index + 1}</td>
+    //                     <td>${user.username}</td>
+    //                     <td>${user.email}</td>
+    //                     <td>${user.joinedDate}</td>
+    //                     <td>
+    //                         <button class="${statusClass}" data-id="${user.userId}" onclick="handleStatusClick(this)">
+    //                             ${statusText}
+    //                         </button>
+    //                     </td>
+    //                     <td>
+    //                         <button class="edit-button" data-id="${user.userId}" onclick="handleEditClick(this)">
+    //                             Edit
+    //                         </button>
+    //                     </td>
+    //                 </tr>`;
+    //                 tbody.insertAdjacentHTML('beforeend', row);
+    //             });
+    //         })
+    //         .catch(error => {
+    //             console.error('Error fetching users:', error);
+    //         });
+    // }
+
+
 </script>
 
 </body>
