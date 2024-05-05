@@ -28,28 +28,26 @@ document.addEventListener("DOMContentLoaded", async function() {
 
         const tableRows = document.querySelectorAll('#topicInfoPanel table tbody tr');
         tableRows.forEach(row => {
-            row.addEventListener('click', () => {
+            row.addEventListener('click', async () => {
                 tableRows.forEach(r => r.classList.remove('selected'));
                 row.classList.add('selected');
                 const questionId = questions[row.rowIndex - 1].questionId;
-                fetch(`/api/question/${questionId}`)
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Failed to fetch question details');
-                        }
-                        return response.json();
-                    })
-                    .then(questionDetails => {
 
-                        console.log('Question details:', questionDetails);
-                    })
-                    .catch(error => {
-                        console.error('Error fetching question details:', error);
-                    });
+                try {
+                    const questionDetailsResponse = await fetch(`/api/question/${questionId}`);
+                    if (!questionDetailsResponse.ok) {
+                        throw new Error('Failed to fetch question details');
+                    }
+                    const questionDetails = await questionDetailsResponse.json();
+
+                    displayQuestionDetails(questionDetails);
+                } catch (error) {
+                    console.error('Error fetching question details:', error);
+                }
             });
         });
 
-        } catch (error) {
+    } catch (error) {
             console.error('Error fetching data:', error);
         }
     });
@@ -241,3 +239,22 @@ document.addEventListener("DOMContentLoaded", function() {
         closeButton.addEventListener('click', closeViewModel);
     }
 });
+
+function displayQuestionDetails(questionDetails) {
+    const modalContent = document.querySelector('.addContainer');
+
+    // Populate modal with question details
+    modalContent.innerHTML = `
+        <div class="addContainer">
+            <p><strong>Question:</strong> <br>${questionDetails.question}</p>
+            <p><strong>Correct Answer:</strong> <span style="color: #32CD32">${questionDetails.correctAnswer}</span></p>
+            <p><strong>Wrong Answers:</strong> 
+                <span style="color: red;"><br>1. ${questionDetails.wrongAnswer1}</span>
+                <span style="color: red;"><br>2. ${questionDetails.wrongAnswer2}</span>
+                <span style="color: red;"><br>3. ${questionDetails.wrongAnswer3}</span>
+            </p>
+            ${questionDetails.picturePath ? `<img style="width: 90%; margin: 0 auto;" src="/data/${questionDetails.picturePath}" alt="question image">` : ''}
+        </div>
+    `;
+
+}
