@@ -41,6 +41,7 @@ document.addEventListener("DOMContentLoaded", async function() {
                     const questionDetails = await questionDetailsResponse.json();
 
                     displayQuestionDetails(questionDetails);
+                    DisplayEditQuestionDetails(questionDetails);
                 } catch (error) {
                     console.error('Error fetching question details:', error);
                 }
@@ -79,7 +80,7 @@ function generateTopicInfoHTML(topicDetails, questions) {
                 <div class="controller">
                     <button class="control-button view-button" onclick="openViewModel()">View</button>
                     <button class="control-button add-button" onclick="openAddModal()">Add</button>
-                    <button class="control-button edit-button">Edit</button>
+                    <button class="control-button edit-button" onclick="openEditModel()">Edit</button>
                     <button class="control-button delete-button">Delete</button>
                 </div>
             </div>
@@ -123,7 +124,7 @@ function generateTopicInfoHTML(topicDetails, questions) {
                 <div class="controller">
                     <button class="control-button view-button" onclick="openViewModel()">View</button>
                     <button class="control-button add-button" onclick="openAddModal()">Add</button>
-                    <button class="control-button edit-button">Edit</button>
+                    <button class="control-button edit-button" onclick="openEditModel()">Edit</button>
                     <button class="control-button delete-button">Delete</button>
                 </div>
             </div>
@@ -172,7 +173,6 @@ function submitItem() {
     const pictureFile = document.getElementById('add-image').files[0];
     var topicId = document.querySelector('.active').dataset.topicId;
 
-    // Perform form validation
     if (!questionText || !correctAnswer || !wrongAnswer1 || !wrongAnswer2 || !wrongAnswer3) {
         validationText.innerHTML = 'Please fill in all fields.';
         validationText.style.color = 'red';
@@ -181,7 +181,6 @@ function submitItem() {
         validationText.innerHTML = '';
     }
 
-    // Prepare the data to be sent to the backend
     const formData = new FormData();
     formData.append('questionText', questionText);
     formData.append('correctAnswer', correctAnswer);
@@ -194,7 +193,6 @@ function submitItem() {
         formData.append('picture', pictureFile);
     }
 
-    // Send the data to the backend using fetch and a POST request
     fetch('/api/addItem', {
         method: 'POST',
         body: formData
@@ -213,6 +211,17 @@ function submitItem() {
             console.error('Error adding item:', error);
         });
 }
+
+
+
+
+
+
+
+
+
+
+
 
 function openViewModel() {
     const modal = document.getElementById('viewModal');
@@ -243,7 +252,6 @@ document.addEventListener("DOMContentLoaded", function() {
 function displayQuestionDetails(questionDetails) {
     const modalContent = document.querySelector('.addContainer');
 
-    // Populate modal with question details
     modalContent.innerHTML = `
         <div class="addContainer">
             <p><strong>Question:</strong> <br>${questionDetails.question}</p>
@@ -256,5 +264,122 @@ function displayQuestionDetails(questionDetails) {
             ${questionDetails.picturePath ? `<img style="width: 90%; margin: 0 auto;" src="/data/${questionDetails.picturePath}" alt="question image">` : ''}
         </div>
     `;
-
 }
+
+
+
+
+
+
+
+
+
+function openEditModel() {
+    const modal = document.getElementById('editModal');
+    if (modal) {
+        modal.style.display = 'block';
+    }
+}
+
+function closeEditModal() {
+    const modal = document.getElementById('editModal');
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    const viewButton = document.querySelector('.edit-button');
+    if (viewButton) {
+        viewButton.addEventListener('click', openEditModel);
+    }
+
+    const closeButton = document.querySelector('.close');
+    if (closeButton) {
+        closeButton.addEventListener('click', closeEditModal);
+    }
+});
+
+function DisplayEditQuestionDetails(questionDetails) {
+    const modalContent = document.querySelector('.editContainer');
+    const questionId = document.querySelector('.selected').dataset.questionId;
+
+    // Populate modal with question details
+    modalContent.innerHTML = `
+        <div class="editContainer">
+            <p>
+                <strong>Question:</strong> <br>
+                <textarea id="questionTextArea" name="question" cols="30" rows="2">${questionDetails.question}</textarea>
+            </p>
+            <input type="hidden" name="edit-questionId" value="${questionDetails.questionId}">
+            <p>
+                <strong>Correct Answer:</strong> <br>
+                <input type="text" id="edit-answer1" name="edit-answer1" value="${questionDetails.correctAnswer}">
+            </p>
+            <p><strong style="margin-bottom: 10px">Wrong Answers:</strong>
+                <input type="text" id="edit-answer2" name="edit-answer2" value="${questionDetails.wrongAnswer1}">
+                <input type="text" id="edit-answer3" name="edit-answer3" value="${questionDetails.wrongAnswer2}">
+                <input type="text" id="edit-answer4" name="edit-answer4" value="${questionDetails.wrongAnswer3}">
+            </p>
+            <strong>Picture:</strong> <br>
+            <input type="file" id="edit-image" name="edit-image" style="margin-top: 10px; margin-bottom: 10px">
+            ${questionDetails.picturePath ? `<img style="width: 90%; margin: 0 auto;" src="/data/${questionDetails.picturePath}" alt="question image">` : ''}
+            
+            <br>
+            <div style="margin-bottom: 20px;margin-top:20px;" id="editValidation"></div>
+            <button class="edit-button" onclick="submitEditItem(${questionDetails.questionId})">Submit</button>
+        </div>
+    `;
+}
+
+function submitEditItem(questionId) {
+    const validationText = document.getElementById('editValidation');
+    const questionText = document.getElementById('questionTextArea').value.trim();
+    const correctAnswer = document.getElementById('edit-answer1').value.trim();
+    const wrongAnswer1 = document.getElementById('edit-answer2').value.trim();
+    const wrongAnswer2 = document.getElementById('edit-answer3').value.trim();
+    const wrongAnswer3 = document.getElementById('edit-answer4').value.trim();
+    const pictureFile = document.getElementById('edit-image').files[0];
+
+    if (!questionText || !correctAnswer || !wrongAnswer1 || !wrongAnswer2 || !wrongAnswer3) {
+        validationText.innerHTML = 'Please fill in all fields.';
+        validationText.style.color = 'red';
+        return;
+    } else {
+        validationText.innerHTML = '';
+    }
+
+    const formData = new FormData();
+    formData.append('questionId', questionId);
+    formData.append('questionText', questionText);
+    formData.append('correctAnswer', correctAnswer);
+    formData.append('wrongAnswer1', wrongAnswer1);
+    formData.append('wrongAnswer2', wrongAnswer2);
+    formData.append('wrongAnswer3', wrongAnswer3);
+
+    if (pictureFile) {
+        formData.append('picture', pictureFile);
+    }
+
+    fetch('/api/editItem', {
+        method: 'POST',
+        body: formData
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to edit item');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Item edited successfully:', data);
+            closeEditModal();
+        })
+        .catch(error => {
+            validationText.innerHTML = 'Failed to edit item.';
+            validationText.style.color = 'red';
+            console.error('Error editing item:', error);
+        });
+}
+
+

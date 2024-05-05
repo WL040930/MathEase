@@ -280,7 +280,8 @@ body {
 
 /* Modal content */
 .add-modal-content,
-.view-model-content {
+.view-model-content,
+.edit-model-content {
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -362,7 +363,9 @@ label {
 }
 
 .add-modal-content input[type="text"],
-.add-modal-content textarea {
+.add-modal-content textarea,
+.edit-model-content textarea,
+.edit-model-content input[type="text"]{
     width: 100%;
     padding: 12px;
     margin-bottom: 15px;
@@ -373,7 +376,8 @@ label {
     font-size: 16px;
 }
 
-.add-modal-content textarea {
+.add-modal-content textarea,
+.edit-model-content textarea {
     resize: none;
 }
 
@@ -382,8 +386,8 @@ label {
 }
 
 input[type="text"]:focus {
-    border-color: #007bff; /* Border color on focus */
-    outline: none; /* Remove default focus outline */
+    border-color: #007bff;
+    outline: none;
 }
 
 /* Button styling */
@@ -403,4 +407,19 @@ input[type="text"]:focus {
 
 .add-modal-content input[type="file"] {
     margin-bottom: 20px;
+}
+
+.edit-button {
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    font-weight: bold;
+}
+
+.edit-button:hover {
+    background-color: #1e7e34;
 }

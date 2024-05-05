@@ -8,10 +8,7 @@ import com.MathEase.MathEase.Repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import com.MathEase.MathEase.Repository.OptionRepository;
 import com.MathEase.MathEase.Util.FileNameUtil;
@@ -52,7 +49,6 @@ public class QuestionUploadController {
             question.setTopicId(topic);
             questionRepository.save(question);
 
-            //retrieve the quizId saved
             Long questionId = question.getQuestionId();
 
             Options correctOption = new Options();
@@ -94,5 +90,25 @@ public class QuestionUploadController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to add item");
         }
     }
+
+    @PostMapping("/editItem")
+    public ResponseEntity<String> editItem(
+            @RequestParam("questionId") Long questionId,
+            @RequestParam("question") String questionText,
+            @RequestParam("correctAnswer") String correctAnswer,
+            @RequestParam("wrongAnswer1") String wrongAnswer1,
+            @RequestParam("wrongAnswer2") String wrongAnswer2,
+            @RequestParam("wrongAnswer3") String wrongAnswer3,
+            @RequestParam(value = "picture", required = false) MultipartFile pictureFile) {
+
+        try {
+            System.out.println("Question ID: " + questionId);
+            return ResponseEntity.ok("Item edited successfully");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to update question");
+        }
+    }
+
+
 
 }
