@@ -5,8 +5,8 @@ import com.MathEase.MathEase.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -104,15 +104,25 @@ public class UserService {
         return user.getJoinedDate();
     }
 
-    public List<String> findUsersByEmailContaining(String email) {
-
-        List<User> user = userRepository.findByEmailContaining(email);
-        List<String> emails = new ArrayList<>();
-
-        for (User u : user) {
-            emails.add(u.getEmail());
-        }
-        return emails;
+    public List<String> findUsersByEmailContaining(String query) {
+        // Use UserRepository to fetch user emails containing the specified query
+        List<String> matchingEmails = userRepository.findByEmailContaining(query)
+                .stream()
+                .map(user -> user.getEmail())
+                .collect(Collectors.toList());
+        return matchingEmails;
     }
+
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
+
+    public void updateUserStatus(Long userId, boolean status) {
+        User user = userRepository.findById(userId).get();
+        user.setActivated(status);
+        userRepository.save(user);
+    }
+
+
 
 }
