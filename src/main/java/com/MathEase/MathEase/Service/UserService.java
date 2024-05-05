@@ -1,9 +1,12 @@
 package com.MathEase.MathEase.Service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import com.MathEase.MathEase.Model.User;
 import com.MathEase.MathEase.Repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class UserService {
@@ -101,5 +104,15 @@ public class UserService {
         return user.getJoinedDate();
     }
 
+    public List<String> findUsersByEmailContaining(String email) {
+
+        List<User> user = userRepository.findByEmailContaining(email);
+        List<String> emails = new ArrayList<>();
+
+        for (User u : user) {
+            emails.add(u.getEmail());
+        }
+        return emails;
+    }
 
 }
