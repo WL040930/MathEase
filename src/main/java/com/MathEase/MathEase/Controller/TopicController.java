@@ -23,7 +23,7 @@ public class TopicController {
         }
 
         if (session.getAttribute("role").equals("student")) {
-            // TODO
+            menuController.setMenuBar(session, model);
             setTopicAttributes(topicId, model);
             return "student/student-topic";
         } else {

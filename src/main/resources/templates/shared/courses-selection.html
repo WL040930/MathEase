@@ -37,22 +37,23 @@
 </section>
 
 <section class="content-header" th:fragment="IncludeStudentCourse">
-    <link rel="stylesheet" th:href="@{/css/topic.css}">
+    <link rel="stylesheet" th:href="@{/css/student-topic.css}">
 
     <div class="topic-grid">
-        <div th:each="topic, iterStat : ${topics}" class="clickable-topic">
+        <div th:each="topic, iterStat : ${topics}" class="clickable-topic" th:data-topic-id="${topic.topicId}">
             <a th:href="@{'/topic/' + ${topic.topicId}}" class="topicATag">
                 <div style="float: left; width: 30%">
                     <img th:src="@{${topic.picturePath}}" alt="topic image" class="topic-image">
                 </div>
                 <div style="float: right; width: 70%">
-                    <span th:text="'Chapter ' + ${topic.topicId}"></span> <br>
-                    <span th:text="${topic.topicName}"></span>
+                    <span class="chapter">Chapter <strong>[[${topic.topicId}]]</strong></span> <br>
+                    <span class="topic-name" th:text="${topic.topicName}"></span>
                 </div>
                 <div style="clear: both"></div>
             </a>
         </div>
     </div>
+
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -68,21 +69,65 @@
             });
         });
 
-        function isTopicFullyAnswered(topicId) {
 
+        document.addEventListener('DOMContentLoaded', async function() {
+            const clickableDivs = document.querySelectorAll('.clickable-topic');
+            const promises = [];
+
+            for (const div of clickableDivs) {
+                const topicId = div.getAttribute('data-topic-id');
+                const promise = isTopicFullyAnswered(topicId);
+                promises.push(promise);
+            }
+
+            try {
+                const results = await Promise.all(promises);
+
+                results.forEach((data, index) => {
+                    const topicId = clickableDivs[index].getAttribute('data-topic-id');
+                    const topicDiv = document.querySelector(`.clickable-topic[data-topic-id="${topicId}"]`);
+
+                    if (data) {
+                        applyTopicStyle(topicDiv, 'lightgreen', '#6dbb63', '#a9e1a1');
+                    } else {
+                        applyTopicStyle(topicDiv, 'red', '#ff6b6b', '#ffbebe');
+                    }
+
+                });
+            } catch (error) {
+                console.error('Error checking if topics are fully answered:', error);
+            }
+        });
+
+        async function isTopicFullyAnswered(topicId) {
             const form = new FormData();
             form.append('topicId', topicId);
 
-            fetch('/api/topicAnswered', {
-                method: 'POST',
-                body: form
-            }).then(response => response.json())
-                .then(data => {
-                    if (data) {
-                        const topicDiv = document.querySelector(`.clickable-topic[data-topic-id="${topicId}"]`);
-                        topicDiv.style.backgroundColor = 'lightgreen';
-                    }
+            try {
+                const response = await fetch('/api/topicAnswered', {
+                    method: 'POST',
+                    body: form
                 });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    return data;
+                } else {
+                    console.error('Failed to check if topic is fully answered');
+                    return false;
+                }
+            } catch (error) {
+                console.error('Error checking if topic is fully answered:', error);
+                return false;
+            }
+        }
+
+        function applyTopicStyle(topicDiv, bgColor, gradientColor1, gradientColor2) {
+            topicDiv.style.backgroundColor = bgColor;
+            topicDiv.style.background = `linear-gradient(to bottom right, ${gradientColor1}, ${gradientColor2})`;
+            topicDiv.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.2)';
+            topicDiv.style.color = 'white';
+            topicDiv.style.transition = 'background-color 0.3s ease-in-out';
         }
     </script>
 

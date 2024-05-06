@@ -9,6 +9,6 @@ import com.MathEase.MathEase.Model.User;
 @Repository
 public interface UserAnswerRepository extends JpaRepository<UserAnswer, Long>{
 
-    Long countByQuestion_TopicIdAndUser(Topic topic, User user);
+    int countByQuestion_TopicIdAndUser(Topic topic, User user);
 
 }

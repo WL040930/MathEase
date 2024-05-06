@@ -14,7 +14,6 @@ public class TopicService {
     @Autowired
     private TopicRepository topicRepository;
 
-    // get topic sorted by topicID
     public List<Topic> getAllTopics() {
         return topicRepository.getAllTopics();
     }

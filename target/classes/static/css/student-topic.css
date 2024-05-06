@@ -1,0 +1,100 @@
+/* Grid container */
+.topic-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+/* Individual clickable topic */
+.clickable-topic {
+    width: calc(40% - 20px); /* Adjust width as needed */
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    box-sizing: border-box;
+    background-color: #f8f9fa; /* Default background color */
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.clickable-topic:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Topic content within clickable topic */
+.clickable-topic a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333; /* Text color */
+}
+
+.clickable-topic img {
+    width: 90px; /* Adjust image size */
+    height: 90px;
+    border-radius: 50%; /* Make image circular */
+    margin-right: 20px; /* Spacing between image and text */
+}
+
+.clickable-topic .topic-details {
+    flex-grow: 1; /* Take remaining space */
+}
+
+.clickable-topic .topic-details h4 {
+    margin: 0;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* Green background for fully answered topics */
+.clickable-topic.fully-answered {
+    background-color: #6dbb63; /* Green background color */
+    color: white; /* Text color */
+}
+
+/* Red background for unanswered topics */
+.clickable-topic:not(.fully-answered) {
+    background-color: #ff6b6b; /* Red background color */
+    color: white; /* Text color */
+}
+
+.topic-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.clickable-topic {
+    width: calc(40% - 20px);
+    margin: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    box-sizing: border-box;
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+.clickable-topic:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.clickable-topic a {
+    text-decoration: none;
+}
+
+.clickable-topic .chapter {
+    color: #333; /* Main title color */
+    font-weight: bold;
+    font-size: 18px; /* Larger font size for main title */
+}
+
+.clickable-topic .topic-name {
+    color: #666; /* Description color */
+    font-size: 16px;
+}
