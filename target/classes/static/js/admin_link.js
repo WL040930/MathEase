@@ -18,33 +18,30 @@ document.addEventListener("DOMContentLoaded", async function() {
                 }
                 const topicDetails = await topicResponse.json();
 
-                const questionResponse = await fetch(`/api/questions/${topicId}`);
-                if (!questionResponse.ok) {
-                    throw new Error('Failed to fetch questions');
+                const linkResponse = await fetch(`/api/links/${topicId}`);
+                if (!linkResponse.ok) {
+                    throw new Error('Failed to fetch Links');
                 }
-                const questions = await questionResponse.json();
+                const Links = await linkResponse.json();
 
-                topicInfoPanel.innerHTML = generateTopicInfoHTML(topicDetails, questions);
+                topicInfoPanel.innerHTML = generateTopicInfoHTML(topicDetails, Links);
 
                 const tableRows = document.querySelectorAll('#topicInfoPanel table tbody tr');
                 tableRows.forEach(row => {
                     row.addEventListener('click', async () => {
                         tableRows.forEach(r => r.classList.remove('selected'));
                         row.classList.add('selected');
-                        const questionId = questions[row.rowIndex - 1].questionId;
+                        const linkId = Links[row.rowIndex - 1].linkId;
 
                         try {
-                            const questionDetailsResponse = await fetch(`/api/question/${questionId}`);
-                            if (!questionDetailsResponse.ok) {
-                                throw new Error('Failed to fetch question details');
+                            const linkDetailsResponse = await fetch(`/api/links/${questionId}`);
+                            if (!linkDetailsResponse.ok) {
+                                throw new Error('Failed to fetch link details');
                             }
-                            const questionDetails = await questionDetailsResponse.json();
+                            const linkDetails = await linkDetailsResponse.json();
 
-                            displayDeleteQuestionDetails(questionDetails)
-                            displayQuestionDetails(questionDetails);
-                            DisplayEditQuestionDetails(questionDetails);
                         } catch (error) {
-                            console.error('Error fetching question details:', error);
+                            console.error('Error fetching link details:', error);
                         }
                     });
                 });
@@ -63,10 +60,10 @@ document.addEventListener("DOMContentLoaded", async function() {
 
 
 
-function generateTopicInfoHTML(topicDetails, questions) {
-    const hasQuestions = questions && questions.length > 0;
+function generateTopicInfoHTML(topicDetails, links) {
+    const haslinks = links && links.length > 0;
 
-    if (!hasQuestions) {
+    if (!haslinks) {
         return `
             <div class="topic-info">
                 <div class="top-panel">
@@ -80,7 +77,7 @@ function generateTopicInfoHTML(topicDetails, questions) {
                     <div style="clear: both"></div>
                 </div>
                 <div class="table-panel">
-                    <p>No questions for this chapter.</p>
+                    <p>No links for this chapter.</p>
                 </div>
                 <div class="controller">
                     <button class="control-button view-button" onclick="openViewModel()">View</button>
@@ -92,7 +89,7 @@ function generateTopicInfoHTML(topicDetails, questions) {
         `;
     }
 
-    const questionsHTML = `
+    const linksHTML = `
         <table>
             <thead>
                 <tr>
@@ -101,10 +98,10 @@ function generateTopicInfoHTML(topicDetails, questions) {
                 </tr>
             </thead>
             <tbody>
-                ${questions.map((question, index) => `
+                ${links.map((link, index) => `
                     <tr>
                         <td>${index + 1}</td>
-                        <td>${question.question}</td>
+                        <td>${link.linkTitle}</td>
                     </tr>
                 `).join('')}
             </tbody>
@@ -124,7 +121,7 @@ function generateTopicInfoHTML(topicDetails, questions) {
                 <div style="clear: both"></div>
             </div>
             <div class="table-panel">
-                ${questionsHTML}
+                ${linksHTML}
             </div>
             <div class="controller">
                 <button class="control-button view-button" onclick="openViewModel()">View</button>

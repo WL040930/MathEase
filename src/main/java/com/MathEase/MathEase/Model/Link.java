@@ -1,9 +1,15 @@
 package com.MathEase.MathEase.Model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "\"link\"")
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class Link {
 
     @Id
