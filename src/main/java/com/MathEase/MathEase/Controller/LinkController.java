@@ -2,6 +2,7 @@ package com.MathEase.MathEase.Controller;
 
 import com.MathEase.MathEase.Model.Link;
 import com.MathEase.MathEase.Model.Topic;
+import com.MathEase.MathEase.Repository.LinkRepository;
 import com.MathEase.MathEase.Service.LinkService;
 import com.MathEase.MathEase.Service.TopicService;
 import jakarta.servlet.http.HttpSession;
@@ -12,6 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -25,6 +28,8 @@ public class LinkController {
     private TopicService topicService;
     @Autowired
     private LinkService linkService;
+    @Autowired
+    private LinkRepository linkRepository;
 
     public LinkController(MenuController menuController) {
         this.menuController = menuController;
@@ -44,13 +49,31 @@ public class LinkController {
         return "admin/admin-link";
     }
 
-
     @GetMapping("/api/links/{topicId}")
     public ResponseEntity<List<Link>> getQuestionsByTopicId(@PathVariable Long topicId) {
         try {
             Topic topic = topicService.getTopicById(topicId);
             List<Link> links = linkService.getLinksByTopic(topic);
             return ResponseEntity.ok(links);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    @PostMapping("/api/addLinks")
+    public ResponseEntity<String> addLinks(@RequestParam("topicId") Long topicId,
+                                           @RequestParam("linkTitle") String linkTitle,
+                                           @RequestParam("linkURL") String linkUrl){
+        try {
+            Link link = new Link();
+            link.setLinkTitle(linkTitle);
+            link.setLinkUrl(linkUrl);
+
+            Topic topic = topicService.getTopicById(topicId);
+            link.setTopic(topic);
+
+            linkRepository.save(link);
+            return ResponseEntity.ok("Link added successfully");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }

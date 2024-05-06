@@ -136,3 +136,113 @@ function generateTopicInfoHTML(topicDetails, links) {
 
 
 
+function openAddModal() {
+    const modal = document.getElementById('addModal');
+    if (modal) {
+        modal.style.display = 'block';
+    }
+}
+
+function closeAddModal() {
+    const modal = document.getElementById('addModal');
+    if (modal) {
+        modal.classList.add('fadeOut');
+        setTimeout(() => {
+            modal.style.display = 'none';
+            modal.classList.remove('fadeOut');
+        }, 300);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    const addButton = document.querySelector('.add-button');
+    if (addButton) {
+        addButton.addEventListener('click', openAddModal);
+    }
+
+    const closeButton = document.querySelector('.close');
+    if (closeButton) {
+        closeButton.addEventListener('click', closeAddModal);
+    }
+});
+
+function clearAddModal() {
+    document.getElementById('linkTitle').value = '';
+    document.getElementById('linkUrl').value = '';
+}
+
+function addLink() {
+    const linkTitle = document.getElementById('linkTitle').value;
+    const linkURL = document.getElementById('linkUrl').value;
+    const topicId = document.querySelector('.clickable-topic.active').dataset.topicId;
+
+    const formData = new FormData();
+    formData.append('linkTitle', linkTitle);
+    formData.append('linkURL', linkURL);
+    formData.append('topicId', topicId);
+
+    fetch(`/api/addLinks`, {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Failed to add link');
+        }
+        closeAddModal();
+        clearAddModal();
+        reloadLinkTable(topicId).then(r => console.log('Link table reloaded'));
+    })
+    .catch(error => {
+        closeAddModal();
+        clearAddModal();
+        reloadLinkTable(topicId).then(r => console.log('Link table reloaded'));
+    });
+}
+
+
+async function reloadLinkTable(topicId) {
+    try {
+        const linkResponse = await fetch(`/api/links/${topicId}`);
+        if (!linkResponse.ok) {
+            throw new Error('Failed to fetch updated links');
+        }
+        const links = await linkResponse.json();
+
+        const tableBody = document.querySelector('#topicInfoPanel table tbody');
+        tableBody.innerHTML = '';
+
+        links.forEach((link, index) => {
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td>${index + 1}</td>
+                <td>${link.linkTitle}</td>
+            `;
+            tableBody.appendChild(newRow);
+
+            newRow.addEventListener('click', async () => {
+                const tableRows = document.querySelectorAll('#topicInfoPanel table tbody tr');
+                tableRows.forEach(r => r.classList.remove('selected'));
+
+                newRow.classList.add('selected');
+
+                const linkId = links[index].linkId;
+
+                try {
+                    const linkDetailsResponse = await fetch(`/api/link/${linkId}`);
+                    if (!linkDetailsResponse.ok) {
+                        throw new Error('Failed to fetch link details');
+                    }
+                    const linkDetails = await linkDetailsResponse.json();
+
+                    // Handle displaying link details (e.g., function to display details)
+
+                } catch (error) {
+                    console.error('Error fetching link details:', error);
+                }
+            });
+        });
+    } catch (error) {
+        console.error('Error reloading link table:', error);
+    }
+}

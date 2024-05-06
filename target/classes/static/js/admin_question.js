@@ -429,7 +429,7 @@ async function reloadQuestionTable(topicId) {
         const questions = await questionResponse.json();
 
         const tableBody = document.querySelector('#topicInfoPanel table tbody');
-        tableBody.innerHTML = ''; // Clear existing table rows
+        tableBody.innerHTML = '';
 
         questions.forEach((question, index) => {
             const newRow = document.createElement('tr');
@@ -439,13 +439,9 @@ async function reloadQuestionTable(topicId) {
             `;
             tableBody.appendChild(newRow);
 
-            // Add click event listener to the new row
             newRow.addEventListener('click', async () => {
-                // Remove 'selected' class from all table rows
                 const tableRows = document.querySelectorAll('#topicInfoPanel table tbody tr');
                 tableRows.forEach(r => r.classList.remove('selected'));
-
-                // Add 'selected' class to the clicked row
                 newRow.classList.add('selected');
 
                 const questionId = questions[index].questionId;
