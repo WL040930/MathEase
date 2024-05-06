@@ -60,7 +60,6 @@ public class StudentCourseController {
         User user = userService.getUserById(userId);
 
         boolean isCompleted = answerService.isTopicFullyAnswered(topic, user);
-        System.out.println("isCompleted: " + isCompleted);
 
         return  ResponseEntity.ok(isCompleted);
     }
