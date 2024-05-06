@@ -29,7 +29,7 @@ public class SettingsController {
 
     private final FileNameUtil fileNameUtil = new FileNameUtil();
 
-    @GetMapping("/admin/settings")
+    @GetMapping({"/admin/settings", "/student/settings"})
     public String settings(HttpSession session, Model model) {
 
         if (session.getAttribute("userId") == null) {
@@ -54,23 +54,6 @@ public class SettingsController {
         model.addAttribute("profilePicture", "/data/" + profilePicture);
 
         return "shared/settings";
-    }
-
-    public void setSettings (HttpSession session, Model model) {
-        Long userId = (Long) session.getAttribute("userId");
-
-        String username = userService.getUsername(userId);
-        String role = userService.getRoleName(userId);
-        String profilePicture = userService.getProfilePicture(userId);
-        String email = userService.getEmail(userId);
-        String joinedDate = userService.getJoinedDate(userId);
-
-        model.addAttribute("userId", userId);
-        model.addAttribute("usernameInput", username);
-        model.addAttribute("emailTitle", email);
-        model.addAttribute("roleTitle", role);
-        model.addAttribute("joinedDateInput", joinedDate);
-        model.addAttribute("profilePicture", "/data/" + profilePicture);
     }
 
     @PostMapping("/update-username/{userId}")

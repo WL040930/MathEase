@@ -9,7 +9,12 @@
     <script th:src="@{/js/settings.js}"></script>
 </head>
 <body>
-<section class="content-header" th:replace="menu/menu-admin::IncludeMenu" style="z-index: 9999"></section>
+<div th:if="${session.role == 'admin'}">
+    <section class="content-header" th:replace="menu/menu-admin::IncludeMenu" style="z-index: 9999"></section>
+</div>
+<div th:if="${session.role == 'student'}">
+    <section class="content-header" th:replace="menu/menu-student::IncludeStudentMenu" style="z-index: 9999"></section>
+</div>
 
 <div class="container">
     <div style="width: 100%; text-align: center"><h1>Settings</h1></div>
