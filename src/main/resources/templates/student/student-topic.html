@@ -3,8 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/container.css}">
 </head>
 <body>
-    h1h1
+<section class="content-header" th:replace="menu/menu-student::IncludeStudentMenu"></section>
+
+<div class="container">
+    <section class="content-header" th:replace="shared/back-button::IncludeBackButton"></section>
+    <div th:replace="${chapterTemplateName}"></div>
+</div>
 </body>
 </html>

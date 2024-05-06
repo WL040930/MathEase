@@ -10,6 +10,19 @@
 <section class="content-header" th:replace="menu/menu-student::IncludeStudentMenu"></section>
 
 <div class="container">
+    <div style="width: 100%; text-align: center"><h1>Courses</h1></div>
+    <p style="font-weight: bold; margin-bottom: 10px; margin-left: 10px;">
+        <span>
+            <span style="display: inline-block; width: 12px; height: 12px; background-color: red;"></span>
+        </span>
+        means you haven't completed the course
+        <br>
+        <span>
+            <span style="display: inline-block; width: 12px; height: 12px; background-color: lightgreen;"></span>
+        </span>
+        indicates completed course
+    </p>
+
     <section class="content" th:replace="shared/courses-selection::IncludeStudentCourse"></section>
 </div>
 
