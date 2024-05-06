@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 
                             displayLinkDetails(linkDetails);
                             DisplayEditLinkDetails(linkDetails);
+                            displayDeleteQuestionDetails(linkDetails);
                         } catch (error) {
                             console.error('Error fetching link details:', error);
                         }
@@ -243,6 +244,7 @@ async function reloadLinkTable(topicId) {
 
                     displayLinkDetails(linkDetails);
                     DisplayEditLinkDetails(linkDetails);
+                    displayDeleteQuestionDetails(linkDetails);
                 } catch (error) {
                     console.error('Error fetching link details:', error);
                 }
@@ -394,4 +396,95 @@ function submitEditItem (linkId) {
         closeEditModal();
         reloadLinkTable(topicId).then(r => console.log('Link table reloaded'));
     });
+}
+
+
+
+
+
+function openDeleteModel() {
+    const modal = document.getElementById('deleteModal');
+    if (modal) {
+        modal.style.display = 'block';
+    }
+}
+
+function closeDeleteModal() {
+    const modal = document.getElementById('deleteModal');
+    if (modal) {
+        modal.classList.add('fadeOut');
+        setTimeout(() => {
+            modal.style.display = 'none';
+            modal.classList.remove('fadeOut');
+            clearDeleteModal();
+        }, 300);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    const viewButton = document.querySelector('.delete-button');
+    if (viewButton) {
+        viewButton.addEventListener('click', openDeleteModel);
+    }
+
+    const closeButton = document.querySelector('.close');
+    if (closeButton) {
+        closeButton.addEventListener('click', closeDeleteModal);
+    }
+});
+
+
+function displayDeleteQuestionDetails(linkDetails) {
+    var modalContent = document.querySelector('.deleteContainer');
+
+    // Use questionDetails to get the questionId
+    var linkId = linkDetails.linkId;
+
+    modalContent.innerHTML = `
+        <div class="deleteContainer">
+            <p><strong>Title:</strong><br>${linkDetails.link}</p>
+                <p><strong>URL:</strong><br><a href="${linkDetails.url}" target="_blank">${linkDetails.url}</p></a>
+        </div>
+        <div class="buttonContainer">
+            <button class="delete-button" onclick="deleteItem(${linkId})">Delete</button>
+        </div>
+    `;
+}
+
+function deleteItem(linkId) {
+
+    if (!linkId) {
+        console.error('Invalid link ID');
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append('linkId', linkId);
+
+    fetch(`/api/deleteLinks`, {
+        method: 'POST',
+        body: formData
+    })
+     .then(response => {
+        if (!response.ok) {
+            throw new Error('Failed to delete link');
+        }
+        var topicId = document.querySelector('.clickable-topic.active').dataset.topicId;
+
+        closeDeleteModal();
+        clearDeleteModal();
+        reloadLinkTable(topicId).then(r => console.log('Link table reloaded'));
+    })
+     .catch(error => {
+        var topicId = document.querySelector('.clickable-topic.active').dataset.topicId;
+
+        closeDeleteModal();
+        clearDeleteModal();
+        reloadLinkTable(topicId).then(r => console.log('Link table reloaded'));
+    });}
+
+
+function clearDeleteModal() {
+    const modalContent = document.querySelector('.deleteContainer');
+    modalContent.innerHTML = 'Please select a question to delete.';
 }

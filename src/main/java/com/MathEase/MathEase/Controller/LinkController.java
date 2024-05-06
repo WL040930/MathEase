@@ -112,4 +112,15 @@ public class LinkController {
         }
     }
 
+    @PostMapping("/api/deleteLinks")
+    public ResponseEntity<String> deleteLinks(@RequestParam("linkId") Long linkId){
+        try {
+            Link link = linkService.getLinkById(linkId);
+            linkRepository.delete(link);
+            return ResponseEntity.ok("Link deleted successfully");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
 }
