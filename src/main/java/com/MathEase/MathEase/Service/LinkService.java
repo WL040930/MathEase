@@ -20,4 +20,8 @@ public class LinkService {
         return linkRepository.findByTopic(topic);
     }
 
+    public Link getLinkById (Long linkId) {
+        return linkRepository.findByLinkId(linkId);
+    }
+
 }

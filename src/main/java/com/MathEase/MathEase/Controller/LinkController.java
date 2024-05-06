@@ -1,6 +1,7 @@
 package com.MathEase.MathEase.Controller;
 
 import com.MathEase.MathEase.Model.Link;
+import com.MathEase.MathEase.Model.LinkDTO;
 import com.MathEase.MathEase.Model.Topic;
 import com.MathEase.MathEase.Repository.LinkRepository;
 import com.MathEase.MathEase.Service.LinkService;
@@ -74,6 +75,22 @@ public class LinkController {
 
             linkRepository.save(link);
             return ResponseEntity.ok("Link added successfully");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    @GetMapping("/api/getLinksInfo/{linkId}")
+    public ResponseEntity<LinkDTO> getLinkInfo(@PathVariable Long linkId) {
+        try {
+            Link link = linkService.getLinkById(linkId);
+
+            LinkDTO linkDTO = new LinkDTO();
+            linkDTO.setLinkId(link.getLinkId());
+            linkDTO.setLink(link.getLinkTitle());
+            linkDTO.setUrl(link.getLinkUrl());
+
+            return ResponseEntity.ok(linkDTO);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }

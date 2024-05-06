@@ -12,4 +12,6 @@ public interface LinkRepository extends JpaRepository<Link, Long>{
 
     List<Link> findByTopic(Topic topic);
 
+    Link findByLinkId(Long linkId);
+
 }

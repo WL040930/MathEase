@@ -34,12 +34,13 @@ document.addEventListener("DOMContentLoaded", async function() {
                         const linkId = Links[row.rowIndex - 1].linkId;
 
                         try {
-                            const linkDetailsResponse = await fetch(`/api/links/${questionId}`);
+                            const linkDetailsResponse = await fetch(`/api/getLinksInfo/${linkId}`);
                             if (!linkDetailsResponse.ok) {
                                 throw new Error('Failed to fetch link details');
                             }
                             const linkDetails = await linkDetailsResponse.json();
 
+                            displayLinkDetails(linkDetails);
                         } catch (error) {
                             console.error('Error fetching link details:', error);
                         }
@@ -236,7 +237,7 @@ async function reloadLinkTable(topicId) {
                     const linkDetails = await linkDetailsResponse.json();
 
                     // Handle displaying link details (e.g., function to display details)
-
+                    displayLinkDetails(linkDetails);
                 } catch (error) {
                     console.error('Error fetching link details:', error);
                 }
@@ -244,5 +245,56 @@ async function reloadLinkTable(topicId) {
         });
     } catch (error) {
         console.error('Error reloading link table:', error);
+    }
+}
+
+
+
+
+
+
+
+function openViewModel() {
+    const modal = document.getElementById('viewModal');
+    if (modal) {
+        modal.style.display = 'block';
+    }
+}
+
+function closeViewModal() {
+    const modal = document.getElementById('viewModal');
+    if (modal) {
+        modal.classList.add('fadeOut');
+        setTimeout(() => {
+            modal.style.display = 'none';
+            modal.classList.remove('fadeOut');
+        }, 300);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    const viewButton = document.querySelector('.view-button');
+    if (viewButton) {
+        viewButton.addEventListener('click', openViewModel);
+    }
+
+    const closeButton = document.querySelector('.close');
+    if (closeButton) {
+        closeButton.addEventListener('click', closeViewModal);
+    }
+});
+
+function displayLinkDetails(linkDetails) {
+    const modalContent = document.querySelector('#viewModal .addContainer');
+
+    if (modalContent) {
+        modalContent.innerHTML = `
+            <div class="addContainer">
+                <p><strong>Title:</strong><br>${linkDetails.link}</p>
+                <p><strong>URL:</strong><br><a href="${linkDetails.url}" target="_blank">${linkDetails.url}</p></a>
+            </div>  
+        `;
+    } else {
+        console.error('Modal content element not found.');
     }
 }
