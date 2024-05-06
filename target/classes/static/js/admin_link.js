@@ -41,6 +41,7 @@ document.addEventListener("DOMContentLoaded", async function() {
                             const linkDetails = await linkDetailsResponse.json();
 
                             displayLinkDetails(linkDetails);
+                            DisplayEditLinkDetails(linkDetails);
                         } catch (error) {
                             console.error('Error fetching link details:', error);
                         }
@@ -204,14 +205,20 @@ function addLink() {
 
 async function reloadLinkTable(topicId) {
     try {
+        const topicResponse = await fetch(`/api/topics/${topicId}`);
+        if (!topicResponse.ok) {
+            throw new Error('Failed to fetch topic details');
+        }
+        const topicDetails = await topicResponse.json();
+
         const linkResponse = await fetch(`/api/links/${topicId}`);
         if (!linkResponse.ok) {
-            throw new Error('Failed to fetch updated links');
+            throw new Error('Failed to fetch Links');
         }
         const links = await linkResponse.json();
 
         const tableBody = document.querySelector('#topicInfoPanel table tbody');
-        tableBody.innerHTML = '';
+        tableBody.innerHTML = ''; // Clear the table body
 
         links.forEach((link, index) => {
             const newRow = document.createElement('tr');
@@ -224,29 +231,33 @@ async function reloadLinkTable(topicId) {
             newRow.addEventListener('click', async () => {
                 const tableRows = document.querySelectorAll('#topicInfoPanel table tbody tr');
                 tableRows.forEach(r => r.classList.remove('selected'));
-
                 newRow.classList.add('selected');
-
-                const linkId = links[index].linkId;
+                const linkId = link.linkId; // Use link object directly
 
                 try {
-                    const linkDetailsResponse = await fetch(`/api/link/${linkId}`);
+                    const linkDetailsResponse = await fetch(`/api/getLinksInfo/${linkId}`);
                     if (!linkDetailsResponse.ok) {
                         throw new Error('Failed to fetch link details');
                     }
                     const linkDetails = await linkDetailsResponse.json();
 
-                    // Handle displaying link details (e.g., function to display details)
                     displayLinkDetails(linkDetails);
+                    DisplayEditLinkDetails(linkDetails);
                 } catch (error) {
                     console.error('Error fetching link details:', error);
                 }
             });
         });
+
+        // Update the topic info panel with the new data
+        const topicInfoPanel = document.getElementById('topicInfoPanel');
+        topicInfoPanel.innerHTML = generateTopicInfoHTML(topicDetails, links);
+
     } catch (error) {
-        console.error('Error reloading link table:', error);
+        console.error('Error fetching data:', error);
     }
 }
+
 
 
 
@@ -297,4 +308,90 @@ function displayLinkDetails(linkDetails) {
     } else {
         console.error('Modal content element not found.');
     }
+}
+
+
+
+
+
+
+
+
+
+
+function openEditModel() {
+    const modal = document.getElementById('editModal');
+    if (modal) {
+        modal.style.display = 'block';
+    }
+}
+
+function closeEditModal() {
+    const modal = document.getElementById('editModal');
+    if (modal) {
+        modal.classList.add('fadeOut');
+        setTimeout(() => {
+            modal.style.display = 'none';
+            modal.classList.remove('fadeOut');
+        }, 300);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    const viewButton = document.querySelector('.edit-button');
+    if (viewButton) {
+        viewButton.addEventListener('click', openEditModel);
+    }
+
+    const closeButton = document.querySelector('.close');
+    if (closeButton) {
+        closeButton.addEventListener('click', closeEditModal);
+    }
+});
+
+function DisplayEditLinkDetails(linkDetails) {
+    const modalContent = document.querySelector('.editContainer');
+    const linkId = document.querySelector('.selected').dataset.questionId;
+
+    // Populate modal with question details
+    modalContent.innerHTML = `
+        <div class="editContainer">
+            <label for="linkTitle">Title:</label>
+            <input type="text" id="editLinkTitle" value="${linkDetails.link}">
+
+            <label for="linkUrl">URL:</label>
+            <textarea id="editLinkUrl" rows="2" cols="30">${linkDetails.url}</textarea>
+            <button class="edit-button" onclick="submitEditItem(${linkDetails.linkId})">Submit</button>
+        </div>
+    `;
+}
+
+function submitEditItem (linkId) {
+    const linkTitle = document.getElementById('editLinkTitle').value;
+    const linkURL = document.getElementById('editLinkUrl').value;
+
+    const formData = new FormData();
+    formData.append('linkTitle', linkTitle);
+    formData.append('linkURL', linkURL);
+    formData.append('linkId', linkId);
+
+    fetch(`/api/editLinks`, {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Failed to edit link');
+        }
+        var topicId = document.querySelector('.clickable-topic.active').dataset.topicId;
+
+        closeEditModal();
+        reloadLinkTable(topicId).then(r => console.log('Link table reloaded'));
+    })
+    .catch(error => {
+        var topicId = document.querySelector('.clickable-topic.active').dataset.topicId;
+
+        closeEditModal();
+        reloadLinkTable(topicId).then(r => console.log('Link table reloaded'));
+    });
 }

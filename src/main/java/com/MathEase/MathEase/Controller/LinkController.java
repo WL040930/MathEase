@@ -96,4 +96,20 @@ public class LinkController {
         }
     }
 
+    @PostMapping("/api/editLinks")
+    public ResponseEntity<String> editLinks(@RequestParam("linkId") Long linkId,
+                                            @RequestParam("linkTitle") String linkTitle,
+                                            @RequestParam("linkURL") String linkUrl){
+        try {
+            Link link = linkService.getLinkById(linkId);
+            link.setLinkTitle(linkTitle);
+            link.setLinkUrl(linkUrl);
+
+            linkRepository.save(link);
+            return ResponseEntity.ok("Link updated successfully");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
 }
