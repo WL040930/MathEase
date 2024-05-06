@@ -13,4 +13,7 @@ public interface QuestionRepository extends JpaRepository<Questions, Long>{
     Questions findByQuestionId(Long questionId);
 
     List<Questions> findByTopicId(Topic topicId);
+
+    Long countByTopicId(Topic topic);
+
 }

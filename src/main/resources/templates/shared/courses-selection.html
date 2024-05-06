@@ -35,3 +35,55 @@
 
     </script>
 </section>
+
+<section class="content-header" th:fragment="IncludeStudentCourse">
+    <link rel="stylesheet" th:href="@{/css/topic.css}">
+
+    <div class="topic-grid">
+        <div th:each="topic, iterStat : ${topics}" class="clickable-topic">
+            <a th:href="@{'/topic/' + ${topic.topicId}}" class="topicATag">
+                <div style="float: left; width: 30%">
+                    <img th:src="@{${topic.picturePath}}" alt="topic image" class="topic-image">
+                </div>
+                <div style="float: right; width: 70%">
+                    <span th:text="'Chapter ' + ${topic.topicId}"></span> <br>
+                    <span th:text="${topic.topicName}"></span>
+                </div>
+                <div style="clear: both"></div>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const clickableDivs = document.querySelectorAll('.clickable-topic');
+
+            clickableDivs.forEach(function(div) {
+                div.addEventListener('click', function() {
+                    const link = div.querySelector('a.topicATag');
+                    if (link) {
+                        window.location.href = link.getAttribute('href');
+                    }
+                });
+            });
+        });
+
+        function isTopicFullyAnswered(topicId) {
+
+            const form = new FormData();
+            form.append('topicId', topicId);
+
+            fetch('/api/topicAnswered', {
+                method: 'POST',
+                body: form
+            }).then(response => response.json())
+                .then(data => {
+                    if (data) {
+                        const topicDiv = document.querySelector(`.clickable-topic[data-topic-id="${topicId}"]`);
+                        topicDiv.style.backgroundColor = 'lightgreen';
+                    }
+                });
+        }
+    </script>
+
+</section>
