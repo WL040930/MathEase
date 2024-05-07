@@ -3,7 +3,7 @@
     <div class="linkContainer">
         <ol>
             <li th:each="link : ${links}">
-                <a th:href="@{${link.linkTitle}}" th:text="${link.linkUrl}"></a>
+                <a th:href="@{${link.linkUrl}}" th:text="${link.linkTitle}" target="_blank"></a>
             </li>
         </ol>
     </div>
