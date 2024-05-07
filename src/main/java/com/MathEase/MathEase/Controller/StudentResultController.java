@@ -12,7 +12,7 @@ public class StudentResultController {
     @Autowired
     private MenuController menuController;
 
-    @GetMapping("/student/quiz/result")
+    @GetMapping("/student/results")
     public String getQuizResult(HttpSession session, Model model) {
 
         if (session.getAttribute("userId") == null || !session.getAttribute("role").equals("student")) {
@@ -21,6 +21,6 @@ public class StudentResultController {
 
         menuController.setMenuBar(session,model);
 
-        return "student/student-quiz-results";
+        return "student/student-results";
     }
 }
