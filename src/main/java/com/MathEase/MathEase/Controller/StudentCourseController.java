@@ -61,7 +61,7 @@ public class StudentCourseController {
 
         boolean isCompleted = answerService.isTopicFullyAnswered(topic, user);
 
-        return  ResponseEntity.ok(isCompleted);
+        return ResponseEntity.ok(isCompleted);
     }
 }
 

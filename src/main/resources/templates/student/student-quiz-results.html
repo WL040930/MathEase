@@ -3,8 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/container.css}">
+    <link rel="stylesheet" th:href="@{/css/admin_question.css}">
+    <script th:src="@{/js/student-quiz-results.js}"></script>
 </head>
 <body>
+<section class="content-header" th:replace="menu/menu-student::IncludeStudentMenu"></section>
+
+
+<div class="container">
+    <!-- Left Panel: Topics -->
+    <div class="left-panel">
+        <div th:each="topic : ${topics}" class="clickable-topic" th:data-topic-id="${topic.topicId}">
+            <div style="float: left; width: 30%">
+                <img th:src="@{${topic.picturePath}}" alt="topic image" class="topic-image">
+            </div>
+            <div style="float: right; width: 65%;">
+                <div class="topic-info-container">
+                    <span th:text="'Chapter ' + ${topic.topicId}" id="test"></span><br>
+                    <span th:text="${topic.topicName}"></span>
+                </div>
+            </div>
+            <div style="clear: both"></div>
+        </div>
+    </div>
+
+    <!-- Right Panel: Topic Information -->
+    <div class="right-panel" id="topicInfoPanel">
+        <p>Select a topic to view details...</p>
+    </div>
+</div>
 
 </body>
 </html>
