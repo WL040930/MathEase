@@ -71,16 +71,6 @@ public class QuizController {
         return "student/student-quiz";
     }
 
-    @GetMapping("/student/quiz/result")
-    public String getQuizResult(HttpSession session, Model model) {
-
-        if (session.getAttribute("userId") == null || !session.getAttribute("role").equals("student")) {
-            return "redirect:/login";
-        }
-
-        return "student/student-quiz-results";
-    }
-
     @PostMapping("/api/checkAnswer")
     public ResponseEntity<Boolean> checkAnswer (HttpSession session,
                                                 @RequestParam("questionId") Long questionId,
