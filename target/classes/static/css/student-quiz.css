@@ -1,0 +1,72 @@
+.quiz-container {
+    display: none;
+}
+.quiz-container.active {
+    display: block;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: white;
+    /*overflow: hidden;*/
+    background: linear-gradient(45deg, #23074d, #cc5333); /* Gradient background */
+    animation: animateBackground 20s linear infinite;
+}
+
+@keyframes animateBackground {
+    0% {
+        background-position: 0% 50%; /* Initial position of the gradient */
+    }
+    50% {
+        background-position: 100% 50%; /* Midpoint position of the gradient */
+    }
+    100% {
+        background-position: 0% 50%; /* Final position of the gradient (same as start) */
+    }
+}
+
+.quiz-container {
+    width: 1000px;
+    padding: 20px;
+    background-color: purple;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.question {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.image-container {
+    margin-bottom: 20px;
+}
+
+.image-container img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+.option {
+    display: block;
+    margin-bottom: 10px;
+    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.option:hover {
+    background-color: rgba(255, 255, 255, 0.3); /* Lighter semi-transparent white on hover */
+}
+
+.selected {
+    background-color: #ff9800; /* Selected option color (orange) */
+}
