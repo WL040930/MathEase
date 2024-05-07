@@ -70,3 +70,11 @@ body {
 .selected {
     background-color: #ff9800; /* Selected option color (orange) */
 }
+
+.correct {
+    background-color: #4caf50; /* Correct option color (green) */
+}
+
+.incorrect {
+    background-color: #f44336; /* Incorrect option color (red) */
+}

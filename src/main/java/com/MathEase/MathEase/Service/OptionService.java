@@ -42,4 +42,13 @@ public class OptionService {
         return optionRepository.findByQuestion(questions);
     }
 
+    public boolean isAnswerCorrect(Long optionId) {
+        Options option = optionRepository.findById(optionId).get();
+        return option.isCorrect();
+    }
+
+    public Options getOptionById(Long option) {
+        return optionRepository.findById(option).get();
+    }
+
 }

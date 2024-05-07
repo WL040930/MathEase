@@ -1,5 +1,6 @@
 package com.MathEase.MathEase.Service;
 
+import com.MathEase.MathEase.Model.Questions;
 import com.MathEase.MathEase.Model.Topic;
 import com.MathEase.MathEase.Model.User;
 import com.MathEase.MathEase.Repository.QuestionRepository;
@@ -36,6 +37,10 @@ public class AnswerService {
             return false;
         }
 
+    }
+
+    public boolean isRecordExisted (User user, Questions question) {
+        return userAnswerRepository.existsByUserAndQuestion(user, question);
     }
 
 }

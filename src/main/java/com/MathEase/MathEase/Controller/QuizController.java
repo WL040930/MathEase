@@ -1,19 +1,17 @@
 package com.MathEase.MathEase.Controller;
 
-import com.MathEase.MathEase.Model.Options;
-import com.MathEase.MathEase.Model.Questions;
-import com.MathEase.MathEase.Model.QuizDTO;
-import com.MathEase.MathEase.Model.Topic;
-import com.MathEase.MathEase.Service.OptionService;
-import com.MathEase.MathEase.Service.QuestionAttachmentService;
-import com.MathEase.MathEase.Service.QuestionService;
-import com.MathEase.MathEase.Service.TopicService;
+import com.MathEase.MathEase.Model.*;
+import com.MathEase.MathEase.Repository.UserAnswerRepository;
+import com.MathEase.MathEase.Service.*;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -24,13 +22,18 @@ public class QuizController {
 
     @Autowired
     private QuestionService questionService;
-
     @Autowired
     private TopicService topicService;
     @Autowired
     private OptionService optionService;
     @Autowired
     private QuestionAttachmentService questionAttachmentService;
+    @Autowired
+    private AnswerService answerService;
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private UserAnswerRepository userAnswerRepository;
 
     @GetMapping("/student/quiz/{topicId}")
     public String getQuiz(HttpSession session,
@@ -76,6 +79,39 @@ public class QuizController {
         }
 
         return "student/student-quiz-results";
+    }
+
+    @PostMapping("/api/checkAnswer")
+    public ResponseEntity<Boolean> checkAnswer (HttpSession session,
+                                                @RequestParam("questionId") Long questionId,
+                                                @RequestParam("optionId") Long optionId) {
+
+        // check if the record existed
+        Long userId = (Long) session.getAttribute("userId");
+        User user = userService.getUserById(userId);
+        Questions question = questionService.getQuestionById(questionId);
+        Options option = optionService.getOptionById(optionId);
+
+        if (answerService.isRecordExisted(user, question)) {
+            UserAnswer userAnswer = userAnswerRepository.findByUserAndQuestion(user, question);
+            userAnswer.setOption(option);
+            userAnswerRepository.save(userAnswer);
+        } else {
+            UserAnswer userAnswer = new UserAnswer();
+            userAnswer.setUser(user);
+            userAnswer.setQuestion(question);
+            userAnswer.setOption(option);
+            userAnswerRepository.save(userAnswer);
+        }
+
+
+        if (optionService.isAnswerCorrect(optionId)) {
+            return ResponseEntity.ok(true);
+        } else {
+            return ResponseEntity.ok(false);
+        }
+
+
     }
 
 }
