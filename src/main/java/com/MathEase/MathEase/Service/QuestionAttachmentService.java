@@ -19,4 +19,8 @@ public class QuestionAttachmentService {
         }
     }
 
+    public boolean isAttachmentPresent(Questions questions) {
+        return questionAttachmentRepository.existsByQuestion(questions);
+    }
+
 }

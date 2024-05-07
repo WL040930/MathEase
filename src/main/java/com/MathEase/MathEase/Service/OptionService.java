@@ -38,4 +38,8 @@ public class OptionService {
         return wrongOptions;
     }
 
+    public List<Options> getOptionsByQuestion(Questions questions) {
+        return optionRepository.findByQuestion(questions);
+    }
+
 }
