@@ -2,11 +2,11 @@
 <!--    <section class="content-header" th:replace="shared/link-viewing::IncludeLinks"></section>-->
     <div class="linkContainer">
         <!-- Loop through links and render them -->
-        <ul>
+        <ol>
             <li th:each="link : ${links}">
-<!--                <a th:href="@{${link.url}}" th:text="${link.name}"></a>--> h1h1
+                <a th:href="@{${link.linkTitle}}" th:text="${link.linkUrl}"></a>
             </li>
-        </ul>
+        </ol>
     </div>
 
 </section>
