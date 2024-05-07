@@ -1,10 +1,140 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Student Quiz</title>
+    <style>
+        .quiz-container {
+            display: none;
+        }
+        .quiz-container.active {
+            display: block;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            /*overflow: hidden;*/
+            background: linear-gradient(45deg, #23074d, #cc5333); /* Gradient background */
+            animation: animateBackground 20s linear infinite;
+        }
+
+        @keyframes animateBackground {
+            0% {
+                background-position: 0% 50%; /* Initial position of the gradient */
+            }
+            50% {
+                background-position: 100% 50%; /* Midpoint position of the gradient */
+            }
+            100% {
+                background-position: 0% 50%; /* Final position of the gradient (same as start) */
+            }
+        }
+
+        .quiz-container {
+            width: 1000px;
+            padding: 20px;
+            background-color: purple;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .question {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .image-container {
+            margin-bottom: 20px;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+
+        .option {
+            display: block;
+            margin-bottom: 10px;
+            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .option:hover {
+            background-color: rgba(255, 255, 255, 0.3); /* Lighter semi-transparent white on hover */
+        }
+
+        .selected {
+            background-color: #ff9800; /* Selected option color (orange) */
+        }
+    </style>
 </head>
 <body>
+
+<div th:each="quiz, num : ${quizDTO}" class="quiz-container" th:classappend="${num.index == 0} ? 'active' : ''">
+    <form th:action="@{/submitAnswer}" method="post" id="quizForm" th:if="${not #lists.isEmpty(quizDTO)}">
+        <div class="topicPanel">
+            <h3 th:text="'Question ' + (${num.index + 1})"></h3>
+            <p th:text="${quiz.quiz}" class="question"></p>
+            <div class="image-container" th:if="${quiz.filePath}">
+                <img th:src="@{'/data/' + ${quiz.filePath}}" alt="Quiz Image">
+            </div>
+        </div>
+        <div class="options">
+            <div th:each="option, optIndex : ${quiz.options}">
+                <div class="option" th:id="'option_' + ${optIndex.index}"
+                     onclick="handleOptionSelection(this)">
+                    <span th:text="${option.option}"></span>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" name="quizId" th:value="${quiz.quizId}"/> <!-- Hidden input for quizId -->
+    </form>
+</div>
+
+<script th:inline="javascript">
+    var currentIndex = 0;
+    var quizContainers = document.querySelectorAll('.quiz-container');
+
+    function handleOptionSelection(selectedOption) {
+        var currentQuestion = selectedOption.getAttribute('name');
+        var radioButtons = document.querySelectorAll('input[name="' + currentQuestion + '"]');
+        radioButtons.forEach(function(button) {
+            button.disabled = true;
+        });
+
+        // Highlight selected option
+        selectedOption.classList.add('selected');
+
+        setTimeout(function() {
+            showNextQuestion();
+        }, 1000);
+    }
+
+    function updateOptionColor(selectedOption, isCorrect) {
+        selectedOption.classList.remove('selected');
+        selectedOption.classList.add(isCorrect ? 'correct' : 'incorrect'); 
+    }
+
+    function showNextQuestion() {
+        if (currentIndex < quizContainers.length - 1) {
+            quizContainers[currentIndex].classList.remove('active');
+            currentIndex++;
+            quizContainers[currentIndex].classList.add('active');
+        } else {
+            window.location.href = '/student/quiz/result';
+        }
+    }
+</script>
 
 </body>
 </html>
