@@ -42,6 +42,7 @@ public class TopicController {
 
             List<Link> links = linkService.getLinksByTopic(topic);
 
+            model.addAttribute("topic", topicId);
             model.addAttribute("links", links);
 
             return "student/student-topic";

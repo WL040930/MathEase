@@ -17,7 +17,7 @@
     <section class="content-header" th:replace="~{shared/link-viewing::IncludeLinks}"></section>
 
     <div class="buttonContainer">
-        <a th:href="@{/student/quiz}"><div class="buttonQuiz">Take Quiz</div></a>
+        <a th:href="@{'/student/quiz/' + ${topic}}"><div class="buttonQuiz">Take Quiz</div></a>
     </div>
 </div>
 </body>
