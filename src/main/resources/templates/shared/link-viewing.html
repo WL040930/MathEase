@@ -1,7 +1,6 @@
 <section class="content-header" th:fragment="IncludeLinks">
 <!--    <section class="content-header" th:replace="shared/link-viewing::IncludeLinks"></section>-->
     <div class="linkContainer">
-        <!-- Loop through links and render them -->
         <ol>
             <li th:each="link : ${links}">
                 <a th:href="@{${link.linkTitle}}" th:text="${link.linkUrl}"></a>
