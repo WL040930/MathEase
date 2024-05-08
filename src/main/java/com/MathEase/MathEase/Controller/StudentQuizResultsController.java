@@ -1,6 +1,8 @@
 package com.MathEase.MathEase.Controller;
 
 import com.MathEase.MathEase.Model.*;
+import com.MathEase.MathEase.Repository.QuestionAttachmentRepository;
+import com.MathEase.MathEase.Repository.UserAnswerRepository;
 import com.MathEase.MathEase.Service.*;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,10 @@ public class StudentQuizResultsController {
     private AnswerService answerService;
     @Autowired
     private OptionService optionService;
+    @Autowired
+    private UserAnswerRepository userAnswerRepository;
+    @Autowired
+    private QuestionAttachmentRepository questionAttachmentRepository;
 
     @GetMapping("/student/congratulations")
     public String Congrats(HttpSession session, Model model) {
@@ -78,6 +84,8 @@ public class StudentQuizResultsController {
 
             Questions questions = questionService.getQuestionById(userA.getQuestion().getQuestionId());
 
+            studentResult.setQuestionId(questions.getQuestionId());
+
             // correct option fetched
             Options correctOptions = optionService.getCorrectOption(questions);
             studentResult.setCorrectOptions(correctOptions.getOption());
@@ -100,5 +108,31 @@ public class StudentQuizResultsController {
         return ResponseEntity.ok(studentResults);
     }
 
+
+
+    @GetMapping("/api/questionStudent/{questionId}")
+    public ResponseEntity<StudentResult> getQuestionsDetails (@PathVariable Long questionId,
+                                                              HttpSession session){
+
+        Questions questions = questionService.getQuestionById(questionId);
+        Long userId = (Long) session.getAttribute("userId");
+        User user = userService.getUserById(userId);
+
+        UserAnswer userAnswer = userAnswerRepository.findByUserAndQuestion(user, questions);
+
+        StudentResult studentResult = new StudentResult();
+        studentResult.setQuiz(questions.getQuestion());
+        studentResult.setCorrectOptions(optionService.getCorrectOption(questions).getOption());
+        studentResult.setWrongOptions(optionService.getWrongOptions(questions).stream().map(Options::getOption).toList());
+        studentResult.setUserAnswer(userAnswer.getOption().getOption());
+
+        if (questionAttachmentRepository.existsByQuestion(questions)) {
+            QuestionAttachment questionAttachment = questionAttachmentRepository.findByQuestion(questions);
+            studentResult.setFilePath(questionAttachment.getAttachmentFilename());
+        }
+
+        return ResponseEntity.ok(studentResult);
+
+    }
 
 }

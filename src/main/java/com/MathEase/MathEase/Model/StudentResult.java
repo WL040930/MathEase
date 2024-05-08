@@ -11,6 +11,7 @@ import java.util.List;
 @Data
 public class StudentResult {
 
+    private Long questionId;
     private String quiz;
     private String filePath;
     private String correctOptions;
