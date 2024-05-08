@@ -3,12 +3,15 @@ package com.MathEase.MathEase.Service;
 import com.MathEase.MathEase.Model.Questions;
 import com.MathEase.MathEase.Model.Topic;
 import com.MathEase.MathEase.Model.User;
+import com.MathEase.MathEase.Model.UserAnswer;
 import com.MathEase.MathEase.Repository.QuestionRepository;
 import com.MathEase.MathEase.Repository.TopicRepository;
 import com.MathEase.MathEase.Repository.UserAnswerRepository;
 import com.MathEase.MathEase.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class AnswerService {
@@ -43,4 +46,7 @@ public class AnswerService {
         return userAnswerRepository.existsByUserAndQuestion(user, question);
     }
 
+    public List<UserAnswer> getAnswersByUserAndTopic(User user, Topic topic) {
+        return userAnswerRepository.findByUserAndQuestion_TopicId(user, topic);
+    }
 }

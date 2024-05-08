@@ -1,11 +1,9 @@
 package com.MathEase.MathEase.Repository;
 
-import com.MathEase.MathEase.Model.Questions;
-import com.MathEase.MathEase.Model.Topic;
-import com.MathEase.MathEase.Model.User;
-import com.MathEase.MathEase.Model.UserAnswer;
+import com.MathEase.MathEase.Model.*;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import java.util.List;
 
 @Repository
 public interface UserAnswerRepository extends JpaRepository<UserAnswer, Long>{
@@ -15,4 +13,7 @@ public interface UserAnswerRepository extends JpaRepository<UserAnswer, Long>{
     boolean existsByUserAndQuestion(User user, Questions question);
 
     UserAnswer findByUserAndQuestion(User user, Questions question);
+
+    List<UserAnswer> findByUserAndQuestion_TopicId(User user, Topic topic);
+
 }
