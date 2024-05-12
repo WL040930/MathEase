@@ -16,4 +16,8 @@ public interface UserAnswerRepository extends JpaRepository<UserAnswer, Long>{
 
     List<UserAnswer> findByUserAndQuestion_TopicId(User user, Topic topic);
 
+    int countByQuestion_TopicId(Topic topic);
+
+    int countByQuestion_TopicIdAndOption_isCorrect(Topic topic, boolean isCorrect);
+
 }

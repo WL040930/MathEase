@@ -13,41 +13,34 @@ public class JsonParser {
      */
     public static String extractUsername(String jsonString) {
         try {
-            // Create ObjectMapper instance
+
             ObjectMapper objectMapper = new ObjectMapper();
 
-            // Parse JSON string into JsonNode
             JsonNode jsonNode = objectMapper.readTree(jsonString);
 
-            // Retrieve the value associated with "username" key
             JsonNode usernameNode = jsonNode.get("username");
             if (usernameNode != null && usernameNode.isTextual()) {
                 return usernameNode.asText();
             }
         } catch (Exception e) {
-            // Handle JSON parsing or other exceptions
             System.err.println("Error extracting username from JSON: " + e.getMessage());
         }
-        return null; // Return null if username not found or error occurred
+        return null;
     }
 
     public static String extractPassword(String jsonString) {
         try {
-            // Create ObjectMapper instance
             ObjectMapper objectMapper = new ObjectMapper();
 
-            // Parse JSON string into JsonNode
             JsonNode jsonNode = objectMapper.readTree(jsonString);
 
-            // Retrieve the value associated with "password" key
             JsonNode passwordNode = jsonNode.get("password");
             if (passwordNode != null && passwordNode.isTextual()) {
                 return passwordNode.asText();
             }
         } catch (Exception e) {
-            // Handle JSON parsing or other exceptions
             System.err.println("Error extracting password from JSON: " + e.getMessage());
         }
-        return null; // Return null if password not found or error occurred
+        return null;
     }
 }

@@ -46,3 +46,7 @@ reload the page only)
 1. Admin Dashboard for design
 2. Admin Results
 3. First Main page
+4. Low performance in Student Quiz Page
+5. Student Results Page
+6. Student Dashboard
+7. All Chapters Page

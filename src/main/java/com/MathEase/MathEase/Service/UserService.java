@@ -21,7 +21,6 @@ public class UserService {
             return true;
         }
 
-        // Invalid credentials
         return false;
     }
 
@@ -105,7 +104,6 @@ public class UserService {
     }
 
     public List<String> findUsersByEmailContaining(String query) {
-        // Use UserRepository to fetch user emails containing the specified query
         List<String> matchingEmails = userRepository.findByEmailContaining(query)
                 .stream()
                 .map(user -> user.getEmail())
