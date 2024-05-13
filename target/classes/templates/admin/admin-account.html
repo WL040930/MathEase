@@ -217,49 +217,6 @@
         });
     });
 
-    // function refreshTable() {
-    //     fetch('/api/getUsers')
-    //         .then(response => {
-    //             if (!response.ok) {
-    //                 throw new Error('Network response was not ok');
-    //             }
-    //             return response.json();
-    //         })
-    //         .then(users => {
-    //             const tbody = document.querySelector('#userTable tbody');
-    //             tbody.innerHTML = ''; // Clear existing table rows
-    //
-    //             users.forEach((user, index) => {
-    //                 const isActive = user.isActivated;
-    //                 const statusClass = isActive ? 'active-button' : 'inactive-button';
-    //                 const statusText = isActive ? 'Active' : 'Inactive';
-    //
-    //                 const row = `
-    //                 <tr>
-    //                     <td>${index + 1}</td>
-    //                     <td>${user.username}</td>
-    //                     <td>${user.email}</td>
-    //                     <td>${user.joinedDate}</td>
-    //                     <td>
-    //                         <button class="${statusClass}" data-id="${user.userId}" onclick="handleStatusClick(this)">
-    //                             ${statusText}
-    //                         </button>
-    //                     </td>
-    //                     <td>
-    //                         <button class="edit-button" data-id="${user.userId}" onclick="handleEditClick(this)">
-    //                             Edit
-    //                         </button>
-    //                     </td>
-    //                 </tr>`;
-    //                 tbody.insertAdjacentHTML('beforeend', row);
-    //             });
-    //         })
-    //         .catch(error => {
-    //             console.error('Error fetching users:', error);
-    //         });
-    // }
-
-
 </script>
 
 </body>
