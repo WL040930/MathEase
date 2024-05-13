@@ -14,7 +14,5 @@ public class AdminResultsDTO {
     private int incorrectAnswers;
     private int totalUsers;
     private double averageScore;
-    private int maxScore;
-    private int minScore;
 
 }

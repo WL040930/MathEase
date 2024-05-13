@@ -6,6 +6,9 @@
     <link rel="stylesheet" th:href="@{/css/container.css}">
     <link rel="stylesheet" th:href="@{/css/admin_question.css}">
     <script th:src="@{/js/admin_results.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/admin_result.css}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script th:src="@{https://cdn.jsdelivr.net/npm/chart.js}"></script>
 </head>
 <body>
     <section class="content-header" th:replace="menu/menu-admin::IncludeMenu"></section>
@@ -30,6 +33,16 @@
         <p>Select a topic to view details...</p>
     </div>
 </div>
+
+    <div id="viewModal" class="question-modal">
+        <div class="view-model-content">
+            <span class="close" onclick="closeViewModal()">&times;</span>
+            <h2>View Question</h2>
+            <div class="addContainer">
+                <div style="width: 100%; text-align: center">Please select a question</div>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>

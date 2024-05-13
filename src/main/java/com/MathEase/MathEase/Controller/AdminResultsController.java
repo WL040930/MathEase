@@ -49,9 +49,21 @@ public class AdminResultsController {
         Topic topic = topicService.getTopicById(topicId);
 
         adminResultsDTO.setTotalAnswers(userAnswerService.getTotalNumbersOfUserAnswerByQuestion_TopicId(topic));
+        if (adminResultsDTO.getTotalAnswers() == 0) {
+            adminResultsDTO.setAverageScore(0);
+            adminResultsDTO.setTotalUsers(0);
+            adminResultsDTO.setCorrectAnswers(0);
+            adminResultsDTO.setIncorrectAnswers(0);
+            return ResponseEntity.ok(adminResultsDTO);
+        }
+
         adminResultsDTO.setCorrectAnswers(userAnswerService.getTotalNumbersOfUserAnswerByQuestion_TopicIdAndOption_isCorrect(topic, true));
         adminResultsDTO.setIncorrectAnswers(adminResultsDTO.getTotalAnswers() - adminResultsDTO.getCorrectAnswers());
+        double percentage = (double) adminResultsDTO.getCorrectAnswers() / adminResultsDTO.getTotalAnswers() * 100;
+        adminResultsDTO.setAverageScore(percentage);
+        adminResultsDTO.setTotalUsers(userAnswerService.countDistinctUsersByTopic(topic));
 
-        return ResponseEntity.ok(new AdminResultsDTO());
+        System.out.println(adminResultsDTO);
+        return ResponseEntity.ok(adminResultsDTO);
     }
 }

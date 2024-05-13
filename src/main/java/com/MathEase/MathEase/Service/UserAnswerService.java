@@ -27,4 +27,7 @@ public class UserAnswerService {
         return userAnswerRepository.countByQuestion_TopicIdAndOption_isCorrect(topic,isCorrect);
     }
 
+    public int countDistinctUsersByTopic(Topic topic) {
+        return userAnswerRepository.countDistinctUsersByTopic(topic);
+    }
 }
