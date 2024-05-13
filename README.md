@@ -44,7 +44,7 @@ reload the page only)
 
 ## left
 1. Admin Dashboard for design
-2. Admin Results
+2. 
 3. First Main page
 4. Low performance in Student Quiz Page
 5. Student Results Page

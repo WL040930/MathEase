@@ -1,16 +1,101 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" th:href="@{/css/container.css}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script th:src="@{https://cdn.jsdelivr.net/npm/chart.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/student_results.css}">
 </head>
 <body>
 <section class="content-header" th:replace="menu/menu-student::IncludeStudentMenu"></section>
 
 <div class="container">
-    
+    <div id="resultChartContainer">
+        <canvas id="resultChart"></canvas>
+    </div>
+    <div>
+    <h1>Student Results</h1>
+
+    <!-- Table for Results -->
+    <table id="resultTable">
+        <thead>
+        <tr>
+            <th>Chapter</th>
+            <th>Chapter Name</th>
+            <th>Score</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Use Thymeleaf to iterate over resultDTOs and generate table rows -->
+        <tr th:each="resultDTO : ${resultDTOs}">
+            <td th:text="${resultDTO.chapter}"></td>
+            <td th:text="${resultDTO.chapterName}"></td>
+            <td th:text="${resultDTO.score != null ? resultDTO.score + '%' : 'Not Available'}"></td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+
 </div>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get data for the chart from Thymeleaf model
+        const resultDTOs = /*[[${resultDTOs}]]*/ [];
+
+        if (resultDTOs && resultDTOs.length > 0) {
+            // Extract chapter names and scores from resultDTOs
+            const chapterNames = resultDTOs.map(dto => dto.chapterName);
+            const scores = resultDTOs.map(dto => dto.score || 0);
+
+            // Define custom colors based on score values
+            const backgroundColors = scores.map(score => {
+                return score >= 50 ? 'rgba(75, 192, 98, 0.6)' : 'rgba(255, 99, 132, 0.6)';
+            });
+
+            // Create a bar chart using Chart.js
+            const ctx = document.getElementById('resultChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: chapterNames,
+                    datasets: [{
+                        label: 'Score (%)',
+                        data: scores,
+                        backgroundColor: backgroundColors, // Use custom background colors
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                max: 100
+                            },
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Score (%)'
+                            }
+                        }],
+                        xAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Chapter Name'
+                            }
+                        }]
+                    }
+                }
+            });
+        } else {
+            console.error('No data available for chart.');
+        }
+    });
+    /*]]>*/
+</script>
 
 </body>
 </html>
