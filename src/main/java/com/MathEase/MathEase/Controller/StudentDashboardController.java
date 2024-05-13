@@ -14,7 +14,7 @@ public class StudentDashboardController {
         this.menuController = menuController;
     }
 
-    @GetMapping("student/dashboard")
+    @GetMapping("/student/dashboard")
     public String showAdminDashboard(HttpSession session, Model model) {
 
 
