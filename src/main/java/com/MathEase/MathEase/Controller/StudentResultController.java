@@ -48,8 +48,6 @@ public class StudentResultController {
             resultDTOs.add(resultDTO);
         }
 
-        System.out.println(resultDTOs);
-
         model.addAttribute("resultDTOs", resultDTOs);
         menuController.setMenuBar(session,model);
         return "student/student-results";
