@@ -51,7 +51,6 @@ public class AccountManagementController {
     public ResponseEntity<String> updateStatus(@RequestParam("userId") Long userId,
                                                @RequestParam("newStatus") boolean status) {
 
-        System.out.println(status);
         userService.updateUserStatus(userId, status);
         return ResponseEntity.ok("User status updated successfully");
     }

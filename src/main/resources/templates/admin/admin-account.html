@@ -15,7 +15,11 @@
 
     <!-- Search Bar -->
     <div class="search-container">
-        <input type="text" id="searchInput" class="search-input" placeholder="Search by email...">
+        <input type="text" id="searchInput" class="search-input" placeholder="Search...">
+        <select id="searchCriteria">
+            <option value="email">Email</option>
+            <option value="username">Username</option>
+        </select>
         <div id="searchResults"></div>
     </div>
 
@@ -201,15 +205,18 @@
     }
 
     const searchInput = document.getElementById('searchInput');
+    const searchCriteria = document.getElementById('searchCriteria');
     const userRows = document.querySelectorAll('.userRow');
 
     searchInput.addEventListener('input', function() {
         const query = this.value.trim().toLowerCase();
+        const criteria = searchCriteria.value;
 
         userRows.forEach(row => {
-            const email = row.cells[2].textContent.toLowerCase();
+            const cellIndex = criteria === 'email' ? 2 : 1;
+            const cellText = row.cells[cellIndex].textContent.toLowerCase();
 
-            if (email.includes(query)) {
+            if (cellText.includes(query)) {
                 row.style.display = '';
             } else {
                 row.style.display = 'none';

@@ -144,3 +144,41 @@ th, td {
 .editPanelContent button:hover {
     background-color: #0056b3;
 }
+
+/* Styling the select dropdown */
+.search-container select {
+    padding: 8px;
+    width: 150px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    appearance: none; /* Remove default appearance (arrow) */
+    background-color: #fff; /* Dropdown background color */
+}
+
+/* Styling the select dropdown arrow */
+.search-container select::after {
+    content: '\25BC'; /* Unicode downward arrow */
+    position: absolute;
+    top: 12px;
+    right: 10px;
+    font-size: 12px;
+    color: #666;
+    pointer-events: none; /* Avoid click events on arrow */
+}
+
+/* Styling select dropdown options */
+.search-container select option {
+    padding: 8px;
+    background-color: #fff;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Hover effect on select options */
+.search-container select option:hover {
+    background-color: #f5f5f5;
+}
