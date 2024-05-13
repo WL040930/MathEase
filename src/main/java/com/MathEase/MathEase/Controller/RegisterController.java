@@ -59,6 +59,7 @@ public class RegisterController {
         user.setPassword(password);
         user.setRole(roleService.getRoleById(2L));
         user.setActivated(false);
+        user.setJoinedDate(fileNameUtil.getCurrentDate());
 
         if (file != null && !file.isEmpty()) {
             String originalFileName = file.getOriginalFilename();

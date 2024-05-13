@@ -40,4 +40,8 @@ public class FileNameUtil {
         String uniqueName = UUID.randomUUID().toString() + extension;
         return uniqueName;
     }
+
+    public String getCurrentDate() {
+        return java.time.LocalDate.now().toString();
+    }
 }
