@@ -7,6 +7,7 @@
     <link rel="stylesheet" th:href="@{/css/settings.css}">
     <link rel="stylesheet" th:href="@{/css/popup_message.css}">
     <script th:src="@{/js/settings.js}"></script>
+    <script th:src="@{/js/settings_logout.js}"></script>
     <!--    <section class="content-header" th:replace="shared/link-viewing::IncludeLinks"></section>-->
 
 </head>
@@ -81,6 +82,15 @@
     <div id="settingsContent" class="content">
         <h2>Settings</h2>
         <p>Settings options go here...</p>
+        <button onclick="openModal()">Logout</button>
+    </div>
+</div>
+
+<div id="logoutModal" class="modal">
+    <div class="modal-content">
+        <p>Are you sure you want to logout?</p>
+        <button onclick="confirmLogout()" id="yesButton">Yes</button>
+        <button onclick="cancelLogout()" id="noButton">No</button>
     </div>
 </div>
 
