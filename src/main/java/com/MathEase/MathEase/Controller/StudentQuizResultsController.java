@@ -79,14 +79,12 @@ public class StudentQuizResultsController {
         for (UserAnswer userA: userAnswers) {
             StudentResult studentResult = new StudentResult();
 
-            // question fetched
             studentResult.setQuiz(userA.getQuestion().getQuestion());
 
             Questions questions = questionService.getQuestionById(userA.getQuestion().getQuestionId());
 
             studentResult.setQuestionId(questions.getQuestionId());
 
-            // correct option fetched
             Options correctOptions = optionService.getCorrectOption(questions);
             studentResult.setCorrectOptions(correctOptions.getOption());
 
@@ -96,10 +94,8 @@ public class StudentQuizResultsController {
                 wrongOptionsList.add(wrongOption.getOption());
             }
 
-            // wrong options fetched
             studentResult.setWrongOptions(wrongOptionsList);
 
-            // user answer fetched
             studentResult.setUserAnswer(userA.getOption().getOption());
 
             studentResults.add(studentResult);

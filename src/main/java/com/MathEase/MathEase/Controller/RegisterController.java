@@ -67,22 +67,18 @@ public class RegisterController {
 
             String fileName = fileNameUtil.transferFile(file, fileNameUtil.UPLOAD_DIR);
 
-            // Set the profile picture filename in the user object
             user.setProfilePicture(fileName);
         } else {
             user.setProfilePicture("default_profile_picture.jpg");
         }
 
-        // Save the user to database
         User savedUser = userRepository.save(user);
 
         if (savedUser != null) {
-            // Generate unique activation token
             String activationToken = UUID.randomUUID().toString();
             savedUser.setActivationToken(activationToken);
-            userRepository.save(savedUser); // Update user with activation token
+            userRepository.save(savedUser);
 
-            // Send verification email
             emailService.sendVerificationEmail(savedUser);
 
             model.addAttribute("success", "User registered successfully! Please check your email to activate your account.");

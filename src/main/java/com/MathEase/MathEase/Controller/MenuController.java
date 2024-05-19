@@ -22,7 +22,6 @@ public class MenuController {
             return "redirect:/login?error=Unauthorized";
         }
 
-        // Get user information based on session
         Long userId = (Long) session.getAttribute("userId");
         User user = userRepository.findById(userId).orElse(null);
         if (user != null) {

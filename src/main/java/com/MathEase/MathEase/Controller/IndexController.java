@@ -8,6 +8,6 @@ public class IndexController {
 
     @GetMapping("/")
     public String showHomePage() {
-        return "index"; // Return the name of the Thymeleaf template (index.html)
+        return "index";
     }
 }

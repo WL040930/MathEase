@@ -35,7 +35,7 @@ public class AccountManagementController {
             return "redirect:/login";
         }
 
-        List<User> users = userService.getAllUsers(); // Assuming a method to fetch all users
+        List<User> users = userService.getAllUsers();
         model.addAttribute("users", users);
         menuController.setMenuBar(session, model);
 
@@ -83,7 +83,6 @@ public class AccountManagementController {
         return ResponseEntity.ok(userDTOs);
     }
 
-    // Helper method to map User entity to UserDTO
     private UserDTO mapUserToDTO(User user) {
         UserDTO dto = new UserDTO();
         dto.setUserId(user.getUserId());
@@ -91,7 +90,6 @@ public class AccountManagementController {
         dto.setEmail(user.getEmail());
         dto.setJoinedDate(user.getJoinedDate());
         dto.setActivated(user.isActivated());
-        // Map other properties as needed
         return dto;
     }
 

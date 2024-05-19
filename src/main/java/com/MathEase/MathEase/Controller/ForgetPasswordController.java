@@ -57,14 +57,13 @@ public class ForgetPasswordController {
     public String resetPassword(@RequestParam(value = "token", required = false) String token, Model model) {
         if (token == null) {
             model.addAttribute("message", "Reset token is missing.");
-            return "email_message/failed-reset-password"; // Redirect to an error page
+            return "email_message/failed-reset-password";
         }
 
         User user = userService.getUserByResetToken(token);
         if (user == null) {
-            // Handle invalid token scenario
             model.addAttribute("message", "Invalid reset token.");
-            return "email_message/failed-reset-password"; // Redirect to an error page
+            return "email_message/failed-reset-password";
         }
 
         model.addAttribute("token", token);
@@ -92,7 +91,7 @@ public class ForgetPasswordController {
             userRepository.save(user);
 
             redirectAttributes.addFlashAttribute("successMessage", "Your password has been updated. Please login with your new password.");
-            return "redirect:/login"; // Redirect to login page after password reset
+            return "redirect:/login";
         } else {
             model.addAttribute("message", "Invalid reset token.");
             return "forget-password";

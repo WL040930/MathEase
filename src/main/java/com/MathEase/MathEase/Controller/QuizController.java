@@ -76,7 +76,6 @@ public class QuizController {
                                                 @RequestParam("questionId") Long questionId,
                                                 @RequestParam("optionId") Long optionId) {
 
-        // check if the record existed
         Long userId = (Long) session.getAttribute("userId");
         User user = userService.getUserById(userId);
         Questions question = questionService.getQuestionById(questionId);

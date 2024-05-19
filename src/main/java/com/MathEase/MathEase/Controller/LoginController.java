@@ -27,7 +27,7 @@ public class LoginController {
 
     @GetMapping("/login")
     public String showLoginPage() {
-        return "login"; // Return the login.html Thymeleaf template
+        return "login";
     }
 
     @GetMapping("/logout")
@@ -50,7 +50,7 @@ public class LoginController {
 
             if (user == null) {
                 redirectAttributes.addFlashAttribute("error", "User not found");
-                return "redirect:/login"; // Redirect with error message
+                return "redirect:/login";
             }
 
             if (userService.isUserActivated(email)) {
@@ -67,7 +67,6 @@ public class LoginController {
                 }
                 
             } else {
-                // Generate activation token and send verification email
                 String activationToken = UUID.randomUUID().toString();
                 user.setActivationToken(activationToken);
                 userRepository.save(user);
@@ -75,11 +74,11 @@ public class LoginController {
                 emailService.sendVerificationEmail(user);
 
                 redirectAttributes.addFlashAttribute("error", "Account not activated. Please check your email for activation link.");
-                return "redirect:/login"; // Redirect with error message
+                return "redirect:/login";
             }
         } else {
             redirectAttributes.addFlashAttribute("error", "Invalid email or password");
-            return "redirect:/login"; // Redirect with error message
+            return "redirect:/login";
         }
     }
 }

@@ -30,9 +30,6 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "is_dark_mode", nullable = false)
-    private boolean darkMode;
-
     @Column(name = "profile_picture")
     private String profilePicture;
 

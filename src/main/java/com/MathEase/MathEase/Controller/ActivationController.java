@@ -20,10 +20,10 @@ public class ActivationController {
         User user = userService.activateUserByToken(token);
         if (user != null) {
             model.addAttribute("message", "Account activated successfully!");
-            return "email_message/activation-success"; // Return the name of the success view
+            return "email_message/activation-success";
         } else {
             model.addAttribute("error", "Invalid activation token.");
-            return "email_message/activation-error"; // Return the name of the error view
+            return "email_message/activation-error";
         }
     }
 }
