@@ -1,3 +1,8 @@
 {
-    "java.compile.nullAnalysis.mode": "automatic"
+    "java.compile.nullAnalysis.mode": "automatic",
+    "codesnap.shutterAction": "copy",
+    "codesnap.containerPadding": "",
+    "codesnap.realLineNumbers": true,
+    "codesnap.transparentBackground": false,
+    "codesnap.target": "window"
 }
