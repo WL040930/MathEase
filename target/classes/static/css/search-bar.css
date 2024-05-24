@@ -11,7 +11,7 @@
     font-size: 18px;
 }
 
-.search-button {
+.search-button, .clear-button {
     padding: 15px;
     border: none;
     background-color: red; /* red */
@@ -20,6 +20,31 @@
     cursor: pointer;
 }
 
-.search-button:hover {
+.search-button:hover, .clear-button:hover {
     background-color: #ff4d4d; /* light red */
+}
+
+.filter-container {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.filter-select {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 14px;
+    color: #333;
+    outline: none;
+    cursor: pointer;
+}
+
+.filter-select:hover {
+    border-color: #999;
+}
+
+.filter-select:focus {
+    border-color: #666;
 }
