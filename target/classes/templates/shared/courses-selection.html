@@ -1,5 +1,12 @@
 <section class="content-header" th:fragment="IncludeCourse">
     <link rel="stylesheet" th:href="@{/css/topic.css}">
+    <link rel="stylesheet" th:href="@{/css/search-bar.css}">
+
+    <div class="search-container">
+        <!-- Search bar -->
+        <input type="text" id="topicSearch" placeholder="Search by topic name" class="search-input">
+        <button type="button" id="clearSearch" class="search-button"><i class="fa fa-times"></i></button>
+    </div>
 
     <div class="topic-grid">
         <div th:each="topic, iterStat : ${topics}" class="clickable-topic">
@@ -31,8 +38,32 @@
                     }
                 });
             });
-        });
 
+            // Search functionality
+            const searchInput = document.getElementById('topicSearch');
+            const clearSearchBtn = document.getElementById('clearSearch');
+
+            searchInput.addEventListener('input', function() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const topics = document.querySelectorAll('.clickable-topic');
+
+                topics.forEach(function(topic) {
+                    const topicName = topic.querySelector('.topicATag span:last-child').textContent.toLowerCase();
+                    if (topicName.includes(searchTerm)) {
+                        topic.style.display = 'block';
+                    } else {
+                        topic.style.display = 'none';
+                    }
+                });
+            });
+
+            // Clear search box
+            clearSearchBtn.addEventListener('click', function() {
+                searchInput.value = '';
+                // Trigger input event to update search results
+                searchInput.dispatchEvent(new Event('input'));
+            });
+        });
     </script>
 </section>
 
