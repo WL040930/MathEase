@@ -32,8 +32,9 @@ public class LoginController {
 
     @GetMapping("/logout")
     public String logout(HttpSession session, RedirectAttributes redirectAttributes) {
+        // add a flash attribute to display a message on the login page
         redirectAttributes.addFlashAttribute("logoutMessage", "You have been logged out");
-        session.invalidate();
+        session.invalidate(); // invalidate the session
         return "redirect:/login";
     }
 
@@ -43,23 +44,29 @@ public class LoginController {
                         RedirectAttributes redirectAttributes,
                         HttpSession session) {
 
+        // authenticate the user
         boolean loginSuccess = userService.authenticateUser(email, password);
 
         if (loginSuccess) {
+            // get the user from the database
             User user = userRepository.findByEmail(email);
 
+            // check if the user exists
             if (user == null) {
                 redirectAttributes.addFlashAttribute("error", "User not found");
                 return "redirect:/login";
             }
 
+            // check if the user is activated
             if (userService.isUserActivated(email)) {
+                // set the session attributes
                 session.setAttribute("userId", user.getUserId());
                 session.setAttribute("email", user.getEmail());
                 session.setAttribute("username", user.getUsername());
                 String roleName = user.getRole().getRoleName();
                 session.setAttribute("role", roleName);
 
+                // redirect the user based on their role
                 if (roleName.equals("admin")) {
                     return "redirect:/admin/dashboard";
                 } else {
@@ -67,6 +74,7 @@ public class LoginController {
                 }
                 
             } else {
+                // generate an activation token
                 String activationToken = UUID.randomUUID().toString();
                 user.setActivationToken(activationToken);
                 userRepository.save(user);
@@ -77,6 +85,7 @@ public class LoginController {
                 return "redirect:/login";
             }
         } else {
+            // add a flash attribute to display an error message on the login page
             redirectAttributes.addFlashAttribute("error", "Invalid email or password");
             return "redirect:/login";
         }

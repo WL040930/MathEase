@@ -29,11 +29,13 @@ public class AnswerService {
     private UserAnswerRepository userAnswerRepository;
 
     public boolean isTopicFullyAnswered(Topic topic, User user) {
-
+        // get total questions in the topic
         int totalQuestions = questionRepository.countByTopicId(topic);
 
+        // get total questions answered by the user
         int totalAnsweredQuestions = userAnswerRepository.countByQuestion_TopicIdAndUser(topic, user);
 
+        // check if total questions is equal to total answered questions
         if (totalQuestions == totalAnsweredQuestions) {
             return true;
         } else {
@@ -42,10 +44,12 @@ public class AnswerService {
 
     }
 
+    // check if the user has answered the question
     public boolean isRecordExisted (User user, Questions question) {
         return userAnswerRepository.existsByUserAndQuestion(user, question);
     }
 
+    // list all answers by user
     public List<UserAnswer> getAnswersByUserAndTopic(User user, Topic topic) {
         return userAnswerRepository.findByUserAndQuestion_TopicId(user, topic);
     }

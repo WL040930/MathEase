@@ -7,8 +7,10 @@ import com.MathEase.MathEase.Model.Role;
 @Repository
 public interface RoleRepository extends JpaRepository<Role, Long>{
 
+    // Find role by roleName
     Role findByRoleName(String role);
 
+    // Find role by roleId
     Role findByRoleId(Long roleId);
 
 }

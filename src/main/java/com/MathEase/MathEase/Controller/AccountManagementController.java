@@ -31,10 +31,12 @@ public class AccountManagementController {
     public String account(HttpSession session,
                           Model model) {
 
+        // Check if user is logged in and is an admin
         if (session.getAttribute("userId") == null || !session.getAttribute("role").equals("admin")) {
             return "redirect:/login";
         }
 
+        // Get all users
         List<User> users = userService.getAllUsers();
         model.addAttribute("users", users);
         menuController.setMenuBar(session, model);
@@ -51,6 +53,7 @@ public class AccountManagementController {
     public ResponseEntity<String> updateStatus(@RequestParam("userId") Long userId,
                                                @RequestParam("newStatus") boolean status) {
 
+        // Update user status
         userService.updateUserStatus(userId, status);
         return ResponseEntity.ok("User status updated successfully");
     }
@@ -60,12 +63,16 @@ public class AccountManagementController {
                                              @RequestParam("username") String username,
                                              @RequestParam(value = "password", required = false) String password) {
 
+        // Update user details
         User user = userRepository.findById(userId).get();
         user.setUsername(username);
 
+        // Check if password is not empty
         if (!password.equals("")) {
             user.setPassword(password);
         }
+
+        // Save user
         userRepository.save(user);
         return ResponseEntity.ok("User updated successfully");
     }

@@ -40,30 +40,39 @@ public class QuizController {
                           Model model,
                           @PathVariable("topicId") Long topicId) {
 
+        // Check if user is logged in and is a student
         if (session.getAttribute("userId") == null || !session.getAttribute("role").equals("student")) {
             return "redirect:/login";
         }
 
+        // Get all questions for the topic
         Topic topic = topicService.getTopicById(topicId);
 
+        // Get all questions for the topic
         List<Questions> questions = questionService.getQuestionsByTopicId(topic);
         List<QuizDTO> quizDTO = new ArrayList<>();
 
+        // Get all questions for the topic
         for (Questions question : questions) {
+            // Create a new QuizDTO object
             QuizDTO quiz = new QuizDTO();
             quiz.setQuizId(question.getQuestionId());
             quiz.setQuiz(question.getQuestion());
 
+            // Get all options for the question
             List<Options> options = optionService.getOptionsByQuestion(question);
             Collections.shuffle(options);
 
+            // Set options for the question
             quiz.setOptions(options);
 
+            // Check if attachment is present
             if (questionAttachmentService.isAttachmentPresent(question)) {
                 quiz.setFilePath(questionAttachmentService.getAttachmentPath(question));
             }
             quizDTO.add(quiz);
         }
+        // Shuffle the questions
         Collections.shuffle(quizDTO);
 
         model.addAttribute("quizDTO", quizDTO);
@@ -76,16 +85,20 @@ public class QuizController {
                                                 @RequestParam("questionId") Long questionId,
                                                 @RequestParam("optionId") Long optionId) {
 
+        // Check if user is logged in
         Long userId = (Long) session.getAttribute("userId");
         User user = userService.getUserById(userId);
         Questions question = questionService.getQuestionById(questionId);
         Options option = optionService.getOptionById(optionId);
 
+        // Check if user has already answered the question
         if (answerService.isRecordExisted(user, question)) {
+            // Update the answer
             UserAnswer userAnswer = userAnswerRepository.findByUserAndQuestion(user, question);
             userAnswer.setOption(option);
             userAnswerRepository.save(userAnswer);
         } else {
+            // Save the answer
             UserAnswer userAnswer = new UserAnswer();
             userAnswer.setUser(user);
             userAnswer.setQuestion(question);
@@ -93,7 +106,7 @@ public class QuizController {
             userAnswerRepository.save(userAnswer);
         }
 
-
+        // Check if the answer is correct
         if (optionService.isAnswerCorrect(optionId)) {
             return ResponseEntity.ok(true);
         } else {

@@ -39,10 +39,12 @@ public class LinkController {
     @GetMapping("/admin/link")
     public String adminLink(HttpSession session, Model model) {
 
+        // Check if user is logged in and is an admin
         if (session.getAttribute("userId") == null || !session.getAttribute("role").equals("admin")) {
             return "redirect:/login";
         }
 
+        // Get all topics
         List<Topic> topics = topicService.getAllTopics();
         model.addAttribute("topics", topics);
         menuController.setMenuBar(session, model);
@@ -53,6 +55,7 @@ public class LinkController {
     @GetMapping("/api/links/{topicId}")
     public ResponseEntity<List<Link>> getQuestionsByTopicId(@PathVariable Long topicId) {
         try {
+            // Get all links by topic
             Topic topic = topicService.getTopicById(topicId);
             List<Link> links = linkService.getLinksByTopic(topic);
             return ResponseEntity.ok(links);
@@ -66,13 +69,16 @@ public class LinkController {
                                            @RequestParam("linkTitle") String linkTitle,
                                            @RequestParam("linkURL") String linkUrl){
         try {
+            // Create new link
             Link link = new Link();
             link.setLinkTitle(linkTitle);
             link.setLinkUrl(linkUrl);
 
+            // Get topic by id and set it to link
             Topic topic = topicService.getTopicById(topicId);
             link.setTopic(topic);
 
+            // Save link
             linkRepository.save(link);
             return ResponseEntity.ok("Link added successfully");
         } catch (Exception e) {
@@ -83,8 +89,10 @@ public class LinkController {
     @GetMapping("/api/getLinksInfo/{linkId}")
     public ResponseEntity<LinkDTO> getLinkInfo(@PathVariable Long linkId) {
         try {
+            // Get link by id
             Link link = linkService.getLinkById(linkId);
 
+            // Create link DTO
             LinkDTO linkDTO = new LinkDTO();
             linkDTO.setLinkId(link.getLinkId());
             linkDTO.setLink(link.getLinkTitle());
@@ -101,6 +109,7 @@ public class LinkController {
                                             @RequestParam("linkTitle") String linkTitle,
                                             @RequestParam("linkURL") String linkUrl){
         try {
+            // Get link by id and update link title and url
             Link link = linkService.getLinkById(linkId);
             link.setLinkTitle(linkTitle);
             link.setLinkUrl(linkUrl);
@@ -115,6 +124,7 @@ public class LinkController {
     @PostMapping("/api/deleteLinks")
     public ResponseEntity<String> deleteLinks(@RequestParam("linkId") Long linkId){
         try {
+            // Get link by id and delete it
             Link link = linkService.getLinkById(linkId);
             linkRepository.delete(link);
             return ResponseEntity.ok("Link deleted successfully");

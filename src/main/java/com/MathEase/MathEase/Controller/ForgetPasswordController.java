@@ -36,13 +36,18 @@ public class ForgetPasswordController {
     @PostMapping("/forget-password")
     public String sendEmail(@RequestParam("email") String email, Model model) {
 
+        // Check if user exists
         if (userService.isUserExists(email)) {
+
+            // Generate a random token
             User user = userService.getUserByEmail(email);
             String token = UUID.randomUUID().toString();
+
+            // Save the token to the user
             user.setResetToken(token);
 
+            // Save the user
             userRepository.save(user);
-
             emailService.sendForgetPassword(user);
 
             model.addAttribute("message", "Password reset link has been sent to your email.");
@@ -55,12 +60,17 @@ public class ForgetPasswordController {
 
     @GetMapping("/reset-password")
     public String resetPassword(@RequestParam(value = "token", required = false) String token, Model model) {
+
+        // Check if token is missing
         if (token == null) {
             model.addAttribute("message", "Reset token is missing.");
             return "email_message/failed-reset-password";
         }
 
+        // Check if token is valid
         User user = userService.getUserByResetToken(token);
+
+        // Check if user exists
         if (user == null) {
             model.addAttribute("message", "Invalid reset token.");
             return "email_message/failed-reset-password";
@@ -78,14 +88,18 @@ public class ForgetPasswordController {
                                  Model model,
                                  RedirectAttributes redirectAttributes) {
 
+        // Check if passwords match
         if (!password.equals(confirmPassword)) {
             model.addAttribute("message", "Passwords do not match.");
             return "email_message/reset-password";
         }
 
+        // Check if token is valid
         User user = userService.getUserByResetToken(token);
 
+        // Check if user exists
         if (user != null) {
+            // Update the password
             userService.updateUserPassword(user, password);
             user.setResetToken(null);
             userRepository.save(user);

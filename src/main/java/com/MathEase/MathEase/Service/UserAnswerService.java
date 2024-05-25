@@ -22,26 +22,32 @@ public class UserAnswerService {
         return userAnswer.getOption();
     }
 
+    // Get total number of user answers by question topic id
     public int getTotalNumbersOfUserAnswerByQuestion_TopicId(Topic topic) {
         return userAnswerRepository.countByQuestion_TopicId(topic);
     }
 
+    // Get total number of user answers by question topic id and option is correct
     public int getTotalNumbersOfUserAnswerByQuestion_TopicId(Topic topic, User user) {
         return userAnswerRepository.countByUserAndQuestion_TopicId(user,topic);
     }
 
+    // Get total number of user answers by question topic id and option is correct
     public int getTotalNumbersOfUserAnswerByQuestion_TopicIdAndOption_isCorrect(Topic topic, boolean isCorrect) {
         return userAnswerRepository.countByQuestion_TopicIdAndOption_isCorrect(topic,isCorrect);
     }
 
+    // get total number of user answers by question topic id and option is correct  and user
     public int getTotalNumbersOfUserAnswerByQuestion_TopicIdAndOption_isCorrect(User user, Topic topic, boolean isCorrect) {
         return userAnswerRepository.countByUserAndQuestion_TopicIdAndOption_isCorrect(user,topic,isCorrect);
     }
 
+    // count distinct users by topic
     public int countDistinctUsersByTopic(Topic topic) {
         return userAnswerRepository.countDistinctUsersByTopic(topic);
     }
 
+    // calculate score by user
     public double calculateScoreByUser(User user, Topic topic) {
         int totalQuestions = getTotalNumbersOfUserAnswerByQuestion_TopicId(topic, user);
         int totalCorrectAnswers = getTotalNumbersOfUserAnswerByQuestion_TopicIdAndOption_isCorrect(user, topic, true);

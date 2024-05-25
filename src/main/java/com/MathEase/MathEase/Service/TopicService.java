@@ -14,10 +14,12 @@ public class TopicService {
     @Autowired
     private TopicRepository topicRepository;
 
+    // get all topics
     public List<Topic> getAllTopics() {
         return topicRepository.getAllTopics();
     }
 
+    // get topic by topic id
     public Topic getTopicById(Long topicId) {
         Optional<Topic> topicOptional = topicRepository.findById(topicId);
         return topicOptional.orElse(null);

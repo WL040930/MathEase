@@ -24,6 +24,7 @@ public class RoleController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Role> getRoleById(@PathVariable Long id) {
+        // Find the role by id
         Role role = roleRespository.findById(id).orElse(null);
         if (role == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);

@@ -30,16 +30,21 @@ public class StudentResultController {
     @GetMapping("/student/results")
     public String getQuizResult(HttpSession session, Model model) {
 
+        // Check if user is logged in and is a student
         if (session.getAttribute("userId") == null || !session.getAttribute("role").equals("student")) {
             return "redirect:/login";
         }
 
+        // Get user
         User user = userService.getUserById((Long) session.getAttribute("userId"));
 
+        // Create a list of ResultDTO
         List<ResultDTO> resultDTOs = new ArrayList<>();
 
+        // Get all topics
         List<Topic> topics = topicRepository.getAllTopics();
 
+        // Calculate score for each topic
         for (Topic topic : topics) {
             ResultDTO resultDTO = new ResultDTO();
             resultDTO.setChapter("Chapter " + topic.getTopicId());
@@ -48,6 +53,7 @@ public class StudentResultController {
             resultDTOs.add(resultDTO);
         }
 
+        // Add resultDTOs to model
         model.addAttribute("resultDTOs", resultDTOs);
         menuController.setMenuBar(session,model);
         return "student/student-results";

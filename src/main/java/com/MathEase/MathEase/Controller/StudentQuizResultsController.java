@@ -39,6 +39,7 @@ public class StudentQuizResultsController {
     @GetMapping("/student/congratulations")
     public String Congrats(HttpSession session, Model model) {
 
+        // Check if user is logged in and is a student
         if (session.getAttribute("userId") == null || !session.getAttribute("role").equals("student")) {
             return "redirect:/login";
         }
@@ -49,10 +50,12 @@ public class StudentQuizResultsController {
     @GetMapping("/student/quiz")
     public String getQuiz(HttpSession session, Model model) {
 
+        // Check if user is logged in and is a student
         if (session.getAttribute("userId") == null || !session.getAttribute("role").equals("student")) {
             return "redirect:/login";
         }
 
+        // Get all topics
         List<Topic> topics = topicService.getAllTopics();
         model.addAttribute("topics", topics);
         menuController.setMenuBar(session, model);
@@ -64,36 +67,38 @@ public class StudentQuizResultsController {
                                                                Model model,
                                                                @PathVariable String topicId) {
 
+        // Check if user is logged in and is a student
         if (session.getAttribute("userId") == null || !session.getAttribute("role").equals("student")) {
             return ResponseEntity.badRequest().build();
         }
 
+        // Get all questions for the topic
         List<StudentResult> studentResults = new ArrayList<>();
 
+        // Get the topic and user
         Topic topic = topicService.getTopicById(Long.parseLong(topicId));
         Long userId = (Long) session.getAttribute("userId");
         User user = userService.getUserById(userId);
 
+        // Get all answers for the user and topic
         List<UserAnswer> userAnswers = answerService.getAnswersByUserAndTopic(user, topic);
 
+        // Get the question details
         for (UserAnswer userA: userAnswers) {
+            // Get the question details
             StudentResult studentResult = new StudentResult();
-
             studentResult.setQuiz(userA.getQuestion().getQuestion());
-
             Questions questions = questionService.getQuestionById(userA.getQuestion().getQuestionId());
-
             studentResult.setQuestionId(questions.getQuestionId());
-
+            // Get the correct and wrong options
             Options correctOptions = optionService.getCorrectOption(questions);
             studentResult.setCorrectOptions(correctOptions.getOption());
-
+            // Get the wrong options
             List<Options> wrongOptions = optionService.getWrongOptions(questions);
             List<String> wrongOptionsList = new ArrayList<>();
             for (Options wrongOption: wrongOptions) {
                 wrongOptionsList.add(wrongOption.getOption());
             }
-
             studentResult.setWrongOptions(wrongOptionsList);
 
             studentResult.setUserAnswer(userA.getOption().getOption());
@@ -110,18 +115,22 @@ public class StudentQuizResultsController {
     public ResponseEntity<StudentResult> getQuestionsDetails (@PathVariable Long questionId,
                                                               HttpSession session){
 
+        // Check if user is logged in and is a student
         Questions questions = questionService.getQuestionById(questionId);
         Long userId = (Long) session.getAttribute("userId");
         User user = userService.getUserById(userId);
 
+        // Get the user answer
         UserAnswer userAnswer = userAnswerRepository.findByUserAndQuestion(user, questions);
 
+        // Get the question details
         StudentResult studentResult = new StudentResult();
         studentResult.setQuiz(questions.getQuestion());
         studentResult.setCorrectOptions(optionService.getCorrectOption(questions).getOption());
         studentResult.setWrongOptions(optionService.getWrongOptions(questions).stream().map(Options::getOption).toList());
         studentResult.setUserAnswer(userAnswer.getOption().getOption());
 
+        // Get the attachment
         if (questionAttachmentRepository.existsByQuestion(questions)) {
             QuestionAttachment questionAttachment = questionAttachmentRepository.findByQuestion(questions);
             studentResult.setFilePath(questionAttachment.getAttachmentFilename());

@@ -45,9 +45,13 @@ public class AdminQuestionController {
 
     @GetMapping("/admin/questions")
     public String getAdminQuestions(HttpSession session, Model model) {
+
+        // Check if user is logged in and is an admin
         if (session.getAttribute("userId") == null || !session.getAttribute("role").equals("admin")) {
             return "redirect:/login";
         }
+
+        // Set menu bar
         List<Topic> topics = topicService.getAllTopics();
         model.addAttribute("topics", topics);
         menuController.setMenuBar(session, model);
@@ -57,7 +61,10 @@ public class AdminQuestionController {
     @GetMapping("/api/topics/{topicId}")
     public ResponseEntity<Topic> getTopicById(@PathVariable Long topicId) {
         try {
+            // Get topic by id
             Topic topic = topicService.getTopicById(topicId);
+
+            // Check if topic exists
             if (topic != null) {
                 return ResponseEntity.ok(topic);
             } else {
@@ -71,7 +78,10 @@ public class AdminQuestionController {
     @GetMapping("/api/questions/{topicId}")
     public ResponseEntity<List<Questions>> getQuestionsByTopicId(@PathVariable Long topicId) {
         try {
+            // Get questions by topic id
             Topic topic = topicService.getTopicById(topicId);
+
+            //  Check if topic exists
             List<Questions> questions = questionService.getQuestionsByTopicId(topic);
             return ResponseEntity.ok(questions);
         } catch (Exception e) {
@@ -82,11 +92,14 @@ public class AdminQuestionController {
     @GetMapping("/api/question/{questionId}")
     public ResponseEntity<QuestionDTO> getQuestionById(@PathVariable Long questionId) {
         try {
+            // Get question by id
             Questions questions = questionRepository.findById(questionId).orElse(null);
 
+            // Check if question exists
             if (questions != null) {
                 QuestionDTO questionDTO = new QuestionDTO();
 
+                // Set question details
                 questionDTO.setQuestionId(questions.getQuestionId());
                 questionDTO.setQuestion(questions.getQuestion());
                 questionDTO.setCorrectAnswer(optionService.getCorrectOption(questions).getOption());
@@ -96,10 +109,12 @@ public class AdminQuestionController {
                 questionDTO.setWrongAnswer2(wrongOptions.get(1).getOption());
                 questionDTO.setWrongAnswer3(wrongOptions.get(2).getOption());
 
+                // Set picture path
                 if (questionAttachmentService.getAttachmentPath(questions) != null) {
                     questionDTO.setPicturePath(questionAttachmentService.getAttachmentPath(questions));
                 }
-                
+
+                //  Return question details
                 return ResponseEntity.ok(questionDTO);
             } else {
                 return ResponseEntity.notFound().build();
@@ -112,6 +127,7 @@ public class AdminQuestionController {
     @PostMapping("/api/deleteQuestion")
     public ResponseEntity<String> deleteQuestion(Long questionId) {
         try {
+            // Delete question by id
             questionService.deleteQuestionById(questionId);
             return ResponseEntity.ok("Question deleted successfully");
         } catch (Exception e) {
