@@ -481,7 +481,8 @@ function deleteItem(linkId) {
         closeDeleteModal();
         clearDeleteModal();
         reloadLinkTable(topicId).then(r => console.log('Link table reloaded'));
-    });}
+    });
+}
 
 
 function clearDeleteModal() {
