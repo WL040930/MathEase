@@ -82,6 +82,34 @@
     <div id="settingsContent" class="content">
         <button onclick="openModal()">Logout</button>
     </div>
+    <style>
+        /* Logout button styling */
+        #settingsContent button {
+            background-color: #f44336; /* Red background */
+            border: none;
+            color: white; /* White text */
+            padding: 15px 32px; /* Padding for a larger button */
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px; /* Larger font size */
+            margin: 4px 2px;
+            cursor: pointer; /* Pointer cursor on hover */
+            border-radius: 8px; /* Rounded corners */
+            transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+        }
+
+        #settingsContent button:hover {
+            background-color: #d32f2f; /* Darker red on hover */
+            transform: scale(1.05); /* Slightly larger on hover */
+        }
+
+        #settingsContent button:active {
+            background-color: #c62828; /* Even darker red on click */
+            transform: scale(1); /* Reset scale on click */
+        }
+
+    </style>
 </div>
 
 <div id="logoutModal" class="modal">
