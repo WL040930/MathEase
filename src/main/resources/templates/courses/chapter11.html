@@ -1,10 +1,472 @@
 <section class="content-header" id="content" th:fragment="chapter11">
-    <link rel="stylesheet" th:href="@{/css/speak.css}">
-    <script th:src="@{/js/speak.js}"></script>
-    <!--    TODO: CHAPTER 11 HERE-->
+    <style>
+        .center {
+            margin: 0 auto; /* Center the div */
+            width: fit-content; /* Adjust width based on content */
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .set, .pair, .answer {
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+        .set h4, .pair h4, .answer h4 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        .set p, .pair p, .answer p  {
+            margin-bottom: 10px;
+        }
+    </style>
+    <div class="header-box">
+        <h1>Form 1 Chapter 11 - Introduction of Set</h1>
+    </div>
+
+    <div class="SubTopic1-box subtopic-section">
+        <h3><i class="material-icons" onclick="toggleSubTopic(this)">keyboard_arrow_right</i> 11.1 Set</h3>
+
+        <div class="SubSection-box">
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> What is set?
+            </h3>
+
+            <div class="content">
+                <p><b><u>Set</u></b></p>
+                <ul>
+                    <li>A set is a collection of unique elements or objects grouped together as a single entity.</li>
+                    <li>Sets are used in mathematics to organize and classify objects based on common characteristics.</li>
+                    <li>Each element in a set is distinct, meaning it appears only once within the set.</li>
+                    <li>Sets can contain various types of elements, such as numbers, letters, or even other sets.</li>
+                    <li>Sets are denoted using curly braces {} and can be represented using lists, tables, or other formats.</li>
+                    <li>Operations like union, intersection, and difference can be performed on sets to manipulate and analyze their contents.</li>
+                    <li>Sets are fundamental to many branches of mathematics, including set theory, algebra, and probability.</li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <p><b><u>Question</u></b></p>
+
+                <p>Classify the objects in the list below as land, water, and air transport</p>
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter11/chapter_11_image_1.png" />
+
+                    <p><b><i>Figure 11.1.1.1: Example Objects</i></b></p>
+                </center>
+
+                <div id="11.1Explanation">
+                    <p><b><u>Solution</u></b></p>
+
+                    <div class="center">
+                        <table>
+                            <tr>
+                                <th>Land Transport</th>
+                                <td>Car</td>
+                                <td>Lorry</td>
+                                <td>Van</td>
+                                <td>Bus</td>
+                            </tr>
+                            <tr>
+                                <th>Water Transport</th>
+                                <td>Sampan</td>
+                                <td>Boat</td>
+                                <td>Ship</td>
+                                <td>Ferry</td>
+                            </tr>
+                            <tr>
+                                <th>Air Transport</th>
+                                <td>Rocket</td>
+                                <td>Aeroplane</td>
+                                <td>Helicopter</td>
+                                <td>Hot-air Balloon</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="radio-icon" onclick="handleRadioClick(event, '11.1Explanation')">
+                        <i class='fas fa-volume-up'></i> Click here!
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+        <div class="SubSection-box">
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> How do you describe set?
+            </h3>
+
+            <div class="content">
+                <p>
+                    A set is a well-defined collection of distinct objects or elements. Each element in a set is unique and appears only once within the set. Sets are commonly used in mathematics to group together objects or elements that share common characteristics or properties. Sets are denoted using curly braces {} and can contain various types of elements, such as numbers, letters, or even other sets. Operations like union, intersection, and difference can be performed on sets to manipulate and analyze their contents. Sets play a fundamental role in many areas of mathematics, including set theory, algebra, and probability.
+                </p>
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter11/chapter_11_image_2.png" />
+
+                    <p><b><i>Figure 11.1.2.1: Jalur Gemilang</i></b></p>
+                </center>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter11/chapter_11_image_3.png" />
+
+                    <p><b><i>Figure 11.1.2.2: Example Set</i></b></p>
+                </center>
+            </div>
+
+            <div class="question">
+                <p><b><u>Question</u></b></p>
+
+                <p>
+                    Describe each of the following sets by using description, listing and set builder notation.
+                </p>
+                <ul>
+                    <li>
+                        Letters in the word 'MALAYSIA'
+                    </li>
+                    <li>Odd numbers which are less than 20</li>
+                </ul>
+
+                <div id="11.2Explanation">
+                    <p><b><u>Solution</u></b></p>
+                    <div class="set">
+                        <h4>Set P</h4>
+                        <p><strong>Description:</strong> P is the set of letters in the word 'MALAYSIA'.</p>
+                        <p><strong>Listing:</strong> P = {M, A, L, Y, S, I}</p>
+                        <p><strong>Set builder notation:</strong> P = {x: x is a letter in the word 'MALAYSIA'}</p>
+                    </div>
+
+                    <div class="set">
+                        <h4>Set Q</h4>
+                        <p><strong>Description:</strong> Q is the set of odd numbers which are less than 20.</p>
+                        <p><strong>Listing:</strong> Q = {1, 3, 5, 7, 9, 11, 13, 15, 17, 19}</p>
+                        <p><strong>Set builder notation:</strong> Q = {x: x is an odd number and x < 20}</p>
+                    </div>
+
+                    <div class="radio-icon" onclick="handleRadioClick(event, '11.2Explanation')">
+                        <i class='fas fa-volume-up'></i> Click here!
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+        <div class="SubSection-box">
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> What is the element of a set?
+            </h3>
+
+            <div class="content">
+                <p>
+                    The elements of a set are the individual objects or entities that belong to the set. Each element is distinct and unique within the set, meaning it appears only once. Elements can be anything: numbers, letters, words, symbols, or even other sets. The elements define the contents or members of the set, and they are enclosed within curly braces {} when the set is written in notation. For example, in the set {1, 2, 3}, the elements are 1, 2, and 3. Similarly, in the set {a, b, c, d}, the elements are the letters a, b, c, and d. Elements can also be described using set-builder notation, where a condition or rule defines which objects belong to the set.
+                </p>
+
+                <p><b><u>Example Question</u></b></p>
+                <p>
+                    Given that P = {x: x is a prime number and 0 ≤ x ≤ 20}, complete each of the following using the symbol ∈ or ∉.
+                </p>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter11/chapter_11_image_4.png" />
+
+                    <p><b><i>Figure 11.1.3.1: Example Questions</i></b></p>
+                </center>
+
+                <p><b><u>Solutions</u></b></p>
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter11/chapter_11_image_5.png" />
+
+                    <p><b><i>Figure 11.1.3.2: Solutions</i></b></p>
+                </center>
+            </div>
+
+            <div class="question">
+                <p><b><u>Question</u></b></p>
+
+                <p>
+                    Given that A =
+                    {states in Malaysia}, complete each of the following using the symbol ∈ or ∉.
+                </p>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter11/chapter_11_image_6.png" />
+
+                    <p><b><i>Figure 11.1.3.3: Questions</i></b></p>
+                </center>
+
+                <div id="11.3Explanation">
+                    <p><b><u>Solution</u></b></p>
+                    <center>
+                        <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter11/chapter_11_image_7.png" />
+
+                        <p><b><i>Figure 11.1.3.4: Solutions</i></b></p>
+                    </center>
+                    <div class="radio-icon" onclick="handleRadioClick(event, '11.3Explanation')">
+                        <i class='fas fa-volume-up'></i> Click here!
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+        <div class="SubSection-box">
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> What is the equality of sets?
+            </h3>
+
+            <div class="content">
+                <h3>Equality of Sets</h3>
+                <ul>
+                    <li>
+                        The equality of sets refers to the condition where two sets have exactly the same elements.
+                    </li>
+                    <li>
+                        Mathematically, two sets A and B are equal if and only if they contain the same elements, denoted as:
+                        <br> A = B
+                    </li>
+                    <li>
+                        To express this in words, you could say: "The sets A and B are equal if they have exactly the same elements."
+                    </li>
+                    <li>
+                        For example, if set A contains the elements {1, 2, 3} and set B also contains the elements {1, 2, 3}, then A and B are equal.
+                    </li>
+                    <li>
+                        It's important to note that the order of elements does not matter when determining the equality of sets.
+                    </li>
+                </ul>
+                <br>
+                <p><b><u>Example Question</u></b></p>
+                <p>Explain whether each of the following pairs of sets are equal sets:</p>
+
+                <div class="pair">
+                    <h4>(a) P = {vowels in the word 'SEKOLAH'} and Q = {vowels in the word 'KEJOHANAN'}</h4>
+                    <p><strong>Explanation:</strong></p>
+                    <p>Set P contains the vowels {E, O, A} from the word 'SEKOLAH'.</p>
+                    <p>Set Q contains the vowels {E, O, A} from the word 'KEJOHANAN'.</p>
+                    <p>Since both sets contain the same elements {E, O, A}, P and Q are equal sets.</p>
+                </div>
+
+                <div class="pair">
+                    <h4>(b) F = {perfect squares which are less than 50} and G = {4, 9, 16, 25, 36, 49}</h4>
+                    <p><strong>Explanation:</strong></p>
+                    <p>Set F contains the perfect squares less than 50, which are {1, 4, 9, 16, 25, 36, 49}.</p>
+                    <p>Set G contains the elements {4, 9, 16, 25, 36, 49}.</p>
+                    <p>Since both sets contain the same elements {4, 9, 16, 25, 36, 49}, F and G are equal sets.</p>
+                </div>
+            </div>
+
+            <div class="question">
+                <p><b><u>Question</u></b></p>
+
+                <p>
+                    Determine whether each of the following pairs of sets are equal sets.
+                </p>
+
+                <ul>
+                    <li>
+                        (a) G = {letters in the word 'RAJIN'} and H = {letters in the word 'JIRAN'}
+                    </li>
+                    <li>
+                        (b) M = {1, 2, 3, 4, 5} and N = {whole numbers which are less than 6}
+                    </li>
+                    <li>
+                        (c) P = {x: x is a multiple of 2 and 25 ≤ x ≤ 45} and Q = {x: x is a number that has the digit 2 and 25 ≤ x ≤ 45}
+                    </li>
+                    <li>
+                        (d) A = {national language of Malaysia} and B = {Malay language}
+                    </li>
+                </ul>
+
+                <div id="11.4Explanation">
+                    <p><b><u>Solution</u></b></p>
+
+                    <div class="pair">
+                        <strong>(a)</strong> G = {letters in the word 'RAJIN'} and H = {letters in the word 'JIRAN'}
+                        <p><strong>Explanation:</strong></p>
+                        <p>Set G contains the letters {R, A, J, I, N} from the word 'RAJIN'.</p>
+                        <p>Set H contains the letters {J, I, R, A, N} from the word 'JIRAN'.</p>
+                        <p>Since both sets contain the same elements {A, I, J, N, R}, G and H are equal sets.</p>
+                    </div>
+
+                    <div class="pair">
+                        <strong>(b)</strong> M = {1, 2, 3, 4, 5} and N = {whole numbers which are less than 6}
+                        <p><strong>Explanation:</strong></p>
+                        <p>Set M contains the elements {1, 2, 3, 4, 5}.</p>
+                        <p>Set N also contains the elements {1, 2, 3, 4, 5}.</p>
+                        <p>Since both sets contain the same elements, M and N are equal sets.</p>
+                    </div>
+
+                    <div class="pair">
+                        <strong>(c)</strong> P = {x: x is a multiple of 2 and 25 ≤ x ≤ 45} and Q = {x: x is a number that has the digit 2 and 25 ≤ x ≤ 45}
+                        <p><strong>Explanation:</strong></p>
+                        <p>Set P contains the numbers {26, 28, 30, ..., 44} which are multiples of 2 between 25 and 45.</p>
+                        <p>Set Q contains the numbers {25, 26, 27, ..., 32, 42, 43, 45} which have the digit 2 between 25 and 45.</p>
+                        <p>Although sets P and Q have some elements in common, they are not equal sets because they contain different elements.</p>
+                    </div>
+
+                    <div class="pair">
+                        <strong>(d)</strong> A = {national language of Malaysia} and B = {Malay language}
+                        <p><strong>Explanation:</strong></p>
+                        <p>Set A contains the element 'national language of Malaysia'.</p>
+                        <p>Set B contains the element 'Malay language'.</p>
+                        <p>Since the elements in sets A and B are different, A and B are not equal sets.</p>
+                    </div>
+
+                    <div class="radio-icon" onclick="handleRadioClick(event, '11.4Explanation')">
+                        <i class='fas fa-volume-up'></i> Click here!
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="SubTopic2-box subtopic-section">
+        <h3><i class="material-icons" onclick="toggleSubTopic(this)">keyboard_arrow_right</i> 11.2 Venn Diagrams, Universal Sets, Complement of a Set and Subsets</h3>
+
+        <div class="SubSection-box">
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> What are universal set and complement of a set?
+            </h3>
+
+            <div class="content">
+                <h4>Universal Set:</h4>
+                <ul>
+                    <li>The universal set, denoted by <strong>U</strong>, is the set that contains all the elements under consideration in a particular context.</li>
+                    <li>It represents the entire sample space of a given problem or scenario.</li>
+                </ul>
+                <h4>Complement of a Set:</h4>
+                <ul>
+                    <li>The complement of a set <strong>A</strong>, denoted by <strong>A'</strong> or <strong>𝑨̅</strong>, consists of all elements in the universal set <strong>U</strong> that are not in set <strong>A</strong>.</li>
+                    <li>In other words, it includes all elements that are in the universal set but not in set <strong>A</strong>.</li>
+                </ul>
+
+                <p><b><u>Example Questions</u></b></p>
+
+                <p>Identify whether each of the following sets is the universal set of {2, 3, 5, 7}:</p>
+                <div class="answer">
+                    <h4>(a) {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}</h4>
+                    <p>The set {1, 2, 3, 4, 5, 6, 7, 8, 9, 10} is not the universal set.</p>
+                </div>
+
+                <div class="answer">
+                    <h4>(b) {odd numbers which are less than 10}</h4>
+                    <p>The set of odd numbers less than 10 is not the universal set.</p>
+                </div>
+            </div>
+
+            <div class="question">
+                <p><b><u>Question</u></b></p>
+                <p>
+                    Identify whether each of the following is the universal set of {1,3,5,7,9, 11, 13, 15}:
+                </p>
+                <ul>
+                    <li>
+                        (a) {whole numbers}
+                    </li>
+                    <li>
+                        (b) {prime numbers}
+                    </li>
+                    <li>
+                        (c) {x: x is a positive integer and x ≤ 15}
+                    </li>
+                </ul>
+                <div id="11.5Explanation">
+                    <p><b><u>Solution</u></b></p>
+                    <style>
+                        .correct {
+                            color: green;
+                        }
+                        .incorrect {
+                            color: red;
+                        }
+                    </style>
+                    <ul>
+                        <li>(a) {whole numbers} <span class="correct">- Correct</span> <br>
+                            Explanation: The set of whole numbers includes all integers, including negative integers, zero, and positive integers. Since the given set {1, 3, 5, 7, 9, 11, 13, 15} contains only positive integers and does not include all integers, the set of whole numbers is not the universal set.</li>
+
+                        <li>(b) {prime numbers} <span class="incorrect">- Incorrect</span> <br>
+                            Explanation: The set of prime numbers includes only numbers that are greater than 1 and have no positive divisors other than 1 and themselves. The given set {1, 3, 5, 7, 9, 11, 13, 15} contains some prime numbers but also includes the number 1 and other composite numbers. Therefore, the set of prime numbers is not the universal set.</li>
+
+                        <li>(c) {x: x is a positive integer and x ≤ 15} <span class="correct">- Correct</span> <br>
+                            Explanation: This set includes all positive integers from 1 to 15. Since the given set {1, 3, 5, 7, 9, 11, 13, 15} matches exactly with the elements described in this set, it can be concluded that this set is the universal set.</li>
+                    </ul>
+
+                    <div class="radio-icon" onclick="handleRadioClick(event, '11.5Explanation')">
+                        <i class='fas fa-volume-up'></i> Click here!
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
 
 
-    <div style="margin-top: 20px; width: 100%"></div>
-    <button id="speakButton">Speak</button>
-    <button id="stopButton">Stop</button>
+        <div class="SubSection-box">
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> How do you represent the universal set and complement of a set by using Venn diagram?
+            </h3>
+
+            <div class="content">
+                <ol>
+                    <li>
+                        Draw a rectangle to represent the universal set. This rectangle contains all the elements under consideration.
+                    </li>
+                    <li>
+                        Inside the rectangle, draw a circle or oval to represent the set for which you are finding the complement.
+                    </li>
+                    <li>
+                        Label the circle or oval with the name of the set.
+                    </li>
+                    <li>
+                        Outside the circle or oval, shade the region that represents the complement of the set. This shaded region includes all the elements that belong to the universal set but not to the set you're focusing on.
+                    </li>
+                    <li>
+                        Optionally, you can label the shaded region with the name of the complemented set or simply denote it as the complement.
+                    </li>
+                    <li>
+                        Add any additional information or context relevant to the specific problem or scenario.
+                    </li>
+                </ol>
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter11/chapter_11_image_8.png" />
+
+                    <p><b><i>Figure 11.2.2.1: Example of Venn Diagrams</i></b></p>
+                </center>
+            </div>
+
+            <div class="question">
+                <p><b><u>Question</u></b></p>
+                <p>
+                    Represent the relationship between the following sets by using the Venn diagram.
+                </p>
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter11/chapter_11_image_9.png" />
+
+                    <p><b><i>Figure 11.2.2.2: Questions</i></b></p>
+                </center>
+                <div class="11.6Explanation">
+                    <p><b><u>Solution</u></b></p>
+                    <center>
+                        <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter11/chapter_11_image_10.png" />
+
+                        <p><b><i>Figure 11.2.2.3: Venn Diagram for Question A</i></b></p>
+                    </center>
+                    <center>
+                        <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter11/chapter_11_image_11.png" />
+
+                        <p><b><i>Figure 11.2.2.4: Venn Diagram for Question B</i></b></p>
+                    </center>
+                    <div class="radio-icon" onclick="handleRadioClick(event, '11.6Explanation')">
+                        <i class='fas fa-volume-up'></i> Click here!
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
