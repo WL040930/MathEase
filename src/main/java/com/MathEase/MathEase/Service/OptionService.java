@@ -18,6 +18,7 @@ public class OptionService {
 
     public Options getCorrectOption(Questions questions) {
 
+        // get all options for the question
         List<Options> options = optionRepository.findByQuestion(questions);
         for (Options option : options) {
             if (option.isCorrect()) {
@@ -28,6 +29,7 @@ public class OptionService {
     }
 
     public ArrayList<Options> getWrongOptions(Questions questions) {
+        // get all wrong options for the question
         List<Options> options = optionRepository.findByQuestion(questions);
         ArrayList<Options> wrongOptions = new ArrayList<>();
         for (Options option : options) {
@@ -38,15 +40,18 @@ public class OptionService {
         return wrongOptions;
     }
 
+    // get all options for a question
     public List<Options> getOptionsByQuestion(Questions questions) {
         return optionRepository.findByQuestion(questions);
     }
 
+    // check if the answer is correct
     public boolean isAnswerCorrect(Long optionId) {
         Options option = optionRepository.findById(optionId).get();
         return option.isCorrect();
     }
 
+    // get option by id
     public Options getOptionById(Long option) {
         return optionRepository.findById(option).get();
     }

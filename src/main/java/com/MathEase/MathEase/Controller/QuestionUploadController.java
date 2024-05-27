@@ -49,9 +49,11 @@ public class QuestionUploadController {
             @RequestParam(value = "picture", required = false) MultipartFile pictureFile,
             RedirectAttributes redirectAttributes) {
         try {
+            // Save question
             Topic topic = new Topic();
             topic.setTopicId(topicId);
 
+            // Save question
             Questions question = new Questions();
             question.setQuestion(questionText);
             question.setTopicId(topic);
@@ -83,6 +85,7 @@ public class QuestionUploadController {
             wrongOption3.setCorrect(false);
             optionRepository.save(wrongOption3);
 
+            // Save picture
             if (pictureFile != null && !pictureFile.isEmpty()) {
                 String fileName = fileNameUtil.transferFile(pictureFile, fileNameUtil.UPLOAD_DIR);
                 System.out.println(fileName);
@@ -92,6 +95,7 @@ public class QuestionUploadController {
                 questionAttachmentRepository.save(qa);
             }
 
+            // Add success message
             redirectAttributes.addFlashAttribute("successMessage", "Question added successfully");
             return ResponseEntity.ok("Item added successfully");
         } catch (Exception e) {
@@ -109,14 +113,17 @@ public class QuestionUploadController {
                                            @RequestParam(value = "picture", required = false) MultipartFile pictureFile){
 
         try {
+            // Save question
             Questions question = questionRepository.findByQuestionId(questionId);
             question.setQuestion(questionText);
             questionRepository.save(question);
 
+            // Save options
             Options correctOptions =  optionService.getCorrectOption(question);
             correctOptions.setOption(correctAnswer);
             optionRepository.save(correctOptions);
 
+            // Save wrong options
             List<Options> wrongOptions = optionService.getWrongOptions(question);
             wrongOptions.get(0).setOption(wrongAnswer1);
             wrongOptions.get(1).setOption(wrongAnswer2);
@@ -124,6 +131,7 @@ public class QuestionUploadController {
 
             optionRepository.saveAll(wrongOptions);
 
+            // Save picture
             if (pictureFile != null && !pictureFile.isEmpty()) {
                 if (questionAttachmentRepository.existsByQuestion(question)) {
                     QuestionAttachment qa = questionAttachmentRepository.findByQuestion(question);

@@ -8,8 +8,10 @@ import com.MathEase.MathEase.Model.QuestionAttachment;
 @Repository
 public interface QuestionAttachmentRepository extends JpaRepository<QuestionAttachment, Long>{
 
+    // Find question attachment by question
     QuestionAttachment findByQuestion(Questions question);
 
+    // Check if question attachment exists by question
     boolean existsByQuestion(Questions question);
 
 }

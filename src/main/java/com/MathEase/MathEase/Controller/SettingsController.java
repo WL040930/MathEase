@@ -32,20 +32,24 @@ public class SettingsController {
     @GetMapping({"/admin/settings", "/student/settings"})
     public String settings(HttpSession session, Model model) {
 
+        // Redirect to login page if user is not logged in
         if (session.getAttribute("userId") == null) {
             return "redirect:/login";
         }
 
+        // Set menu bar
         menuController.setMenuBar(session, model);
 
         Long userId = (Long) session.getAttribute("userId");
 
+        // Get user information
         String username = userService.getUsername(userId);
         String role = userService.getRoleName(userId);
         String profilePicture = userService.getProfilePicture(userId);
         String email = userService.getEmail(userId);
         String joinedDate = userService.getJoinedDate(userId);
 
+        // Set model attributes
         model.addAttribute("userId", userId);
         model.addAttribute("usernameInput", username);
         model.addAttribute("emailTitle", email);
@@ -59,10 +63,11 @@ public class SettingsController {
     @PostMapping("/update-username/{userId}")
     public ResponseEntity<String> updateUsername(@PathVariable Long userId, @RequestBody String newUsername) {
         try {
+            // Get user by id
             User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
             newUsername = JsonParser.extractUsername(newUsername);
             user.setUsername(newUsername);
-            userRepository.save(user);
+            userRepository.save(user); // Save updated user
 
             return ResponseEntity.ok("Username updated successfully");
         } catch (Exception e) {
@@ -73,10 +78,11 @@ public class SettingsController {
     @PostMapping("/update-password/{userId}")
     public ResponseEntity<String> updatePassword(@PathVariable Long userId, @RequestBody String newPassword) {
         try {
+            // Get user by id
             User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
             newPassword = JsonParser.extractPassword(newPassword);
             user.setPassword(newPassword);
-            userRepository.save(user);
+            userRepository.save(user); // Save updated user
 
             return ResponseEntity.ok("Password updated successfully");
         } catch (Exception e) {
@@ -90,15 +96,17 @@ public class SettingsController {
                                                        Model model,
                                                        HttpSession session,
                                                        RedirectAttributes redirectAttributes) {
+        // check if file is empty
         if (file.isEmpty()) {
             return ResponseEntity.badRequest().body("Please select a file to upload");
         }
 
         try {
+            // Get user by id
             User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
             String fileName = fileNameUtil.transferFile(file, fileNameUtil.UPLOAD_DIR);
             user.setProfilePicture(fileName);
-            userRepository.save(user);
+            userRepository.save(user); // Save updated user
             return ResponseEntity.ok("Profile picture uploaded successfully");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to upload profile picture");

@@ -17,11 +17,17 @@ public class ActivationController {
 
     @GetMapping("/activate")
     public String activateAccount(@RequestParam("token") String token, Model model) {
+
+        // Activate user account
         User user = userService.activateUserByToken(token);
+
+        // Check if user is activated
         if (user != null) {
+            // Display success message
             model.addAttribute("message", "Account activated successfully!");
             return "email_message/activation-success";
         } else {
+            // Display error message
             model.addAttribute("error", "Invalid activation token.");
             return "email_message/activation-error";
         }

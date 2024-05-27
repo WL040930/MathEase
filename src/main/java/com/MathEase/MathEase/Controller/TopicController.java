@@ -30,16 +30,20 @@ public class TopicController {
                         Model model,
                         HttpSession session) {
 
+        // Check if user is logged in
         if (session.getAttribute("userId") == null) {
             return "redirect:/login";
         }
 
+        // Check if user is a student
         if (session.getAttribute("role").equals("student")) {
             menuController.setMenuBar(session, model);
             setTopicAttributes(topicId, model);
 
+            // Get topic by id
             Topic topic = topicRepository.findById(topicId).get();
 
+            // Get links by topic
             List<Link> links = linkService.getLinksByTopic(topic);
 
             model.addAttribute("topic", topicId);
@@ -53,6 +57,7 @@ public class TopicController {
         }
     }
 
+    // Set topic attributes
     private void setTopicAttributes(Long topicId, Model model) {
         String chapterTemplateName = "courses/chapter" + topicId;
         model.addAttribute("chapterTemplateName", chapterTemplateName);

@@ -12,8 +12,9 @@ public class DataStorage {
     public static final String UPLOAD_DIRECTORY = "src/main/resources/static/data/";
 
     public static String saveFile(MultipartFile file, String directory) throws IOException {
+        // Get the file bytes
         byte[] bytes = file.getBytes();
-        String originalFilename = file.getOriginalFilename();
+        String originalFilename = file.getOriginalFilename(); // Get the original file name
         String fileExtension = originalFilename.substring(originalFilename.lastIndexOf("."));
         String newFilename = UUID.randomUUID().toString() + fileExtension;
         Path path = Paths.get(directory + newFilename);

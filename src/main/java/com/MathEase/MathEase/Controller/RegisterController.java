@@ -43,16 +43,19 @@ public class RegisterController {
                                @RequestParam("file") MultipartFile file,
                                Model model) throws IOException {
 
+        // Check if email already exists
         if (userRepository.findByEmail(email) != null) {
             model.addAttribute("error", "Email already exists");
             return "register";
         }
 
+        // Check if password and confirm password match
         if (!password.equals(confirmPassword)) {
             model.addAttribute("error", "Passwords do not match");
             return "register";
         }
 
+        // save user
         User user = new User();
         user.setUsername(username);
         user.setEmail(email);
@@ -61,6 +64,7 @@ public class RegisterController {
         user.setActivated(false);
         user.setJoinedDate(fileNameUtil.getCurrentDate());
 
+        // Save profile picture
         if (file != null && !file.isEmpty()) {
             String originalFileName = file.getOriginalFilename();
             assert originalFileName != null;
@@ -74,6 +78,7 @@ public class RegisterController {
 
         User savedUser = userRepository.save(user);
 
+        // Send verification email
         if (savedUser != null) {
             String activationToken = UUID.randomUUID().toString();
             savedUser.setActivationToken(activationToken);

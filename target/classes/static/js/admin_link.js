@@ -359,10 +359,10 @@ function DisplayEditLinkDetails(linkDetails) {
     modalContent.innerHTML = `
         <div class="editContainer">
             <label for="linkTitle">Title:</label>
-            <input type="text" id="editLinkTitle" value="${linkDetails.link}">
+            <input type="text" id="editLinkTitle" value="${linkDetails.link}" required>
 
             <label for="linkUrl">URL:</label>
-            <textarea id="editLinkUrl" rows="2" cols="30">${linkDetails.url}</textarea>
+            <textarea id="editLinkUrl" rows="2" cols="30" required>${linkDetails.url}</textarea>
             <button class="edit-button" onclick="submitEditItem(${linkDetails.linkId})">Submit</button>
         </div>
     `;
@@ -481,7 +481,8 @@ function deleteItem(linkId) {
         closeDeleteModal();
         clearDeleteModal();
         reloadLinkTable(topicId).then(r => console.log('Link table reloaded'));
-    });}
+    });
+}
 
 
 function clearDeleteModal() {

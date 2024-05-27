@@ -1,5 +1,12 @@
 <section class="content-header" th:fragment="IncludeCourse">
     <link rel="stylesheet" th:href="@{/css/topic.css}">
+    <link rel="stylesheet" th:href="@{/css/search-bar.css}">
+
+    <div class="search-container">
+        <!-- Search bar -->
+        <input type="text" id="topicSearch" placeholder="Search by topic name" class="search-input">
+        <button type="button" id="clearSearch" class="search-button"><i class="fa fa-times"></i></button>
+    </div>
 
     <div class="topic-grid">
         <div th:each="topic, iterStat : ${topics}" class="clickable-topic">
@@ -31,13 +38,53 @@
                     }
                 });
             });
-        });
 
+            // Search functionality
+            const searchInput = document.getElementById('topicSearch');
+            const clearSearchBtn = document.getElementById('clearSearch');
+
+            searchInput.addEventListener('input', function() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const topics = document.querySelectorAll('.clickable-topic');
+
+                topics.forEach(function(topic) {
+                    const topicName = topic.querySelector('.topicATag span:last-child').textContent.toLowerCase();
+                    if (topicName.includes(searchTerm)) {
+                        topic.style.display = 'block';
+                    } else {
+                        topic.style.display = 'none';
+                    }
+                });
+            });
+
+            // Clear search box
+            clearSearchBtn.addEventListener('click', function() {
+                searchInput.value = '';
+                // Trigger input event to update search results
+                searchInput.dispatchEvent(new Event('input'));
+            });
+        });
     </script>
 </section>
 
 <section class="content-header" th:fragment="IncludeStudentCourse">
     <link rel="stylesheet" th:href="@{/css/student-topic.css}">
+    <link rel="stylesheet" th:href="@{/css/search-bar.css}">
+
+    <!-- Search box -->
+    <div class="search-container">
+        <input type="text" id="topicSearch" placeholder="Search by topic name" class="search-input">
+        <button type="button" id="clearSearch" class="clear-button">×</button>
+    </div>
+
+    <!-- Filter box -->
+    <div class="filter-container">
+        <select id="completionFilter" class="filter-select">
+            <option value="all">All Chapters</option>
+            <option value="completed">Completed Chapters</option>
+            <option value="incomplete">Incomplete Chapters</option>
+        </select>
+    </div>
 
     <div class="topic-grid">
         <div th:each="topic, iterStat : ${topics}" class="clickable-topic" th:data-topic-id="${topic.topicId}">
@@ -69,6 +116,55 @@
             });
         });
 
+        // Search functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('topicSearch');
+            const clearSearchBtn = document.getElementById('clearSearch');
+
+            searchInput.addEventListener('input', function() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const topics = document.querySelectorAll('.clickable-topic');
+
+                topics.forEach(function(topic) {
+                    const topicName = topic.querySelector('.topic-name').textContent.toLowerCase();
+                    if (topicName.includes(searchTerm)) {
+                        topic.style.display = 'block';
+                    } else {
+                        topic.style.display = 'none';
+                    }
+                });
+            });
+
+            // Clear search box
+            clearSearchBtn.addEventListener('click', function() {
+                searchInput.value = '';
+                // Trigger input event to update search results
+                searchInput.dispatchEvent(new Event('input'));
+            });
+        });
+
+        // Filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const completionFilter = document.getElementById('completionFilter');
+
+            completionFilter.addEventListener('change', function() {
+                const filterValue = completionFilter.value;
+                const topics = document.querySelectorAll('.clickable-topic');
+
+                topics.forEach(function(topic) {
+                    if (filterValue === 'all') {
+                        topic.style.display = 'block';
+                    } else {
+                        const isCompleted = topic.classList.contains('completed');
+                        if ((filterValue === 'completed' && isCompleted) || (filterValue === 'incomplete' && !isCompleted)) {
+                            topic.style.display = 'block';
+                        } else {
+                            topic.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
 
         document.addEventListener('DOMContentLoaded', async function() {
             const clickableDivs = document.querySelectorAll('.clickable-topic');
@@ -88,9 +184,10 @@
                     const topicDiv = document.querySelector(`.clickable-topic[data-topic-id="${topicId}"]`);
 
                     if (data) {
-                        applyTopicStyle(topicDiv, 'lightgreen', '#6dbb63', '#a9e1a1');
+                        topicDiv.classList.add('completed');
+                        applyTopicStyle(topicDiv, 'lightgreen', 20); // 20% gradient intensity
                     } else {
-                        applyTopicStyle(topicDiv, 'red', '#ff6b6b', '#ffbebe');
+                        applyTopicStyle(topicDiv, 'red', 20); // 20% gradient intensity
                     }
 
                 });
@@ -122,13 +219,37 @@
             }
         }
 
-        function applyTopicStyle(topicDiv, bgColor, gradientColor1, gradientColor2) {
-            topicDiv.style.backgroundColor = bgColor;
-            topicDiv.style.background = `linear-gradient(to bottom right, ${gradientColor1}, ${gradientColor2})`;
+        function applyTopicStyle(topicDiv, color, gradientPercentage) {
+            const lighterColor = lightenColor(color, gradientPercentage);
+            const darkerColor = darkenColor(color, gradientPercentage);
+
+            topicDiv.style.backgroundColor = color;
+            topicDiv.style.background = `linear-gradient(to bottom right, ${lighterColor}, ${darkerColor})`;
             topicDiv.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.2)';
             topicDiv.style.color = 'white';
             topicDiv.style.transition = 'background-color 0.3s ease-in-out';
         }
+
+        function lightenColor(color, percentage) {
+            return `hsl(${extractHue(color)}, ${extractSaturation(color)}%, ${Math.min(100, extractLightness(color) + percentage)}%)`;
+        }
+
+        function darkenColor(color, percentage) {
+            return `hsl(${extractHue(color)}, ${extractSaturation(color)}%, ${Math.max(0, extractLightness(color) - percentage)}%)`;
+        }
+
+        function extractHue(color) {
+            return parseInt(color.substring(1, 3), 16);
+        }
+
+        function extractSaturation(color) {
+            return parseInt(color.substring(3, 5), 16);
+        }
+
+        function extractLightness(color) {
+            return parseInt(color.substring(5, 7), 16);
+        }
+
     </script>
 
 </section>

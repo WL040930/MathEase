@@ -21,12 +21,15 @@ public class AdminCourseController {
     @GetMapping("/admin/courses")
     public String showAdminCourses(HttpSession session, Model model) {
 
+        // Check if user is logged in and is an admin
         if (session.getAttribute("userId") == null || !session.getAttribute("role").equals("admin")) {
             return "redirect:/admin/login";
         }
 
+        // Set menu bar
         menuController.setMenuBar(session, model);
 
+        // Get all topics
         List<Topic> topics = topicService.getAllTopics();
         model.addAttribute("topics", topics);
         return "admin/admin-courses";

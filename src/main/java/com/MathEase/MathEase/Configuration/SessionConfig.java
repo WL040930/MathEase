@@ -6,5 +6,5 @@ import org.springframework.session.data.mongo.config.annotation.web.reactive.Ena
 @Configuration
 @EnableMongoWebSession
 public class SessionConfig {
-
+    // configuration of session using mongodb
 }

@@ -22,11 +22,13 @@ public class AdminDashboardController {
                                      RedirectAttributes redirectAttributes,
                                      Model model) {
 
+        // Check if user is logged in and is an admin
         if (!SessionController.validateAdmin(session)) {
             redirectAttributes.addAttribute("errorMessage", "unauthorized");
             return "redirect:/login";
         }
 
+        // Set menu bar
         MenuController.setMenuBar(session, model);
 
         return "admin/admin-dashboard";

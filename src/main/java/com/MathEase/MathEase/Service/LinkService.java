@@ -16,10 +16,12 @@ public class LinkService {
         this.linkRepository = linkRepository;
     }
 
+    // list all links
     public List<Link> getLinksByTopic (Topic topic) {
         return linkRepository.findByTopic(topic);
     }
 
+    // get link by id
     public Link getLinkById (Long linkId) {
         return linkRepository.findByLinkId(linkId);
     }

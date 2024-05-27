@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 public class SessionController {
 
     public static boolean validateAdmin(HttpSession session) {
+        // Check if the user is an admin
         Object role = session.getAttribute("role");
         if (role == null || !role.equals("admin")) {
             session.invalidate();

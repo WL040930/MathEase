@@ -10,8 +10,10 @@ import java.util.List;
 @Repository
 public interface LinkRepository extends JpaRepository<Link, Long>{
 
+    // Find all links by topic
     List<Link> findByTopic(Topic topic);
 
+    // Find link by linkId
     Link findByLinkId(Long linkId);
 
 }

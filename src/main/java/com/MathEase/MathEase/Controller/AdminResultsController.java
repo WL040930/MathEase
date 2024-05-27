@@ -28,11 +28,15 @@ public class AdminResultsController {
     @GetMapping("/admin/results")
     public String getAdminResults(HttpSession session, Model model) {
 
+        // Check if user is logged in and is an admin
         if (session.getAttribute("userId") == null || !session.getAttribute("role").equals("admin")) {
             return "redirect:/login";
         }
 
+        // Get all topics
         List<Topic> topics = topicService.getAllTopics();
+
+        // Add topics to model
         model.addAttribute("topics", topics);
         menuController.setMenuBar(session, model);
         return "admin/admin-result";
@@ -41,15 +45,18 @@ public class AdminResultsController {
     @GetMapping("/api/results/{topicId}")
     public ResponseEntity<AdminResultsDTO> getResults(@PathVariable("topicId") Long topicId) {
 
+        // Check if topicId is null
         if (topicId == null) {
             return ResponseEntity.badRequest().build();
         }
 
+        // Get results
         AdminResultsDTO adminResultsDTO = new AdminResultsDTO();
         Topic topic = topicService.getTopicById(topicId);
 
         adminResultsDTO.setTotalAnswers(userAnswerService.getTotalNumbersOfUserAnswerByQuestion_TopicId(topic));
         if (adminResultsDTO.getTotalAnswers() == 0) {
+            // If no answers are found, return 0
             adminResultsDTO.setAverageScore(0);
             adminResultsDTO.setTotalUsers(0);
             adminResultsDTO.setCorrectAnswers(0);
@@ -57,13 +64,13 @@ public class AdminResultsController {
             return ResponseEntity.ok(adminResultsDTO);
         }
 
+        // Get correct and incorrect answers
         adminResultsDTO.setCorrectAnswers(userAnswerService.getTotalNumbersOfUserAnswerByQuestion_TopicIdAndOption_isCorrect(topic, true));
         adminResultsDTO.setIncorrectAnswers(adminResultsDTO.getTotalAnswers() - adminResultsDTO.getCorrectAnswers());
         double percentage = (double) adminResultsDTO.getCorrectAnswers() / adminResultsDTO.getTotalAnswers() * 100;
         adminResultsDTO.setAverageScore(percentage);
         adminResultsDTO.setTotalUsers(userAnswerService.countDistinctUsersByTopic(topic));
-
-        System.out.println(adminResultsDTO);
+        
         return ResponseEntity.ok(adminResultsDTO);
     }
 }

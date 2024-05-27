@@ -38,11 +38,14 @@ public class StudentCourseController {
     @GetMapping("/student/courses")
     public String studentCourses(HttpSession session, Model model) {
 
+        // If user is not logged in or is not a student, redirect to login page
         if (session.getAttribute("userId") == null || !session.getAttribute("role").equals("student")) {
             return "redirect:/login";
         }
 
+        // Set the menu bar
         menuController.setMenuBar(session, model);
+        // Get all topics
         List<Topic> topics = topicService.getAllTopics();
         model.addAttribute("topics", topics);
 
@@ -53,9 +56,10 @@ public class StudentCourseController {
     public ResponseEntity<Boolean> isFullyAnswered (@RequestParam("topicId") String topicId,
                                                     HttpSession session) {
 
-
+        // If user is not logged in or is not a student, redirect to login page
         Topic topic = topicService.getTopicById(Long.parseLong(topicId));
 
+        // Get the user
         Long userId = (Long) session.getAttribute("userId");
         User user = userService.getUserById(userId);
 
