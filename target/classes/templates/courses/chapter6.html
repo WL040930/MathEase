@@ -1,12 +1,857 @@
 <section class="content-header" id="content" th:fragment="chapter6">
-    <link rel="stylesheet" th:href="@{/css/speak.css}">
-    <script th:src="@{/js/speak.js}"></script>
+    <!-- Header Box -->
+    <div class="header-box">
+        <h1>Form 1 Chapter 6 - Linear Equations</h1>
+    </div>
 
-    <!--    TODO: CHAPTER 6 HERE-->
+    <!-- Subtopic 6.1 Box -->
+    <div class="SubTopic1-box subtopic-section">
 
+        <!-- Subtopic 6.1 Header -->
+        <h3><i class="material-icons" onclick="toggleSubTopic(this)">keyboard_arrow_right</i> 6.1 Linear Equations
+            in One Variable</h3>
 
+        <!-- Subsection 6.1.1 box -->
+        <div class="SubSection-box">
 
-    <div style="margin-top: 20px; width: 100%"></div>
-    <button id="speakButton">Speak</button>
-    <button id="stopButton">Stop</button>
+            <!-- Subsection 6.1.1 Header -->
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 6.1.1 What are
+                linear
+                equations in one variable?
+            </h3>
+
+            <!-- Subsection 6.1.1 Notes -->
+            <div class="content">
+                <p><b><u>Smart Tips</u></b></p>
+
+                <ul>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            Linear equations in one variable are algebraic equations of the form ax + b = c, where a
+                            and b
+                            constants, and x is the variable. The solution to such an equation is the value of x
+                            that makes
+                            the equation true.
+                        </p>
+                    </li>
+                </ul>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image.png" />
+
+                    <p><b><i>Figure 6.1.1.1: Linear Equation in One Variable (Part 1)</i></b></p>
+                </center>
+
+                <br>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image__7_.png" />
+
+                    <p><b><i>Figure 6.1.1.2: Linear Equation in One Variable (Part 2)</i></b></p>
+                </center>
+            </div>
+
+            <!-- Subsection 6.1.1 Question Example -->
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+
+                <p style="text-align: justify; padding-right: 35px;">(a)
+                    You're organizing a fundraising event and need to sell tickets. Each ticket costs $10, and you
+                    have already spent $50 on preparations. Define a variable to represent the number of tickets you
+                    need to sell to cover your costs and break even.
+                </p>
+
+                <div id="fundraisingExplanation">
+                    <p><b>Step 1: Identify the quantities:</b></p>
+
+                    <ul>
+                        <li>Quantity: Number of tickets to be sold.</li>
+                        <li>Fixed cost: $50.</li>
+                        <li>Cost per ticket: $10.</li>
+                    </ul>
+
+                    <p><b>Step 2: Define the variable and equation:</b></p>
+
+                    <ul>
+                        <li>Let t represent the number of tickets you'll need to sell.</li>
+                        <li>The equation to cover your costs is: 10t - 50 = 0.</li>
+                    </ul>
+                </div>
+
+                <div class="radio-icon" onclick="handleRadioClick(event, 'fundraisingExplanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+
+        <!-- Subsection 6.1.2 box -->
+        <div class="SubSection-box">
+
+            <!-- Subsection 6.1.2 Header -->
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 6.1.2 How do you
+                form linear equations based on a given situation and vice versa?
+            </h3>
+
+            <!-- Subsection 6.1.2 Notes -->
+            <div class="content">
+                <p><b><u>Smart Tips</u></b></p>
+
+                <ul>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            Each term in a linear equation must have a same unit.
+                        </p>
+                    </li>
+
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            It is unnecessary to write the unit while forming linear equation.
+                        </p>
+                    </li>
+                </ul>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image__3_.png" />
+
+                    <p><b><i>Figure 6.1.2.1: Method to Form Linear Equations</i></b></p>
+                    <br>
+                </center>
+            </div>
+
+            <!-- Subsection 6.1.2 Question Example -->
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+
+                <p style="text-align: justify; padding-right: 35px;">(a)
+                    You are planning a road trip and need to calculate the total distance you will travel. Let's say
+                    the distance to your first destination is "d" miles. The distance to your second destination is
+                    20 miles more than twice the distance to the first destination. Finally, the distance to your
+                    third destination is 30 miles less than three times the distance to the second destination.
+                    Write an algebraic expression to represent the total distance you will travel in terms of "d".
+                </p>
+
+                <div id="distanceExplanation">
+                    <p><b>Step 1: Define the variables:</b></p>
+
+                    <ul>
+                        <li>Let (d) represent the distance to the first destination in miles.</li>
+                        <li>The second destination is (2d + 20) miles away (20 miles more than twice the first
+                            distance).</li>
+                        <li>The third destination is (3 × (2d + 20) - 30) miles away (30 miles less than three times
+                            the second distance).</li>
+                    </ul>
+
+                    <p><b>Step 2: Write the algebraic expression for the total distance:</b></p>
+
+                    <ul>
+                        <li>The total distance is the sum of the distances to all three destinations.</li>
+                        <li>So, the expression is [d + (2d + 20) + (3 × (2d + 20) - 30)].</li>
+                        <li>Simplifying, we get [d + 2d + 20 + 6d + 60 - 30].</li>
+                        <li>Combining like terms, the expression becomes (9d + 50).</li>
+                    </ul>
+
+                    <p><b>Step 3: Final expression:</b></p>
+
+                    <ul>
+                        <li>The final algebraic expression representing the total distance you will travel is (9d +
+                            50).</li>
+                        <li>This expression gives us the total distance based on the distance to the first
+                            destination represented by (d).</li>
+                    </ul>
+                </div>
+
+                <div class="radio-icon" onclick="handleRadioClick(event, 'distanceExplanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+
+        <!-- Subsection 6.1.3 box -->
+        <div class="SubSection-box">
+
+            <!-- Subsection 6.1.3 Header -->
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 6.1.3 How do you
+                solve linear equations in one variable?
+            </h3>
+
+            <!-- Subsection 6.1.3 Notes -->
+            <div class="content">
+                <p><b><u>Three Methods to Solve Linear Equations</u></b></p>
+
+                <ul>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;"><b>Trial and Improvement Method:</b>
+                            Making educated guesses and refining them until the correct solution is found.
+                        </p>
+                    </li>
+
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;"><b>Application of Equality Concept:</b>
+                            Using operations to both sides of an equation equally to isolate and solve for the
+                            variable.
+                        </p>
+                    </li>
+
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;"><b>Backtracking Method:</b>
+                            Starting from a guessed solution and working backward to verify if it satisfies the
+                            equation, adjusting as needed.
+                        </p>
+                    </li>
+                </ul>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image__2_.png" />
+
+                    <p><b><i>Figure 6.1.3.1: Questions</i></b></p>
+                </center>
+
+                <br>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image__11_.png " />
+
+                    <p><b><i>Figure 6.1.3.2: Trial and Improvement Method</i></b></p>
+                </center>
+
+                <br>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image__4_.png" />
+
+                    <p><b><i>Figure 6.1.3.3: Application of Equality Concept</i></b></p>
+                </center>
+
+                <br>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image__5_.png" />
+
+                    <p><b><i>Figure 6.1.3.4: Backtracking Method</i></b></p>
+                </center>
+            </div>
+
+            <!-- Subsection 6.1.3 Question Example -->
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+
+                <p style="text-align: justify; padding-right: 35px;">(a)
+                    You're planning a community bake sale and need to calculate the total profit from selling
+                    cookies and muffins. Define two variables to represent the number of cookies and the number of
+                    muffins you'll sell, respectively.
+                </p>
+
+                <div id="bakeSaleExplanation">
+                    <p><b>Step 1: Identify the quantities:</b></p>
+
+                    <ul>
+                        <li>Quantity 1: Number of cookies.</li>
+                        <li>Quantity 2: Number of muffins.</li>
+                    </ul>
+
+                    <p><b>Step 2: Define the variables:</b></p>
+
+                    <ul>
+                        <li>Let c represent the number of cookies you'll sell.</li>
+                        <li>Let m represent the number of muffins you'll sell.</li>
+                    </ul>
+
+                    <p><b>Step 3: Define the algebraic expression:</b></p>
+
+                    <ul>
+                        <li>Suppose the profit from one cookie is $2.00 and the profit from one muffin is $3.00.
+                        </li>
+                        <li>The total profit (P) can be represented as: P = 2.00c + 3.00m.</li>
+                    </ul>
+
+                    <p><b>Step 4: Determine the total profit using three methods:</b></p>
+
+                    <ul>
+                        <li>
+                            <b>Trial and Improvement Method:</b><br>
+                            Guess and check different values for c and m until the desired profit is achieved.<br>
+                            Example: If you aim for a profit of $50, try c = 10 and m = 10.<br>
+                            P = 2.00(10) + 3.00(10) = 20 + 30 = $50. The guess is correct.
+                        </li>
+
+                        <br>
+
+                        <li>
+                            <b>Application of Equality Concept:</b><br>
+                            Set up an equation and solve for one variable in terms of the other.<br>
+                            Example: If the desired profit is $50 and you know you will sell 10 cookies, find m.<br>
+                            50 = 2.00(10) + 3.00m<br>
+                            50 = 20 + 3.00m<br>
+                            30 = 3.00m<br>
+                            m = 10. Thus, you need to sell 10 muffins.
+                        </li>
+
+                        <br>
+
+                        <li>
+                            <b>Backtracking Method:</b><br>
+                            Start with an assumed solution and check if it satisfies the equation.<br>
+                            Example: Assume you sell 8 cookies and 11 muffins, check the total profit.<br>
+                            P = 2.00(8) + 3.00(11) = 16 + 33 = $49, which is close but not the target. Adjust and
+                            try again.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="radio-icon" onclick="handleRadioClick(event, 'bakeSaleExplanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+
+    <!-- Subtopic 6.2 Box -->
+    <div class="SubTopic2-box subtopic-section">
+
+        <!-- Subtopic 6.2 Header -->
+        <h3><i class="material-icons" onclick="toggleSubTopic(this)">keyboard_arrow_right</i> 6.2 Linear Equations
+            in Two Variables</h3>
+
+        <!-- Subsection 6.2.1 box -->
+        <div class="SubSection-box">
+
+            <!-- Subsection 6.2.1 Header -->
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 6.2.1 What are
+                linear equations in two variables?
+            </h3>
+
+            <!-- Subsection 6.2.1 Notes -->
+            <div class="content">
+                <p><b><u>Smart Tips</u></b></p>
+
+                <ul>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            Linear equations in two variables are algebraic equations of the form ax + by = c, where
+                            a, b, and c
+                            are constants, and x and y are variables. The solution to such an equation is the
+                            ordered pair (x, y)
+                            that makes the equation true, representing a point on the graph of the equation.
+                        </p>
+                    </li>
+                </ul>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image__6_.png" />
+
+                    <p><b><i>Figure 6.2.1.1: Linear Equations in Two Variables</i></b></p>
+                </center>
+            </div>
+
+            <!-- Subsection 6.2.1 Question Example -->
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+
+                <p style="text-align: justify; padding-right: 35px;">(a) Imagine you are managing a small business
+                    and need to calculate the total revenue from selling two products: T-shirts and hoodies. Define
+                    two variables to represent the number of T-shirts and the number of hoodies sold, respectively,
+                    and write the revenue equations. Then, demonstrate how to add and subtract these equations.</p>
+
+                <div id="revenueExplanation">
+                    <p><b>Step 1: Define the variables:</b></p>
+
+                    <ul>
+                        <li>Let x represent the number of T-shirts sold.</li>
+                        <li>Let y represent the number of hoodies sold.</li>
+                    </ul>
+
+                    <p><b>Step 2: Write the revenue equations:</b></p>
+
+                    <ul>
+                        <li>Revenue from T-shirts: R1 = 20x (assuming each T-shirt sells for $20)</li>
+                        <li>Revenue from hoodies: R2 = 50y (assuming each hoodie sells for $50)</li>
+                    </ul>
+
+                    <p><b>Step 3: Add the revenue equations:</b></p>
+
+                    <p>Combine the equations to find the total revenue:</p>
+                    <ul>
+                        <li>Total Revenue: R = R1 + R2</li>
+                        <li>R = 20x + 50y</li>
+                    </ul>
+
+                    <p><b>Step 4: Subtract the revenue equations:</b></p>
+
+                    <p>Subtract one equation from the other to analyze differences in revenue sources:</p>
+                    <ul>
+                        <li>Let's subtract revenue from T-shirts from the total revenue equation:</li>
+                        <li>R - R1 = (20x + 50y) - 20x</li>
+                        <li>R - R1 = 50y</li>
+                    </ul>
+                </div>
+
+                <div class="radio-icon" onclick="handleRadioClick(event, 'revenueExplanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+
+        <!-- Subsection 6.2.2 box -->
+        <div class="SubSection-box">
+
+            <!-- Subsection 6.2.2 Header -->
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 6.2.2 How do you
+                form linear equations in two variables?
+            </h3>
+
+            <!-- Subsection 6.2.2 Notes -->
+            <div class="content">
+                <p><b><u>Smart Tips</u></b></p>
+
+                <ul>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            To form linear equations in two variables, identify the changing quantities, translate
+                            the problem into mathematical language,
+                            use key words to guide your equation setup, and ensure consistency and simplicity in
+                            your equations.
+                        </p>
+                    </li>
+                </ul>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image__13_.png" />
+
+                    <p><b><i>Figure 6.2.2.1: Ways to Form Linear Equations in Two Variables</i></b></p>
+                    </p></i></b></p>
+                </center>
+            </div>
+
+            <!-- Subsection 6.2.2 Question Example -->
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+
+                <p style="text-align: justify; padding-right: 35px;">(a) You're managing a pet store that sells both
+                    dogs and cats. You need to calculate the total number of pets in the store's inventory,
+                    considering that there are (d) dogs and (c) cats. Each dog occupies one kennel, and each cat
+                    occupies half a kennel. How would you express this situation algebraically?</p>
+
+                <div id="petStoreExplanation">
+                    <p><b>Step 1: Identify the components:</b></p>
+
+                    <ul>
+                        <li>
+                            We have (d) dogs and (c) cats in the store's inventory.
+                        </li>
+                    </ul>
+
+                    <p><b>Step 2: Define the expression:</b></p>
+
+                    <ul>
+                        <li>
+                            The total number of kennels occupied by pets in the store can be algebraically expressed
+                            as
+                            (d + 0.5c).
+                        </li>
+                    </ul>
+
+                    <p><b>Step 3: Explanation of Expression:</b></p>
+
+                    <ul>
+                        <li>
+                            Each dog occupies one kennel, so we add (d) to the total. Each cat occupies half a
+                            kennel,
+                            so we add (0.5c) to account for the cats.
+                        </li>
+                    </ul>
+
+                    <p><b>Step 4: Example Calculation:</b></p>
+
+                    <ul>
+                        <li>If there are 20 dogs (d = 20) and 15 cats (c = 15), then the total number of kennels
+                            occupied by pets in the store would be:<br><br>
+                            Total kennels = 20 + 0.5 * 15 = 20 + 7.5 = 27.5 kennels
+                        </li>
+                    </ul>
+
+                </div>
+
+                <div class="radio-icon" onclick="handleRadioClick(event, 'petStoreExplanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+
+        <!-- Subsection 6.2.3 box -->
+        <div class="SubSection-box">
+
+            <!-- Subsection 6.2.3 Header -->
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 6.2.3 How do you
+                determine the possible solutions of linear equations in two variables?
+            </h3>
+
+            <!-- Subsection 6.2.3 Notes -->
+            <div class="content">
+                <p><b><u>Smart Tips</u></b></p>
+
+                <ul>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            To find the product of algebraic expressionswith one term, gather all the same
+                            variables, and then multiply the number with number and the variable with variable.
+                        </p>
+                    </li>
+                </ul>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image__9_.png" />
+
+                    <p><b><i>Figure 6.2.3.1: Determine the Possible Solutions of Linear Equations in Two
+                        Variables</i></b></p>
+                </center>
+            </div>
+
+            <!-- Subsection 6.2.3 Question Example -->
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+
+                <p style="text-align: justify; padding-right: 35px;">(a) Let's consider a scenario where you're
+                    managing a community garden project.
+                    One volunteer spends twice as much time as another volunteer planting flowers. The first
+                    volunteer spends (y) hours planting flowers,
+                    while the second volunteer spends (x) hours. If the total time spent planting flowers by both
+                    volunteers is 6 hours, how would you determine
+                    the possible solutions to this situation?</p>
+
+                <div id="gardenProjectExplanation">
+                    <p><b>Step 1: Identify the Components:</b></p>
+
+                    <ul>
+                        <li>
+                            The total time spent planting flowers is the sum of the time spent by each volunteer,
+                            with the constraint that the total time must be 6 hours.
+                        </li>
+                    </ul>
+
+                    <p><b>Step 2: Formulate the Equation:</b></p>
+
+                    <ul>
+                        <li>
+                            Write the equation representing the constraint: 2y + x = 6.
+                        </li>
+                    </ul>
+
+                    <p><b>Step 3: Determine the Possible Solutions using Substitution:</b></p>
+
+                    <ul>
+                        <li>
+                            When x = 0,<br>
+                            2y + 0 = 6,<br>
+                            2y = 6,<br>
+                            y =3
+                        </li>
+                    </ul>
+
+                    <ul>
+                        <li>
+                            When x = 1,<br>
+                            2y + 1 = 6,<br>
+                            2y = 5,<br>
+                            y = 2.5
+                        </li>
+                    </ul>
+
+                    <ul>
+                        <li>
+                            When x = 3,<br>
+                            2y + 3 = 6,<br>
+                            2y = 3,<br>
+                            y = 1.5
+                        </li>
+                    </ul>
+
+                    <ul>
+                        <li>
+                            Thus, the three possible pair of solutions are<br>
+                            (0, 3), (1, 2.5), and (3, 1.5).
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="radio-icon" onclick="handleRadioClick(event, 'gardenProjectExplanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+
+    <!-- Subtopic 6.3 Box -->
+    <div class="SubTopic3-box subtopic-section">
+
+        <!-- Subtopic 6.3 Header -->
+        <h3><i class="material-icons" onclick="toggleSubTopic(this)">keyboard_arrow_right</i> 6.3 Simultaneous
+            Linear
+            Equations in Two Variables</h3>
+
+        <!-- Subsection 6.3.1 box -->
+        <div class="SubSection-box">
+
+            <!-- Subsection 6.3.1 Header -->
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 6.3.1 How do you
+                form
+                simultaneous linear equations and represent them graphically?
+            </h3>
+
+            <!-- Subsection 6.3.1 Notes -->
+            <div class="content">
+                <p><b><u>Smart Tips</u></b></p>
+
+                <ul>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            To form simultaneous linear equations and represent them graphically, you express
+                            multiple
+                            linear equations with common variables and coefficients and then plot them on a
+                            coordinate
+                            plane to find their intersection points, which denote the solutions to the system.
+                        </p>
+                    </li>
+                </ul>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image__12_.png" />
+
+                    <p><b><i>Figure 6.3.1.1: Ways to Form Simultaneous Linear Equations</i></b></p>
+                </center>
+            </div>
+
+            <!-- Subsection 6.3.1 Question Example -->
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+
+                <p style="text-align: justify; padding-right: 35px;">(a)
+                    A manufacturing company produces two types of products: Product A and Product B. Let's denote
+                    the number of
+                    units of Product A produced as (x) and the number of units of Product B produced as (y). The
+                    company
+                    aims to optimize its production process while minimizing costs. Formulate a system of two
+                    simultaneous linear
+                    equations to represent the relationship between the production quantities and associated costs.
+                </p>
+
+                <div id="productionExplanation">
+                    <p><b>Step 1: Identify the quantities:</b></p>
+
+                    <ul>
+                        <li>Quantity 1: Number of units of Product A produced (x).</li>
+                        <li>Quantity 2: Number of units of Product B produced (y).</li>
+                    </ul>
+
+                    <p><b>Step 2: Define the variables:</b></p>
+
+                    <ul>
+                        <li>Let (x) represent the number of units of Product A produced.</li>
+                        <li>Let (y) represent the number of units of Product B produced.</li>
+                    </ul>
+
+                    <p><b>Step 3: Formulate simultaneous linear equations:</b></p>
+
+                    <ul>
+                        <li>
+                            The relationship between production quantities and costs can be represented by the
+                            following
+                            equations:<br><br>
+                            2x + 3y = Total cost of producing Product A<br>
+                            5x + 2y = Total cost of producing Product B
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="radio-icon" onclick="handleRadioClick(event, 'productionExplanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+
+        <!-- Subsection 6.3.2 box -->
+        <div class="SubSection-box">
+
+            <!-- Subsection 6.3.2 Header -->
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 6.3.2 How do you
+                solve
+                simultaneous linear equations in two variables?
+            </h3>
+
+            <!-- Subsection 6.3.2 Notes -->
+            <div class="content">
+                <p><b><u>Three Methods to Solve Simultaneous Linear Equations in Two Variables</u></b></p>
+
+                <ul>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;"><b>Graphical Method</b> - The graphical
+                            method involves plotting
+                            the equations on a graph to locate the intersection point(s), which represent the
+                            solutions to the system
+                            of equations.
+                        </p>
+                    </li>
+
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;"><b>Substitution Method</b> - The
+                            substitution method requires solving
+                            one equation for one variable, substituting this expression into the other equation, and
+                            solving for the remaining variable.
+                        </p>
+                    </li>
+
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;"><b>Elimination Method</b> - The
+                            elimination method entails adding or subtracting
+                            equations to eliminate one variable, then solving the resulting equation for the
+                            remaining variable.
+                        </p>
+                    </li>
+                </ul>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image__10_.png" />
+
+                    <p><b><i>Figure 6.3.2.1: Graphical Method</i></b></p>
+                </center>
+
+                <br>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image__8_.png" />
+
+                    <p><b><i>Figure 6.3.2.2: Substitution Method</i></b></p>
+                </center>
+
+                <br>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image__1_.png" />
+
+                    <p><b><i>Figure 6.3.2.3: Elimination Method</i></b></p>
+                </center>
+            </div>
+
+            <!-- Subsection 6.3.2 Question Example -->
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+
+                <p style="text-align: justify; padding-right: 35px;">(a)
+                    You're managing your daily expenses and need to balance your budget between two categories:
+                    groceries and
+                    transportation. Let's denote the amount spent on groceries as (G) and the amount spent on
+                    transportation
+                    as (T). Formulate a system of two simultaneous linear equations to represent the relationship
+                    between
+                    your expenses and your budget constraints. Then, solve the system using graphical, substitution,
+                    and elimination methods.
+                </p>
+
+                <div id="expensesExplanation">
+                    <p><b>Step 1: Identify the quantities:</b></p>
+
+                    <ul>
+                        <li>Quantity 1: Amount spent on groceries (G).</li>
+                        <li>Quantity 2: Amount spent on transportation (T).</li>
+                    </ul>
+
+                    <p><b>Step 2: Define the variables:</b></p>
+
+                    <ul>
+                        <li>Let (G) represent the amount spent on groceries.</li>
+                        <li>Let (T) represent the amount spent on transportation.</li>
+                    </ul>
+
+                    <p><b>Step 3: Formulate simultaneous linear equations:</b></p>
+
+                    <ul>
+                        <li>
+                            We can represent the relationship between expenses and budget constraints with the
+                            following
+                            equations:<br><br>
+                            [4G + 3T = 100] (Equation 1: Budget constraint for groceries and transportation)
+                            <br>[2G - T = 20] (Equation 2: Relation between groceries and transportation expenses)
+                        </li>
+                    </ul>
+
+                    <p><b>Step 4: Solve the system of equations using different methods:</b></p>
+
+                    <ul>
+                        <li>
+                            <b>Graphical Method:</b><br>
+                            Plot the equations on a graph and find the intersection point(s) to determine the solution.
+                            <pre>
+                                    Equation 1: 4G + 3T = 100
+                                    Equation 2: 2G - T = 20
+
+                                    Solve for T:
+                                    T1 = (100 - 4G) / 3
+                                    T2 = 2G - 20
+
+                                    Plot these equations and find the intersection point.
+                                    Intersection point: (G, T) = (16, 12)
+                                </pre>
+                        </li>
+                    </ul>
+
+                    <ul>
+                        <li>
+                            <b>Substitution Method:</b><br>
+                            From Equation 2 (2G - T = 20), solve for (T):
+                            <pre>
+                                    T = 2G - 20
+
+                                    Substitute T into Equation 1 (4G + 3T = 100):
+                                    4G + 3(2G - 20) = 100
+                                    4G + 6G - 60 = 100
+                                    10G - 60 = 100
+                                    10G = 160
+                                    G = 16
+
+                                    Substitute G back into Equation 2:
+                                    2(16) - T = 20
+                                    32 - T = 20
+                                    T = 12
+
+                                    Solution: (G, T) = (16, 12)
+                                </pre>
+                        </li>
+                    </ul>
+
+                    <ul>
+                        <li>
+                            <b>Elimination Method:</b><br>
+                            Multiply Equation 2 by 3 to eliminate (T):
+                            <pre>
+                                    3 * (2G - T) = 3 * 20
+                                    6G - 3T = 60
+
+                                    Add this modified Equation 2 to Equation 1 (4G + 3T = 100):
+                                    4G + 3T + 6G - 3T = 100 + 60
+                                    10G = 160
+                                    G = 16
+
+                                    Substitute G back into Equation 2:
+                                    2(16) - T = 20
+                                    32 - T = 20
+                                    T = 12
+
+                                    Solution: (G, T) = (16, 12)
+                                </pre>
+                        </li>
+                    </ul>
+                </div>
+                <div class="radio-icon" onclick="handleRadioClick(event, 'expensesExplanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
 </section>

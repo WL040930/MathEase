@@ -1,0 +1,123 @@
+.header-box,
+.subtopic-section {
+    background-color: #89CFF0;
+    border-radius: 10px;
+    padding: 5px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.SubTopic1-box,
+.SubTopic2-box,
+.SubTopic3-box,
+.subtopic-section{
+    background-color: #c5b4e3;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.SubSection-box {
+    display: none;
+    background-color: #e3ddee;
+    border-radius: 10px;
+    border-style: solid;
+    margin: 10px 10px 15px 7.5px;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.SubSection-box h3 {
+    cursor: pointer;
+}
+
+.SubSection-box.expanded {
+    display: block;
+}
+
+.SubSection-box .content,
+.SubSection-box .question {
+    display: none;
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+    background-color: white;
+    border-radius: 10px;
+    margin: 10px 15px 15px 15px;
+    padding: 1px 0px 1px 10px;
+    z-index: 999;
+}
+
+.SubSection-box.expanded .content,
+.SubSection-box.expanded .question {
+    display: block;
+    opacity: 1;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+h3 {
+    display: flex;
+    align-items: center;
+}
+
+h3 .icon {
+    margin-right: 10px;
+}
+
+.diagram {
+    width: 100%;
+    height: auto;
+    max-width: 50%;
+    max-height: 50%;
+    border-style: solid;
+}
+
+.radio-icon {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    border: 2px solid #007BFF;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    color: #007BFF;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.radio-icon i {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.radio-icon.checked i::before {
+    content: "\f028";
+}
+
+.radio-icon::before {
+    display: none;
+}
+
+.radio-icon:hover {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+.radio-icon:hover i {
+    color: #fff;
+}
+
+body {
+    display: flex;
+    margin: 0;
+    font-family: 'Roboto', Arial, sans-serif;
+    line-height: 1.5;
+}

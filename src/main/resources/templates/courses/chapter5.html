@@ -1,11 +1,668 @@
 <section class="content-header" id="content" th:fragment="chapter5">
-    <link rel="stylesheet" th:href="@{/css/speak.css}">
-    <script th:src="@{/js/speak.js}"></script>
+    <!-- Header Box -->
+    <div class="header-box">
+        <h1>Form 1 Chapter 5 - Algebraic Expression</h1>
+    </div>
 
-    <!--    TODO: CHAPTER 5 HERE-->
+    <!-- Subtopic 5.1 Box -->
+    <div class="SubTopic1-box subtopic-section">
 
+        <!-- Subtopic 5.1 Header -->
+        <h3><i class="material-icons" onclick="toggleSubTopic(this)">keyboard_arrow_right</i> 5.1 Variable and
+            Algebraic Expression</h3>
 
-    <div style="margin-top: 20px; width: 100%"></div>
-    <button id="speakButton">Speak</button>
-    <button id="stopButton">Stop</button>
+        <!-- Subsection 5.1.1 box -->
+        <div class="SubSection-box">
+
+            <!-- Subsection 5.1.1 Header -->
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 5.1.1 How do you
+                use letters to represent variables?
+            </h3>
+
+            <!-- Subsection 5.1.1 Notes -->
+            <div class="content">
+                <p><b><u>Variable</u></b></p>
+
+                <ul>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;"><b>Variables</b> - It can be defined by
+                            symbols that represent numbers. Instead of using a specific number, we use a letter or
+                            symbol to stand in for the unknown value. For example, in the equation x + 3 = 7, x
+                            is a variable.
+                        </p>
+                    </li>
+
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;"><b>When to use</b> - Variables are used
+                            when we don't know the exact value, but we want to talk about it or perform mathematical
+                            operations with it. They allow us to express relationships and solve problems without
+                            knowing the specific numbers involved.
+                        </p>
+                    </li>
+                </ul>
+
+                <center>
+                    <img class="diagram"
+                         src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/course_asset/C5.1_Diagram.png" />
+
+                    <p><b><i>Figure 5.1.1.1: Using Letters to Represent Variables</i></b></p>
+                </center>
+            </div>
+
+            <!-- Subsection 5.1.1 Question Example -->
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+
+                <p style="text-align: justify; padding-right: 35px;">(a)
+                    You're planning a picnic and need to bring along some snacks. Let's say you're considering two
+                    options: bringing apples or bringing oranges. Define two variables to represent the number of
+                    apples and the number of oranges you'll bring, respectively.
+                </p>
+
+                <div id="snacksExplanation">
+                    <p><b>Step 1: Identify the quantities:</b></p>
+
+                    <ul>
+                        <li>Quantity 1: Number of apples.</li>
+                        <li>Quantity 2: Number of oranges.</li>
+                    </ul>
+
+                    <p><b>Step 2: Define the variables:</b></p>
+
+                    <ul>
+                        <li>Let (a) represent the number of apples you'll bring.</li>
+                        <li>Let (o) represent the number of oranges you'll bring.</li>
+                    </ul>
+                </div>
+
+                <div class="radio-icon" onclick="handleRadioClick(event, 'snacksExplanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+
+        <!-- Subsection 5.1.2 box -->
+        <div class="SubSection-box">
+
+            <!-- Subsection 5.1.2 Header -->
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 5.1.2 How do you
+                derive an algebraic expression from a situation?
+            </h3>
+
+            <!-- Subsection 5.1.2 Notes -->
+            <div class="content">
+                <p><b><u>Algebraic expression</u></b></p>
+
+                <ul>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;"><b>Algebraic Expression</b> - An
+                            algebraic expression is like a math sentence that uses letters (variables) and numbers
+                            to show relationships. For example, 3𝑥+5 means three times a number (x), plus five.It
+                            helps us describe things in math, like formulas or rules, without knowing the exact
+                            numbers.
+                        </p>
+                    </li>
+                </ul>
+
+                <center>
+                    <img class="diagram"
+                         src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/course_asset/C5.1_Diagram2_1.png" />
+
+                    <p><b><i>Figure 5.1.2.1: Using Algebraic Expression to Represent Situations</i></b></p>
+                    <br>
+                </center>
+            </div>
+
+            <!-- Subsection 5.1.2 Question Example -->
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+
+                <p style="text-align: justify; padding-right: 35px;">(a)
+                    You have 3 bags of marbles. Let's call the number of marbles in the first bag "x", the
+                    second bag contains 5 more marbles than the first bag, and the third bag has twice the
+                    number of marbles in the second bag. Write an algebraic expression to represent the total number
+                    of marbles you have in terms of "x".
+                </p>
+
+                <div id="marblesExplanation">
+                    <p><b>Step 1: Define the variables:</b></p>
+
+                    <ul>
+                        <li>Let (x) represent the number of marbles in the first bag.</li>
+                        <li>The second bag contains (x + 5) marbles (5 more than the first bag).</li>
+                        <li>The third bag has 2 times (x + 5) marbles (twice the number in the second bag).</li>
+                    </ul>
+
+                    <p><b>Step 2: Write the algebraic expression for the total number of marbles:</b></p>
+
+                    <ul>
+                        <li>The total number of marbles is the sum of marbles in all three bags.</li>
+                        <li>So, the expression is [x + (x + 5) + 2 × (x + 5)].</li>
+                        <li>Simplifying, we get (x + x + 5 + 2x + 10).</li>
+                        <li>Combining like terms, the expression becomes (4x + 15).</li>
+                    </ul>
+
+                    <p><b>Step 3: Final expression:</b></p>
+
+                    <ul>
+                        <li>The final algebraic expression representing the total number of marbles is (4x + 15).
+                        </li>
+                        <li>This expression gives us the total number of marbles based on the number of marbles in
+                            the first bag represented by (x).</li>
+                    </ul>
+                </div>
+
+                <div class="radio-icon" onclick="handleRadioClick(event, 'marblesExplanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+
+        <!-- Subsection 5.1.3 box -->
+        <div class="SubSection-box">
+
+            <!-- Subsection 5.1.3 Header -->
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 5.1.3 How do you
+                determine the values from algebraic expression?
+            </h3>
+
+            <!-- Subsection 5.1.3 Notes -->
+            <div class="content">
+                <p><b><u>Smart Tips</u></b></p>
+
+                <ul>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            The value of an algebraic expression can be determined by substituting the variables
+                            with the given values.
+                        </p>
+                    </li>
+
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            Determine the values of algebraic expressions given the value of variables and make
+                            connections with appropriate situations.
+                        </p>
+                    </li>
+                </ul>
+
+                <center>
+                    <img class="diagram"
+                         src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/course_asset/C5.1_Diagram3.png  " />
+
+                    <p><b><i>Figure 5.1.3.1: Determine the Values from Algebraic Expression</i></b></p>
+                </center>
+            </div>
+
+            <!-- Subsection 5.1.3 Question Example -->
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+
+                <p style="text-align: justify; padding-right: 35px;">(a)
+                    Imagine you're organizing a school event and need to calculate the total cost of supplies. Let's
+                    consider two types of supplies: markers and notebooks. Define two variables to represent the
+                    number of markers and the number of notebooks you'll purchase, respectively.
+                </p>
+
+                <div id="suppliesExplanation">
+                    <p><b>Step 1: Identify the quantities:</b></p>
+
+                    <ul>
+                        <li>Quantity 1: Number of markers.</li>
+                        <li>Quantity 2: Number of notebooks.</li>
+                    </ul>
+
+                    <p><b>Step 2: Define the variables:</b></p>
+
+                    <ul>
+                        <li>Let (m) represent the number of markers you'll buy.</li>
+                        <li>Let (n) represent the number of notebooks you'll buy.</li>
+                    </ul>
+
+                    <p><b>Step 3: Define the algebraic expression:</b></p>
+
+                    <ul>
+                        <li>Suppose the cost of one marker is $1.50 and the cost of one notebook is $2.00.</li>
+                        <li>The total cost (C) can be represented as: C = 1.50m + 2.00n.</li>
+                    </ul>
+
+                    <p><b>Step 4: Determine the total cost:</b></p>
+
+                    <ul>
+                        <li>If you plan to buy 10 markers and 5 notebooks, substitute the values into the
+                            expression:<br>
+                            C = 1.50(10) + 2.00(5)<br>
+                            C = 15 + 10<br>
+                            C = 25<br>
+                            Therefore, the total cost is $25.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="radio-icon" onclick="handleRadioClick(event, 'suppliesExplanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+
+        <!-- Subsection 5.1.4 box -->
+        <div class="SubSection-box">
+
+            <!-- Subsection 5.1.4 Header -->
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 5.1.4 What are
+                the terms and coefficient in an expression?
+            </h3>
+
+            <!-- Subsection 5.1.4 Notes -->
+            <div class="content">
+                <p><b><u>Terms</u></b></p>
+
+                <ul>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;"><b>Terms</b> - Terms in algebraic
+                            expressions are individual parts separated by addition or subtraction signs. For
+                            example, in 3x^2 + 5x - 7, the terms are 3x^2, 5x, and -7.
+                        </p>
+                    </li>
+
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;"><b>Coefficients</b> - Coefficients are
+                            the numbers multiplying the variables within those terms.
+                            Based on the example given above, in 3x^2, the coefficient is 3, and in 5x, the
+                            coefficient is 5.</p>
+                    </li>
+                </ul>
+
+                <center>
+                    <img class="diagram"
+                         src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/course_asset/C5.1_Diagram4.png" />
+
+                    <p><b><i>Figure 5.1.4.1: Determine the Terms and Coefficient in an Expression</i></b></p>
+                </center>
+            </div>
+
+            <!-- Subsection 5.1.4 Question Example -->
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+
+                <p style="text-align: justify; padding-right: 35px;">(a) Consider the expression (2x^2 - 3xy + 5).
+                    Identify the terms and coefficients in this expression.</p>
+
+                <div id="expressionExplanation">
+                    <p><b>Step 1: Identify Terms:</b></p>
+
+                    <ul>
+                        <li>Term 1: (2x^2)</li>
+                        <li>Term 2: (-3xy)</li>
+                        <li>Term 3: (5)</li>
+                    </ul>
+
+                    <p><b>Step 2: Determine Coefficients:</b></p>
+
+                    <ul>
+                        <li>For (2x^2), the coefficient is (2).</li>
+                        <li>For (3xy), the coefficient is (-3).</li>
+                        <li>For the constant term (5), the coefficient is (5).</li>
+                    </ul>
+                </div>
+
+                <div class="radio-icon" onclick="handleRadioClick(event, 'expressionExplanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+
+        <!-- Subsection 5.1.5 box -->
+        <div class="SubSection-box">
+
+            <!-- Subsection 5.1.5 Header -->
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 5.1.5 What are
+                like terms and unlike terms?
+            </h3>
+
+            <!-- Subsection 5.1.5 Notes -->
+            <div class="content">
+                <p><b><u>Like Terms vs Unlike Terms</u></b></p>
+
+                <ul>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;"><b>Like Terms</b> - Like terms are
+                            terms in algebra that share the same variable(s) raised to the same power(s). They can
+                            be combined or simplified together. For example, 3x and 5x are like terms because they
+                            both have the variable x raised to the power of 1.
+                        </p>
+                    </li>
+
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;"><b>Unlike Terms</b> -
+                            Unlike terms are terms in algebra that have different variable(s) or the same
+                            variable(s) raised to different power(s). They cannot be combined directly. For example,
+                            3x and 5y are unlike terms because they have different variables, while 3x and 3x^2 are
+                            also unlike terms because they have the same variable but raised to different powers.
+                        </p>
+                    </li>
+                </ul>
+
+                <center>
+                    <img class="diagram"
+                         src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/course_asset/C5.1_Diagram5.png" />
+
+                    <p><b><i>Figure 5.1.5.1: Difference between Like Terms and Unlike Terms</i></b></p>
+                </center>
+            </div>
+
+            <!-- Subsection 5.1.5 Question Example -->
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+
+                <p style="text-align: justify; padding-right: 35px;">(a) Consider the expression (3x^2 - 2xy + 4x -
+                    5y +
+                    7).
+                    Identify the like terms and unlike terms in this expression.</p>
+
+                <div id="expressionExplanation1">
+                    <p><b>Step 1: Identify Like Terms and Unlike Terms:</b></p>
+
+                    <ul>
+                        <li>Like Terms: Terms that have the same variables raised to the same powers.
+                            <ul type="square">
+                                <li>Like Term 1: (3x^2)</li>
+                                <li>Like Term 2: (4x)</li>
+                            </ul>
+                        </li>
+                        <li>Unlike Terms: Terms that have different variables or the same variables raised to
+                            different powers.
+                            <ul type="square">
+                                <li>Unlike Term 1: (-2xy)</li>
+                                <li>Unlike Term 2: (-5y)</li>
+                                <li>Unlike Term 3: (7)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="radio-icon" onclick="handleRadioClick(event, 'expressionExplanation1')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+
+    <!-- Subtopic 5.2 Box -->
+    <div class="SubTopic2-box subtopic-section">
+
+        <!-- Subtopic 5.2 Header -->
+        <h3><i class="material-icons" onclick="toggleSubTopic(this)">keyboard_arrow_right</i> 5.2 Algebraic
+            Expressions Involving Basic Arithmetic Operations</h3>
+
+        <!-- Subsection 5.2.1 box -->
+        <div class="SubSection-box">
+
+            <!-- Subsection 5.2.1 Header -->
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 5.2.1 How do you
+                add and substract two more more algebraic expressions?
+            </h3>
+
+            <!-- Subsection 5.2.1 Notes -->
+            <div class="content">
+                <p><b><u>Smart Tips</u></b></p>
+
+                <ul>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            When the "+" sign which lies before the brackets is removed, the sign for each term in
+                            the brackets remains unchanged.
+                        </p>
+                    </li>
+
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            When the "-" sign which lies before the brackets is removed, the sign for each term in
+                            the brackets changes from "+ to -" and from "- to +".
+                        </p>
+                    </li>
+                </ul>
+
+                <center>
+                    <img class="diagram"
+                         src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/course_asset/C5.2_Diagram.png" />
+
+                    <p><b><i>Figure 5.2.1.1: Effects of Removing Signs Before Brackets on Terms within Algebraic
+                        Expressions</i></b></p>
+                </center>
+            </div>
+
+            <!-- Subsection 5.2.1 Question Example -->
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+
+                <p style="text-align: justify; padding-right: 35px;">(a) Consider the algebraic expressions (3x + 2y
+                    -
+                    5) and (4x - 3y + 7). How do you add and subtract these expressions?</p>
+
+                <div id="expressionExplanation2">
+                    <p><b>Step 1: Identify the expressions:</b></p>
+
+                    <ul>
+                        <li>Expression 1: (3x + 2y - 5)</li>
+                        <li>Expression 2: (4x - 3y + 7)</li>
+                    </ul>
+
+                    <p><b>Step 2: Perform Addition:</b></p>
+
+                    <p>Add corresponding terms together:</p>
+                    <ul>
+                        <li>For x terms: (3x + 4x) = 7x</li>
+                        <li>For y terms: (2y - 3y) = -y</li>
+                        <li>For constant terms: (-5 + 7) = 2</li>
+                    </ul>
+
+                    <p><b>Step 3: Perform Subtraction:</b></p>
+
+                    <p>Subtract the second expression from the first:</p>
+                    <ul>
+                        <li>For x terms: [3x - (+4x)] = -x</li>
+                        <li>For y terms: [2y -(-3y)] = 5y</li>
+                        <li>For constant terms: [-5 - (+7)] = -12</li>
+                    </ul>
+                </div>
+
+                <div class="radio-icon" onclick="handleRadioClick(event, 'expressionExplanation2')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+
+        <!-- Subsection 5.2.2 box -->
+        <div class="SubSection-box">
+
+            <!-- Subsection 5.2.2 Header -->
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 5.2.2 What is
+                the
+                product of the repeated multiplication of algebraic expressions?
+            </h3>
+
+            <!-- Subsection 5.2.2 Notes -->
+            <div class="content">
+                <p><b><u>Aim</u></b></p>
+
+                <ul>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            To make a generalization about the repeated multiplication of algebraic expressions.
+                        </p>
+                    </li>
+                </ul>
+
+                <center>
+                    <img class="diagram"
+                         src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/course_asset/C5.2_Diagram2.png" />
+
+                    <p><b><i>Figure 5.2.2.1: Repeated Multiplication of Algebraic Expressions
+                    </p></i></b></p>
+                </center>
+            </div>
+
+            <!-- Subsection 5.2.2 Question Example -->
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+
+                <p style="text-align: justify; padding-right: 35px;">(a) You're tasked with calculating the total
+                    number of apples in a garden layout with 6 rows of apple trees. Each row contains the same
+                    number of apple trees, represented by the variable "m". How would you express this situation
+                    algebraically?</p>
+
+                <div id="gardenExplanation">
+                    <p><b>Step 1: Identify the components:</b></p>
+
+                    <ul>
+                        <li>
+                            We have 6 rows of apple trees, and each row contains the same number of trees,
+                            represented by
+                            "m".
+                        </li>
+                    </ul>
+
+                    <p><b>Step 2: Define the expression:</b></p>
+
+                    <ul>
+                        <li>
+                            The total number of apple trees in the garden can be algebraically expressed as "6m".
+                        </li>
+                    </ul>
+
+                    <p><b>Step 3: Explanation of Expression:</b></p>
+
+                    <ul>
+                        <li>
+                            Each "m" represents the number of apple trees in one row. Since there are 6 rows of
+                            apple
+                            trees, we multiply the number of trees in one row ("m") by the number of rows (6) to get
+                            the
+                            total number of apple trees, which is "6m".
+                        </li>
+                    </ul>
+
+                    <p><b>Step 4: Example Calculation:</b></p>
+
+                    <ul>
+                        <li>
+                            If each row contains 10 apple trees (m = 10), then the total number of apple trees in
+                            the
+                            garden would be:<br><br>
+                            6 rows × 10 trees (per row) = 60 apple trees
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="radio-icon" onclick="handleRadioClick(event, 'gardenExplanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+
+        <!-- Subsection 5.2.3 box -->
+        <div class="SubSection-box">
+
+            <!-- Subsection 5.2.3 Header -->
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 5.2.3 How do you
+                multiply and divide algebraic expressions?
+            </h3>
+
+            <!-- Subsection 5.2.3 Notes -->
+            <div class="content">
+                <p><b><u>Smart Tips</u></b></p>
+
+                <ul>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            To find the product of algebraic expressionswith one term, gather all the same
+                            variables, and then multiply the number with number and the variable with variable.
+                        </p>
+                    </li>
+                </ul>
+
+                <center>
+                    <img class="diagram"
+                         src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/course_asset/C5.2_Diagram3.png" />
+
+                    <p><b><i>Figure 5.2.3.1: Simplify the Expressions</i></b></p>
+                </center>
+            </div>
+
+            <!-- Subsection 5.2.3 Question Example -->
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+
+                <p style="text-align: justify; padding-right: 35px;">(a) Imagine you're organizing a science fair
+                    and
+                    need to calculate the total number of experiments conducted by each participant. One participant
+                    performs (3x) experiments, another performs (2y) experiments, and a third performs (5z)
+                    experiments. How would you algebraically express the total number of experiments conducted by
+                    all participants?</p>
+
+                <div id="experimentsExplanation">
+                    <p><b>Step 1: Identify the Components:</b></p>
+
+                    <ul>
+                        <li>
+                            The total number of experiments is determined by the sum of experiments conducted by
+                            each
+                            participant, represented by (3x), (2y), and (5z) experiments, respectively.
+                        </li>
+                    </ul>
+
+                    <p><b>Step 2: Determine the Operations:</b></p>
+
+                    <ul>
+                        <li>
+                            We need to multiply each participant's number of experiments to find the total.
+                        </li>
+                    </ul>
+
+                    <p><b>Step 3: Simplify the Expression:</b></p>
+
+                    <ul>
+                        <li>
+                            To simplify, we'll multiply the number of experiments performed by each participant
+                            together.
+                            For instance, (3x) experiments multiplied by (2y) experiments, and then multiplied by
+                            (5z) experiments.
+                        </li>
+                    </ul>
+
+                    <p><b>Step 4: Perform Multiplication:</b></p>
+
+                    <ul>
+                        <li>
+                            First, we multiply (3x) by (2y), resulting in (6xy) experiments. Then, we multiply this
+                            result by (5z), yielding (30xyz) experiments.
+                        </li>
+                    </ul>
+
+                    <p><b>Step 5: Final Expression:</b></p>
+
+                    <ul>
+                        <li>
+                            The total number of experiments conducted by all participants can be expressed
+                            algebraically
+                            as (30xyz) experiments.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="radio-icon" onclick="handleRadioClick(event, 'experimentsExplanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
 </section>
