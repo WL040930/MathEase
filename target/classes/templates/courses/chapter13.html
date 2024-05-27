@@ -1,10 +1,458 @@
 <section class="content-header" id="content" th:fragment="chapter13">
-    <link rel="stylesheet" th:href="@{/css/speak.css}">
-    <script th:src="@{/js/speak.js}"></script>
-    <!--    TODO: CHAPTER 13 HERE-->
+<!--    style-->
+    <style>
+        .equation {
+            font-family: "Courier New", Courier, monospace;
+            background-color: #e9ecef;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            width: 97%;
+        }
+
+        .step {
+            background: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin: 10px 0;
+        }
+        .formula {
+            background: #e7f3fe;
+            padding: 5px;
+            border-left: 3px solid #2196F3;
+            font-family: "Courier New", Courier, monospace;
+            margin: 5px 0;
+        }
+    </style>
+
+<!--header-->
+    <div class="header-box">
+        <h1>Form 1 Chapter 13 - The Pythagoras' Theorem</h1>
+    </div>
+
+<!--    first subtopic -->
+    <div class="SubTopic1-box subtopic-section">
+        <h3><i class="material-icons" onclick="toggleSubTopic(this)">keyboard_arrow_right</i> 13.1 The Pythagoras' Theorem</h3>
+
+<!--        first content -->
+        <div class="SubSection-box">
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> What is a hypotenuse?
+            </h3>
+
+<!--            content-->
+            <div class="content">
+                <p><b><u>Hypotenuse</u></b></p>
+                <p>
+                    The hypotenuse is a term used in geometry, specifically in the context of right-angled triangles.
+                    A right-angled triangle is a triangle that has one angle measuring 90 degrees.
+                </p>
+
+                <p><b><u>Key Points:</u></b></p>
+                <ul>
+                    <li><strong>Right-Angled Triangle:</strong> This type of triangle has one angle that is exactly 90 degrees.</li>
+                    <li><strong>Sides of a Right-Angled Triangle:</strong>
+                        <ul>
+                            <li><strong>Legs:</strong> The two sides that form the right angle.</li>
+                            <li><strong>Hypotenuse:</strong> The side opposite the right angle and the longest side of the triangle.</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter13/chapter13_image_1.png" />
+
+                    <p><b><i>Figure 13.1.1.1: Example of a Right Angled Triangle</i></b></p>
+                </center>
+            </div>
+
+<!--            question-->
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+                <p>
+                    The diagram belows displays two right-angled triangles. Identify the hypotenuses of the triangles.
+                </p>
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter13/chapter_13_image_2.png" />
+
+                    <p><b><i>Figure 13.1.1.2: Two Right Angled Triangle</i></b></p>
+                </center>
+
+                <div id="13.1Explanation">
+                    <p><b>Right-Angled Triangle 1:</b></p>
+
+                    <ul>
+                        <li>Identify the right angle in the first triangle PSR.</li>
+                        <li>The two sides forming this right angle are the legs (PS, SR).</li>
+                        <li>The side opposite the right angle is the hypotenuse. (PR)</li>
+                    </ul>
+
+                    <p><b>Right-Angled Triangle 2:</b></p>
+
+                    <ul>
+                        <li>Identify the right angle in the first triangle PRQ.</li>
+                        <li>The two sides forming this right angle are the legs (PR, RQ).</li>
+                        <li>The side opposite the right angle is the hypotenuse. (PQ)</li>
+                    </ul>
+                </div>
+
+                <div class="radio-icon" onclick="handleRadioClick(event, '13.1Explanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
 
 
-    <div style="margin-top: 20px; width: 100%"></div>
-    <button id="speakButton">Speak</button>
-    <button id="stopButton">Stop</button>
+<!--        second content-->
+        <div class="SubSection-box">
+
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i>
+                What is the relationship between the sides of a right-angled triangle?
+            </h3>
+
+            <div class="content">
+                <p><b><u>Pythagorean Theorem</u></b></p>
+
+                <p>The relationship between the sides of a right-angled triangle is described by the <strong>Pythagorean theorem</strong>. This fundamental principle in geometry states that in a right-angled triangle, the square of the length of the hypotenuse (<strong>c</strong>) is equal to the sum of the squares of the lengths of the other two sides (<strong>a</strong> and <strong>b</strong>), which are referred to as the legs of the triangle.</p>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter13/chapter_13_image_3.png" />
+
+                    <p><b><i>Figure 13.1.2.1: Example of a Right Angled Triangle</i></b></p>
+                </center>
+
+                <p><b><u>Explanation</u></b></p>
+                <p>The Pythagorean theorem tells us that in a right-angled triangle:</p>
+                <ul>
+                    <li>The area of the square on the longest side (R) is the same as the combined areas of the squares on the other two sides (P and Q).</li>
+                    <li><p><strong>R<sup>2</sup> = P<sup>2</sup> + Q<sup>2</sup></strong></p>
+                    </li>
+                </ul>
+                <p>This is a fundamental rule in geometry for right-angled triangles.</p>
+
+                <p><b><u>Equation</u></b></p>
+                <div class="equation">
+                    <p>a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup></p>
+                </div>
+                <p><strong>Where:</strong></p>
+                <ul>
+                    <li><strong>a</strong> and <strong>b</strong> are the lengths of the legs.</li>
+                    <li><strong>c</strong> is the length of the hypotenuse.</li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+                <p>We have a triangle with sides labeled as ‘a’, ‘b’, and ‘c’. Let's find the hypotenuse. </p>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter13/chapter_13_image_4.png" />
+
+                    <p><b><i>Figure 13.1.2.2: Example Triangle</i></b></p>
+                </center>
+
+                <div id="13.2Explanation">
+
+                    <p><strong>Step 1: Identify the Hypotenuse</strong></p>
+                    <ul>
+                        <li>The side opposite the right angle is the hypotenuse. Let’s assume that side ‘c’ represents the hypotenuse.</li>
+                    </ul>
+
+                    <p><strong>Step 2: Apply the Pythagorean Theorem</strong></p>
+                    <ul>
+                        <li>The Pythagorean theorem states that in a right triangle, the sum of the squares of the two legs (sides ‘a’ and ‘b’) is equal to the square of the hypotenuse (side ‘c’): a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup></li>
+                    </ul>
+
+                    <p><strong>Step 3: Solving for Unknown Side Length</strong></p>
+                    <ul>
+                        <li>If you know the lengths of any two sides, you can use the equation to find the length of the third side.</li>
+                    </ul>
+
+                    <p><strong>Step 4: Substitute Known Values</strong></p>
+                    <ul>
+                        <li>Substitute the known values into the Pythagorean theorem: c = √(a<sup>2</sup> + b<sup>2</sup>)</li>
+                    </ul>
+
+                    <p><strong>Step 5: Calculate Hypotenuse Length</strong></p>
+                    <ul>
+                        <li>Calculate the square root of the sum of the squares of ‘a’ and ‘b’ to find the length of the hypotenuse ‘c’.</li>
+                    </ul>
+
+                </div>
+                    <div class="radio-icon" onclick="handleRadioClick(event, '13.2Explanation')">
+                        <i class='fas fa-volume-up'></i> Click here!
+                    </div>
+                <br>
+            </div>
+        </div>
+
+<!--        third content-->
+        <div class="SubSection-box">
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i>
+                How do you determine the length of the unknown side of a right-angled triangle?
+            </h3>
+
+            <div class="content">
+                <p><b><u>Smart Tips</u></b></p>
+
+                <p>
+                    To determine the length of the unknown side of a right-angled triangle, you can use the Pythagorean theorem. This theorem states that in a right triangle,
+                    the square of the length of the hypotenuse (the side opposite the right angle) is equal to the sum of the squares of the lengths of the other two sides.
+                    So, if you know the lengths of two sides, you can find the length of the third side by taking the square root of the sum of their squares.
+                </p>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter13/chapter_13_image_5.png" />
+
+                    <p><b><i>Figure 13.1.3.1: Example Question</i></b></p>
+                </center>
+
+                <p><b><u>Solution:</u></b></p>
+                <p>26<sup>2</sup> = x<sup>2</sup> + 24<sup>2</sup></p>
+                <p>x<sup>2</sup> = 26<sup>2</sup> &minus; 24<sup>2</sup></p>
+                <p>= 676 &minus; 576</p>
+                <p>= 100</p>
+                <p>x = &radic;100</p>
+                <p>= 10</p>
+            </div>
+
+
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+                <p>Calculate the length of PQ. </p>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter13/chapter_13_image_6.png" />
+
+                    <p><b><i>Figure 13.1.3.2: A diagram consists of two triangle</i></b></p>
+                </center>
+
+                <div id="13.3Explanation">
+                    <p><strong>Step 1:</strong>QS^2 = 6^2 + 8^2</p>
+                    <p style="margin-left: 56px;">= 36 + 64</p>
+                    <p style="margin-left: 56px;">= 100</p>
+
+                    <p><strong>Step 2:</strong>PS^2 = QS^2 + PQ^2</p>
+                    <p style="margin-left: 56px;">PQ^2 = PS^2 - QS^2</p>
+                    <p style="margin-left: 56px;">= 15^2 - 100</p>
+                    <p style="margin-left: 56px;">= 225 - 100</p>
+                    <p style="margin-left: 56px;">= 125</p>
+
+                    <p><strong>Step 3:</strong> PQ = &radic;125</p>
+                    <p style="margin-left: 56px;">≈ 11.18 cm (2 decimal places)</p>
+                </div>
+                <div class="radio-icon" onclick="handleRadioClick(event, '13.3Explanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+
+    <div class="SubTopic2-box subtopic-section">
+        <h3><i class="material-icons" onclick="toggleSubTopic(this)">keyboard_arrow_right</i> 13.2 The Converse of Pythagoras' Theorem</h3>
+
+        <div class="SubSection-box">
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> How do you determine whether a triangle is a right-angled triangle?</h3>
+
+            <div class="content">
+                <p><b><u>Triangle</u></b></p>
+                <p>
+                    Triangle can be classified into three types based on the angles:
+                </p>
+                <ul>
+                    <li>Acute Triangle: All angles are less than 90 degrees.</li>
+                    <li>Obtuse Triangle: One angle is greater than 90 degrees.</li>
+                    <li>Right-Angled Triangle: One angle is exactly 90 degrees.</li>
+                </ul>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter13/chapter_13_image_7.png" />
+
+                    <p><b><i>Figure 13.2.1.1: Acute Triangle</i></b></p>
+                </center>
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter13/chapter_13_image_8.png" />
+
+                    <p><b><i>Figure 13.2.1.2: Obtuse Triangle</i></b></p>
+                </center>
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter13/chapter_13_image_9.png" />
+
+                    <p><b><i>Figure 13.2.1.3: Right Angled Triangle</i></b></p>
+                </center>
+                <p>In a right-angled triangle, one of the angles is a right angle, meaning it measures exactly 90 degrees. This angle is formed by the intersection of the two shorter sides of the triangle, known as the legs. The other two angles in a right-angled triangle are acute angles, meaning they are less than 90 degrees.</p>
+
+                <p><b><u>Identifying a Right-Angled Triangle:</u></b></p>
+                <p>To identify a right-angled triangle, you can look for the following:</p>
+
+                <ul>
+                    <li>
+                        <p><b>Angle Measurement:</b></p>
+                        <p>Check if one of the angles in the triangle measures exactly 90 degrees. If it does, then it's a right-angled triangle.</p>
+                    </li>
+                    <li>
+                        <p><b>Pythagorean Theorem: </b></p>
+                        <p>Apply the Pythagorean theorem, which states that in a right-angled triangle, the square of the length of the hypotenuse (the side opposite the right angle) is equal to the sum of the squares of the lengths of the other two sides. If this theorem holds true for the triangle in question, then it is a right-angled triangle.</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+                <p>Determine whether each of the following triangles is a right-angled triangle</p>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter13/chapter_13_image_10.png" />
+
+                    <p><b><i>Figure 13.2.1.4: A triangle</i></b></p>
+                </center>
+                <div id="13.4Explanation">
+                    <p><strong>Solution Steps:</strong></p>
+
+                    <p><strong>Step 1:</strong> Identify the sides and their lengths</p>
+                    <ul>
+                        <li>Given:
+                            <ul>
+                                <li>SU = 20 cm</li>
+                                <li>ST = 12 cm</li>
+                                <li>TU = 18 cm</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <p><strong>Step 2:</strong> Check if it satisfies the Pythagorean theorem</p>
+                    <ul>
+                        <li>Calculate the squares of the lengths of each side:
+                            <ul>
+                                <li>SU<sup>2</sup> = 20<sup>2</sup> = 400</li>
+                                <li>ST<sup>2</sup> = 12<sup>2</sup> = 144</li>
+                                <li>TU<sup>2</sup> = 18<sup>2</sup> = 324</li>
+                            </ul>
+                        </li>
+                        <li>Check if the sum of the squares of the two shorter sides equals the square of the longest side:
+                            <ul>
+                                <li>SU<sup>2</sup> + ST<sup>2</sup> = 400 + 144 = 544</li>
+                                <li>TU<sup>2</sup> = 324</li>
+                            </ul>
+                        </li>
+                        <li>Since 544 is not equal to 324, the triangle does not satisfy the Pythagorean theorem.</li>
+                    </ul>
+
+                    <p><strong>Step 3:</strong> Conclusion</p>
+                    <ul>
+                        <li>Since the triangle does not satisfy the Pythagorean theorem, it is not a right-angled triangle.</li>
+                    </ul>
+
+                    <p><strong>Step 4:</strong> Additional Note (Optional)</p>
+                    <ul>
+                        <li>If you want to find out the type of triangle it is, you can compare the lengths of the sides and determine whether it is an acute-angled, obtuse-angled, or scalene triangle.</li>
+                    </ul>
+                    <div class="radio-icon" onclick="handleRadioClick(event, '13.4Explanation')">
+                        <i class='fas fa-volume-up'></i> Click here!
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+        <div class="SubSection-box">
+
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i>
+                How do you solve problems?
+            </h3>
+
+            <div class="content">
+                <p><b><u>Example Scenario</u></b></p>
+
+                <p>Calculate the value of x. </p>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter13/chapter_13_image_11.png" />
+
+                    <p><b><i>Figure 13.2.2.1: Example Question</i></b></p>
+                </center>
+                <h1>Triangle Solution</h1>
+                <p>Given a right-angled triangle with sides:</p>
+                <ul>
+                    <li>Side PQ = 20 cm</li>
+                    <li>Side QR = 21 cm</li>
+                    <li>Side PR = 29 cm</li>
+                </ul>
+
+                <div class="step">
+                    <p><strong>Step 1:</strong> Verify if it's a right-angled triangle:</p>
+                    <p>Check if c<sup>2</sup> = a<sup>2</sup> + b<sup>2</sup>:</p>
+                    <p class="formula">29<sup>2</sup> = 20<sup>2</sup> + 21<sup>2</sup> (which is true)</p>
+                    <p>So, it's a right-angled triangle.</p>
+                </div>
+
+                <div class="step">
+                    <p><strong>Step 2:</strong> Calculate angle ∠PQS:</p>
+                    <p>Since it's a right-angled triangle at point Q, angle ∠PQS equals 90&deg;.</p>
+                </div>
+
+                <div class="step">
+                    <p><strong>Step 3:</strong> Calculate angle ∠SQR:</p>
+                    <p>Use the angle sum property:</p>
+                    <p class="formula">∠SQR = 90&deg; - 15&deg; = 75&deg;</p>
+                </div>
+
+                <div class="step">
+                    <p><strong>Step 4:</strong> Determine the value of x:</p>
+                    <p class="formula">x = 180&deg; - 115&deg; - 28&deg; = 37&deg;</p>
+                </div>
+            </div>
+
+            <div class="question">
+                <p><b><u>Question</u></b></p>
+
+                <p>Sheila is given three straws to form a frame in the shape of a right-angled triangle. The straws are 15 cm, 20 cm and 25 cm long respectively. Will she be able to form the frame in the shape of a right-angled triangle?</p>
+                <div id="13.5Explanation">
+                    <p><b><u>Solution</u></b></p>
+
+                    <div class="step">
+                        <p><strong>Step 1:</strong> Identify the Sides</p>
+                        <p>Given straws:</p>
+                        <ul>
+                            <li>a = 15 cm</li>
+                            <li>b = 20 cm</li>
+                            <li>c = 25 cm (assuming c is the hypotenuse because it is the longest side)</li>
+                        </ul>
+                    </div>
+
+                    <div class="step">
+                        <p><strong>Step 2:</strong> Apply the Pythagorean Theorem</p>
+                        <p>The Pythagorean theorem states:</p>
+                        <p class="formula">c<sup>2</sup> = a<sup>2</sup> + b<sup>2</sup></p>
+                    </div>
+
+                    <div class="step">
+                        <p><strong>Step 3:</strong> Calculate the Squares of the Sides</p>
+                        <ul>
+                            <li>a<sup>2</sup> = 15<sup>2</sup> = 225</li>
+                            <li>b<sup>2</sup> = 20<sup>2</sup> = 400</li>
+                            <li>c<sup>2</sup> = 25<sup>2</sup> = 625</li>
+                        </ul>
+                    </div>
+
+                    <div class="step">
+                        <p><strong>Step 4:</strong> Check the Pythagorean Theorem</p>
+                        <p>Check if c<sup>2</sup> equals a<sup>2</sup> + b<sup>2</sup>:</p>
+                        <p class="formula">625 = 225 + 400</p>
+                        <p class="formula">625 = 625</p>
+                    </div>
+
+                    <div class="step">
+                        <p><strong>Step 5:</strong> Conclusion</p>
+                        <p>Since the equation holds true (625 = 625), the straws of lengths 15 cm, 20 cm, and 25 cm can indeed form a right-angled triangle.</p>
+                    </div>
+                    <div class="radio-icon" onclick="handleRadioClick(event, '13.5Explanation')">
+                        <i class='fas fa-volume-up'></i> Click here!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </section>
