@@ -204,18 +204,25 @@ function saveProfileChanges() {
     xhr.onload = function () {
         if (xhr.status === 200) {
             console.log('Profile picture uploaded successfully');
+            // reload the page from the server
+            window.location.reload(true);
         } else {
             console.error('Failed to upload profile picture');
+            // reload the page from the server in case of error too
+            window.location.reload(true);
         }
     };
 
     xhr.onerror = function () {
         console.error('Network error during profile picture upload');
+        // reload the page from the server in case of network error
+        window.location.reload(true);
     };
 
     // Send the FormData
     xhr.send(formData);
 }
+
 
 document.addEventListener('DOMContentLoaded', function() {
     var successMessage = document.querySelector('.success-message');
