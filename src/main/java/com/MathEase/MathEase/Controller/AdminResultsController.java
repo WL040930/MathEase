@@ -70,8 +70,7 @@ public class AdminResultsController {
         double percentage = (double) adminResultsDTO.getCorrectAnswers() / adminResultsDTO.getTotalAnswers() * 100;
         adminResultsDTO.setAverageScore(percentage);
         adminResultsDTO.setTotalUsers(userAnswerService.countDistinctUsersByTopic(topic));
-
-        System.out.println(adminResultsDTO);
+        
         return ResponseEntity.ok(adminResultsDTO);
     }
 }
