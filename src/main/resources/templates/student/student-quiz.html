@@ -15,7 +15,7 @@
             <h3 th:text="'Question ' + (${num.index + 1})"></h3>
             <p th:text="${quiz.quiz}" class="question"></p>
             <div class="image-container" th:if="${quiz.filePath}">
-                <img th:src="@{'/data/' + ${quiz.filePath}}" alt="Quiz Image">
+                <img th:src="@{'/data/' + ${quiz.filePath}}" alt="Quiz Image" style="height: 130px">
             </div>
         </div>
         <div class="options">
