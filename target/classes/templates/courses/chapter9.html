@@ -11,6 +11,389 @@
         <div class="SubSection-box">
             <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> What is the relationship between the number of sides, vertices and diagonals of a polygon?
             </h3>
+
+            <div class="content">
+                <h3>Relationship Between Sides, Vertices, and Diagonals of a Polygon</h3>
+
+                <p>The relationship between the number of sides (n), vertices (V), and diagonals (D) of a polygon is as follows:</p>
+
+                <ol>
+                    <li><strong>Number of Vertices (V):</strong>
+                        <br>
+                        <ul>
+                            <li><p>For any n-sided polygon, the number of vertices is equal to the number of sides: V = n.</p></li>
+                        </ul>
+                        <br>
+                    </li>
+                    <li><strong>Number of Diagonals (D):</strong>
+                        <br>
+                        <ul>
+                            <li><p>The number of diagonals in a polygon can be calculated using the formula: D = n(n - 3)/2.</p></li>
+                            <li><p>This formula applies to simple polygons (convex polygons) where no two sides intersect except at their endpoints.</p></li>
+                        </ul>
+                        <br>
+                    </li>
+                    <li><strong>Relationship between Sides, Vertices, and Diagonals:</strong>
+                        <br>
+                        <ul>
+                            <li><p>In any polygon, the number of sides is equal to the number of vertices. Additionally, the number of diagonals can be determined based on the number of sides using the formula mentioned above.</p></li>
+                        </ul>
+                        <br>
+                    </li>
+                    <li><strong>Total Number of Line Segments:</strong>
+                        <br>
+                        <ul>
+                            <li><p>The total number of line segments in a polygon includes both the sides and diagonals. It can be calculated as: Total Line Segments = Sides + Diagonals = n + n(n - 3)/2.</p></li>
+                        </ul>
+                        <br>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="question">
+                <p><b><u>Question</u></b></p>
+
+                <p>
+                    Find the number of vertices and the number of diagonals of a polygon with 10 sides
+                </p>
+
+                <div id="9.1Explanation">
+                    <p><b><u>Solution</u></b></p>
+                    <ol>
+                        <li><strong>Step 1: Understand the Question</strong>
+                            <p>The question asks us to determine two things: the number of vertices (corners) and the number of diagonals in a polygon with 10 sides.</p>
+                        </li>
+                        <li><strong>Step 2: Finding the Number of Vertices</strong>
+                            <p>The number of vertices in any polygon is equal to the number of sides. Since the polygon in question has 10 sides, it also has 10 vertices.</p>
+                        </li>
+                        <li><strong>Step 3: Finding the Number of Diagonals</strong>
+                            <p>The formula to find the number of diagonals in a polygon is "D = n(n - 3)/2", where "n" is the number of sides.</p>
+                            <ul>
+                                <li>For a polygon with 10 sides:
+                                    <br> D = (10 × (10 - 3)) / 2
+                                    <br> D = (10 × 7) / 2
+                                    <br> D = 70 / 2
+                                    <br> D = 35
+                                </li>
+                            </ul>
+                            <p>Therefore, the polygon with 10 sides has 10 vertices and 35 diagonals.</p>
+                        </li>
+                    </ol>
+
+                </div>
+                <div class="radio-icon" onclick="handleRadioClick(event, '9.1Explanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+
+        <div class="SubSection-box">
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> How do you draw, label, and name a polygon?
+            </h3>
+
+            <div class="content">
+                <h3>Drawing the Polygon:</h3>
+                <ol>
+                    <li>Use a ruler and a pencil to draw the polygon on a piece of paper or a whiteboard.</li>
+                    <li>Connect the vertices with straight lines to form the sides of the polygon.</li>
+                    <li>Ensure that the sides do not intersect within the polygon.</li>
+                </ol>
+
+                <h3>Labeling the Vertices:</h3>
+                <ol>
+                    <li>Identify each vertex of the polygon.</li>
+                    <li>Label the vertices with capital letters (e.g., A, B, C, ...) in a clockwise or counterclockwise direction.</li>
+                    <li>Start labeling from any vertex and proceed sequentially around the polygon.</li>
+                </ol>
+
+                <h3>Naming the Polygon:</h3>
+                <ol>
+                    <li>Determine the type of polygon based on the number of sides.</li>
+                    <li>Use the appropriate polygon name, such as triangle (3 sides), quadrilateral (4 sides), pentagon (5 sides), hexagon (6 sides), etc.</li>
+                    <li>If the polygon is a regular polygon (all sides and angles are equal), specify it as a regular polygon (e.g., regular hexagon).</li>
+                </ol>
+
+                <h3>Optional: Indicating Side Lengths and Angles:</h3>
+                <p>If provided with side lengths or angle measures, you can indicate them near the corresponding sides or angles. Use tick marks or numbers to represent measurements accurately.</p>
+
+                <h3>Reviewing the Drawing:</h3>
+                <p>Double-check the drawing to ensure accuracy in the shape, labeling, and naming of the polygon. Make any necessary adjustments or corrections.</p>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter9/chapter_9_image_1.png" />
+
+                    <p><b><i>Figure 9.1.2.1: Polygons</i></b></p>
+                </center>
+            </div>
+
+            <div class="question">
+                <p><b><u>Question</u></b></p>
+
+                <p>
+                    For each of the following, state whether the statement is TRUE or FALSE.
+                </p>
+
+                <ol>
+                    <li>
+                        <p>
+                            (a) A polygon with 11 sides has 11 vertices.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            (b) A polygon with 12 sides has 54 diagonals.
+                        </p>
+                    </li>
+                </ol>
+
+                <div id="9.2Explanation">
+                    <p><b><u>Solution</u></b></p>
+
+                    <ol>
+                        <li><strong>Statement (a):</strong>
+                            <br>
+                            <ul>
+                                <li><p>TRUE. A polygon with n sides has n vertices. Therefore, a polygon with 11 sides has 11 vertices.</p></li>
+                            </ul>
+                            <br>
+                        </li>
+                        <li><strong>Statement (b):</strong>
+                            <br>
+                            <ul>
+                                <li><p>FALSE. The formula to calculate the number of diagonals in a polygon is D = n(n - 3)/2, where n is the number of sides. For a polygon with 12 sides:</p></li>
+                                <li><p>D = 12(12 - 3)/2 = 12 × 9/2 = 54/2 = 27 diagonals.</p></li>
+                                <li><p>Therefore, a polygon with 12 sides has 27 diagonals, not 54.</p></li>
+                            </ul>
+                            <br>
+                        </li>
+                    </ol>
+                </div>
+                <div class="radio-icon" onclick="handleRadioClick(event, '9.2Explanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+
+    <div class="SubTopic1-box subtopic-section">
+        <h3><i class="material-icons" onclick="toggleSubTopic(this)">keyboard_arrow_right</i> 9.2 Properties of Triangles and the Interior and Exterior Angles of Triangles</h3>
+
+        <!--        first content -->
+        <div class="SubSection-box">
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> What are the properties of a triangle?
+            </h3>
+
+            <div class="content">
+                <h3>Properties of a Triangle</h3>
+
+                <ul>
+                    <li>
+                        <p><strong>Three Sides:</strong> A triangle has three sides.</p>
+                    </li>
+                    <li>
+                        <p><strong>Three Vertices:</strong> It has three vertices where the sides meet, also known as corners.</p>
+                    </li>
+                    <li>
+                        <p><strong>Three Angles:</strong> Each vertex corresponds to an angle formed by its adjacent sides. The sum of the interior angles of a triangle is always 180 degrees.</p>
+                    </li>
+                    <li>
+                        <p><strong>Types of Triangles:</strong> Equilateral (all sides are equal in length), Isosceles (two sides are equal in length), Scalene (no sides are equal in length). Acute (all angles are less than 90 degrees), Obtuse (one angle is greater than 90 degrees), Right (one angle is exactly 90 degrees).</p>
+                    </li>
+                    <li>
+                        <p><strong>Area:</strong> The area of a triangle can be calculated using various formulas, such as the formula <em>(1/2) × base × height</em> or Heron's formula for finding the area when the lengths of all three sides are known.</p>
+                    </li>
+                    <li>
+                        <p><strong>Perimeter:</strong> The perimeter of a triangle is the sum of the lengths of its three sides.</p>
+                    </li>
+                    <li>
+                        <p><strong>Inequality Theorem:</strong> In any triangle, the sum of the lengths of any two sides must be greater than the length of the third side. This property is known as the triangle inequality theorem.</p>
+                    </li>
+                    <li>
+                        <p><strong>Congruence and Similarity:</strong> Triangles can be congruent (having the same size and shape) or similar (having the same shape but not necessarily the same size).</p>
+                    </li>
+                    <li>
+                        <p><strong>Centroid, Circumcenter, Incenter, and Orthocenter:</strong> These are special points within or related to a triangle that have unique properties.</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <p><b><u>Question</u></b></p>
+
+                <p>
+                    What type of triangle has all three angles measuring less than 90 degrees, and what is the relationship between the lengths of its sides?
+                </p>
+
+                <div id="9.2.1Explanation">
+                    <p><b><u>Solution</u></b></p>
+                    <p>
+                        The type of triangle described in the question is an acute triangle. In an acute triangle, all three angles are less than 90 degrees.
+                        <br> <br>
+                        The relationship between the lengths of the sides in an acute triangle varies. Since acute triangles can have varying side lengths, there is no fixed relationship between the lengths of its sides. However, it is important to note that in any triangle, the sum of the lengths of any two sides must be greater than the length of the third side, according to the triangle inequality theorem.
+                    </p>
+                </div>
+                <div class="radio-icon" onclick="handleRadioClick(event, '9.2.1Explanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+
+        <div class="SubSection-box">
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> How do you determine the interior angles and exterior angles of a triangle?
+            </h3>
+
+            <div class="content">
+                <h3>Properties of a Triangle</h3>
+                <h3>Determining Interior and Exterior Angles of a Triangle</h3>
+
+                <p><strong>Interior Angles:</strong></p>
+                <ol>
+                    <li>Apply the Triangle Sum Theorem: The sum of the interior angles of any triangle is always 180 degrees.
+                        <ul>
+                            <li>If given the measures of two interior angles, subtract their sum from 180 degrees to find the measure of the third angle.</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <p><strong>Exterior Angles:</strong></p>
+                <ol>
+                    <li>Apply the Exterior Angle Theorem: The measure of an exterior angle of a triangle is equal to the sum of the measures of the two non-adjacent interior angles.
+                        <ul>
+                            <li>If given the measures of interior angles, subtract each angle from 180 degrees to find the measure of the corresponding exterior angle.</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="question">
+                <p><b><u>Question</u></b></p>
+
+                <p>
+                    Find the value of x.
+                </p>
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter9/chapter_9_image_2.png" />
+
+                    <p><b><i>Figure 9.2.2.1: Diagram</i></b></p>
+                </center>
+                <div id="9.2.2Explanation">
+                    <p><b><u>Solution</u></b></p>
+                    <p>Step 1: Write down the equation using the Triangle Sum Theorem:</p>
+                    <p>92&deg; + 37&deg; + x = 180&deg;</p>
+                    <br>
+                    <p>Step 2: Combine like terms and solve for x:</p>
+                    <p>129&deg; + x = 180&deg;</p>
+                    <br>
+                    <p>Step 3: Solve for x:</p>
+                    <p>x = 180&deg; - 129&deg;</p>
+                    <p>x = 51&deg;</p>
+                </div>
+                <div class="radio-icon" onclick="handleRadioClick(event, '9.2.2Explanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+
+    <div class="SubTopic3-box subtopic-section">
+        <h3><i class="material-icons" onclick="toggleSubTopic(this)">keyboard_arrow_right</i> 9.3 Properties of Quadrilaterals and Interior and Exterior Angles of Quadrilaterals</h3>
+
+        <!--        first content -->
+        <div class="SubSection-box">
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> What are the properties of a quadrilateral?
+            </h3>
+            <div class="content">
+                <h3>Properties of a Quadrilateral</h3>
+
+                <p>A quadrilateral is a polygon with the following properties:</p>
+
+                <ul>
+                    <li><strong>Four Sides:</strong> A quadrilateral has four sides.</li>
+                    <li><strong>Four Vertices:</strong> It has four vertices where the sides meet, also known as corners.</li>
+                    <li><strong>Sum of Interior Angles:</strong> The sum of the interior angles of a quadrilateral is always 360 degrees.</li>
+                    <li><strong>Types of Quadrilaterals:</strong> Square, Rectangle, Rhombus, Parallelogram, Trapezoid, Kite, Quadrilateral.</li>
+                    <li><strong>Diagonals:</strong> A quadrilateral has two diagonals, which are line segments connecting opposite vertices.</li>
+                    <li><strong>Area:</strong> The area of a quadrilateral can be calculated using various formulas depending on its type.</li>
+                    <li><strong>Perimeter:</strong> The perimeter of a quadrilateral is the sum of the lengths of its four sides.</li>
+                    <li><strong>Properties of Special Quadrilaterals:</strong> Each type of quadrilateral has its own unique properties.</li>
+                </ul>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter9/chapter_9_image_3.png" />
+
+                    <p><b><i>Figure 9.2.3.1: Type of Quadrilaterals</i></b></p>
+                </center>
+            </div>
+        </div>
+
+        <div class="SubSection-box">
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> How do you determine the interior angles and the exterior angles of a quadrilateral?
+            </h3>
+
+            <div class="content">
+                <h3>Determining Interior and Exterior Angles of a Quadrilateral</h3>
+
+                <p><strong>Interior Angles:</strong></p>
+                <ol>
+                    <li>Apply the Sum of Interior Angles Theorem: The sum of the interior angles of any quadrilateral is always 360 degrees.</li>
+                    <li>If given the measures of three interior angles, subtract their sum from 360 degrees to find the measure of the fourth angle.</li>
+                </ol>
+
+                <p><strong>Exterior Angles:</strong></p>
+                <ol>
+                    <li>Apply the Exterior Angle Theorem: The measure of an exterior angle of a quadrilateral is equal to the sum of the measures of the two interior angles not adjacent to it.</li>
+                    <li>If given the measures of interior angles, subtract each angle from 180 degrees to find the measure of the corresponding exterior angle.</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="SubSection-box">
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> How do you solve problems involving quadrilaterals?
+            </h3>
+
+            <div class="content">
+                <h3>Solving Problems Involving Quadrilaterals</h3>
+
+                <p>To solve problems involving quadrilaterals, follow these steps:</p>
+
+                <ol>
+                    <li><strong>Identify the Type of Quadrilateral:</strong> Determine the type of quadrilateral based on its properties and characteristics.</li>
+                    <li><strong>Use the Properties of the Quadrilateral:</strong> Apply the specific properties of the quadrilateral to solve the problem.</li>
+                    <li><strong>Apply the Sum of Interior Angles Theorem:</strong> Remember that the sum of the interior angles of a quadrilateral is always 360 degrees.</li>
+                    <li><strong>Apply the Exterior Angle Theorem:</strong> Use the relationship between interior and exterior angles to solve problems involving quadrilaterals.</li>
+                    <li><strong>Calculate the Area and Perimeter:</strong> Use the appropriate formulas to find the area and perimeter of the quadrilateral.</li>
+                    <li><strong>Check Your Solution:</strong> Verify your answer by ensuring that it satisfies all given conditions and properties of the quadrilateral.</li>
+                </ol>
+            </div>
+
+            <div class="question">
+                <p><b><u>Question</u></b></p>
+
+                <p>
+                    In the diagram, PQRU is a square and QRSV is a parallelogram. PVR is a straight line. Find the value of x and y.
+                </p>
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter9/chapter_9_image_4.png" />
+
+                    <p><b><i>Figure 9.3.3.1: Diagram</i></b></p>
+                </center>
+                <div id="9.3.3Explanation">
+                    <p><b><u>Solution</u></b></p>
+                    <center>
+                        <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter9/chapter_9_image_5.png" />
+
+                        <p><b><i>Figure 9.3.3.2: Solution</i></b></p>
+                    </center>
+                </div>
+                <div class="radio-icon" onclick="handleRadioClick(event, '9.3.3Explanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
         </div>
     </div>
 </section>
