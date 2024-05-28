@@ -26,7 +26,7 @@ public interface UserAnswerRepository extends JpaRepository<UserAnswer, Long>{
     // Find all user answers by user
     List<UserAnswer> findByUserAndQuestion_TopicId(User user, Topic topic);
 
-    // Find all user answers by user
+    // Find all user answers by topic
     int countByQuestion_TopicId(Topic topic);
 
     // count all user answers by user and topic
@@ -45,4 +45,8 @@ public interface UserAnswerRepository extends JpaRepository<UserAnswer, Long>{
     long count();
 
     long countByOption_isCorrect(boolean correct);
+
+    long countByUser(User user);
+
+    long countByUserAndOption_isCorrect(User user, boolean correct);
 }

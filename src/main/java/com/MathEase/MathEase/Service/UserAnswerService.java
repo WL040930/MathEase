@@ -65,6 +65,14 @@ public class UserAnswerService {
         return Double.parseDouble(df.format(score));
     }
 
+    public double calculateAverageScoreByTopic(Topic topic, User user) {
+        int totalAnswer = userAnswerRepository.countByUserAndQuestion_TopicId(user,topic);
+        int totalCorrectAnswers = getTotalNumbersOfUserAnswerByQuestion_TopicIdAndOption_isCorrect(user, topic, true);
+        double score = (double) totalCorrectAnswers / totalAnswer * 100;
+        DecimalFormat df = new DecimalFormat("#0.00");
+        return Double.parseDouble(df.format(score));
+    }
+
     public double calculateOverallResult() {
         long totalAnswer = userAnswerRepository.count();
         long totalCorrectAnswers = userAnswerRepository.countByOption_isCorrect(true);
