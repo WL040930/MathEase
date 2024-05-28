@@ -365,3 +365,10 @@
     margin-top: 0; /* Remove top margin for technical support email */
     margin-bottom: 5px; /* Adjust spacing between lines */
 }
+
+#menuBar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
