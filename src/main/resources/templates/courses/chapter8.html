@@ -1,11 +1,606 @@
 <section class="content-header" id="content" th:fragment="chapter8">
-    <link rel="stylesheet" th:href="@{/css/speak.css}">
-    <script th:src="@{/js/speak.js}"></script>
-    <!--    TODO: CHAPTER 8 HERE-->
-    <h1>CHAPTER 8: LINES AND ANGLES</h1>
-    
-    <div style="margin-top: 20px; width: 100%"></div>
-    <button id="speakButton">Speak</button>
-    <button id="stopButton">Stop</button>
+    <style>
+        .box {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .angle-type {
+            /* both*/
+            font-weight: bold;
+        }
+        .highlight {
+            background-color: #f9ebc0;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+    </style>
+
+    <div class="header-box">
+        <h1>Form 1 Chapter 8 - Lines and Angles</h1>
+    </div>
+
+    <div class="SubTopic1-box subtopic-section">
+        <h3><i class="material-icons" onclick="toggleSubTopic(this)">keyboard_arrow_right</i> 8.1 Lines and Angles</h3>
+
+        <!--        first content -->
+        <div class="SubSection-box">
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> What are congruency of line segments and congruency of angles?</h3>
+
+            <div class="content">
+                <h3>Congruency in Geometry</h3>
+
+                <div class="box">
+                    <h4>Congruency of Line Segments</h4>
+                    <p>Two line segments are congruent if they have the same length. In other words, if you can place one line segment on top of the other and they match exactly in length, then they are congruent. Congruent line segments are denoted by the symbol ≅.</p>
+                    <p>For example, if line segment AB has the same length as line segment CD, we write:</p>
+                    <p style="text-align: center;">AB ≅ CD</p>
+                </div>
+
+                <div class="box">
+                    <h4>Congruency of Angles</h4>
+                    <p>Two angles are congruent if they have the same measure. This means that if you can place one angle over the other and they match exactly in their opening, then they are congruent. Congruent angles are also denoted by the symbol ≅.</p>
+                    <p>For example, if angle ∠XYZ has the same measure as angle ∠ABC, we write:</p>
+                    <p style="text-align: center;">∠XYZ ≅ ∠ABC</p>
+                </div>
+
+                <p><b><u>Example Question</u></b></p>
+                <p>Are the lines congruent?</p>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter8/chapter_8_image_1.png" />
+
+                    <p><b><i>Figure 8.1.1.1: Two Lines</i></b></p>
+                </center>
+
+                <p><b><u>Solution:</u></b></p>
+                <p>
+                    The two lines are congruent because they have the same length. The length of line PQ is equal to the length of line RS.
+                </p>
+            </div>
+
+            <div class="question">
+                <p><b><u>Question</u></b></p>
+
+                <p>
+                    Explain whether ∠PQR and ∠ABC in the following diagrams are congruent.
+                </p>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter8/chapter_8_image_2.png" />
+
+                    <p><b><i>Figure 8.1.1.2: Two triangle</i></b></p>
+                </center>
+
+                <div id="8.1Explanation">
+                    <p><b><u>Solution:</u></b></p>
+
+                    <p>
+                        No, the angles are not congruent. ∠PQR and ∠ABC are not congruent because they do not have the same measure.
+                    </p>
+
+                    <div class="radio-icon" onclick="handleRadioClick(event, '8.1Explanation')">
+                        <i class='fas fa-volume-up'></i> Click here!
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+        <div class="SubSection-box">
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> How do you estimate and measure the length of a line segment and the size of an angle?</h3>
+
+            <div class="content">
+                <h3>Estimating and Measuring the Length of a Line Segment</h3>
+                <p>To estimate and measure the length of a line segment, follow these steps:</p>
+                <ol>
+                    <li>
+                        <strong>Estimation:</strong>
+                        <ul>
+                            <li>Visually compare the line segment with known lengths (e.g., the length of a pen, a piece of paper, or your hand span).</li>
+                            <li>Use familiar objects or body parts as a reference to make a rough estimate.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Measurement:</strong>
+                        <ul>
+                            <li>Use a ruler or a measuring tape to measure the length of the line segment accurately.</li>
+                            <li>Align the zero mark of the ruler with one end of the line segment.</li>
+                            <li>Read the measurement at the other end of the line segment on the ruler.</li>
+                            <li>Record the measurement, ensuring to note the unit of measure (e.g., centimeters, inches).</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h3>Estimating and Measuring the Size of an Angle</h3>
+                <p>To estimate and measure the size of an angle, follow these steps:</p>
+                <ol>
+                    <li>
+                        <strong>Estimation:</strong>
+                        <ul>
+                            <li>Visually compare the angle with known angles (e.g., 90 degrees, 45 degrees).</li>
+                            <li>Use familiar shapes or objects with known angles to make a rough estimate (e.g., a right-angle corner of a book).</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Measurement:</strong>
+                        <ul>
+                            <li>Use a protractor to measure the angle accurately.</li>
+                            <li>Place the midpoint of the protractor at the vertex of the angle.</li>
+                            <li>Align one side of the angle with the zero line of the protractor.</li>
+                            <li>Read the measurement on the protractor where the other side of the angle crosses the number scale.</li>
+                            <li>Record the measurement in degrees.</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter8/chapter_8_image_3.png" />
+
+                    <p><b><i>Figure 8.1.2.1: Measure Length</i></b></p>
+                </center>
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter8/chapter_8_image_4.png" />
+
+                    <p><b><i>Figure 8.1.2.2: Measure Angle</i></b></p>
+                </center>
+            </div>
+
+            <div class="question">
+                <p><b><u>Question</u></b></p>
+
+                <p>
+                    Explain the steps to estimate and measure the length of a line segment and the size of an angle.
+                </p>
+
+                <div id="8.2Explanation">
+                    <p><b><u>Solution</u></b></p>
+
+                    <p>
+                        To estimate and measure the length of a line segment, you can visually compare it with known lengths and use a ruler or measuring tape to measure it accurately. To estimate and measure the size of an angle, you can visually compare it with known angles and use a protractor to measure it accurately.
+                    </p>
+
+                    <div class="radio-icon" onclick="handleRadioClick(event, '8.2Explanation')">
+                        <i class='fas fa-volume-up'></i> Click here!
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+        <div class="SubSection-box">
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> What are the properties of the angle on a straight line, a reflex angle and the angle of one whole turn?</h3>
+
+            <div class="content">
+                <h3>The Angle on a Straight Line</h3>
+                <p class="angle-type"><b>Properties:</b></p>
+                <ul>
+                    <li>An angle on a straight line measures exactly 180 degrees.</li>
+                    <li>This angle is also known as a straight angle.</li>
+                    <li>It is formed by two rays or line segments that share a common endpoint and extend in exactly opposite directions.</li>
+                </ul>
+
+                <h3>Reflex Angle</h3>
+                <p class="angle-type"><b>Properties:</b></p>
+                <ul>
+                    <li>A reflex angle is any angle that measures greater than 180 degrees but less than 360 degrees.</li>
+                    <li>It is the larger angle formed by extending one side of an acute, right, or obtuse angle beyond 180 degrees.</li>
+                    <li>Reflex angles are typically found in various geometric shapes and constructions where more than half a turn is made.</li>
+                </ul>
+
+                <h3>The Angle of One Whole Turn</h3>
+                <p class="angle-type"><b>Properties:</b></p>
+                <ul>
+                    <li>An angle of one whole turn measures exactly 360 degrees.</li>
+                    <li>This angle is also known as a complete angle or a full rotation.</li>
+                    <li>It represents one full revolution or circle, where the initial and terminal sides of the angle coincide.</li>
+                    <li>Angles of one whole turn are commonly seen in contexts involving circular motion, rotation, and periodic phenomena.</li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <p><b><u>Question</u></b></p>
+                <p>
+                    For each of the following angles, state whether the angle is an angle on a straight line, a reflex angle or an angle of one whole turn.
+                </p>
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter8/chapter_8_image_5.png" />
+
+                    <p><b><i>Figure 8.1.3.1: Questions</i></b></p>
+                </center>
+                <div id="8.3Explanation">
+                    <p><b><u>Solution</u></b></p>
+
+                    <ul>
+                        <li>
+                            <b>Reflex Angle.</b> The angle measures greater than 180 degrees but less than 360 degrees.
+                        </li>
+                        <li>
+                            <b>Angle on a Straight Line.</b> The angle measures exactly 180 degrees.
+                        </li>
+                        <li>
+                            <b>Angle of One Whole Turn.</b> The angle measures exactly 360 degrees.
+                        </li>
+                    </ul>
+
+                    <div class="radio-icon" onclick="handleRadioClick(event, '8.3Explanation')">
+                        <i class='fas fa-volume-up'></i> Click here!
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+        <div class="SubSection-box">
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> What are the properties of complementary angles, supplementary angles and conjugate angles? </h3>
+
+            <div class="content">
+                <h3>Complementary Angles</h3>
+                <p class="angle-type">Properties:</p>
+                <ul>
+                    <li>Complementary angles are two angles whose measures add up to 90 degrees.</li>
+                    <li>Each of the two angles is called the complement of the other.</li>
+                    <li>Complementary angles can be adjacent (sharing a common side and vertex) or non-adjacent.</li>
+                    <li>If complementary angles are adjacent, they form a right angle.</li>
+                </ul>
+
+                <h3>Supplementary Angles</h3>
+                <p class="angle-type">Properties:</p>
+                <ul>
+                    <li>Supplementary angles are two angles whose measures add up to 180 degrees.</li>
+                    <li>Each of the two angles is called the supplement of the other.</li>
+                    <li>Supplementary angles can be adjacent (forming a straight line) or non-adjacent.</li>
+                    <li>If supplementary angles are adjacent, they form a straight angle.</li>
+                </ul>
+
+                <h3>Conjugate Angles</h3>
+                <p class="angle-type">Properties:</p>
+                <ul>
+                    <li>Conjugate angles are two angles whose measures add up to 360 degrees.</li>
+                    <li>Each of the two angles is called the conjugate of the other.</li>
+                    <li>Conjugate angles are typically seen in the context of full rotations and circular motion.</li>
+                    <li>These angles are less commonly discussed compared to complementary and supplementary angles but are important in advanced geometric and trigonometric contexts.</li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <p><b><u>Question</u></b></p>
+
+                <p>
+                    In the diagram, p and 54° are complementary angles. It is given that p and q are supplementary angles and the angle conjugate to r is 260°. Calculate the values of p, q, r and s.
+                </p>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter8/chapter_8_image_6.png" />
+
+                    <p><b><i>Figure 8.1.4.1: Questions</i></b></p>
+                </center>
+
+                <div id="8.4Explanation">
+                    <p><b><u>Solution</u></b></p>
+                    <center>
+                        <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter8/chapter_8_image_7.png" />
+
+                        <p><b><i>Figure 8.1.4.2: Solutions</i></b></p>
+                    </center>
+                    <div class="radio-icon" onclick="handleRadioClick(event, '8.4Explanation')">
+                        <i class='fas fa-volume-up'></i> Click here!
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="SubTopic2-box subtopic-section">
+        <h3><i class="material-icons" onclick="toggleSubTopic(this)">keyboard_arrow_right</i> 8.2 Angles related to Intersecting Lines</h3>
+
+        <!--        first content -->
+        <div class="SubSection-box">
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> What are vertically opposite angles and adjacent angles at intersecting lines?</h3>
+
+            <div class="content">
+                <h3>Vertically Opposite Angles</h3>
+                <p class="angle-type">Properties:</p>
+                <ul>
+                    <li>Vertically opposite angles are the angles that are opposite each other when two lines intersect.</li>
+                    <li>They are also known as vertical angles or vertically opposite angles.</li>
+                    <li>Vertically opposite angles are always equal in measure.</li>
+                    <li>For example, if two lines intersect and form angles of 50 degrees and 130 degrees, the vertically opposite angles will also be 50 degrees and 130 degrees, respectively.</li>
+                </ul>
+
+                <h3>Adjacent Angles at Intersecting Lines</h3>
+                <p class="angle-type">Properties:</p>
+                <ul>
+                    <li>Adjacent angles are two angles that have a common side and a common vertex, and don't overlap.</li>
+                    <li>At intersecting lines, adjacent angles share a common arm and are supplementary, meaning their measures add up to 180 degrees.</li>
+                    <li>For example, if two lines intersect and form angles, each pair of adjacent angles will sum to 180 degrees. If one angle is 50 degrees, the adjacent angle will be 130 degrees.</li>
+                    <li>Adjacent angles can form a straight line if they are supplementary, resulting in a straight angle of 180 degrees.</li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <p><b><u>Question</u></b></p>
+
+                <p>
+                    The diagram shows two intersecting lines. Identify and state
+                </p>
+                <ul>
+                    <li>
+                        (a) the vertically opposite angles.
+                    </li>
+                    <li>
+                        (b) the adjacent angles at the intersecting lines.
+                    </li>
+                </ul>
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter8/chapter_8_image_8.png" />
+
+                    <p><b><i>Figure 8.1.5.1: Solutions</i></b></p>
+                </center>
+                <div id="8.5Explanation">
+                    <p><b><u>Solution</u></b></p>
+
+                    <ul>
+                        <li>
+                            (a) Angles p and r are vertically opposite angles.
+                        </li>
+                        <li>
+                            (b) Angles p and q, and angles q and r are adjacent angles at the intersecting lines.
+                        </li>
+                    </ul>
+
+                    <div class="radio-icon" onclick="handleRadioClick(event, '8.5Explanation')">
+                        <i class='fas fa-volume-up'></i> Click here!
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+        <div class="SubSection-box">
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> How do you determine the values of the angles at intersecting lines?</h3>
+
+            <div class="content">
+                <div class="step">
+                    <h4>1. Identify Intersecting Lines</h4>
+                    <p>Start by identifying the two intersecting lines in the given diagram.</p>
+                </div>
+
+                <div class="step">
+                    <h4>2. Understand Angle Relationships</h4>
+                    <p>Understand the relationships between various angles formed when two lines intersect:</p>
+                    <ul>
+                        <li>Vertically Opposite Angles: <span class="highlight">These are equal.</span></li>
+                        <li>Adjacent Angles: <span class="highlight">Adjacent angles share a common side and form a straight line (linear pair), so their measures add up to 180 degrees.</span></li>
+                        <li>Corresponding Angles, Alternate Interior Angles, Alternate Exterior Angles: <span class="highlight">If the lines are parallel, these angles have specific relationships.</span></li>
+                    </ul>
+                </div>
+
+                <div class="step">
+                    <h4>3. Use Given Information</h4>
+                    <p>If any angles or relationships are given, use them to determine the values of other angles.</p>
+                </div>
+
+                <div class="step">
+                    <h4>4. Apply Angle Sum Property</h4>
+                    <p>Remember that the sum of angles around a point is 360 degrees. Use this property if needed to find missing angles.</p>
+                </div>
+
+                <div class="step">
+                    <h4>5. Solve Equations</h4>
+                    <p>If necessary, set up and solve equations based on the angle relationships to find the unknown angle measures.</p>
+                </div>
+
+                <div class="step">
+                    <h4>6. Check Solutions</h4>
+                    <p>After finding the values of the angles, double-check to ensure they satisfy the given conditions and angle relationships.</p>
+                </div>
+            </div>
+
+            <div class="question">
+                <p><b><u>Question</u></b></p>
+
+                <p>
+                    In the diagram, POR and TOQ are straight lines. Find the values of x and y.
+                </p>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter8/chapter_8_image_9.png" />
+
+                    <p><b><i>Figure 8.1.6.1: Questions</i></b></p>
+                </center>
+
+                <div id="8.6Explanation">
+                    <p><b><u>Solution</u></b></p>
+
+                    <center>
+                        <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter8/chapter_8_image_10.png" />
+
+                        <p><b><i>Figure 8.1.6.2: Solutions</i></b></p>
+                    </center>
+
+                    <div class="radio-icon" onclick="handleRadioClick(event, '8.6Explanation')">
+                        <i class='fas fa-volume-up'></i> Click here!
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="SubTopic3-box subtopic-section">
+        <h3><i class="material-icons" onclick="toggleSubTopic(this)">keyboard_arrow_right</i> 8.3 Angles related to Parallel Lines and Transversals</h3>
+
+        <!--        first content -->
+        <div class="SubSection-box">
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> What are parallel lines and transversals?</h3>
+
+            <div class="content">
+                <h3>Parallel Lines</h3>
+                <p>Parallel lines are two or more lines in a plane that never intersect. Key characteristics include:</p>
+                <ul>
+                    <li>They maintain a constant distance from each other at all points.</li>
+                    <li>Symbolically, parallel lines are denoted by the symbol "||".</li>
+                    <li>Examples of parallel lines include railroad tracks, opposite sides of a rectangular object, or two horizontal lines on a piece of paper.</li>
+                </ul>
+
+                <h3>Transversals</h3>
+                <p>A transversal is a line that intersects two or more other lines at different points. Key points about transversals:</p>
+                <ul>
+                    <li>When a transversal intersects two parallel lines, it forms a pattern of angles with specific properties.</li>
+                    <li>Transversals help in identifying and studying the relationships between angles formed by intersecting lines.</li>
+                    <li>They are commonly used in geometric proofs and problem-solving to analyze angle relationships.</li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <p><b><u>Question</u></b></p>
+
+                <p>
+                    For each of the following diagrams, determine if the line labelled as PQ is a transversal or not, and make justification.
+                </p>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter8/chapter_8_image_11.png" />
+
+                    <p><b><i>Figure 8.3.1.1: Questions</i></b></p>
+                </center>
+
+                <div id="8.3.1Explanation">
+                    <p><b><u>Solution</u></b></p>
+
+                    <ul>
+                        <li>Yes</li>
+                        <li>Yes</li>
+                        <li>No</li>
+                    </ul>
+
+                    <div class="radio-icon" onclick="handleRadioClick(event, '8.3.1Explanation')">
+                        <i class='fas fa-volume-up'></i> Click here!
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+        <div class="SubSection-box">
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> How do you determine whether two straight lines are parallel?</h3>
+
+            <div class="content">
+                <h3>Method 1: Comparing Slopes</h3>
+                <p>Calculate the slopes of the two lines. If the slopes are equal, then the lines are parallel.</p>
+                <p>Slope (m) of a line passing through points (x1, y1) and (x2, y2) is given by:
+                    <br>
+                    <span style="font-family: monospace;">m = (y2 - y1) / (x2 - x1)</span>.
+                </p>
+
+                <h3>Method 2: Using Parallel Line Properties</h3>
+                <p>If two lines are intersected by a transversal and alternate interior angles, alternate exterior angles, or corresponding angles are equal, then the lines are parallel.</p>
+
+                <h3>Method 3: Using Coordinate Geometry</h3>
+                <p>Given the equations of two lines in the form <span style="font-family: monospace;">y = mx + b</span>, where <span style="font-family: monospace;">m</span> is the slope and <span style="font-family: monospace;">b</span> is the y-intercept, compare the slopes. If the slopes are equal, the lines are parallel. If the slopes are different, the lines are not parallel.</p>
+
+                <h3>Method 4: Observing Special Cases</h3>
+                <ul>
+                    <li>Vertical lines with the same x-coordinate are parallel (since they never intersect).</li>
+                    <li>Horizontal lines with the same y-coordinate are parallel (also never intersect).</li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <p><b><u>Question</u></b></p>
+
+                <p>
+                    In each of the following diagrams, determine whether straight line PQ and straight line RS are parallel.
+                </p>
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter8/chapter_8_image_12.png" />
+
+                    <p><b><i>Figure 8.3.2.1: Questions</i></b></p>
+                </center>
+
+                <div id="8.3.2Explanation">
+                    <p><b><u>Solution</u></b></p>
+
+
+                    <p>(a) PQ and RS are parallel.</p>
+
+                    <p>(b) 42&deg; + 128&deg; = 170&deg; <br>
+                        &emsp; &emsp; &emsp; &emsp; &emsp; &#8800; 180&deg; <br>
+                        Thus PQ and RS are <span class="not-parallel">not parallel</span>.</p>
+
+                    <div class="radio-icon" onclick="handleRadioClick(event, '8.3.2Explanation')">
+                        <i class='fas fa-volume-up'></i> Click here!
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+        <div class="SubSection-box">
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> What are angles of elevation and depression?</h3>
+
+            <div class="content">
+
+                <h3>Angle of Elevation</h3>
+                <p>An angle of elevation is the angle formed when the line of sight is above the horizontal line, such as when looking up at an object.</p>
+                <p>It is measured from the horizontal line to the line of sight.</p>
+                <p>Angle of elevation is typically used when describing the angle from a lower point to a higher point, such as when looking up at a mountain or a tall building.</p>
+
+                <h3>Angle of Depression</h3>
+                <p>An angle of depression is the angle formed when the line of sight is below the horizontal line, such as when looking down at an object.</p>
+                <p>It is measured from the horizontal line to the line of sight.</p>
+                <p>Angle of depression is typically used when describing the angle from a higher point to a lower point, such as when looking down from a cliff or a tall structure.</p>
+
+                <p>Both angles of elevation and angles of depression are measured in degrees and are important in various real-world applications, including architecture, surveying, navigation, and engineering. They are particularly useful in problems involving height, distance, and line of sight.</p>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter8/chapter_8_image_13.png" />
+
+                    <p><b><i>Figure 8.3.3.1: Angle a is the angle of elevation of the bird from the sight of Jefri.</i></b></p>
+                </center>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter8/chapter_8_image_14.png" />
+
+                    <p><b><i>Figure 8.3.3.2: Angle b is the angle of depression of the car from the sight of kim.</i></b></p>
+                </center>
+            </div>
+
+            <div class="question">
+                <p><b><u>Question</u></b></p>
+
+                <p>
+                    Jasni is standing on top of a hill observing an aeroplane and a rock. Represent the situation by drawing and labelling.
+                </p>
+
+                <ul>
+                    <li>angle a which represents the angle of elevation of the aeroplane from Jasni</li>
+                    <li>angle b which represents the angle of depression of the rock from Jasni</li>
+                </ul>
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter8/chapter_8_image_15.png" />
+
+                    <p><b><i>Figure 8.3.3.3: Question</i></b></p>
+                </center>
+
+                <div class="8.3.3Explanation">
+                    <p><b><u>Solution</u></b></p>
+
+                    <center>
+                        <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter8/chapter_8_image_16.png" />
+
+                        <p><b><i>Figure 8.3.3.4: Solution</i></b></p>
+                    </center>
+
+                    <div class="radio-icon" onclick="handleRadioClick(event, '8.3.3Explanation')">
+                        <i class='fas fa-volume-up'></i> Click here!
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
-<!-- <img src="" alt=""> -->
