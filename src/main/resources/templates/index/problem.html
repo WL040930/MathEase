@@ -50,13 +50,27 @@
         </div>
 
 
-        <div class="login-signup-button">
-            <button class="btn" onclick="redirectToLogin()">Login/Sign Up</button>
-            <script>
-                function redirectToLogin() {
-                    window.location.href = "/login";
-                }
-            </script>
+        <div th:if="${session.userId != null}">
+            <div th:if="${session.role.equals('admin')}">
+                <div class="login-signup-button" style="margin-top: -10px">
+                    <a th:href="@{/admin/dashboard}" class="btn">Back to Dashboard</a>
+                </div>
+            </div>
+            <div th:if="${session.role.equals('student')}">
+                <div class="login-signup-button" style="margin-top: -10px">
+                    <a th:href="@{/student/dashboard}" class="btn">Back to Dashboard</a>
+                </div>
+            </div>
+        </div>
+        <div th:if="${session.userId == null}">
+            <div class="login-signup-button">
+                <button class="btn" onclick="redirectToLogin()">Login/Sign Up</button>
+                <script>
+                    function redirectToLogin() {
+                        window.location.href = "/login";
+                    }
+                </script>
+            </div>
         </div>
     </nav>
 </div>
