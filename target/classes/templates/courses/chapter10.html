@@ -1,10 +1,499 @@
 <section class="content-header" id="content" th:fragment="chapter10">
-    <link rel="stylesheet" th:href="@{/css/speak.css}">
-    <script th:src="@{/js/speak.js}"></script>
-    <!--    TODO: CHAPTER 10 HERE-->
+    <style>
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+    </style>
+    <div class="header-box">
+        <h1>Form 1 Chapter 10 - Perimeter and Area</h1>
+    </div>
 
+    <div class="SubTopic1-box subtopic-section">
+        <h3><i class="material-icons" onclick="toggleSubTopic(this)">keyboard_arrow_right</i> 10.1 Perimeter</h3>
 
-    <div style="margin-top: 20px; width: 100%"></div>
-    <button id="speakButton">Speak</button>
-    <button id="stopButton">Stop</button>
+        <div class="SubSection-box">
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> How do you determine the perimeter?
+            </h3>
+
+            <div class="content">
+                <h3>How do you determine the perimeter?</h3>
+
+                <p>The perimeter of a geometric figure is the total length of its boundaries. It is a measure of the distance around the outside of a shape.</p>
+
+                <h4>Steps to Determine the Perimeter:</h4>
+                <ol>
+                    <li>
+                        <strong>Identify the Shape:</strong>
+                        <p>Recognize the type of geometric figure (e.g., triangle, rectangle, square, circle, polygon).</p>
+                    </li>
+                    <li>
+                        <strong>Measure or Identify Side Lengths:</strong>
+                        <p>For polygons (e.g., triangles, rectangles, squares), measure each side length or use given lengths. For circles, measure the radius or diameter.</p>
+                    </li>
+                    <li>
+                        <strong>Use the Appropriate Formula:</strong>
+                        <ul>
+                            <li><strong>Triangle:</strong> Add the lengths of all three sides.
+                                <br><code>Perimeter = a + b + c</code>
+                            </li>
+                            <li><strong>Rectangle:</strong> Add the lengths of all four sides, or use the formula involving the lengths of two adjacent sides.
+                                <br><code>Perimeter = 2 × (length + width)</code>
+                            </li>
+                            <li><strong>Square:</strong> Multiply the length of one side by 4.
+                                <br><code>Perimeter = 4 × side length</code>
+                            </li>
+                            <li><strong>Circle:</strong> Use the circumference formula, which involves the radius or diameter.
+                                <br><code>Perimeter (Circumference) = 2 × π × radius</code>
+                                <br><code>or</code>
+                                <br><code>Perimeter (Circumference) = π × diameter</code>
+                            </li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="question">
+                <p><b><u>Question</u></b></p>
+
+                <p>
+                    Determine the perimeter for the shapes below.
+                </p>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter10/chapter_10_image_1.png" />
+
+                    <p><b><i>Figure 10.1.1.1: Shape</i></b></p>
+                </center>
+
+                <div id="10.1.1Explanation">
+                    <p><b><u>Solution</u></b></p>
+
+                    <p>
+                        Perimeter <br>
+                        = AB + BC + CD + DE + EF + FA <br>
+                        = 6 + 4 + 6 + 5 + 6 + 9 <br>
+                        = 36 cm
+                    </p>
+
+                    <div class="radio-icon" onclick="handleRadioClick(event, '10.1.1Explanation')">
+                        <i class='fas fa-volume-up'></i> Click here!
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+        <div class="SubSection-box">
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> How do you estimate the perimeter accurately?
+            </h3>
+
+            <div class="content">
+                <h3>How do you estimate the perimeter accurately?</h3>
+
+                <p>The perimeter of a geometric figure is the total length of its boundaries. It is a measure of the distance around the outside of a shape.</p>
+
+                <h4>Steps to Estimate the Perimeter Accurately:</h4>
+                <ol>
+                    <li>
+                        <strong>Identify the Shape:</strong>
+                        <p>Recognize the type of geometric figure (e.g., triangle, rectangle, square, circle, polygon).</p>
+                    </li>
+                    <li>
+                        <strong>Measure or Identify Side Lengths:</strong>
+                        <p>For polygons (e.g., triangles, rectangles, squares), measure each side length using a ruler or measuring tape for accuracy. For circles, measure the radius or diameter using a ruler or caliper.</p>
+                    </li>
+                    <li>
+                        <strong>Use the Appropriate Formula:</strong>
+                        <ul>
+                            <li><strong>Triangle:</strong> Add the lengths of all three sides.
+                                <br><code>Perimeter = a + b + c</code>
+                            </li>
+                            <li><strong>Rectangle:</strong> Add the lengths of all four sides, or use the formula involving the lengths of two adjacent sides.
+                                <br><code>Perimeter = 2 × (length + width)</code>
+                            </li>
+                            <li><strong>Square:</strong> Multiply the length of one side by 4.
+                                <br><code>Perimeter = 4 × side length</code>
+                            </li>
+                            <li><strong>Circle:</strong> Use the circumference formula, which involves the radius or diameter.
+                                <br><code>Perimeter (Circumference) = 2 × π × radius</code>
+                                <br><code>or</code>
+                                <br><code>Perimeter (Circumference) = π × diameter</code>
+                            </li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="question">
+                <p><b><u>Question</u></b></p>
+
+                <p>
+                    Estimate the perimeter for the shapes below.
+                </p>
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter10/chapter_10_image_2.png" />
+
+                    <p><b><i>Figure 10.1.2.1: Shape</i></b></p>
+                </center>
+
+                <div id="10.1.2Explanation">
+                    <p><b><u>Solution</u></b></p>
+
+                    <p>
+                        <b>Estimation: </b> 10 cm <br>
+                        <b>Perimeter: </b> 9.9 cm
+                    </p>
+
+                    <p>
+                        The difference between the estimated value and the actual value is small,
+                        therefore the estimated value is accurate.
+                    </p>
+
+                    <div class="radio-icon" onclick="handleRadioClick(event, '10.1.2Explanation')">
+                        <i class='fas fa-volume-up'></i> Click here!
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="SubTopic2-box subtopic-section">
+        <h3><i class="material-icons" onclick="toggleSubTopic(this)">keyboard_arrow_right</i> 10.2 Area of Triangles, Parallelograms, Kites and Trapeziums</h3>
+
+        <div class="SubSection-box">
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> How do you estimate the area of various shapes?
+            </h3>
+
+            <div class="content">
+                <h3>How do you estimate the area of irregular shapes?</h3>
+
+                <p>Estimating the area of an irregular shape, which does not conform to standard geometric figures, can be done using various methods. Here are some commonly used techniques:</p>
+
+                <h4>Steps to Estimate the Area of Irregular Shapes:</h4>
+                <ol>
+                    <li>
+                        <strong>Use a Grid Overlay:</strong>
+                        <p>Overlay a grid of known dimensions on top of the shape. Count the number of full squares and estimate the number of partial squares that cover the shape.</p>
+                        <ul>
+                            <li>Calculate the area of one grid square.</li>
+                            <li>Estimate the total area using the formula:
+                                <br><code>Estimated Area = (Number of full squares + 0.5 × Number of partial squares) × Area of one square</code>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Decomposition Method:</strong>
+                        <p>Divide the irregular shape into smaller, regular shapes (e.g., triangles, rectangles) whose areas can be easily calculated. Sum the areas of these smaller shapes.</p>
+                        <ul>
+                            <li>Identify and draw the smaller shapes within the irregular shape.</li>
+                            <li>Calculate the area of each smaller shape using appropriate formulas.</li>
+                            <li>Sum the areas of the smaller shapes:
+                                <br><code>Estimated Area = Σ (Area of smaller shapes)</code>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Using Planimeter:</strong>
+                        <p>A planimeter is an instrument used to measure the area of a two-dimensional shape. Trace the boundary of the shape with the planimeter to obtain the area measurement directly.</p>
+                    </li>
+                </ol>
+
+                <p><b><u>Example</u></b></p>
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter10/chapter_10_image_3.png" />
+
+                    <p><b><i>Figure 10.2.1.1: How to identify area of an irregular shape</i></b></p>
+                </center>
+
+                <p><b><u>Solution</u></b></p>
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter10/chapter_10_image_4.png" />
+
+                    <p><b><i>Figure 10.2.1.2: Solution: How to identify area of an irregular shape</i></b></p>
+                </center>
+
+                <div class="question">
+                    <p><b><u>Question</u></b></p>
+
+                    <p>
+                        Calculate the area of the following diagram.
+                    </p>
+
+                    <center>
+                        <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter10/chapter_10_image_5.png" />
+
+                        <p><b><i>Figure 10.2.1.3: Question: Irregular Shape</i></b></p>
+                    </center>
+
+                    <div id="10.2.1Explanation">
+                        <p><b><u>Solution</u></b></p>
+
+                        <center>
+                            <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter10/chapter_10_image_6.png" />
+
+                            <p><b><i>Figure 10.2.1.4: Solution: Irregular Shape</i></b></p>
+                        </center>
+                        <p>
+                            Total Area <br>
+                            = 4.4 + 6.6 + 7.2 + 7.8 + 8.0 + 8.0 + 6.4 + 5.4 + 2.6 <br>
+                            = 56.4 unit<sup>2</sup>
+                        </p>
+                        <p>
+                            Hence, the area of the shape is approximately 56.4 unit<sup>2</sup>.
+                        </p>
+
+                        <div class="radio-icon" onclick="handleRadioClick(event, '10.2.1Explanation')">
+                            <i class='fas fa-volume-up'></i> Click here!
+                        </div>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="SubSection-box">
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> How do you derive the formulae for the area of various shapes?
+            </h3>
+
+            <div class="content">
+                <h3>How do you derive the formulae for the area of various shapes?</h3>
+
+                <p>Understanding the derivation of area formulae helps to deepen the comprehension of geometric properties and principles. Below are the derivations for the area of several common shapes.</p>
+
+                <h4>1. Rectangle</h4>
+                <p>A rectangle is a quadrilateral with opposite sides equal and angles of 90 degrees.</p>
+                <ul>
+                    <li><strong>Dimensions:</strong> Length (l) and Width (w)</li>
+                    <li><strong>Derivation:</strong> The area of a rectangle is the product of its length and width.
+                        <br><code>Area = l × w</code>
+                    </li>
+                </ul>
+
+                <h4>2. Square</h4>
+                <p>A square is a special type of rectangle where all four sides are equal.</p>
+                <ul>
+                    <li><strong>Dimensions:</strong> Side length (s)</li>
+                    <li><strong>Derivation:</strong> The area of a square is the product of its side length squared.
+                        <br><code>Area = s × s = s<sup>2</sup></code>
+                    </li>
+                </ul>
+
+                <h4>3. Triangle</h4>
+                <p>A triangle is a three-sided polygon.</p>
+                <ul>
+                    <li><strong>Dimensions:</strong> Base (b) and Height (h)</li>
+                    <li><strong>Derivation:</strong> The area of a triangle is half the product of its base and height.
+                        <br><code>Area = 0.5 × b × h</code>
+                    </li>
+                </ul>
+
+                <h4>4. Circle</h4>
+                <p>A circle is a shape with all points equidistant from the center.</p>
+                <ul>
+                    <li><strong>Dimensions:</strong> Radius (r)</li>
+                    <li><strong>Derivation:</strong> The area of a circle is derived from the relationship between the circumference and the radius. The formula is obtained by integrating the circumference.
+                        <br><code>Area = π × r<sup>2</sup></code>
+                    </li>
+                </ul>
+
+                <h4>5. Parallelogram</h4>
+                <p>A parallelogram is a quadrilateral with opposite sides parallel and equal.</p>
+                <ul>
+                    <li><strong>Dimensions:</strong> Base (b) and Height (h)</li>
+                    <li><strong>Derivation:</strong> The area of a parallelogram is the product of its base and height.
+                        <br><code>Area = b × h</code>
+                    </li>
+                </ul>
+
+                <h4>6. Trapezoid</h4>
+                <p>A trapezoid (or trapezium) is a quadrilateral with one pair of parallel sides.</p>
+                <ul>
+                    <li><strong>Dimensions:</strong> Base<sub>1</sub> (b<sub>1</sub>), Base<sub>2</sub> (b<sub>2</sub>), and Height (h)</li>
+                    <li><strong>Derivation:</strong> The area of a trapezoid is the average of the lengths of the bases multiplied by the height.
+                        <br><code>Area = 0.5 × (b<sub>1</sub> + b<sub>2</sub>) × h</code>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="question">
+                <p><b><u>Question</u></b></p>
+
+                <p>
+                    Write an expression to represent the area of each of the following shapes.
+                </p>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter10/chapter_10_image_6.png" />
+
+                    <p><b><i>Figure 10.2.2.1: Question</i></b></p>
+                </center>
+
+                <div id="10.2.2Explanation">
+                    <p><b><u>Solution</u></b></p>
+
+                    <ul>
+                        <li>
+                            (a) 1/2mn
+                        </li>
+                        <li>
+                            (b) tk
+                        </li>
+                    </ul>
+
+                    <div class="radio-icon" onclick="handleRadioClick(event, '10.2.2Explanation')">
+                        <i class='fas fa-volume-up'></i> Click here!
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+        <div class="SubSection-box">
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> How do you solve problems involving various shapes?
+            </h3>
+
+            <div class="content">
+                <h3>How to Solve Problems Involving Various Shapes</h3>
+
+                <ol>
+                    <li><strong>Understand the Problem:</strong>
+                        <ul>
+                            <li>Read the problem carefully to understand what is being asked.</li>
+                            <li>Identify the given information, such as dimensions, measurements, or conditions.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Identify the Relevant Shape:</strong>
+                        <ul>
+                            <li>Determine which geometric shape or shapes are involved in the problem.</li>
+                            <li>Understand the properties and formulas associated with the chosen shape(s).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Apply the Appropriate Formula:</strong>
+                        <ul>
+                            <li>Once you've identified the relevant shape, use the appropriate formula to find the desired quantity (e.g., area, perimeter, volume).</li>
+                            <li>Make sure to plug in the given values correctly into the formula.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Solve for the Unknown:</strong>
+                        <ul>
+                            <li>Perform the necessary calculations to find the unknown quantity.</li>
+                            <li>Pay attention to units and ensure consistency throughout your calculations.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Check Your Answer:</strong>
+                        <ul>
+                            <li>After solving the problem, double-check your calculations to ensure accuracy.</li>
+                            <li>Consider whether your answer makes sense in the context of the problem.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Interpret the Results:</strong>
+                        <ul>
+                            <li>Once you have the solution, interpret the results in the context of the problem.</li>
+                            <li>Provide any necessary explanations or conclusions based on your findings.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Practice and Review:</strong>
+                        <ul>
+                            <li>Practice solving various problems involving different shapes to improve your skills.</li>
+                            <li>Review your solutions and learn from any mistakes or areas where you can improve.</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="question">
+                <p><b><u>Question</u></b></p>
+
+                <p>
+                    Calculate the area of each of the following shapes.
+                </p>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter10/chapter_10_image_7.png" />
+
+                    <p><b><i>Figure 10.2.3.1: Question</i></b></p>
+                </center>
+
+                <div id="10.2.3Explanation">
+                    <p><b><u>Solution</u></b></p>
+
+                    <p>
+                        Area <br>
+                        = 1/2 x length of base x height <br>
+                        = 1/2 x 5 x 4 <br>
+                        = 10 cm<sup>2</sup>
+                    </p>
+
+                    <p>
+                        Area <br>
+                        = length of base x height <br>
+                        = 6.2 x 3
+                        = 18.6 cm<sup>2</sup>
+                    </p>
+
+                    <div class="radio-icon" onclick="handleRadioClick(event, '10.2.3Explanation')">
+                        <i class='fas fa-volume-up'></i> Click here!
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="SubTopic3-box subtopic-section">
+        <h3><i class="material-icons" onclick="toggleSubTopic(this)">keyboard_arrow_right</i> 10.3 Relationship between Perimeter and Area</h3>
+
+        <div class="SubSection-box">
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> What is the relationship between perimeter and area?
+            </h3>
+
+            <div class="content">
+                <h3>Relationship Between Perimeter and Area</h3>
+
+                <p>The relationship between perimeter and area depends on the shape being considered:</p>
+
+                <ul>
+                    <li><strong>Proportional Relationship:</strong> For regular shapes, such as squares and circles, there can be a proportional relationship between perimeter and area. For example, if you double the dimensions of a square (increasing its perimeter), its area will increase by a factor of four.</li>
+
+                    <li><strong>Irregular Shapes:</strong> For irregular shapes, there is no direct or consistent relationship between perimeter and area. Two shapes with the same perimeter can have different areas, and vice versa. For instance, consider a rectangle and a square with the same perimeter—the rectangle can have a larger area.</li>
+
+                    <li><strong>Optimization:</strong> In optimization problems, where you aim to maximize or minimize a quantity (such as area) subject to certain constraints (such as fixed perimeter), there can be an indirect relationship between perimeter and area. For example, given a fixed length of fencing, you may want to enclose the maximum possible area, which could involve shaping the fence into a rectangle, circle, or irregular shape.</li>
+
+                    <li><strong>Complexity:</strong> The relationship between perimeter and area becomes more complex for shapes with irregular boundaries, such as polygons with varying side lengths and angles. In such cases, the perimeter and area calculations are independent of each other.</li>
+                </ul>
+
+                <p>In summary, while perimeter and area are both important measures in geometry, their relationship varies depending on the shape being considered. While they can influence each other in certain contexts, they are fundamentally distinct measurements that describe different aspects of a shape.</p>
+            </div>
+
+            <div class="question">
+                <p><b><u>Question</u></b></p>
+
+                <p>
+                    Given the area of a square garden is 500m<sup>2</sup>, determine the perimeter of the garden.
+                </p>
+
+                <div id="10.3.1Explanation">
+                    <p><b><u>Solution</u></b></p>
+
+                    <p>
+                        Area = side x side <br>
+                        500 = side x side <br>
+                        side = √500 <br>
+                        side = 22.36 m <br>
+                        Perimeter = 4 x side <br>
+                        Perimeter = 4 x 22.36 <br>
+                        Perimeter = 89.44 m
+                    </p>
+                    <div class="radio-icon" onclick="handleRadioClick(event, '10.3.1Explanation')">
+                        <i class='fas fa-volume-up'></i> Click here!
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
