@@ -1,10 +1,499 @@
 <section class="content-header" id="content" th:fragment="chapter12">
-    <link rel="stylesheet" th:href="@{/css/speak.css}">
-    <script th:src="@{/js/speak.js}"></script>
-    <!--    TODO: CHAPTER 12 HERE-->
+    <style>
+        .table-container {
+            display: flex;
+            justify-content: center;
+        }
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .answer {
+            margin-left: 20px;
+        }
+    </style>
+    <div class="header-box">
+        <h1>Form 1 Chapter 12 - Data Handling</h1>
+    </div>
+
+    <div class="SubTopic1-box subtopic-section">
+        <h3><i class="material-icons" onclick="toggleSubTopic(this)">keyboard_arrow_right</i> 12.1 Data Collection, Organization, and Representation Process, and Interpretation of Data Representation</h3>
+        <div class="SubSection-box">
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> How do you generate statistical questions and collect relevant data?
+            </h3>
+
+            <div class="content">
+                <h3>Generating Statistical Questions and Collecting Relevant Data</h3>
+
+                <h4>Step 1: Understanding Statistical Questions</h4>
+                <p>A statistical question is one that anticipates variability in the data and typically has more than one possible answer. It is designed to collect data that can be analyzed to provide insights or solve a problem. Examples of statistical questions include:</p>
+                <ul>
+                    <li>How many hours do students in a class spend on homework each week?</li>
+                    <li>What is the average height of the basketball players in a school?</li>
+                    <li>How many books do people in a community read each year?</li>
+                </ul>
+
+                <h4>Step 2: Formulating Statistical Questions</h4>
+                <p>To generate effective statistical questions:</p>
+                <ul>
+                    <li><b>Identify the Topic or Problem:</b> Choose a subject area or a specific problem you want to investigate.
+                        <ul>
+                            <li>Example: You want to understand the exercise habits of teenagers.</li>
+                        </ul>
+                    </li>
+                    <li><b>Consider Variability:</b> Ensure the question accounts for differences and variability in the responses.
+                        <ul>
+                            <li>Example: "How many minutes do teenagers spend on exercise daily?"</li>
+                        </ul>
+                    </li>
+                    <li><b>Be Specific and Clear:</b> The question should be precise to avoid ambiguous answers.
+                        <ul>
+                            <li>Example: "On average, how many minutes per day do teenagers aged 13-18 spend on exercise?"</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h4>Step 3: Planning Data Collection</h4>
+                <p>Once the statistical question is formulated, the next step is to plan how to collect the relevant data. Follow these steps:</p>
+                <ul>
+                    <li><b>Identify the Data Source:</b>
+                        <ul>
+                            <li>Primary Data: Collected directly from first-hand sources. Methods include surveys, interviews, and experiments.</li>
+                            <li>Secondary Data: Collected from existing sources like books, websites, research papers, and databases.</li>
+                        </ul>
+                    </li>
+                    <li><b>Determine the Method of Collection:</b>
+                        <ul>
+                            <li>Surveys/Questionnaires: Prepare a set of questions related to your statistical question. Ensure questions are clear and unbiased.</li>
+                            <li>Observations: Record observations related to the subject of interest.</li>
+                            <li>Experiments: Conduct experiments where you control and measure variables to gather data.</li>
+                        </ul>
+                    </li>
+                    <li><b>Define the Population and Sample:</b>
+                        <ul>
+                            <li>Population: The entire group you want to draw conclusions about.</li>
+                            <li>Sample: A subset of the population that is representative of the entire group.</li>
+                            <li>Decide on the sample size and sampling method (e.g., random sampling, stratified sampling).</li>
+                        </ul>
+                    </li>
+                    <li><b>Develop Data Collection Tools:</b>
+                        <ul>
+                            <li>Create tools such as survey forms, questionnaires, or data recording sheets.</li>
+                            <li>Test the tools to ensure they collect the necessary information accurately.</li>
+                        </ul>
+                    </li>
+                    <li><b>Ensure Ethical Considerations:</b>
+                        <ul>
+                            <li>Obtain consent from participants.</li>
+                            <li>Ensure anonymity and confidentiality.</li>
+                            <li>Be transparent about the purpose of data collection.</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h4>Step 4: Collecting Data</h4>
+                <p>Execute your data collection plan by reaching out to your identified sources. Ensure to:</p>
+                <ul>
+                    <li><b>Monitor the Data Collection Process:</b> Keep track of the responses and ensure data is collected systematically.</li>
+                    <li><b>Record Data Accurately:</b> Double-check entries to avoid errors and inconsistencies.</li>
+                </ul>
+
+                <h4>Step 5: Analyzing Data</h4>
+                <p>Once the data is collected, it needs to be analyzed to draw meaningful conclusions. This involves:</p>
+                <ul>
+                    <li><b>Organizing Data:</b> Arrange data in tables, charts, or graphs for easier analysis.</li>
+                    <li><b>Descriptive Statistics:</b> Calculate measures such as mean, median, mode, range, and standard deviation to summarize the data.</li>
+                    <li><b>Inferential Statistics:</b> Make inferences about the population based on the sample data using techniques such as hypothesis testing and confidence intervals.</li>
+                </ul>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter12/chapter_12_image_1.png" />
+
+                    <p><b><i>Figure 12.1.1.1: Example of Statistical Questions</i></b></p>
+                </center>
+            </div>
+
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+                <p>
+                    Is each of the following questions a statistical question? Explain.
+                </p>
+                <ol>
+                    <li>What is the average height of the students in your class?</li>
+                    <li>How many hours of sleep did you get last night?</li>
+                    <li>What is the capital of France?</li>
+                </ol>
+
+                <div id="12.1Explanation">
+                    <p><b><u>Answers:</u></b></p>
+                    <ol>
+                        <li>
+                            <p><b>What is the average height of the students in your class?</b></p>
+                            <p>Yes, this is a statistical question. It anticipates variability in the data because the heights of students in the class will vary. The question aims to collect data that can be analyzed to find the average height.</p>
+                        </li>
+                        <li>
+                            <p><b>How many hours of sleep did you get last night?</b></p>
+                            <p>No, this is not a statistical question. This question refers to a specific event for an individual and does not anticipate variability or require data collection from multiple sources. It is asking for a single piece of factual information.</p>
+                        </li>
+                        <li>
+                            <p><b>What is the capital of France?</b></p>
+                            <p>No, this is not a statistical question. The capital of France is a specific fact (Paris) and does not involve variability or require data collection and analysis. It has a single, definitive answer.</p>
+                        </li>
+                    </ol>
+                    <div class="radio-icon" onclick="handleRadioClick(event, '12.1Explanation')">
+                        <i class='fas fa-volume-up'></i> Click here!
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+        <div class="SubSection-box">
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> How do you classify data and construct frequency table?
+            </h3>
+
+            <div class="content">
+                <h3>Classifying Data and Constructing Frequency Tables</h3>
+
+                <h4>Classifying Data</h4>
+                <p>Data can be classified into different types based on their characteristics. Here are the main types of data:</p>
+                <ul>
+                    <li><b>Qualitative Data:</b> Also known as categorical data, it describes categories or groups. Examples include colors, names, labels, and other non-numeric attributes.
+                        <ul>
+                            <li>Example: Types of fruits (apple, banana, orange)</li>
+                        </ul>
+                    </li>
+                    <li><b>Quantitative Data:</b> This is numerical data that can be counted or measured. It is further classified into:
+                        <ul>
+                            <li><b>Discrete Data:</b> Countable data that can take specific values.
+                                <ul>
+                                    <li>Example: Number of students in a class</li>
+                                </ul>
+                            </li>
+                            <li><b>Continuous Data:</b> Measurable data that can take any value within a range.
+                                <ul>
+                                    <li>Example: Height of students</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h4>Constructing Frequency Tables</h4>
+                <p>A frequency table is used to organize data into categories or intervals and record the number of occurrences for each category. Here are the steps to construct a frequency table:</p>
+
+                <h4>Step 1: Collect Data</h4>
+                <p>Gather the data you need to analyze. This could be through surveys, experiments, observations, or secondary data sources.</p>
+
+                <h4>Step 2: Organize Data into Categories or Intervals</h4>
+                <p>Group the data into categories (for qualitative data) or intervals (for quantitative data). Ensure that the categories or intervals are mutually exclusive and exhaustive.</p>
+
+                <h4>Step 3: Tally the Data</h4>
+                <p>Go through the data and make a tally mark for each occurrence in the appropriate category or interval.</p>
+
+                <h4>Step 4: Count the Tallies</h4>
+                <p>Count the number of tally marks for each category or interval. This gives you the frequency of each category or interval.</p>
+
+                <h4>Step 5: Create the Frequency Table</h4>
+                <p>Draw a table with columns for the categories or intervals and their corresponding frequencies. Optionally, you can add columns for cumulative frequency and relative frequency.</p>
+
+                <h3>Example of a Frequency Table</h3>
+                <p>Let's consider the heights of students in a class measured in centimeters:</p>
+                <p>Data: 150, 152, 153, 155, 156, 157, 158, 160, 162, 165, 167, 170, 172, 175, 180</p>
+                <p>To construct a frequency table:</p>
+                <ul>
+                    <li>Step 1: Collect Data (done above)</li>
+                    <li>Step 2: Organize Data into Intervals (e.g., 150-159, 160-169, 170-179, 180-189)</li>
+                    <li>Step 3: Tally the Data</li>
+                    <li>Step 4: Count the Tallies</li>
+                    <li>Step 5: Create the Frequency Table</li>
+                </ul>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Height Interval (cm)</th>
+                            <th>Frequency</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>150-159</td>
+                            <td>7</td>
+                        </tr>
+                        <tr>
+                            <td>160-169</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>170-179</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>180-189</td>
+                            <td>1</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="question">
+                <p><b><u>Question</u></b></p>
+                <p>
+                    The data shows the number of children in each family for 20 families. To organize the data by constructing a frequency table, I will count how many times each value (number of children) appears in the data set, and record that in a table with the value and its corresponding frequency.
+                </p>
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter12/chapter_12_image_2.png" />
+
+                    <p><b><i>Figure 12.1.2.1: Example Data</i></b></p>
+                </center>
+                <div id="12.2Explanation">
+                    <p><b><u>Solution</u></b></p>
+                    <center>
+                        <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter12/chapter_12_image_3.png" />
+
+                        <p><b><i>Figure 12.1.2.2: Solutions</i></b></p>
+                    </center>
+                    <div class="radio-icon" onclick="handleRadioClick(event, '12.2Explanation')">
+                        <i class='fas fa-volume-up'></i> Click here!
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+        <div class="SubSection-box">
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> How do you construct data representations?
+            </h3>
+
+            <div class="content">
+                <h3>Types of Data Representations</h3>
+                <h4>1. Tables</h4>
+                <p>Tables organize data into rows and columns, making it easy to compare and analyze different values.</p>
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter12/chapter_12_image_4.png" />
+
+                    <p><b><i>Figure 12.1.3.1: Table</i></b></p>
+                </center>
 
 
-    <div style="margin-top: 20px; width: 100%"></div>
-    <button id="speakButton">Speak</button>
-    <button id="stopButton">Stop</button>
+                <h4>2. Charts and Graphs</h4>
+                <p>Charts and graphs visually represent data, allowing for quick interpretation and comparison. Common types include:</p>
+                <ul>
+                    <li><b>Bar Charts:</b> Used to compare categories of data.</li>
+                    <li><b>Line Charts:</b> Show trends and changes over time.</li>
+                    <li><b>Pie Charts:</b> Display proportions of a whole.</li>
+                    <li><b>Scatter Plots:</b> Show relationships between two variables.</li>
+                    <li><b>Histograms:</b> Display frequency distributions of continuous data.</li>
+                </ul>
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter12/chapter_12_image_5.png" />
+
+                    <p><b><i>Figure 12.1.3.2: Pie Chart</i></b></p>
+                </center>
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter12/chapter_12_image_6.png" />
+
+                    <p><b><i>Figure 12.1.3.3: Line Graph</i></b></p>
+                </center>
+
+                <br>
+                <h3>Steps to Construct Data Representations</h3>
+                <ol>
+                    <li><b>Identify the Data:</b> Determine the type and scope of data to be represented.</li>
+                    <li><b>Choose the Appropriate Representation:</b> Select the most suitable type of representation based on the nature of the data and the intended audience.</li>
+                    <li><b>Organize and Format the Data:</b> Prepare the data in a structured format suitable for the chosen representation.</li>
+                    <li><b>Create the Representation:</b> Use software tools or manual methods to construct the chosen representation accurately.</li>
+                    <li><b>Analyze and Interpret:</b> Examine the representation to draw insights, identify patterns, and make informed decisions.</li>
+                    <li><b>Communicate Findings:</b> Present the representation and its analysis in a clear and understandable manner to stakeholders or the intended audience.</li>
+                </ol>
+            </div>
+
+            <div class="question">
+                <p><b><u>Question</u></b></p>
+                <p>
+                    A survey was carried out in a class to find out how the students travel to school, and the results are as shown in the table below. Construct a bar chart to represent the data and justify the appropriateness of the data representation.
+                </p>
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter12/chapter_12_image_7.png" />
+
+                    <p><b><i>Figure 12.1.3.4: Sample Data</i></b></p>
+                </center>
+                <div id="12.3Explanation">
+                    <p><b><u>Solution</u></b></p>
+                    <center>
+                        <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter12/chapter_12_image_8.png" />
+
+                        <p><b><i>Figure 12.1.3.5: Example Graph</i></b></p>
+                    </center>
+                    <p>
+                        The bar chart is suitable for comparing the number of students with how they trave to school.
+                    </p>
+                    <div class="radio-icon" onclick="handleRadioClick(event, '12.3Explanation')">
+                        <i class='fas fa-volume-up'></i> Click here!
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+        <div class="SubSection-box">
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> How do you interpret data representations?
+            </h3>
+
+            <div class="content">
+                <h3>Introduction</h3>
+                <p>Data representations, such as tables, charts, graphs, and maps, provide visual or graphical depictions of data to facilitate understanding and analysis. Interpreting these representations involves examining the visual elements, identifying patterns, and drawing meaningful conclusions. Here are some key steps to interpret data representations:</p>
+
+                <h3>Steps to Interpret Data Representations</h3>
+                <ol>
+                    <li><b>Examine the Visual Elements:</b> Begin by observing the visual components of the representation, such as axes, labels, titles, legends, colors, and patterns.</li>
+                    <li><b>Analyze the Data:</b> Study the data presented in the representation, focusing on values, trends, distributions, and relationships between variables.</li>
+                    <li><b>Identify Patterns and Trends:</b> Look for recurring patterns, trends, or anomalies in the data that may indicate underlying relationships or insights.</li>
+                    <li><b>Compare and Contrast:</b> Compare different parts of the representation to each other or to external benchmarks to gain perspective and context.</li>
+                    <li><b>Draw Conclusions:</b> Based on your analysis, draw conclusions or make inferences about the data, considering its implications and relevance to the problem or question at hand.</li>
+                    <li><b>Validate Findings:</b> Verify the accuracy and validity of your interpretations by cross-referencing with other data sources, conducting statistical analyses, or seeking expert opinions.</li>
+                    <li><b>Communicate Insights:</b> Clearly communicate your interpretations and insights to stakeholders or the intended audience, using appropriate language and supporting evidence.</li>
+                </ol>
+
+                <h3>Example</h3>
+                <p>Let's consider interpreting a line chart that represents the monthly sales performance of a product over the past year:</p>
+                <ul>
+                    <li><b>Examine the Visual Elements:</b> Observe the x-axis (months), y-axis (sales figures), title, and any annotations or labels on the chart.</li>
+                    <li><b>Analyze the Data:</b> Study the sales figures for each month and any fluctuations or trends in the data.</li>
+                    <li><b>Identify Patterns and Trends:</b> Look for seasonal patterns, growth trends, or any significant changes in sales performance over time.</li>
+                    <li><b>Compare and Contrast:</b> Compare sales figures between different months, quarters, or years to identify trends and anomalies.</li>
+                    <li><b>Draw Conclusions:</b> Based on the analysis, conclude whether sales have been increasing, decreasing, or remaining stable over the year and identify factors influencing the sales performance.</li>
+                    <li><b>Validate Findings:</b> Verify the accuracy of conclusions by analyzing additional data sources or conducting statistical tests to ensure the robustness of the analysis.</li>
+                    <li><b>Communicate Insights:</b> Present the interpretation of the line chart along with actionable insights and recommendations to relevant stakeholders for decision-making.</li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <p><b><u>Question</u></b></p>
+                <p>
+                    The line graph shows the mass of waste, in thousand tonnes, produced in a city from 2010 to 2015.
+                </p>
+                <ul>
+                    <li>What is the mass of waste produced in 2010?</li>
+                    <li>
+                        What can you say about the mass of waste produced in 2011 and 2014?
+                    </li>
+                    <li>Find the mean mass of the waste produced over a period of six years.</li>
+                    <li>State one inference based on the line graph given.</li>
+                    <li>Based on the trend of the line graph, predict the mass of waste produced in 2016.</li>
+                </ul>
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter12/chapter_12_image_9.png" />
+
+                    <p><b><i>Figure 12.1.4.1: Example Graph</i></b></p>
+                </center>
+                <div id="12.4Explanation">
+                    <p><b><u>Solution</u></b></p>
+                    <p><strong>(a) What is the mass of waste produced in 2010?</strong></p>
+                    <div class="answer">
+                        <p>1900 tonnes</p>
+                    </div>
+
+                    <p><strong>(b) What can you say about the mass of waste produced in 2011 and 2014?</strong></p>
+                    <div class="answer">
+                        <p>The mass of waste produced in 2011 and 2014 are the same.</p>
+                        <p>Think a possible reason for this.</p>
+                    </div>
+
+                    <p><strong>(c) Find the mean mass of the waste produced over a period of six years.</strong></p>
+                    <div class="answer">
+                        <p>Total mass of waste produced over a period of 6 years:</p>
+                        <p>1900 + 2100 + 2900 + 2600 + 2100 + 1600 = 13,200 tonnes</p>
+                        <p>Mean mass of waste = 13,200 ÷ 6 = 2,200 tonnes</p>
+                    </div>
+
+                    <p><strong>(d) State one inference based on the line graph given.</strong></p>
+                    <div class="answer">
+                        <p>The mass of waste produced decreases each year after the year 2012.</p>
+                    </div>
+
+                    <p><strong>(e) Based on the trend of the line graph, predict the mass of waste produced in 2016.</strong></p>
+                    <div class="answer">
+                        <p>1,100 tonnes</p>
+                    </div>
+                    <div class="radio-icon" onclick="handleRadioClick(event, '12.4Explanation')">
+                        <i class='fas fa-volume-up'></i> Click here!
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+        <div class="SubSection-box">
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> What is the importance of representing data ethnically?
+            </h3>
+
+            <div class="content">
+                <h3>Importance of Ethical Data Representation</h3>
+
+                <h4>1. Accuracy and Integrity</h4>
+                <p>Ethical data representation ensures that information accurately reflects reality without distortion or bias, promoting integrity in data analysis and decision-making processes.</p>
+
+                <h4>2. Fairness and Equity</h4>
+                <p>Ethical data representation prevents discrimination and ensures fairness in how information is presented and interpreted, avoiding reinforcement of stereotypes or perpetuation of inequalities.</p>
+
+                <h4>3. Transparency and Accountability</h4>
+                <p>Ethical data practices promote transparency by clearly documenting how data is collected, analyzed, and presented, enabling stakeholders to understand the process and hold accountable those responsible for data representation.</p>
+
+                <h4>4. Trust and Credibility</h4>
+                <p>Ethical data representation builds trust among stakeholders, enhancing the credibility of the data and the organizations or individuals responsible for its management.</p>
+
+                <h4>5. Privacy and Confidentiality</h4>
+                <p>Ethical data representation respects individuals' privacy rights and safeguards confidential information, ensuring that sensitive data is handled securely and anonymized appropriately to protect identities.</p>
+
+                <h4>6. Social Responsibility</h4>
+                <p>Ethical data representation aligns with social responsibility principles by considering the broader impact of data practices on society, prioritizing the well-being of individuals and communities over short-term gains or interests.</p>
+
+                <h4>7. Legal and Regulatory Compliance</h4>
+                <p>Ethical data representation helps organizations comply with relevant laws, regulations, and industry standards governing data protection, privacy, and disclosure.</p>
+            </div>
+
+            <div class="question">
+                <p><b><u>Question</u></b></p>
+                <p>
+                    The bar chart shows the number of goals scored by four football players in the Permai District League.
+                </p>
+                <ol>
+                    <li>Is the number of goals scored by adam twice the number of goals scored by Ravi? Explain your answer. </li>
+                    <li>In your opinion, does this bar chart clearly represent the number of goals scored by the players?</li>
+                </ol>
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter12/chapter_12_image_10.png" />
+
+                    <p><b><i>Figure 12.1.5.1: Bar Chart</i></b></p>
+                </center>
+                <div id="12.5Explanation">
+                    <p><b><u>Solution</u></b></p>
+
+                    <p><strong>(a) Number of goals scored by Adam = 14<br>
+                        Number of goals scored by Ravi = 10</strong></p>
+                    <p>Thus, the number of goals scored by Adam is not twice the number of goals scored by Ravi.</p>
+
+                    <p><strong>(b) No, the information displayed is misleading. The scale in the vertical axis should start from 0.</strong></p>
+
+
+                    <div class="radio-icon" onclick="handleRadioClick(event, '12.5Explanation')">
+                        <i class='fas fa-volume-up'></i> Click here!
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
