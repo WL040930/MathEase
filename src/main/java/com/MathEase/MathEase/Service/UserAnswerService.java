@@ -55,4 +55,13 @@ public class UserAnswerService {
         DecimalFormat df = new DecimalFormat("#0.00");
         return Double.parseDouble(df.format(score));
     }
+
+    // calculate average score by topic
+    public double calculateAverageScoreByTopic(Topic topic) {
+        int totalAnswer = userAnswerRepository.countByQuestion_TopicId(topic);
+        int totalCorrectAnswers = getTotalNumbersOfUserAnswerByQuestion_TopicIdAndOption_isCorrect(topic, true);
+        double score = (double) totalCorrectAnswers / totalAnswer * 100;
+        DecimalFormat df = new DecimalFormat("#0.00");
+        return Double.parseDouble(df.format(score));
+    }
 }

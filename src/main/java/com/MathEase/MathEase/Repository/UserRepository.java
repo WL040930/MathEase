@@ -36,4 +36,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     // list of users by email
     List<User> findByEmailContaining(String email);
+
+    // find total number of record
+    long count();
+
 }

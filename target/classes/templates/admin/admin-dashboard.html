@@ -5,15 +5,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link rel="stylesheet" th:href="@{/css/container.css}">
+    <link rel="stylesheet" th:href="@{/css/admin-dashboard.css}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-<div>
-    <section class="content-header" th:replace="menu/menu-admin::IncludeMenu"></section>
 
-    <div class="container">
+<section class="content-header" th:replace="menu/menu-admin::IncludeMenu"></section>
 
+<div class="container">
+    <div class="header">
+        <h1>Admin Dashboard</h1>
     </div>
 
+    <div class="dashboard-widgets">
+        <div class="widget">
+            <h2>Users</h2>
+            <p th:text="${totalUser}"></p>
+        </div>
+        <div class="widget">
+            <h2>Questions</h2>
+            <p th:text="${totalQuestion}"></p>
+        </div>
+        <div class="widget">
+            <h2>Topics</h2>
+            <p th:text="${totalTopic}"></p>
+        </div>
+        <div class="widget">
+            <h2>Result</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Chapter</th>
+                        <th>Score</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Thymeleaf iteration to populate table rows -->
+                    <tr th:each="resultDTO : ${resultDTOs}">
+                        <td th:text="${resultDTO.chapterName}"></td>
+                        <td th:text="${resultDTO.score}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="widget">
+            <canvas id="scoreChart"></canvas>
+        </div>
+    </div>
+
+    <script th:inline="javascript">
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const ctx = document.getElementById('scoreChart').getContext('2d');
+            const resultDTOS = /*[[${resultDTOs}]]*/ [];
+
+            const chapters = resultDTOS.map(item => item.chapter);
+            const scores = resultDTOS.map(item => item.score === null ? NaN : item.score);
+            const incorrectScores = scores.map(score => 100 - (isNaN(score) ? 0 : score));
+
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: chapters,
+                    datasets: [
+                        {
+                            label: 'Correct Scores',
+                            data: scores,
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1,
+                            fill: true, // Fill the area under the line
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)' // Background color for the shaded area
+                        },
+                        {
+                            label: 'Incorrect Scores',
+                            data: incorrectScores,
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            borderWidth: 1,
+                            fill: true, // Fill the area under the line
+                            backgroundColor: 'rgba(255, 99, 132, 0.2)' // Background color for the shaded area
+                        }
+                    ]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100
+                        }
+                    }
+                }
+            });
+        });
+    </script>
 </div>
+
 </body>
 </html>
