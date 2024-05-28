@@ -5,15 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link rel="stylesheet" th:href="@{/css/container.css}">
+    <link rel="stylesheet" th:href="@{/css/admin-dashboard.css}">
+
 </head>
 <body>
-<div>
-    <section class="content-header" th:replace="menu/menu-student::IncludeStudentMenu"></section>
-<!--    <section class="content-header" th:replace="shared/dark-mode::IncludeDarkMode"></section>-->
-    <div class="container">
-
+<section class="content-header" th:replace="menu/menu-student::IncludeStudentMenu"></section>
+<div class="container">
+    <div class="header">
+        <h1>Admin Dashboard</h1>
     </div>
-    <!-- Add more content specific to the admin dashboard -->
+
+    <div class="dashboard-widgets">
+        <div class="widget">
+        </div>
+        <div class="widget">
+
+        </div>
+        <div class="widget">
+
+        </div>
+        <div class="widget">
+        </div>
+        <div class="widget">
+            <canvas id="scoreChart"></canvas>
+        </div>
+    </div>
 </div>
 </body>
 </html>

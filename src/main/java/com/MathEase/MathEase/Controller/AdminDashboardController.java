@@ -61,6 +61,10 @@ public class AdminDashboardController {
             resultDTOS.add(resultDTO);
         }
 
+        double overallPercentage = userAnswerService.calculateOverallResult();
+
+        model.addAttribute("overallResult", overallPercentage);
+
         model.addAttribute("resultDTOs", resultDTOS);
         model.addAttribute("totalUser", userRepository.count());
         model.addAttribute("totalQuestion", questionRepository.count());

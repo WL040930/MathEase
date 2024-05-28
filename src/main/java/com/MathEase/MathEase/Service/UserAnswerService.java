@@ -64,4 +64,12 @@ public class UserAnswerService {
         DecimalFormat df = new DecimalFormat("#0.00");
         return Double.parseDouble(df.format(score));
     }
+
+    public double calculateOverallResult() {
+        long totalAnswer = userAnswerRepository.count();
+        long totalCorrectAnswers = userAnswerRepository.countByOption_isCorrect(true);
+        double score = (double) totalCorrectAnswers / totalAnswer * 100;
+        DecimalFormat df = new DecimalFormat("#0.00");
+        return Double.parseDouble(df.format(score));
+    }
 }

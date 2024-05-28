@@ -41,4 +41,8 @@ public interface UserAnswerRepository extends JpaRepository<UserAnswer, Long>{
     // query to count all distinct users by topic
     @Query("SELECT COUNT(DISTINCT ua.user) FROM UserAnswer ua WHERE ua.question.topicId = :topic")
     int countDistinctUsersByTopic(@Param("topic") Topic topic);
+
+    long count();
+
+    long countByOption_isCorrect(boolean correct);
 }
