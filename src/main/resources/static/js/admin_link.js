@@ -178,6 +178,15 @@ function addLink() {
     const linkTitle = document.getElementById('linkTitle').value;
     const linkURL = document.getElementById('linkUrl').value;
     const topicId = document.querySelector('.clickable-topic.active').dataset.topicId;
+    const errorMessage = document.getElementById('error-message');
+
+    if (!linkTitle || !linkURL) {
+        errorMessage.textContent = 'Please fill in all fields.';
+        errorMessage.style.color = 'red';
+        return;
+    } else {
+        errorMessage.textContent = '';
+    }
 
     const formData = new FormData();
     formData.append('linkTitle', linkTitle);
@@ -363,6 +372,7 @@ function DisplayEditLinkDetails(linkDetails) {
 
             <label for="linkUrl">URL:</label>
             <textarea id="editLinkUrl" rows="2" cols="30" required>${linkDetails.url}</textarea>
+            <div id="errorMessage"></div>
             <button class="edit-button" onclick="submitEditItem(${linkDetails.linkId})">Submit</button>
         </div>
     `;
@@ -371,6 +381,15 @@ function DisplayEditLinkDetails(linkDetails) {
 function submitEditItem (linkId) {
     const linkTitle = document.getElementById('editLinkTitle').value;
     const linkURL = document.getElementById('editLinkUrl').value;
+    const errorMessage = document.getElementById('errorMessage');
+
+    if (!linkTitle || !linkURL) {
+        errorMessage.textContent = 'Please fill in all fields.';
+        errorMessage.style.color = 'red';
+        return;
+    } else {
+        errorMessage.textContent = '';
+    }
 
     const formData = new FormData();
     formData.append('linkTitle', linkTitle);
