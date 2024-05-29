@@ -12,17 +12,23 @@
 
 .dashboard-widgets {
     display: flex;
-    gap: 20px;
     flex-wrap: wrap;
+    gap: 20px;
 }
 
 .widget {
     background-color: #e9ecef;
     border-radius: 10px;
     padding: 20px;
-    flex: 1;
+    flex: 1 1 calc(33.333% - 20px); /* 3 widgets per row */
     min-width: 200px;
     text-align: center;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.widget:nth-child(4),
+.widget:nth-child(5) {
+    flex: 1 1 calc(50% - 20px); /* 2 widgets in the second row */
 }
 
 .widget h2 {
@@ -51,5 +57,7 @@
 
 #overallResult {
     max-height: 190px;
+    width: 100% !important; /* Ensure it uses the full width of its container */
+    height: 190px !important; /* Force the height to the max-height value */
+    object-fit: contain; /* Ensure the content is resized properly */
 }
-
