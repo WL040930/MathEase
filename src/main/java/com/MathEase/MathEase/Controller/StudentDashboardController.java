@@ -40,7 +40,7 @@ public class StudentDashboardController {
     }
 
     @GetMapping("/student/dashboard")
-    public String showAdminDashboard(HttpSession session, Model model) {
+    public String showStudentDashboard(HttpSession session, Model model) {
 
         // check session
         if (session.getAttribute("userId") == null || !session.getAttribute("role").equals("student")) {
