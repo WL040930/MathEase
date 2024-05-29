@@ -1,12 +1,474 @@
 <section class="content-header" id="content" th:fragment="chapter7">
-    <link rel="stylesheet" th:href="@{/css/speak.css}">
-    <script th:src="@{/js/speak.js}"></script>
+    <!-- Header Box -->
+    <div class="header-box">
+        <h1>Form 1 Chapter 7 - Linear Inequalities</h1>
+    </div>
 
-    <!--    TODO: CHAPTER 7 HERE-->
+    <div class="SubTopic1-box subtopic-section">
+        <h3><i class="material-icons" onclick="toggleSubTopic(this)">keyboard_arrow_right</i> 7.1 Inequalities</h3>
 
+        <!--        first content -->
+        <div class="SubSection-box">
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 7.1.1 What are
+                inequalities?
+            </h3>
 
+            <div class="content">
+                <p><b><u>Inqeualities</u></b></p>
 
-    <div style="margin-top: 20px; width: 100%"></div>
-    <button id="speakButton">Speak</button>
-    <button id="stopButton">Stop</button>
+                <ul>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;"><b>Inequalities</b> - Inequalities are
+                            mathematical
+                            expressions used to compare two values or expressions. Unlike equations, which assert
+                            that two expressions
+                            are equal, inequalities show that one expression is larger or smaller than the other.
+                        </p>
+                    </li>
+                </ul>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter7/image__17_.png" />
+
+                    <p><b><i>Figure 7.1.1.1: Example of Inequalities in Daily Life</i></b></p>
+                </center>
+
+                <br>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter7/image__18_.png" />
+
+                    <p><b><i>Figure 7.1.1.2: Compare the Values of Numbers</i></b></p>
+                </center>
+            </div>
+
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+
+                <p style="text-align: justify; padding-right: 35px;">(a)
+                    You're organizing a sports event and need to ensure that the number of participants in two
+                    different activities, soccer and basketball, meets certain criteria. Define two variables to
+                    represent the number of participants in soccer and basketball, respectively, and use
+                    inequalities to compare the values.
+                </p>
+
+                <div id="sportsExplanation">
+                    <p><b>Step 1: Identify the quantities:</b></p>
+
+                    <ul>
+                        <li>Quantity 1: Number of participants in soccer.</li>
+                        <li>Quantity 2: Number of participants in basketball.</li>
+                    </ul>
+
+                    <p><b>Step 2: Define the variables:</b></p>
+
+                    <ul>
+                        <li>Let (s) represent the number of participants in soccer.</li>
+                        <li>Let (b) represent the number of participants in basketball.</li>
+                    </ul>
+
+                    <p><b>Step 3: Formulate inequalities to compare the values:</b></p>
+
+                    <ul>
+                        <li>If you want at least twice as many participants in soccer as in basketball, write the
+                            inequality: s >= 2b.</li>
+                        <li>If you want fewer than 100 participants in soccer, write the inequality: s < 100.</li>
+                        <li>If the total number of participants in both activities should not exceed 150, write the
+                            inequality: s + b <= 150.</li>
+                    </ul>
+
+                    <p><b>Step 4: Provide examples of inequalities:</b></p>
+
+                    <ul>
+                        <li>For example, if you have 50 participants in basketball, the number of participants in
+                            soccer should be at least 100 (s >= 2b).</li>
+                        <li>For example, if you have 80 participants in soccer, the number of participants in
+                            basketball should be less than 100 (b < 100).</li>
+                        <li>For example, if you have 100 participants in soccer, the total number of participants in
+                            both activities should not exceed 150 (s + b <= 150).</li>
+                    </ul>
+                </div>
+
+                <div class="radio-icon" onclick="handleRadioClick(event, 'sportsExplanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+        <div class="SubSection-box">
+
+            <!-- Subsection 7.1.2 Header -->
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 7.1.2 What are
+                the properties
+                of inequalities?
+            </h3>
+
+            <!-- Subsection 7.1.2 Notes -->
+            <div class="content">
+                <p><b><u>Smart Tips</u></b></p>
+
+                <ul>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            <b>Additive Inverse Property</b> - For any real number (a), adding its additive inverse,
+                            denoted as (-a), yields zero: [a + (-a) = 0]. In inequalities, adding the additive
+                            inverse
+                            of a number to both sides maintains the inequality's direction.
+                        </p>
+                    </li>
+
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            <b>Multiplicative Inverse Property</b> - For any non-zero real number (a), multiplying
+                            it by
+                            its multiplicative inverse (1/a) results in one: (a x 1/a = 1). In inequalities,
+                            multiplying
+                            both sides by the multiplicative inverse of a positive number preserves the inequality's
+                            direction.
+                        </p>
+                        .
+                        </p>
+                    </li>
+                </ul>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter7/image__19_.png" />
+
+                    <p><b><i>Figure 7.1.2.1: Additive Inverse Property</i></b></p>
+                </center>
+
+                <br>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter7/image__20_.png" />
+
+                    <p><b><i>Figure 7.1.2.2: Multiplicative Inverse Property</i></b></p>
+                    <br>
+                </center>
+            </div>
+
+            <!-- Subsection 7.1.2 Question Example -->
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+
+                <p style="text-align: justify; padding-right: 35px;">
+                    (a) You have a budget for groceries and transportation. Let's denote the amount spent on
+                    groceries as G and the amount spent on transportation as T. Your budget constraints are defined
+                    by two inequalities: 4G + 3T ≤ 100 (representing the maximum budget for groceries and
+                    transportation combined) and 2G - T ≥ 20 (representing the minimum budget for groceries compared
+                    to transportation). Using the properties of additive and multiplicative inverses, solve the
+                    system of inequalities to determine the feasible range of expenses for groceries (G) and
+                    transportation (T).
+                </p>
+
+                <div id="expensesExplanation">
+                    <p><b>Step 1: Identify the quantities:</b></p>
+
+                    <ul>
+                        <li>Quantity 1: Amount spent on groceries (G).</li>
+                        <li>Quantity 2: Amount spent on transportation (T).</li>
+                    </ul>
+
+                    <p><b>Step 2: Formulate the inequalities:</b></p>
+
+                    <ul>
+                        <li>The budget constraints are represented by the following inequalities:
+                            <br><br>
+                            4G + 3T ≤ 100 (Maximum budget for groceries and transportation combined)
+                            <br>2G - T ≥ 20 (Minimum budget for groceries compared to transportation)
+                        </li>
+                    </ul>
+
+                    <p><b>Step 3: Solve the system of inequalities:</b></p>
+
+                    <ul>
+                        <li>
+                            <b>Additive Inverse Property:</b> To isolate G or T, apply the additive inverse by
+                            adding or subtracting the same value from both sides of the inequality.
+                            <br><br>
+                            <b>Example:</b> Given 4G + 3T ≤ 100, subtract 4G from both sides to isolate 3T:
+                            <br>
+                            4G + 3T - 4G ≤ 100 - 4G
+                            <br>
+                            3T ≤ 100 - 4G
+                            <br><br>
+                            Similarly, apply the additive inverse to 2G - T ≥ 20 to isolate T.
+                            <br><br>
+                        </li>
+
+                        <li>
+                            <b>Multiplicative Inverse Property:</b> To solve for G or T, apply the multiplicative
+                            inverse by multiplying or dividing both sides of the inequality by the same positive or
+                            negative value.
+                            <br><br>
+                            <b>Example:</b> If we have 3T ≤ 100 - 4G, to solve for T, we can divide both sides by 3:
+                            <br>
+                            (1/3) * (3T) ≤ (1/3) * (100 - 4G)
+                            <br>
+                            T ≤ (100 - 4G) / 3
+                            <br><br>
+                            Similarly, apply the multiplicative inverse to solve for G in the inequality 2G - T ≥
+                            20.
+                        </li>
+                    </ul>
+
+                    <p><b>Step 4: Interpret the solution:</b></p>
+
+                    <ul>
+                        <li>
+                            To interpret the solution, let's first find the feasible range of expenses for groceries
+                            (G) and transportation (T).
+                            <br><br>
+                            <b>Example:</b>
+                            <br>
+                            - For the inequality 3T ≤ 100 - 4G, we have T ≤ (100 - 4G) / 3.
+                            <br>
+                            - Similarly, for 2G - T ≥ 20, we can solve for G to get G ≥ (T + 20) / 2.
+                            <br><br>
+                            Now, to find the feasible range, we need to consider both inequalities together.
+                        </li>
+                        <br>
+                        <li>
+                            Considering both inequalities:
+                            <br>
+                            - We need to find the intersection of the feasible ranges obtained for G and T.
+                            <br>
+                            - This intersection represents the values that satisfy both inequalities simultaneously,
+                            providing the feasible range of expenses for groceries and transportation.
+                            <br><br>
+                            <b>Example:</b>
+                            <br>
+                            Let's say we found that G can range from 10 to 30, and T can range from 20 to 40 based
+                            on the solutions of the inequalities.
+                            <br>
+                            - This means that the feasible range for G is from 10 to 30, and for T is from 20 to 40.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="radio-icon" onclick="handleRadioClick(event, 'expensesExplanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+
+    <div class="SubTopic2-box subtopic-section">
+
+        <!-- Subtopic 7.2 Header -->
+        <h3><i class="material-icons" onclick="toggleSubTopic(this)">keyboard_arrow_right</i> 7.2 Linear
+            Inequalities
+            in One Variable</h3>
+
+        <!-- Subsection 7.2.1 box -->
+        <div class="SubSection-box">
+
+            <!-- Subsection 7.2.1 Header -->
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 7.2.1 How do you
+                form linear inequalities based on the daily life situations and vice versa?
+            </h3>
+
+            <!-- Subsection 7.2.1 Notes -->
+            <div class="content">
+                <p><b><u>Smart Tips</u></b></p>
+
+                <ul>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            To form linear inequalities from daily life situations, identify quantities, assign
+                            variables, establish relationships, and express constraints using inequality symbols.
+
+                            Conversely, interpret linear inequalities in real-life scenarios by understanding their
+                            implications within the context of the situation and the relationships between the
+                            variables involved.
+                        </p>
+                    </li>
+                </ul>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter7/image__14_.png" />
+
+                    <p><b><i>Figure 7.2.1.1: Example Usage of Linear Inequalities</i></b></p>
+                </center>
+
+                <br>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter7/image__15_.png" />
+
+                    <p><b><i>Figure 7.2.1.2: Solving Linear Inequalities</i></b></p>
+                </center>
+            </div>
+
+            <!-- Subsection 7.2.1 Question Example -->
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+
+                <p style="text-align: justify; padding-right: 35px;">(a) Consider the following scenario: A company
+                    produces two types of products, Product A and Product B. Each unit of Product A requires 2 hours
+                    of labor and 3 hours of machine time, while each unit of Product B requires 1 hour of labor and
+                    2 hours of machine time. The company has a maximum of 100 hours of labor and 120 hours of
+                    machine time available. How many units of each product should the company produce to maximize
+                    its profit?</p>
+
+                <div id="inequalityExplanation">
+                    <p><b>Step 1: Define Variables:</b></p>
+
+                    <ul>
+                        <li>
+                            Let x represent the number of units of Product A produced and y represent the number of
+                            units
+                            of Product B produced.
+                        </li>
+                    </ul>
+
+                    <p><b>Step 2: Form Inequalities:</b></p>
+
+                    <p>Based on the labor and machine time constraints, we form the following inequalities:</p>
+                    <ul>
+                        <li>Labor Constraint: 2x + y ≤ 100 (Labor hours available)</li>
+                        <li>Machine Time Constraint: 3x + 2y ≤ 120 (Machine hours available)</li>
+                    </ul>
+
+                    <p><b>Step 3: Solve the Inequalities:</b></p>
+
+                    <p>Let's solve the inequalities to find the feasible values for x and y.</p>
+
+                    <ul>
+                        <li><b>Labor Constraint:</b></li>
+                        Substitute the given labor hours into the inequality:<br>
+                        2x + y ≤ 100<br>
+                        Solve for y:<br>
+                        y ≤ 100 - 2x
+                    </ul>
+
+                    <ul>
+                        <li><b>Machine Time Constraint:</b></li>
+                        Substitute the given machine hours into the inequality:<br>
+                        3x + 2y ≤ 120<br>
+                        Solve for y:<br>
+                        y ≤ (120 - 3x) / 2
+                    </ul>
+
+                    <p><b>Step 4: Determine Feasible Region:</b></p>
+
+                    <p>The feasible region is the intersection of the solution sets of both inequalities.</p>
+                    <p>We have two inequalities:</p>
+                    <ul>
+                        <li>y ≤ 100 - 2x</li>
+                        <li>y ≤ (120 - 3x) / 2</li>
+                    </ul>
+                    <p>So, the feasible region is the region where both inequalities are satisfied simultaneously.
+                    </p>
+
+                    <p><b>Step 5: Optimize Profit:</b></p>
+
+                    <ul>
+                        <li>
+                            After finding the feasible region, we optimize profit by evaluating the objective
+                            function
+                            (profit) at each corner point of the feasible region.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="radio-icon" onclick="handleRadioClick(event, 'inequalityExplanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+
+        <!-- Subsection 7.2.2 box -->
+        <div class="SubSection-box">
+
+            <!-- Subsection 7.2.2 Header -->
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 7.2.2 How do you
+                solve simultaneous linear inequalities?
+            </h3>
+
+            <!-- Subsection 7.2.2 Notes -->
+            <div class="content">
+                <p><b><u>Smart Tips</u></b></p>
+
+                <ul>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            To solve simultaneous linear inequalities, graph each one on a coordinate plane, shading
+                            the areas where the inequalities are true. The overlapping shaded regions represent
+                            where all inequalities are satisfied simultaneously. These areas represent the solution
+                            set.
+                        </p>
+                    </li>
+                </ul>
+
+                <center>
+                    <img class="diagram"
+                         src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter7/image__16_.png" />
+
+                    <p><b><i>Figure 7.2.2.1: Solving Simultaneous Linear Inequalities</p></i></b></p>
+                </center>
+            </div>
+
+            <!-- Subsection 7.2.2 Question Example -->
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+
+                <p>(a) You're managing a manufacturing plant that produces two types of products, Product X and Product Y. Each product requires certain resources, represented by the variables "x" and "y". You have constraints on the availability of these resources, given by the inequalities "2x + 6 >= 10" and "5x + 3 < 15". How would you express and solve this situation algebraically?</p>
+
+                <div id="inequalityExplanation1">
+                    <p><b>Step 1: Identify the Inequalities:</b></p>
+
+                    <p>We have two inequalities representing constraints on the availability of resources:</p>
+                    <ul>
+                        <li>Inequality 1: 2x + 6 ≥ 10</li>
+                        <li>Inequality 2: 5x + 3 < 15</li>
+                    </ul>
+
+                    <p><b>Step 2: Solve the Inequalities:</b></p>
+
+                    <p>Let's solve each inequality to find the feasible values for x.</p>
+
+                    <ul>
+                        <li><b>Inequality 1:</b></li>
+                        Subtract 6 from both sides:<br>
+                        2x ≥ 4<br><br>
+                        Divide both sides by 2:<br>
+                        x ≥ 2
+                    </ul>
+
+                    <ul>
+                        <li><b>Inequality 2:</b></li>
+                        Subtract 3 from both sides:<br>
+                        5x < 12<br><br>
+                        Divide both sides by 5:<br>
+                        x < 12/5
+                    </ul>
+
+                    <p><b>Step 3: Determine Feasible Region:</b></p>
+
+                    <p>The feasible region is the intersection of the solution sets of both inequalities.</p>
+                    <ul>
+                        <li>From Inequality 1: x ≥ 2</li>
+                        <li>From Inequality 2: x < 12/5</li>
+                        <li>So, the feasible region is 2 ≤ x < 12/5.</li>
+                    </ul>
+
+                    <p><b>Step 4: Final Solution:</b></p>
+
+                    <ul>
+                        <li>
+                            The final solution set for x is 2 ≤ x < 12/5.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="radio-icon" onclick="handleRadioClick(event, 'inequalityExplanation1')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
 </section>

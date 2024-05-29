@@ -1,0 +1,374 @@
+/********** CSS **********/
+:root {
+    --primary: #06BBCC;
+    --light: #F0FBFC;
+    --dark: #181d38;
+}
+
+.fw-medium {
+    font-weight: 600 !important;
+}
+
+.fw-semi-bold {
+    font-weight: 700 !important;
+}
+
+.back-to-top {
+    position: fixed;
+    display: none;
+    right: 45px;
+    bottom: 45px;
+    z-index: 99;
+}
+
+/*** Spinner ***/
+#spinner {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s ease-out, visibility 0s linear .5s;
+    z-index: 99999;
+}
+
+#spinner.show {
+    transition: opacity .5s ease-out, visibility 0s linear 0s;
+    visibility: visible;
+    opacity: 1;
+}
+
+
+/*** Button ***/
+.btn {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+    transition: .5s;
+}
+
+.btn.btn-primary,
+.btn.btn-secondary {
+    color: #FFFFFF;
+}
+
+.btn-square {
+    width: 38px;
+    height: 38px;
+}
+
+.btn-sm-square {
+    width: 32px;
+    height: 32px;
+}
+
+.btn-lg-square {
+    width: 48px;
+    height: 48px;
+}
+
+.btn-square,
+.btn-sm-square,
+.btn-lg-square {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: normal;
+    border-radius: 0px;
+}
+
+
+/*** Navbar ***/
+.navbar .dropdown-toggle::after {
+    border: none;
+    content: "\f107";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    vertical-align: middle;
+    margin-left: 8px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    margin-right: 30px;
+    padding: 25px 0;
+    color: #FFFFFF;
+    font-size: 15px;
+    text-transform: uppercase;
+    outline: none;
+}
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link.active {
+    color: var(--primary);
+}
+
+@media (max-width: 991.98px) {
+    .btn.btn-primary.py-2.px-4.d-lg-none {
+        margin-top: 10px; /* Adjust top margin */
+        margin-right: 15px; /* Adjust right margin */
+    }
+}
+
+.navbar-light .navbar-brand,
+.navbar-light a.btn {
+    height: 75px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: var(--dark);
+    font-weight: 500;
+}
+
+.navbar-light.sticky-top {
+    top: -100px;
+    transition: .5s;
+}
+
+@media (min-width: 992px) {
+    .navbar-light .navbar-brand,
+    .navbar-light a.btn {
+        height: auto; /* Reset height for larger screens */
+        padding: 15px 20px; /* Adjust padding */
+    }
+
+    .navbar-light .navbar-nav .nav-link {
+        padding: 5px 20px; /* Adjust padding */
+    }
+
+    .navbar-light .navbar-nav .nav-link.active {
+        border-bottom: 2px solid var(--primary); /* Add bottom border to active link */
+    }
+
+    .navbar-light .navbar-nav .nav-link:hover,
+    .navbar-light .navbar-nav .nav-link.active:hover {
+        color: var(--primary); /* Change text color on hover */
+    }
+}
+
+.login-signup-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 15px 20px;
+}
+
+/*** Header carousel ***/
+@media (max-width: 768px) {
+    .header-carousel .owl-carousel-item {
+        position: relative;
+        min-height: 500px;
+    }
+
+    .header-carousel .owl-carousel-item img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.header-carousel .owl-nav {
+    position: absolute;
+    top: 50%;
+    right: 8%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+}
+
+.header-carousel .owl-nav .owl-prev,
+.header-carousel .owl-nav .owl-next {
+    margin: 7px 0;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    background: transparent;
+    border: 1px solid #FFFFFF;
+    font-size: 22px;
+    transition: .5s;
+}
+
+.header-carousel .owl-nav .owl-prev:hover,
+.header-carousel .owl-nav .owl-next:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.page-header {
+    background: linear-gradient(rgba(24, 29, 56, .7), rgba(24, 29, 56, .7)), url(../../static/data/carousel-1.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.page-header-inner {
+    background: rgba(15, 23, 43, .7);
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: var(--light);
+}
+
+
+/*** Section Title ***/
+.section-title {
+    position: relative;
+    display: inline-block;
+    text-transform: uppercase;
+}
+
+.section-title::before {
+    position: absolute;
+    content: "";
+    width: calc(100% + 80px);
+    height: 2px;
+    top: 4px;
+    left: -40px;
+    background: var(--primary);
+    z-index: -1;
+}
+
+.section-title::after {
+    position: absolute;
+    content: "";
+    width: calc(100% + 120px);
+    height: 2px;
+    bottom: 5px;
+    left: -60px;
+    background: var(--primary);
+    z-index: -1;
+}
+
+.section-title.text-start::before {
+    width: calc(100% + 40px);
+    left: 0;
+}
+
+.section-title.text-start::after {
+    width: calc(100% + 60px);
+    left: 0;
+}
+
+
+/* Set a fixed height for all service items */
+.service-item {
+    background: var(--light);
+    transition: .5s;
+    text-align: center;
+    margin: auto; /* Center align the box horizontally */
+    width: 300px; /* Set a fixed width for each item */
+    height: 400px; /* Set a fixed height for each item */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Hover effect */
+.service-item:hover {
+    margin-top: -10px;
+    background: var(--primary);
+}
+
+/* Hover effect on text */
+.service-item:hover * {
+    color: var(--light) !important;
+}
+
+/* Center align paragraph text */
+.service-item p {
+    text-align: center;
+}
+
+/* Ensure the container is centered and has enough space between items */
+.service-container {
+    display: flex;
+    justify-content: space-between; /* Distribute items with space between them */
+    flex-wrap: wrap;
+    gap: 20px; /* Space between items */
+}
+
+/* Adjust column layout for smaller screens */
+@media (max-width: 992px) {
+    .service-container {
+        justify-content: center; /* Center align items on smaller screens */
+    }
+}
+
+.footer {
+    background-color: var(--dark); /* Set footer background color */
+    color: var(--light); /* Set text color */
+    padding-top: 30px; /* Adjust top padding */
+    padding-bottom: 30px; /* Adjust bottom padding */
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    flex-direction: column; /* Stack items vertically */
+}
+
+.footer h5 {
+    color: var(--light); /* Set heading color */
+    font-size: 18px; /* Adjust heading font size */
+    font-weight: 600; /* Adjust heading font weight */
+    margin-bottom: 15px; /* Adjust heading bottom margin */
+}
+
+.footer p {
+    color: var(--light); /* Set paragraph text color */
+    font-size: 14px; /* Adjust paragraph font size */
+    margin-bottom: 5px; /* Adjust paragraph bottom margin */
+}
+
+.footer .row {
+    margin: 0 auto; /* Center the row horizontally */
+    max-width: 900px; /* Set max width for better alignment */
+    display: flex; /* Use flexbox */
+    flex-wrap: nowrap; /* Prevent items from wrapping to the next line */
+    justify-content: center; /* Center the items horizontally */
+}
+
+.footer .col-md-4 {
+    text-align: left; /* Align content to the left */
+    margin-right: 50px; /* Add margin between items */
+    margin-left: 50px; /* Add margin between items */
+}
+
+.footer .col-md-4:last-child {
+    margin-right: 0; /* Remove margin from the last item */
+}
+
+.footer .btn.btn-social {
+    margin-right: 5px; /* Adjust social button margin */
+}
+
+.footer .btn.btn-link {
+    font-size: 14px; /* Adjust link font size */
+    margin-bottom: 5px; /* Adjust link bottom margin */
+}
+
+.footer .row:last-child {
+    margin-top: 20px; /* Adjust margin for the last row */
+}
+
+.footer .text-center p {
+    margin-bottom: 0; /* Remove bottom margin for centered text */
+}
+
+.footer .contact-info {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    flex-direction: column; /* Stack items vertically */
+}
+
+.footer .tech-support p {
+    margin-top: 0; /* Remove top margin for technical support email */
+    margin-bottom: 5px; /* Adjust spacing between lines */
+}
+
+#menuBar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}

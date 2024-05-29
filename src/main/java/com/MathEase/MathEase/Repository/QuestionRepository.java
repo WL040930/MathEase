@@ -19,4 +19,5 @@ public interface QuestionRepository extends JpaRepository<Questions, Long>{
     // Find all questions by topic and difficulty
     int countByTopicId(Topic topic);
 
+    long count();
 }

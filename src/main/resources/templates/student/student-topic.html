@@ -2,7 +2,9 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Topic</title>
+    <link rel="icon" href="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/picture/logo-small.png">
+
     <link rel="stylesheet" th:href="@{/css/container.css}">
     <link rel="stylesheet" th:href="@{/css/student-topic.css}">
     <link rel="stylesheet" th:href="@{/css/button.css}">
@@ -11,6 +13,39 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/chapter.css}">
     <script th:src="@{/js/speak.js}"></script>
+    <style>
+        .content-header {
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .linkContainer {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .linkContainer ol {
+            padding-left: 20px;
+        }
+
+        .linkContainer li {
+            margin-bottom: 10px;
+        }
+
+        .linkContainer a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .linkContainer a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
 <section class="content-header" th:replace="~{menu/menu-student::IncludeStudentMenu}"></section>

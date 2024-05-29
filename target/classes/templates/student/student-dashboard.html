@@ -3,17 +3,229 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
+    <title>Student Dashboard</title>
     <link rel="stylesheet" th:href="@{/css/container.css}">
-</head>
-<body>
-<div>
-    <section class="content-header" th:replace="menu/menu-student::IncludeStudentMenu"></section>
-<!--    <section class="content-header" th:replace="shared/dark-mode::IncludeDarkMode"></section>-->
-    <div class="container">
+    <link rel="stylesheet" th:href="@{/css/admin-dashboard.css}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="icon" href="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/picture/logo-small.png">
 
+</head>
+<style>
+    /* CSS */
+    .table-container {
+        max-height: 150px; /* Set max height to enable scrolling */
+        overflow-y: auto; /* Add vertical scrollbar if content exceeds max height */
+    }
+
+    table {
+        width: 100%;
+        height: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 8px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2; /* Background color for table header */
+    }
+
+</style>
+<body>
+<section class="content-header" th:replace="menu/menu-student::IncludeStudentMenu"></section>
+<div class="container">
+    <div class="header">
+        <h1>Student Dashboard</h1>
     </div>
-    <!-- Add more content specific to the admin dashboard -->
+
+    <div class="dashboard-widgets">
+        <div class="widget">
+            <h2>Users</h2>
+            <p th:text="${User}"></p>
+            <p th:text="${joinedDate}"></p>
+        </div>
+        <div class="widget">
+            <canvas id="topicCompletionChart"></canvas>
+        </div>
+        <div class="widget" style="padding: 10px">
+            <div class="table-container">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Chapter</th>
+                        <th>Score</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Thymeleaf iteration to populate table rows -->
+                    <tr th:each="resultDTO : ${resultDTOs}">
+                        <td th:text="${resultDTO.chapterName}"></td>
+                        <td th:text="${resultDTO.score}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="widget">
+            <h2>Average Score:</h2>
+            <canvas id="overallResult"></canvas>
+        </div>
+        <div class="widget">
+            <canvas id="scoreChart"></canvas>
+        </div>
+    </div>
 </div>
+
+<script th:inline="javascript">
+    document.addEventListener('DOMContentLoaded', () => {
+        const completionData = /*[[${completion}]]*/ [];
+        const totalTopics = /*[[${totalTopic}]]*/ [] ;
+
+        const ctx = document.getElementById('topicCompletionChart').getContext('2d');
+        const completionChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Completed Topics', 'Remaining Topics'],
+                datasets: [{
+                    label: 'Topic Completion',
+                    data: [completionData, totalTopics - completionData],
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.2)', // Completed topics color
+                        'rgba(255, 99, 132, 0.2)'  // Remaining topics color
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)', // Completed topics border color
+                        'rgba(255, 99, 132, 1)'  // Remaining topics border color
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 1
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>
+
+<script th:inline="javascript">
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const overallCtx = document.getElementById('overallResult').getContext('2d');
+        const overallResultPercentage = /*[[${overallResult}]]*/ [];
+
+        // Calculate correct and incorrect percentages
+        const correctPercentage = overallResultPercentage;
+        const incorrectPercentage = 100 - overallResultPercentage;
+
+        const overallData = {
+            labels: ['Correct', 'Incorrect'],
+            datasets: [{
+                label: 'Overall Result',
+                data: [correctPercentage, incorrectPercentage],
+                backgroundColor: [
+                    'rgba(75, 192, 192, 0.2)', // Correct color
+                    'rgba(255, 99, 132, 0.2)'  // Incorrect color
+                ],
+                borderColor: [
+                    'rgba(75, 192, 192, 1)', // Correct border color
+                    'rgba(255, 99, 132, 1)'  // Incorrect border color
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        const overallChart = new Chart(overallCtx, {
+            type: 'pie',
+            data: overallData,
+            options: {
+                plugins: {
+                    legend: {
+                        position: 'right' // Place legend at the bottom
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const label = context.label || '';
+                                const value = context.parsed;
+                                if (value !== null) {
+                                    return label + ': ' + value.toFixed(2) + '%';
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>
+<script th:inline="javascript">
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const ctx = document.getElementById('scoreChart').getContext('2d');
+        const resultDTOS = /*[[${resultDTOs}]]*/ [];
+
+        const chapters = resultDTOS.map(item => item.chapter);
+        const scores = resultDTOS.map(item => item.score === null ? NaN : item.score);
+        const incorrectScores = scores.map(score => 100 - (isNaN(score) ? 0 : score));
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: chapters,
+                datasets: [
+                    {
+                        label: 'Correct Scores',
+                        data: scores,
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1,
+                        fill: true, // Fill the area under the line
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)' // Background color for the shaded area
+                    },
+                    {
+                        label: 'Incorrect Scores',
+                        data: incorrectScores,
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1,
+                        fill: true, // Fill the area under the line
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)' // Background color for the shaded area
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                var label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.y !== null) {
+                                    label += context.parsed.y.toFixed(2) + '%';
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>
 </body>
 </html>

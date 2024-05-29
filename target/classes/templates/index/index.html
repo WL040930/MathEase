@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>MathEase+ E-Learning System</title>
+    <link rel="icon" href="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/picture/logo-small.png">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <script th:src="@{/js/main.js}"></script>
+</head>
+
+<body>
+
+
+<!-- Navbar Start -->
+<div id="menuBar">
+<nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+    <a th:href="@{/}"  class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+        <h2 class="m-0 text-primary"><i class="fa fa-book me-3"></i>MathEase +</h2>
+    </a>
+    <div class="" id="">
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+            <a th:href="@{/}" class="nav-item nav-link active">Home</a>
+            <a th:href="@{/problem}" class="nav-item nav-link">Problems</a>
+            <a th:href="@{/solution}" class="nav-item nav-link">Solutions</a>
+        </div>
+    </div>
+
+    <div th:if="${session.userId != null}">
+        <div th:if="${session.role.equals('admin')}">
+            <div class="login-signup-button" style="margin-top: -10px">
+                <a th:href="@{/admin/dashboard}" class="btn">Back to Dashboard</a>
+            </div>
+        </div>
+        <div th:if="${session.role.equals('student')}">
+            <div class="login-signup-button" style="margin-top: -10px">
+                <a th:href="@{/student/dashboard}" class="btn">Back to Dashboard</a>
+            </div>
+        </div>
+    </div>
+    <div th:if="${session.userId == null}">
+        <div class="login-signup-button">
+            <button class="btn" onclick="redirectToLogin()">Login/Sign Up</button>
+            <script>
+                function redirectToLogin() {
+                    window.location.href = "/login";
+                }
+            </script>
+        </div>
+    </div>
+</nav>
+</div>
+<!-- Navbar End -->
+
+<!-- Carousel Start -->
+<div class="container-fluid p-0 mb-5">
+    <div class="owl-carousel header-carousel position-relative">
+        <div class="owl-carousel-item position-relative">
+            <img class="img-fluid" th:src="@{/data/carousel-1.jpg}" alt="" style="width: 100%; height: auto; display: block; margin: 0 auto; max-width: 100%">
+            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center"
+                 style="background: rgba(24, 29, 56, .7);">
+                <div class="container">
+                    <div class="row justify-content-start">
+                        <div class="col-sm-10 col-lg-8">
+                            <h5 class="text-primary text-uppercase mb-3 animated slideInDown">Addressing Dyscalculia
+                            </h5>
+                            <h1 class="display-3 text-white animated slideInDown">Empowering Math Learning for
+                                Dyscalculia</h1>
+                            <p class="fs-5 text-white mb-4 pb-2">Dyscalculia, a learning difficulty hindering math
+                                comprehension, is receiving increased attention in Malaysia. Our initiative aims to
+                                provide tailored support and resources to enhance math learning experiences for
+                                affected students.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!--        <div class="owl-carousel-item position-relative">-->
+<!--            <img class="img-fluid" th:src="@{/data/carousel-1.jpg}" alt="">-->
+<!--            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center"-->
+<!--                 style="background: rgba(24, 29, 56, .7);">-->
+<!--                <div class="container">-->
+<!--                    <div class="row justify-content-start">-->
+<!--                        <div class="col-sm-10 col-lg-8">-->
+<!--                            <h5 class="text-primary text-uppercase mb-3 animated slideInDown">Project Overview</h5>-->
+<!--                            <h1 class="display-3 text-white animated slideInDown">MathEase+: Empowering Dyscalculia-->
+<!--                                Students</h1>-->
+<!--                            <p class="fs-5 text-white mb-4 pb-2">MathEase+ is a tailored e-learning platform-->
+<!--                                designed for 13-year-old individuals with dyscalculia. It provides a user-friendly-->
+<!--                                system implementing universal design principles to enhance accessibility and promote-->
+<!--                                improved math comprehension. Offering personalised learning experiences and targeted-->
+<!--                                interventions, MathEase+ aims to revolutionise math education for dyscalculia-->
+<!--                                students.</p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+    </div>
+</div>
+<!-- Carousel End -->
+
+<!-- Footer Start -->
+<div class="container-fluid bg-dark text-light footer py-4 mt-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container">
+        <div class="row gx-5">
+            <div class="col-md-4">
+                <div class="mb-4">
+                    <h5 class="text-white">Office Address: </h5>
+                    <p class="mb-0">123, Jalan Bukit Bintang,</p>
+                    <p class="mb-0">Bukit Bintang, 55100 Kuala Lumpur,</p>
+                    <p class="mb-0">Wilayah Persekutuan Kuala Lumpur,</p>
+                    <p class="mb-0">Malaysia.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="mb-4">
+                    <h5 class="text-white">Contact Information: </h5>
+                    <p><i class="fa fa-phone-alt me-2"></i>Office Number: +0123456789</p>
+                    <p><i class="fa fa-phone-alt me-2"></i>Admin Staff 1: +0123456789</p>
+                    <p><i class="fa fa-phone-alt me-2"></i>Admin Staff 2: +0198765432</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="mb-4">
+                    <h5 class="text-white">Technical Support:</h5>
+                    <p><i class="fa fa-envelope me-2"></i>MathEaseSupportTeam@gmail.com</p>
+                    <p><i class="fa fa-phone-alt me-2"></i>Technical Staff 1: +0123292719</p>
+                    <p><i class="fa fa-phone-alt me-2"></i>Technical Staff 2: +0138234232</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <p class="mb-0">&copy; 2024 MathEase +. All Rights Reserved.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+
+</body>
+
+</html>
