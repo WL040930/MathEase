@@ -290,8 +290,9 @@
 .service-container {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center; /* Center the items horizontally */
     max-width: 1200px; /* Limit the width of the container */
-    margin: 10px;
+    margin: 0 auto; /* Center the container within its parent */
     gap: 100px; /* Space between items */
 }
 
