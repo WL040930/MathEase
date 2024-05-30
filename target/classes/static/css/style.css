@@ -270,6 +270,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 10px
 }
 
 /* Hover effect */
@@ -286,13 +287,16 @@
 /* Center align paragraph text */
 .service-item p {
     text-align: center;
+    width: 250px; 
 }
 
 /* Ensure the container is centered and has enough space between items */
 .service-container {
     display: flex;
-    justify-content: space-between; /* Distribute items with space between them */
+    justify-content: center; /* Center the items horizontally */
     flex-wrap: wrap;
+    max-width: 1200px; /* Limit the width of the container */
+    margin: 0 auto; /* Center the container within its parent */
     gap: 20px; /* Space between items */
 }
 
