@@ -297,7 +297,7 @@
 }
 
 /* Adjust column layout for smaller screens */
-@media (max-width: 992px) {
+@media (max-width: 1200px) {
     .service-container {
         justify-content: center; /* Center align items on smaller screens */
     }
