@@ -291,7 +291,7 @@
     display: flex;
     flex-wrap: wrap;
     max-width: 1200px; /* Limit the width of the container */
-    margin: 0 auto; /* Center the container within its parent */
+    margin: 30px;
     gap: 100px; /* Space between items */
 }
 
