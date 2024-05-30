@@ -280,10 +280,9 @@
     color: var(--light) !important;
 }
 
-/* Center align paragraph text */
+/* Justify align paragraph text */
 .service-item p {
-    text-align: center;
-    width: 250px; 
+    text-align: justify;
 }
 
 /* Ensure the container is centered and has enough space between items */
