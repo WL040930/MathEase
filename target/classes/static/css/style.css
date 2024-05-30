@@ -263,7 +263,7 @@
     background: var(--light);
     transition: .5s;
     text-align: center;
-    margin: 10px; /* Adjust margin to create space between items */
+    margin: auto; /* Center align the box horizontally */
     width: 350px;
     height: 400px;
     display: flex;
@@ -291,6 +291,7 @@
 /* Ensure the container is centered and has enough space between items */
 .service-container {
     display: flex;
+    justify-content: space-between; /* Distribute items with space between them */
     flex-wrap: wrap;
     gap: 10px; /* Space between items */
 }

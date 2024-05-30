@@ -291,6 +291,7 @@
 /* Ensure the container is centered and has enough space between items */
 .service-container {
     display: flex;
+    justify-content: space-between; /* Distribute items with space between them */
     flex-wrap: wrap;
     gap: 10px; /* Space between items */
 }
