@@ -40,7 +40,7 @@
 .btn {
     font-family: 'Nunito', sans-serif;
     font-weight: 600;
-    margin-top: 10px;
+    margin-top: 20px;
     background-color: var(--primary);
     color: var(--light); 
     transition: .5s; 
