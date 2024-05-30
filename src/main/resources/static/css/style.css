@@ -264,7 +264,7 @@
     transition: .5s;
     text-align: center;
     margin: auto; /* Center align the box horizontally */
-    width: 350px; /* Set a fixed width for each item */
+    width: 300px; /* Set a fixed width for each item */
     height: 400px; /* Set a fixed height for each item */
     display: flex;
     flex-direction: column;
