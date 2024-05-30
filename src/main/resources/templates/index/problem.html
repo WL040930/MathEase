@@ -40,9 +40,11 @@
 <!-- Navbar Start -->
 <div id="menuBar">
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-        <a th:href="@{/}"  class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-            <h2 class="m-0 text-primary"><i class="fa fa-book me-3"></i>MathEase +</h2>
-        </a>
+        <a id="nav-title" href="/" target="_blank" style="margin-right: 10px;">
+            <img src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/picture/mathease+.png" alt="" style="height:50px;"></a>
+        <label for="nav-toggle">
+            <span id="nav-toggle-burger"></span>
+        </label>
         <div class="" id="">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <a th:href="@{/}" class="nav-item nav-link">Home</a>
