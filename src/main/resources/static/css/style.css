@@ -293,7 +293,7 @@
     display: flex;
     justify-content: space-between; /* Distribute items with space between them */
     flex-wrap: wrap;
-    gap: 10px; /* Space between items */
+    gap: 0px; /* Space between items */
 }
 
 /* Adjust column layout for smaller screens */
