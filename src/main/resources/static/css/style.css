@@ -268,7 +268,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    box-sizing: border-box;
 }
 
 /* Hover effect */
@@ -294,7 +293,7 @@
     justify-content: center; /* Center the items horizontally */
     max-width: 1200px; /* Limit the width of the container */
     margin: 0 auto; /* Center the container within its parent */
-    gap: 100px; /* Space between items */
+    gap: 150px; /* Space between items */
 }
 
 /* Adjust column layout for smaller screens */
