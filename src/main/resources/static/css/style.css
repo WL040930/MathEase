@@ -263,7 +263,7 @@
     background: var(--light);
     transition: .5s;
     text-align: center;
-    margin: 10px; /* Adjust margin to create space between items */
+    margin: auto; /* Center align the box horizontally */
     width: 350px;
     height: 400px;
     display: flex;
