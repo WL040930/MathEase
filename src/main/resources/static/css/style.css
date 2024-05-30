@@ -266,7 +266,6 @@
     height: 400px; /* Set a fixed height for each item */
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 }
 
