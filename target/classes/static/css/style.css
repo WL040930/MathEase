@@ -262,12 +262,14 @@
 .service-item {
     background: var(--light);
     transition: .5s;
+    text-align: center;
+    margin: auto; /* Center align the box horizontally */
     width: 350px; /* Set a fixed width for each item */
     height: 400px; /* Set a fixed height for each item */
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 }
 
 /* Hover effect */
@@ -289,11 +291,9 @@
 /* Ensure the container is centered and has enough space between items */
 .service-container {
     display: flex;
+    justify-content: space-between; /* Distribute items with space between them */
     flex-wrap: wrap;
-    justify-content: center; /* Center the items horizontally */
-    max-width: 1200px; /* Limit the width of the container */
-    margin: 0 auto; /* Center the container within its parent */
-    gap: 75px; /* Space between items */
+    gap: 20px; /* Space between items */
 }
 
 /* Adjust column layout for smaller screens */
