@@ -262,7 +262,6 @@
 .service-item {
     background: var(--light);
     transition: .5s;
-    text-align: center;
     width: 350px; /* Set a fixed width for each item */
     height: 400px; /* Set a fixed height for each item */
     display: flex;
