@@ -31,7 +31,24 @@ body {
     padding: 30px;
     text-align: center;
     border-right: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
+.center-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    text-decoration: none;
+}
+
+.center-link i {
+    margin-right: 8px;
+    font-size: 18px;
+}
+
 
 #right {
     flex: 1;
