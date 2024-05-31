@@ -293,7 +293,7 @@ function displayQuestionDetails(questionDetails) {
                 <span style="color: red;"><br>2. ${questionDetails.wrongAnswer2}</span>
                 <span style="color: red;"><br>3. ${questionDetails.wrongAnswer3}</span>
             </p>
-            ${questionDetails.picturePath ? `<img style="margin: 0 auto; height: 120px" src="/data/${questionDetails.picturePath}" alt="question image">` : ''}
+            ${questionDetails.picturePath ? `<img style="margin: 0 auto; height: 120px; max-width: 100%; overflow-x: auto" src="/data/${questionDetails.picturePath}" alt="question image">` : ''}
         </div>
     `;
 }
@@ -359,7 +359,7 @@ function DisplayEditQuestionDetails(questionDetails) {
             </p>
             <strong>Picture:</strong> <br>
             <input type="file" id="edit-image" name="edit-image" style="margin-top: 10px; margin-bottom: 10px ; height:120px">
-            ${questionDetails.picturePath ? `<img style="height: 120px; margin: 0 auto;" src="/data/${questionDetails.picturePath}" alt="question image">` : ''}
+            ${questionDetails.picturePath ? `<img style="height: 120px; margin: 0 auto; max-width: 100%; overflow-x: auto" src="/data/${questionDetails.picturePath}" alt="question image">` : ''}
             
             <br>
             <div style="margin-bottom: 20px;margin-top:20px;" id="editValidation"></div>
@@ -527,7 +527,7 @@ function displayDeleteQuestionDetails(questionDetails) {
                 <span style="color: red;"><br>2. ${questionDetails.wrongAnswer2}</span>
                 <span style="color: red;"><br>3. ${questionDetails.wrongAnswer3}</span>
             </p>
-            ${questionDetails.picturePath ? `<img style="height: 120px; margin: 0 auto;" src="/data/${questionDetails.picturePath}" alt="question image">` : ''} 
+            ${questionDetails.picturePath ? `<img style="height: 120px; margin: 0 auto; max-width: 100%; overflow-x: auto" src="/data/${questionDetails.picturePath}" alt="question image">` : ''} 
             <br>
             <div class="deleteActionButton">
                 <button class="delete-button" onclick="deleteItem(${questionId})">Delete</button>
