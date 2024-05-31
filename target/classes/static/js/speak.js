@@ -82,3 +82,12 @@ function handleRadioClick(event, id) {
         speak(text, radioIcon);
     }
 }
+
+// Event listeners to stop speech synthesis when the page is unloaded
+window.addEventListener('beforeunload', function() {
+    window.speechSynthesis.cancel();
+});
+
+window.addEventListener('unload', function() {
+    window.speechSynthesis.cancel();
+});

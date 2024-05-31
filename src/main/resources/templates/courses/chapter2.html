@@ -1,11 +1,543 @@
 <section class="content-header" id="content" th:fragment="chapter2">
-<link rel="stylesheet" th:href="@{/css/speak.css}">
-<script th:src="@{/js/speak.js}"></script>
+    <!-- Header Box -->
+    <div class="header-box">
+        <h1>Form 1 Chapter 2 - Factors and Multiples</h1>
+    </div>
 
-    <!--    TODO: CHAPTER 2 HERE-->
-    CHAP 2
+    <!-- Subtopic 2.1 Box -->
+    <div class="SubTopic1-box subtopic-section">
 
-    <div style="margin-top: 20px; width: 100%"></div>
-    <button id="speakButton">Speak</button>
-    <button id="stopButton">Stop</button>
+        <!-- Subtopic 2.1 Header -->
+        <h3><i class="material-icons" onclick="toggleSubTopic(this)">keyboard_arrow_right</i> 2.1 Factors, Prime Factors
+            and Highest Common Factor (HCF)</h3>
+
+        <!-- Subsection 2.1.1 box -->
+        <div class="SubSection-box">
+
+            <!-- Subsection 2.1.1 Header -->
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 2.1.1 What are
+                factors?
+            </h3>
+
+            <!-- Subsection 2.1.1 Notes -->
+            <div class="content">
+                <p><b><u>Factors</u></b></p>
+
+                <ul>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;"><b>Factors</b> - Factors are numbers that
+                            can be multiplied together to get another number. For example, the factors of 12 are 1, 2,
+                            3, 4, 6, and 12 because 1 × 12 = 12, 2 × 6 = 12, and 3 × 4 = 12.
+                        </p>
+                    </li>
+                </ul>
+
+                <center>
+                    <img class="diagram"
+                        src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter2/C2..1_diagram.png?t=2024-05-31T12%3A41%3A23.514Z" />
+
+                    <p><b><i>Figure 2.1.1.1: Determine Whether the Number is One of the Factors</i></b></p>
+                    <br>
+                </center>
+
+                <center>
+                    <img class="diagram"
+                        src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter2/C2..1_diagram2.png?t=2024-05-31T12%3A41%3A34.329Z" />
+
+                    <p><b><i>Figure 2.1.1.2: List Out All the Factors</i></b></p>
+                </center>
+            </div>
+
+            <!-- Subsection 2.1.1 Question Example -->
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+
+                <p style="text-align: justify; padding-right: 35px;">(a)
+                    You're trying to determine if a number is a factor of 60 and list all the factors of 60. Let's say
+                    the number you are considering is 15.
+                    Follow the steps to determine if it is a factor and find all the factors of 60.
+                </p>
+
+                <div id="factorsExplanation">
+                    <p><b>Step 1: Identify the number and the target number:</b></p>
+
+                    <ul>
+                        <li>Consider the number: 15.</li>
+                        <li>Target number: 60.</li>
+                    </ul>
+
+                    <p><b>Step 2: Determine if the number is a factor of the target number:</b></p>
+
+                    <ul>
+                        <li>A number is a factor of another if the target number can be divided by this number without
+                            leaving a remainder.</li>
+                        <li>Check if 60 divided by 15 leaves no remainder.</li>
+                        <li>Calculation: 60 ÷ 15 = 4, which is an integer with no remainder. So, 15 is a factor of 60.
+                        </li>
+                    </ul>
+
+                    <p><b>Step 3: List all the factors of the target number:</b></p>
+
+                    <ul>
+                        <li>Factors of 60 are all the numbers that divide 60 without leaving a remainder.</li>
+                        <li>Start with 1 and proceed up to 60: 1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30, 60.</li>
+                    </ul>
+
+                    <p><b>Step 4: Final summary:</b></p>
+
+                    <ul>
+                        <li>15 is a factor of 60.</li>
+                        <li>All factors of 60 are: 1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30, 60.</li>
+                    </ul>
+                </div>
+
+                <div class="radio-icon" onclick="handleRadioClick(event, 'factorsExplanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+
+        <!-- Subsection 2.1.2 box -->
+        <div class="SubSection-box">
+
+            <!-- Subsection 2.1.2 Header -->
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 2.1.2 What are prime
+                factors?
+            </h3>
+
+            <!-- Subsection 2.1.2 Notes -->
+            <div class="content">
+                <p><b><u>Prime Factors</u></b></p>
+
+                <ul>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;"><b>Prime Factors</b> - Prime factors are
+                            the prime numbers that multiply together to give the original number. For example, the prime
+                            factors of 12 are 2 and 3 because 2 × 2 × 3 = 12.
+                        </p>
+                    </li>
+                </ul>
+
+                <center>
+                    <img class="diagram"
+                        src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter2/C2..1_diagram3.png?t=2024-05-31T12%3A50%3A08.648Z" />
+
+                    <p><b><i>Figure 2.1.2.1: Example of Prime Factors</i></b></p>
+                    <br>
+                </center>
+
+                <center>
+                    <img class="diagram"
+                        src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter2/C2..1_diagram4.png?t=2024-05-31T12%3A51%3A39.155Z" />
+
+                    <p><b><i>Figure 2.1.2.2: Repeated Division and Factor Tree</i></b></p>
+                </center>
+            </div>
+
+            <!-- Subsection 2.1.2 Question Example -->
+            <!-- Subsection 1.5.2 Question Example -->
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+
+                <p style="text-align: justify; padding-right: 35px;">(a)
+                    You have a number and want to identify its prime factors. Let's say the number is 60. Follow the
+                    steps to determine its prime factors using repeated division and the factor method.
+                </p>
+
+                <div id="primeFactorsExplanation">
+                    <p><b>Step 1: Identify the number:</b></p>
+
+                    <ul>
+                        <li>Consider the number: 60.</li>
+                    </ul>
+
+                    <p><b>Step 2: Use repeated division to find the prime factors:</b></p>
+
+                    <ul>
+                        <li>Start dividing by the smallest prime number, 2.</li>
+                        <li>60 ÷ 2 = 30</li>
+                        <li>30 ÷ 2 = 15</li>
+                        <li>15 is not divisible by 2, move to the next prime number, 3.</li>
+                        <li>15 ÷ 3 = 5</li>
+                        <li>5 is a prime number and cannot be divided further.</li>
+                    </ul>
+
+                    <p><b>Step 3: Express the number as a product of prime factors:</b></p>
+
+                    <ul>
+                        <li>From the repeated divisions, the prime factors of 60 are 2, 2, 3, and 5.</li>
+                        <li>So, 60 can be expressed as 2 × 2 × 3 × 5.</li>
+                    </ul>
+
+                    <p><b>Step 4: Final expression:</b></p>
+
+                    <ul>
+                        <li>The prime factorization of 60 is 2² × 3 × 5.</li>
+                    </ul>
+                </div>
+
+                <div class="radio-icon" onclick="handleRadioClick(event, 'primeFactorsExplanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+
+        <!-- Subsection 2.1.3 box -->
+        <div class="SubSection-box">
+
+            <!-- Subsection 2.1.3 Header -->
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 2.1.3 What are
+                common factors?
+            </h3>
+
+            <!-- Subsection 5.1.3 Notes -->
+            <div class="content">
+                <p><b><u>Common Factors</u></b></p>
+
+                <ul>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            <b>Common Factors</b> - Common factors are numbers that divide two or more numbers without
+                            leaving a remainder. For example, the common factors of 12 and 18 are 1, 2, 3, and 6 because
+                            they divide both numbers without leaving a remainder.
+                        </p>
+                    </li>
+                </ul>
+
+                <center>
+                    <img class="diagram"
+                        src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter2/C2..1_diagram5.png?t=2024-05-31T12%3A59%3A06.449Z" />
+
+                    <p><b><i>Figure 2.1.3.1: Determine Whether the Number is One of the Common Factors</i></b></p>
+                    <br>
+                </center>
+
+                <center>
+                    <img class="diagram"
+                        src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter2/C2..1_diagram6.png?t=2024-05-31T12%3A59%3A20.279Z" />
+
+                    <p><b><i>Figure 2.1.3.2: List Out all the Common Factors</i></b></p>
+                </center>
+            </div>
+
+            <!-- Subsection 2.1.3 Question Example -->
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+
+                <p style="text-align: justify; padding-right: 35px;">(a)
+                    Imagine you're organizing a school event and need to determine if a number is a common factor of two
+                    other numbers. Let's say the numbers are 36 and 60, and you want to check if 6 is a common factor.
+                    Follow the steps to determine if it is and list all the common factors of 36 and 60.
+                </p>
+
+                <div id="commonFactorsExplanation">
+                    <p><b>Step 1: Identify the numbers:</b></p>
+
+                    <ul>
+                        <li>First number: 36.</li>
+                        <li>Second number: 60.</li>
+                        <li>Number to check: 6.</li>
+                    </ul>
+
+                    <p><b>Step 2: Determine if the number is a common factor:</b></p>
+
+                    <ul>
+                        <li>A number is a common factor if it divides both numbers without leaving a remainder.</li>
+                        <li>Check if 36 divided by 6 leaves no remainder: 36 ÷ 6 = 6 (no remainder).</li>
+                        <li>Check if 60 divided by 6 leaves no remainder: 60 ÷ 6 = 10 (no remainder).</li>
+                        <li>Since 6 divides both 36 and 60 without a remainder, 6 is a common factor.</li>
+                    </ul>
+
+                    <p><b>Step 3: List all the common factors:</b></p>
+
+                    <ul>
+                        <li>Find all factors of 36: 1, 2, 3, 4, 6, 9, 12, 18, 36.</li>
+                        <li>Find all factors of 60: 1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30, 60.</li>
+                        <li>Common factors of 36 and 60 are: 1, 2, 3, 6, 12.</li>
+                    </ul>
+
+                    <p><b>Step 4: Final summary:</b></p>
+
+                    <ul>
+                        <li>6 is a common factor of 36 and 60.</li>
+                        <li>All common factors of 36 and 60 are: 1, 2, 3, 6, 12.</li>
+                    </ul>
+                </div>
+
+                <div class="radio-icon" onclick="handleRadioClick(event, 'commonFactorsExplanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+
+        <!-- Subsection 2.1.4 box -->
+        <div class="SubSection-box">
+
+            <!-- Subsection 2.1.4 Header -->
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 2.1.4 what is
+                highest common factor (HCF)?
+            </h3>
+
+            <!-- Subsection 2.1.4 Notes -->
+            <div class="content">
+                <p><b><u>Highest Common Factor (HCF)</u></b></p>
+
+                <ul>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;"><b>Highest Common Factor (HCF)</b> - The
+                            highest common factor (HCF) is the largest number that divides two or more numbers without
+                            leaving a remainder. For example, the HCF of 12 and 18 is 6 because 6 is the largest number
+                            that divides both 12 and 18 without leaving a remainder.
+                        </p>
+                    </li>
+                </ul>
+
+                <center>
+                    <img class="diagram"
+                        src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter2/C2..1_diagram7.png?t=2024-05-31T13%3A02%3A38.210Z" />
+
+                    <p><b><i>Figure 2.1.4.1: Methods to Determine Highest Common Factor (HCF)</i></b></p>
+                </center>
+            </div>
+
+            <!-- Subsection 2.1.4 Question Example -->
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+
+                <p style="text-align: justify; padding-right: 35px;">(a) Consider the numbers 48 and 72. Determine the
+                    highest common factor (HCF) of these numbers by listing all factors, using repeated division, and
+                    prime factorization.</p>
+
+                <div id="hcfExplanation">
+                    <p><b>Step 1: List All Factors:</b></p>
+
+                    <ul>
+                        <li>Factors of 48: 1, 2, 3, 4, 6, 8, 12, 16, 24, 48.</li>
+                        <li>Factors of 72: 1, 2, 3, 4, 6, 8, 9, 12, 18, 24, 36, 72.</li>
+                        <li>Common factors of 48 and 72: 1, 2, 3, 4, 6, 8, 12, 24.</li>
+                        <li>The highest common factor (HCF) is 24.</li>
+                    </ul>
+
+                    <p><b>Step 2: Determine HCF Using Repeated Division:</b></p>
+
+                    <ul>
+                        <li>Start with the smaller number, 48, and divide both numbers by their common prime factors.
+                        </li>
+                        <li>48 ÷ 2 = 24, 72 ÷ 2 = 36.</li>
+                        <li>24 ÷ 2 = 12, 36 ÷ 2 = 18.</li>
+                        <li>12 ÷ 2 = 6, 18 ÷ 2 = 9.</li>
+                        <li>6 ÷ 3 = 2, 9 ÷ 3 = 3.</li>
+                        <li>No more common factors other than 1, so the product of the common prime factors is 2 × 2 × 2
+                            × 3 = 24.</li>
+                        <li>The HCF using repeated division is 24.</li>
+                    </ul>
+
+                    <p><b>Step 3: Determine HCF Using Prime Factorization:</b></p>
+
+                    <ul>
+                        <li>Prime factorization of 48: 2 × 2 × 2 × 2 × 3 = 2⁴ × 3.</li>
+                        <li>Prime factorization of 72: 2 × 2 × 2 × 3 × 3 = 2³ × 3².</li>
+                        <li>Common prime factors: 2 × 2 × 2 × 3 = 2³ × 3.</li>
+                        <li>The HCF using prime factorization is 2³ × 3 = 24.</li>
+                    </ul>
+
+                    <p><b>Step 4: Final summary:</b></p>
+
+                    <ul>
+                        <li>The highest common factor (HCF) of 48 and 72 is 24.</li>
+                    </ul>
+                </div>
+
+                <div class="radio-icon" onclick="handleRadioClick(event, 'hcfExplanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+
+    <!-- Subtopic 2.2 Box -->
+    <div class="SubTopic2-box subtopic-section">
+
+        <!-- Subtopic 2.2 Header -->
+        <h3><i class="material-icons" onclick="toggleSubTopic(this)">keyboard_arrow_right</i> 2.2 Multiples, Common
+            Multiples
+            and Lowest Common Multiples (LCM)</h3>
+
+        <!-- Subsection 2.2.1 box -->
+        <div class="SubSection-box">
+
+            <!-- Subsection 2.2.1 Header -->
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 2.2.1 What are
+                common multiples?
+            </h3>
+
+            <!-- Subsection 2.2.1 Notes -->
+            <div class="content">
+                <p><b><u>Common Mutiples</u></b></p>
+
+                <ul>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            <b>Common Multiples</b> - Common multiples are numbers that are multiples of two or more
+                            numbers. For example, the common multiples of 3 and 4 are 12, 24, 36, 48, and so on because
+                            they are multiples of both 3 and 4.
+                        </p>
+                    </li>
+                </ul>
+
+                <center>
+                    <img class="diagram"
+                        src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter2/C2..2_diagram.png?t=2024-05-31T13%3A12%3A25.094Z" />
+
+                    <p><b><i>Figure 2.2.1.1: Example of Mutiples</i></b></p>
+                    <br>
+                </center>
+
+                <center>
+                    <img class="diagram"
+                        src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter2/C2..2_diagram2.png?t=2024-05-31T13%3A12%3A30.831Z" />
+
+                    <p><b><i>Figure 2.2.1.2: Determine whether this Number is One of the Common Multiples</i></b></p>
+                    <br>
+                </center>
+
+                <center>
+                    <img class="diagram"
+                        src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter2/C2..2_diagram3.png?t=2024-05-31T13%3A12%3A39.378Z" />
+
+                    <p><b><i>Figure 2.2.1.3: List Out All the Common Multiples</i></b></p>
+                </center>
+            </div>
+
+            <!-- Subsection 2.2.1 Question Example -->
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+            
+                <p style="text-align: justify; padding-right: 35px;">(a) Consider the numbers 12 and 18. How do you determine if 36 is a common multiple of these numbers? Additionally, list out all the common multiples of 12 and 18 up to 100.</p>
+            
+                <div id="commonMultiplesExplanation">
+                    <p><b>Step 1: Identify the numbers:</b></p>
+            
+                    <ul>
+                        <li>First number: 12.</li>
+                        <li>Second number: 18.</li>
+                        <li>Number to check: 36.</li>
+                    </ul>
+            
+                    <p><b>Step 2: Determine if the number is a common multiple:</b></p>
+            
+                    <ul>
+                        <li>A number is a common multiple if it is divisible by both given numbers without leaving a remainder.</li>
+                        <li>Check if 36 divided by 12 leaves no remainder: 36 ÷ 12 = 3 (no remainder).</li>
+                        <li>Check if 36 divided by 18 leaves no remainder: 36 ÷ 18 = 2 (no remainder).</li>
+                        <li>Since 36 divides both 12 and 18 without a remainder, 36 is a common multiple.</li>
+                    </ul>
+            
+                    <p><b>Step 3: List all common multiples up to 100:</b></p>
+            
+                    <ul>
+                        <li>Multiples of 12: 12, 24, 36, 48, 60, 72, 84, 96.</li>
+                        <li>Multiples of 18: 18, 36, 54, 72, 90.</li>
+                        <li>Common multiples of 12 and 18 up to 100: 36, 72.</li>
+                    </ul>
+            
+                    <p><b>Step 4: Final summary:</b></p>
+            
+                    <ul>
+                        <li>36 is a common multiple of 12 and 18.</li>
+                        <li>All common multiples of 12 and 18 up to 100 are: 36, 72.</li>
+                    </ul>
+                </div>
+            
+                <div class="radio-icon" onclick="handleRadioClick(event, 'commonMultiplesExplanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+
+        <!-- Subsection 2.2.2 box -->
+        <div class="SubSection-box">
+
+            <!-- Subsection 2.2.2 Header -->
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 2.2.2 What is
+                lowest common multiple (LCM)?
+            </h3>
+
+            <!-- Subsection 2.2.2 Notes -->
+            <div class="content">
+                <p><b><u>Lowest Common Multiple (LCM)</u></b></p>
+
+                <ul>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            <b>Lowest Common Multiple (LCM)</b> - The lowest common multiple (LCM) is the smallest number
+                            that is a multiple of two or more numbers. For example, the LCM of 4 and 6 is 12 because 12 is
+                            the smallest number that is a multiple of both 4 and 6.
+                        </p>
+                    </li>
+                </ul>
+
+                <center>
+                    <img class="diagram"
+                        src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter2/C2..2_diagram4.png?t=2024-05-31T13%3A22%3A14.468Z" />
+
+                    <p><b><i>Figure 2.2.2.1: Determine Lowest Common Multiple (LCM)</i></b></p>
+                </center>
+            </div>
+
+            <!-- Subsection 2.2.2 Question Example -->
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+            
+                <p style="text-align: justify; padding-right: 35px;">(a) You're tasked with determining the least common factor (LCM) of two numbers: 24 and 36. How would you express this situation mathematically?</p>
+            
+                <div id="LCMExplanation">
+                    <p><b>Step 1: Identify the numbers:</b></p>
+            
+                    <ul>
+                        <li>First number: 24.</li>
+                        <li>Second number: 36.</li>
+                    </ul>
+            
+                    <p><b>Step 2: Define the expression for LCM:</b></p>
+            
+                    <ul>
+                        <li>The least common factor (LCM) of 24 and 36 can be expressed as "LCM(24, 36)".</li>
+                    </ul>
+            
+                    <p><b>Step 3: Explanation of LCM:</b></p>
+            
+                    <ul>
+                        <li>The LCM is the smallest number that is a factor of both 24 and 36.</li>
+                        <li>To determine the LCM, we need to find the common factors of 24 and 36 and choose the smallest one.</li>
+                    </ul>
+            
+                    <p><b>Step 4: Find the LCM:</b></p>
+            
+                    <ul>
+                        <li>Factors of 24: 1, 2, 3, 4, 6, 8, 12, 24.</li>
+                        <li>Factors of 36: 1, 2, 3, 4, 6, 9, 12, 18, 36.</li>
+                        <li>Common factors: 1, 2, 3, 4, 6, 12.</li>
+                        <li>The least common factor (LCM) of 24 and 36 is 1.</li>
+                    </ul>
+            
+                    <p><b>Step 5: Final summary:</b></p>
+            
+                    <ul>
+                        <li>The least common factor (LCM) of 24 and 36 is 1.</li>
+                    </ul>
+                </div>
+            
+                <div class="radio-icon" onclick="handleRadioClick(event, 'LCMExplanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
 </section>

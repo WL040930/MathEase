@@ -1,4 +1,4 @@
-<section class="content-header" id="content" th:fragment="chapter6">
+<section class="content-header" id="content" th:fragment="chapter1">
     <!-- Header Box -->
     <div class="header-box">
         <h1>Form 1 Chapter 1 - Rational Numbers</h1>
@@ -8,8 +8,7 @@
     <div class="SubTopic1-box subtopic-section">
 
         <!-- Subtopic 1.1 Header -->
-        <h3><i class="material-icons" onclick="toggleSubTopic(this)">keyboard_arrow_right</i> 1.1 Rational Numbers</h3>
-
+        <h3><i class="material-icons" onclick="toggleSubTopic(this)">keyboard_arrow_right</i> 1.1 Integers</h3>
         <!-- Subsection 1.1.1 box -->
         <div class="SubSection-box">
 
@@ -20,32 +19,32 @@
 
             <!-- Subsection 1.1.1 Notes -->
             <div class="content">
-                <p><b><u>Smart Tips</u></b></p>
+                <p><b><u>Positive Numbers vs Negative Numbers</u></b></p>
 
                 <ul>
                     <li>
                         <p style="text-align: justify; padding-right: 35px;">
-                            Linear equations in one variable are algebraic equations of the form ax + b = c, where a
-                            and b
-                            constants, and x is the variable. The solution to such an equation is the value of x
-                            that makes
-                            the equation true.
+                            <b>Positive Numbers</b> - A positive number is a number greater than zero. It is denoted by
+                            a plus
+                            sign (+) before the number.
+                        </p>
+                    </li>
+
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            <b>Negative Numbers</b> - A negative number is a number less than zero. It is denoted by a
+                            minus
+                            sign (-) before the number.
                         </p>
                     </li>
                 </ul>
 
                 <center>
-                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image.png" />
+                    <img class="diagram"
+                        src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter1/C1.1_Diagram.png?t=2024-05-31T08%3A54%3A58.025Z" />
 
-                    <p><b><i>Figure 1.1.1.1: Linear Equation in One Variable (Part 1)</i></b></p>
-                </center>
-
-                <br>
-
-                <center>
-                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image__7_.png" />
-
-                    <p><b><i>Figure 1.1.1.2: Linear Equation in One Variable (Part 2)</i></b></p>
+                    <p><b><i>Figure 1.1.1.1: Recognize Positive and Negative Numbers based on Real-Life
+                                Situations</i></b></p>
                 </center>
             </div>
 
@@ -54,29 +53,41 @@
                 <p><b><u>Example</u></b></p>
 
                 <p style="text-align: justify; padding-right: 35px;">(a)
-                    You're organizing a fundraising event and need to sell tickets. Each ticket costs $10, and you
-                    have already spent $50 on preparations. Define a variable to represent the number of tickets you
-                    need to sell to cover your costs and break even.
+                    You are comparing the temperatures of two cities. City A has a temperature of 15 degrees, and City B
+                    has a temperature of -5 degrees. Determine the difference in temperature between the two cities.
                 </p>
 
-                <div id="fundraisingExplanation">
-                    <p><b>Step 1: Identify the quantities:</b></p>
+                <div id="temperatureExplanation">
+                    <p><b>Step 1: Identify the values:</b></p>
 
                     <ul>
-                        <li>Quantity: Number of tickets to be sold.</li>
-                        <li>Fixed cost: $50.</li>
-                        <li>Cost per ticket: $10.</li>
+                        <li>Temperature of City A: 15 degrees.</li>
+                        <li>Temperature of City B: -5 degrees.</li>
                     </ul>
 
                     <p><b>Step 2: Define the variable and equation:</b></p>
 
                     <ul>
-                        <li>Let t represent the number of tickets you'll need to sell.</li>
-                        <li>The equation to cover your costs is: 10t - 50 = 0.</li>
+                        <li>Let TA represent the temperature of City A.</li>
+                        <li>Let TB represent the temperature of City B.</li>
+                        <li>The equation to find the difference in temperature is: TA - TB.</li>
+                    </ul>
+
+                    <p><b>Step 3: Calculate the difference:</b></p>
+
+                    <ul>
+                        <li>Substitute the given values into the equation: 15 - (-5).</li>
+                        <li>Simplify the equation: 15 + 5 = 20.</li>
+                    </ul>
+
+                    <p><b>Conclusion:</b></p>
+
+                    <ul>
+                        <li>The difference in temperature between City A and City B is 20 degrees.</li>
                     </ul>
                 </div>
 
-                <div class="radio-icon" onclick="handleRadioClick(event, 'fundraisingExplanation')">
+                <div class="radio-icon" onclick="handleRadioClick(event, 'temperatureExplanation')">
                     <i class='fas fa-volume-up'></i> Click here!
                 </div>
                 <br>
@@ -87,32 +98,29 @@
         <div class="SubSection-box">
 
             <!-- Subsection 1.1.2 Header -->
-            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 1.1.2 What are integers?
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 1.1.2 What are
+                integers?
             </h3>
 
             <!-- Subsection 1.1.2 Notes -->
             <div class="content">
-                <p><b><u>Smart Tips</u></b></p>
+                <p><b><u>Integers</u></b></p>
 
                 <ul>
                     <li>
                         <p style="text-align: justify; padding-right: 35px;">
-                            Each term in a linear equation must have a same unit.
-                        </p>
-                    </li>
-
-                    <li>
-                        <p style="text-align: justify; padding-right: 35px;">
-                            It is unnecessary to write the unit while forming linear equation.
+                            <b>Integers</b> - An integer is a whole number that can be positive, negative, or zero. It
+                            includes all the positive numbers, negative numbers, and zero. For instance, -3, -2, -1, 0,
+                            1, 2, 3 are all integers.
                         </p>
                     </li>
                 </ul>
 
                 <center>
-                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image__3_.png" />
+                    <img class="diagram"
+                        src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter1/C1.1_Diagram2.png?t=2024-05-31T09%3A14%3A25.430Z" />
 
-                    <p><b><i>Figure 1.1.2.1: Method to Form Linear Equations</i></b></p>
-                    <br>
+                    <p><b><i>Figure 1.1.2.1: Recognize and Describe Integers</i></b></p>
                 </center>
             </div>
 
@@ -121,322 +129,53 @@
                 <p><b><u>Example</u></b></p>
 
                 <p style="text-align: justify; padding-right: 35px;">(a)
-                    You are planning a road trip and need to calculate the total distance you will travel. Let's say
-                    the distance to your first destination is "d" miles. The distance to your second destination is
-                    20 miles more than twice the distance to the first destination. Finally, the distance to your
-                    third destination is 30 miles less than three times the distance to the second destination.
-                    Write an algebraic expression to represent the total distance you will travel in terms of "d".
+                    You are organizing a classroom activity to help students understand integers. You have a set of
+                    numbers that include both positive and negative values. Let's say the set of numbers is {15, -8, 0,
+                    23, -5, -12, 7}. Determine which of these numbers are positive integers, which are negative
+                    integers, and identify if there are any non-integer values.
                 </p>
 
-                <div id="distanceExplanation">
-                    <p><b>Step 1: Define the variables:</b></p>
+                <div id="integerExplanation">
+                    <p><b>Step 1: Identify the positive integers:</b></p>
 
                     <ul>
-                        <li>Let (d) represent the distance to the first destination in miles.</li>
-                        <li>The second destination is (2d + 20) miles away (20 miles more than twice the first
-                            distance).</li>
-                        <li>The third destination is (3 × (2d + 20) - 30) miles away (30 miles less than three times
-                            the second distance).</li>
+                        <li>Positive integers are greater than zero.</li>
+                        <li>In the set {15, -8, 0, 23, -5, -12, 7}, the positive integers are: 15, 23, and 7.</li>
                     </ul>
 
-                    <p><b>Step 2: Write the algebraic expression for the total distance:</b></p>
+                    <p><b>Step 2: Identify the negative integers:</b></p>
 
                     <ul>
-                        <li>The total distance is the sum of the distances to all three destinations.</li>
-                        <li>So, the expression is [d + (2d + 20) + (3 × (2d + 20) - 30)].</li>
-                        <li>Simplifying, we get [d + 2d + 20 + 6d + 60 - 30].</li>
-                        <li>Combining like terms, the expression becomes (9d + 50).</li>
+                        <li>Negative integers are less than zero.</li>
+                        <li>In the set {15, -8, 0, 23, -5, -12, 7}, the negative integers are: -8, -5, and -12.</li>
                     </ul>
 
-                    <p><b>Step 3: Final expression:</b></p>
+                    <p><b>Step 3: Identify any non-integer values:</b></p>
 
                     <ul>
-                        <li>The final algebraic expression representing the total distance you will travel is (9d +
-                            50).</li>
-                        <li>This expression gives us the total distance based on the distance to the first
-                            destination represented by (d).</li>
-                    </ul>
-                </div>
-
-                <div class="radio-icon" onclick="handleRadioClick(event, 'distanceExplanation')">
-                    <i class='fas fa-volume-up'></i> Click here!
-                </div>
-                <br>
-            </div>
-        </div>
-
-        <!-- Subsection 1.1.3 box -->
-        <div class="SubSection-box">
-
-            <!-- Subsection 1.1.3 Header -->
-            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 1.1.3 How do you
-                represent integers on a number line?
-            </h3>
-
-            <!-- Subsection 1.1.3 Notes -->
-            <div class="content">
-                <p><b><u>Three Methods to Solve Linear Equations</u></b></p>
-
-                <ul>
-                    <li>
-                        <p style="text-align: justify; padding-right: 35px;"><b>Trial and Improvement Method:</b>
-                            Making educated guesses and refining them until the correct solution is found.
-                        </p>
-                    </li>
-
-                    <li>
-                        <p style="text-align: justify; padding-right: 35px;"><b>Application of Equality Concept:</b>
-                            Using operations to both sides of an equation equally to isolate and solve for the
-                            variable.
-                        </p>
-                    </li>
-
-                    <li>
-                        <p style="text-align: justify; padding-right: 35px;"><b>Backtracking Method:</b>
-                            Starting from a guessed solution and working backward to verify if it satisfies the
-                            equation, adjusting as needed.
-                        </p>
-                    </li>
-                </ul>
-
-                <center>
-                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image__2_.png" />
-
-                    <p><b><i>Figure 1.1.3.1: Questions</i></b></p>
-                </center>
-
-                <br>
-
-                <center>
-                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image__11_.png " />
-
-                    <p><b><i>Figure 1.1.3.2: Trial and Improvement Method</i></b></p>
-                </center>
-
-                <br>
-
-                <center>
-                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image__4_.png" />
-
-                    <p><b><i>Figure 1.1.3.3: Application of Equality Concept</i></b></p>
-                </center>
-
-                <br>
-
-                <center>
-                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image__5_.png" />
-
-                    <p><b><i>Figure 1.1.3.4: Backtracking Method</i></b></p>
-                </center>
-            </div>
-
-            <!-- Subsection 1.1.3 Question Example -->
-            <div class="question">
-                <p><b><u>Example</u></b></p>
-
-                <p style="text-align: justify; padding-right: 35px;">(a)
-                    You're planning a community bake sale and need to calculate the total profit from selling
-                    cookies and muffins. Define two variables to represent the number of cookies and the number of
-                    muffins you'll sell, respectively.
-                </p>
-
-                <div id="bakeSaleExplanation">
-                    <p><b>Step 1: Identify the quantities:</b></p>
-
-                    <ul>
-                        <li>Quantity 1: Number of cookies.</li>
-                        <li>Quantity 2: Number of muffins.</li>
+                        <li>Non-integer values are numbers that are not whole numbers (they include fractions or
+                            decimals).</li>
+                        <li>In the set {15, -8, 0, 23, -5, -12, 7}, there are no non-integer values.</li>
                     </ul>
 
-                    <p><b>Step 2: Define the variables:</b></p>
+                    <p><b>Step 4: Identify zero:</b></p>
 
                     <ul>
-                        <li>Let c represent the number of cookies you'll sell.</li>
-                        <li>Let m represent the number of muffins you'll sell.</li>
+                        <li>Zero is an integer, but it is neither positive nor negative.</li>
+                        <li>In the set {15, -8, 0, 23, -5, -12, 7}, the number 0 is the zero integer.</li>
                     </ul>
 
-                    <p><b>Step 3: Define the algebraic expression:</b></p>
+                    <p><b>Step 5: Final summary:</b></p>
 
                     <ul>
-                        <li>Suppose the profit from one cookie is $2.00 and the profit from one muffin is $3.00.
-                        </li>
-                        <li>The total profit (P) can be represented as: P = 2.00c + 3.00m.</li>
-                    </ul>
-
-                    <p><b>Step 4: Determine the total profit using three methods:</b></p>
-
-                    <ul>
-                        <li>
-                            <b>Trial and Improvement Method:</b><br>
-                            Guess and check different values for c and m until the desired profit is achieved.<br>
-                            Example: If you aim for a profit of $50, try c = 10 and m = 10.<br>
-                            P = 2.00(10) + 3.00(10) = 20 + 30 = $50. The guess is correct.
-                        </li>
-
-                        <br>
-
-                        <li>
-                            <b>Application of Equality Concept:</b><br>
-                            Set up an equation and solve for one variable in terms of the other.<br>
-                            Example: If the desired profit is $50 and you know you will sell 10 cookies, find m.<br>
-                            50 = 2.00(10) + 3.00m<br>
-                            50 = 20 + 3.00m<br>
-                            30 = 3.00m<br>
-                            m = 10. Thus, you need to sell 10 muffins.
-                        </li>
-
-                        <br>
-
-                        <li>
-                            <b>Backtracking Method:</b><br>
-                            Start with an assumed solution and check if it satisfies the equation.<br>
-                            Example: Assume you sell 8 cookies and 11 muffins, check the total profit.<br>
-                            P = 2.00(8) + 3.00(11) = 16 + 33 = $49, which is close but not the target. Adjust and
-                            try again.
-                        </li>
+                        <li>Positive integers: 15, 23, 7.</li>
+                        <li>Negative integers: -8, -5, -12.</li>
+                        <li>Zero: 0.</li>
+                        <li>No non-integer values in the set.</li>
                     </ul>
                 </div>
 
-                <div class="radio-icon" onclick="handleRadioClick(event, 'bakeSaleExplanation')">
-                    <i class='fas fa-volume-up'></i> Click here!
-                </div>
-                <br>
-            </div>
-        </div>
-
-         <!-- Subsection 1.1.4 box -->
-         <div class="SubSection-box">
-
-            <!-- Subsection 1.1.4 Header -->
-            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 1.1.4 How do you
-                compare and arrange integers in order?
-            </h3>
-
-            <!-- Subsection 1.1.4 Notes -->
-            <div class="content">
-                <p><b><u>Three Methods to Solve Linear Equations</u></b></p>
-
-                <ul>
-                    <li>
-                        <p style="text-align: justify; padding-right: 35px;"><b>Trial and Improvement Method:</b>
-                            Making educated guesses and refining them until the correct solution is found.
-                        </p>
-                    </li>
-
-                    <li>
-                        <p style="text-align: justify; padding-right: 35px;"><b>Application of Equality Concept:</b>
-                            Using operations to both sides of an equation equally to isolate and solve for the
-                            variable.
-                        </p>
-                    </li>
-
-                    <li>
-                        <p style="text-align: justify; padding-right: 35px;"><b>Backtracking Method:</b>
-                            Starting from a guessed solution and working backward to verify if it satisfies the
-                            equation, adjusting as needed.
-                        </p>
-                    </li>
-                </ul>
-
-                <center>
-                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image__2_.png" />
-
-                    <p><b><i>Figure 1.1.4.1: Questions</i></b></p>
-                </center>
-
-                <br>
-
-                <center>
-                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image__11_.png " />
-
-                    <p><b><i>Figure 1.1.4.2: Trial and Improvement Method</i></b></p>
-                </center>
-
-                <br>
-
-                <center>
-                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image__4_.png" />
-
-                    <p><b><i>Figure 1.1.4.3: Application of Equality Concept</i></b></p>
-                </center>
-
-                <br>
-
-                <center>
-                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image__5_.png" />
-
-                    <p><b><i>Figure 1.1.4.4: Backtracking Method</i></b></p>
-                </center>
-            </div>
-
-            <!-- Subsection 1.1.3 Question Example -->
-            <div class="question">
-                <p><b><u>Example</u></b></p>
-
-                <p style="text-align: justify; padding-right: 35px;">(a)
-                    You're planning a community bake sale and need to calculate the total profit from selling
-                    cookies and muffins. Define two variables to represent the number of cookies and the number of
-                    muffins you'll sell, respectively.
-                </p>
-
-                <div id="bakeSaleExplanation">
-                    <p><b>Step 1: Identify the quantities:</b></p>
-
-                    <ul>
-                        <li>Quantity 1: Number of cookies.</li>
-                        <li>Quantity 2: Number of muffins.</li>
-                    </ul>
-
-                    <p><b>Step 2: Define the variables:</b></p>
-
-                    <ul>
-                        <li>Let c represent the number of cookies you'll sell.</li>
-                        <li>Let m represent the number of muffins you'll sell.</li>
-                    </ul>
-
-                    <p><b>Step 3: Define the algebraic expression:</b></p>
-
-                    <ul>
-                        <li>Suppose the profit from one cookie is $2.00 and the profit from one muffin is $3.00.
-                        </li>
-                        <li>The total profit (P) can be represented as: P = 2.00c + 3.00m.</li>
-                    </ul>
-
-                    <p><b>Step 4: Determine the total profit using three methods:</b></p>
-
-                    <ul>
-                        <li>
-                            <b>Trial and Improvement Method:</b><br>
-                            Guess and check different values for c and m until the desired profit is achieved.<br>
-                            Example: If you aim for a profit of $50, try c = 10 and m = 10.<br>
-                            P = 2.00(10) + 3.00(10) = 20 + 30 = $50. The guess is correct.
-                        </li>
-
-                        <br>
-
-                        <li>
-                            <b>Application of Equality Concept:</b><br>
-                            Set up an equation and solve for one variable in terms of the other.<br>
-                            Example: If the desired profit is $50 and you know you will sell 10 cookies, find m.<br>
-                            50 = 2.00(10) + 3.00m<br>
-                            50 = 20 + 3.00m<br>
-                            30 = 3.00m<br>
-                            m = 10. Thus, you need to sell 10 muffins.
-                        </li>
-
-                        <br>
-
-                        <li>
-                            <b>Backtracking Method:</b><br>
-                            Start with an assumed solution and check if it satisfies the equation.<br>
-                            Example: Assume you sell 8 cookies and 11 muffins, check the total profit.<br>
-                            P = 2.00(8) + 3.00(11) = 16 + 33 = $49, which is close but not the target. Adjust and
-                            try again.
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="radio-icon" onclick="handleRadioClick(event, 'bakeSaleExplanation')">
+                <div class="radio-icon" onclick="handleRadioClick(event, 'integerExplanation')">
                     <i class='fas fa-volume-up'></i> Click here!
                 </div>
                 <br>
@@ -448,273 +187,283 @@
     <div class="SubTopic2-box subtopic-section">
 
         <!-- Subtopic 1.2 Header -->
-        <h3><i class="material-icons" onclick="toggleSubTopic(this)">keyboard_arrow_right</i> 1.2 Basic Arithmetic Operations
-        Involving Integers</h3>
+        <h3><i class="material-icons" onclick="toggleSubTopic(this)">keyboard_arrow_right</i> 1.2 Basic Arithmetic
+            Operations
+            Involving Integers</h3>
 
         <!-- Subsection 1.2.1 box -->
         <div class="SubSection-box">
 
-            <!-- Subsection 6.2.1 Header -->
-            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 6.2.1 What are
-                linear equations in two variables?
+            <!-- Subsection 1.2.1 Header -->
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 1.2.1 How do you
+                add and subtract integers?
             </h3>
 
-            <!-- Subsection 6.2.1 Notes -->
+            <!-- Subsection 1.2.1 Notes -->
             <div class="content">
                 <p><b><u>Smart Tips</u></b></p>
 
                 <ul>
                     <li>
                         <p style="text-align: justify; padding-right: 35px;">
-                            Linear equations in two variables are algebraic equations of the form ax + by = c, where
-                            a, b, and c
-                            are constants, and x and y are variables. The solution to such an equation is the
-                            ordered pair (x, y)
-                            that makes the equation true, representing a point on the graph of the equation.
+                            Add and subtract integers using number lines or other appropriate methods. Hence make
+                            generalization about addition and subtraction of integers.
                         </p>
                     </li>
                 </ul>
 
                 <center>
-                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image__6_.png" />
+                    <img class="diagram"
+                        src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter1/C1.2_Diagram.png?t=2024-05-31T09%3A32%3A09.402Z" />
 
-                    <p><b><i>Figure 6.2.1.1: Linear Equations in Two Variables</i></b></p>
+                    <p><b><i>Figure 1.2.1.1: Additon and Subtraction of Integers</i></b></p>
                 </center>
             </div>
 
-            <!-- Subsection 6.2.1 Question Example -->
+            <!-- Subsection 1.2.1 Question Example -->
             <div class="question">
                 <p><b><u>Example</u></b></p>
 
-                <p style="text-align: justify; padding-right: 35px;">(a) Imagine you are managing a small business
-                    and need to calculate the total revenue from selling two products: T-shirts and hoodies. Define
-                    two variables to represent the number of T-shirts and the number of hoodies sold, respectively,
-                    and write the revenue equations. Then, demonstrate how to add and subtract these equations.</p>
+                <p style="text-align: justify; padding-right: 35px;">(a) Imagine you are learning how to perform
+                    addition and subtraction of integers. Define two variables to represent two different integers, and
+                    demonstrate the steps to add and subtract these integers.</p>
 
-                <div id="revenueExplanation">
+                <div id="integerOperationsExplanation">
                     <p><b>Step 1: Define the variables:</b></p>
 
                     <ul>
-                        <li>Let x represent the number of T-shirts sold.</li>
-                        <li>Let y represent the number of hoodies sold.</li>
+                        <li>Let a represent the first integer. For example, let a = 7.</li>
+                        <li>Let b represent the second integer. For example, let b = 3.</li>
                     </ul>
 
-                    <p><b>Step 2: Write the revenue equations:</b></p>
+                    <p><b>Step 2: Write the addition equation:</b></p>
 
                     <ul>
-                        <li>Revenue from T-shirts: R1 = 20x (assuming each T-shirt sells for $20)</li>
-                        <li>Revenue from hoodies: R2 = 50y (assuming each hoodie sells for $50)</li>
+                        <li>Sum of the integers: S = a + b</li>
+                        <li>Using the example values: S = 7 + 3</li>
                     </ul>
 
-                    <p><b>Step 3: Add the revenue equations:</b></p>
+                    <p><b>Step 3: Write the subtraction equations:</b></p>
 
-                    <p>Combine the equations to find the total revenue:</p>
                     <ul>
-                        <li>Total Revenue: R = R1 + R2</li>
-                        <li>R = 20x + 50y</li>
+                        <li>Difference when subtracting the second integer from the first: D1 = a - b</li>
+                        <li>Using the example values: D1 = 7 - 3</li>
+                        <li>Difference when subtracting the first integer from the second: D2 = b - a</li>
+                        <li>Using the example values: D2 = 3 - 7</li>
                     </ul>
 
-                    <p><b>Step 4: Subtract the revenue equations:</b></p>
+                    <p><b>Step 4: Perform the addition and subtraction:</b></p>
 
-                    <p>Subtract one equation from the other to analyze differences in revenue sources:</p>
+                    <p>Combine and subtract the integers to demonstrate the operations:</p>
                     <ul>
-                        <li>Let's subtract revenue from T-shirts from the total revenue equation:</li>
-                        <li>R - R1 = (20x + 50y) - 20x</li>
-                        <li>R - R1 = 50y</li>
+                        <li>Addition: S = 7 + 3 = 10</li>
+                        <li>Subtraction (a - b): D1 = 7 - 3 = 4</li>
+                        <li>Subtraction (b - a): D2 = 3 - 7 = -4</li>
                     </ul>
                 </div>
 
-                <div class="radio-icon" onclick="handleRadioClick(event, 'revenueExplanation')">
+                <div class="radio-icon" onclick="handleRadioClick(event, 'integerOperationsExplanation')">
                     <i class='fas fa-volume-up'></i> Click here!
                 </div>
                 <br>
             </div>
         </div>
 
-        <!-- Subsection 6.2.2 box -->
+        <!-- Subsection 1.2.2 box -->
         <div class="SubSection-box">
 
-            <!-- Subsection 6.2.2 Header -->
-            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 6.2.2 How do you
-                form linear equations in two variables?
+            <!-- Subsection 1.2.2 Header -->
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 1.2.2 How do you
+                divide and multiply integers?
             </h3>
 
-            <!-- Subsection 6.2.2 Notes -->
+            <!-- Subsection 1.2.2 Notes -->
             <div class="content">
-                <p><b><u>Smart Tips</u></b></p>
+                <p><b><u>Rules of Multiplication and Division of Integers</u></b></p>
 
                 <ul>
                     <li>
                         <p style="text-align: justify; padding-right: 35px;">
-                            To form linear equations in two variables, identify the changing quantities, translate
-                            the problem into mathematical language,
-                            use key words to guide your equation setup, and ensure consistency and simplicity in
-                            your equations.
+                            The product or quotient of two integers with the same signs is a positive integer.
+                        </p>
+                    </li>
+
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            The product or quotient of two integers with different signs is a negative integer.
                         </p>
                     </li>
                 </ul>
 
                 <center>
-                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image__13_.png" />
+                    <img class="diagram"
+                        src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter1/C1.2_Diagram2.png?t=2024-05-31T09%3A48%3A32.874Z" />
 
-                    <p><b><i>Figure 6.2.2.1: Ways to Form Linear Equations in Two Variables</i></b></p>
+                    <p><b><i>Figure 1.2.2.1: Rules of Multiplication and Division of Integers</i></b></p>
                     </p></i></b></p>
                 </center>
             </div>
 
-            <!-- Subsection 6.2.2 Question Example -->
+            <!-- Subsection 1.2.2 Question Example -->
             <div class="question">
                 <p><b><u>Example</u></b></p>
 
-                <p style="text-align: justify; padding-right: 35px;">(a) You're managing a pet store that sells both
-                    dogs and cats. You need to calculate the total number of pets in the store's inventory,
-                    considering that there are (d) dogs and (c) cats. Each dog occupies one kennel, and each cat
-                    occupies half a kennel. How would you express this situation algebraically?</p>
+                <p style="text-align: justify; padding-right: 35px;">(a) Imagine you are learning the rules of
+                    multiplication and division of integers. Define two variables to represent two different integers,
+                    and demonstrate the steps to multiply and divide these integers.</p>
 
-                <div id="petStoreExplanation">
+                <div id="integerOperationsExplanation1">
                     <p><b>Step 1: Identify the components:</b></p>
 
                     <ul>
-                        <li>
-                            We have (d) dogs and (c) cats in the store's inventory.
-                        </li>
+                        <li>Let m represent the first integer. For example, let m = -8.</li>
+                        <li>Let n represent the second integer. For example, let n = 4.</li>
                     </ul>
 
-                    <p><b>Step 2: Define the expression:</b></p>
+                    <p><b>Step 2: Define the multiplication and division expressions:</b></p>
 
                     <ul>
-                        <li>
-                            The total number of kennels occupied by pets in the store can be algebraically expressed
-                            as
-                            (d + 0.5c).
-                        </li>
+                        <li>Multiplication of the integers: P = m * n</li>
+                        <li>Division of the first integer by the second: Q = m / n</li>
                     </ul>
 
-                    <p><b>Step 3: Explanation of Expression:</b></p>
+                    <p><b>Step 3: Explanation of Expressions:</b></p>
 
                     <ul>
-                        <li>
-                            Each dog occupies one kennel, so we add (d) to the total. Each cat occupies half a
-                            kennel,
-                            so we add (0.5c) to account for the cats.
-                        </li>
+                        <li>Multiplication: When multiplying two integers, the result is positive if both integers have
+                            the same sign, and negative if they have different signs.</li>
+                        <li>Division: When dividing two integers, the result follows the same rule regarding the signs
+                            as multiplication.</li>
                     </ul>
 
                     <p><b>Step 4: Example Calculation:</b></p>
 
                     <ul>
-                        <li>If there are 20 dogs (d = 20) and 15 cats (c = 15), then the total number of kennels
-                            occupied by pets in the store would be:<br><br>
-                            Total kennels = 20 + 0.5 * 15 = 20 + 7.5 = 27.5 kennels
-                        </li>
+                        <li>Using the example values m = -8 and n = 4:</li>
+                        <li>Multiplication: P = -8 * 4 = -32</li>
+                        <li>Division: Q = -8 / 4 = -2</li>
                     </ul>
-
                 </div>
 
-                <div class="radio-icon" onclick="handleRadioClick(event, 'petStoreExplanation')">
+                <div class="radio-icon" onclick="handleRadioClick(event, 'integerOperationsExplanation1')">
                     <i class='fas fa-volume-up'></i> Click here!
                 </div>
                 <br>
             </div>
         </div>
 
-        <!-- Subsection 6.2.3 box -->
+        <!-- Subsection 1.2.3 box -->
         <div class="SubSection-box">
 
-            <!-- Subsection 6.2.3 Header -->
-            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 6.2.3 How do you
-                determine the possible solutions of linear equations in two variables?
+            <!-- Subsection 1.2.3 Header -->
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 1.2.3 How do you
+                describe the laws of arithmetic operation?
             </h3>
 
-            <!-- Subsection 6.2.3 Notes -->
+            <!-- Subsection 1.2.3 Notes -->
             <div class="content">
-                <p><b><u>Smart Tips</u></b></p>
+                <p><b><u>Laws of Arithmetic Operations</u></b></p>
 
                 <ul>
                     <li>
                         <p style="text-align: justify; padding-right: 35px;">
-                            To find the product of algebraic expressionswith one term, gather all the same
-                            variables, and then multiply the number with number and the variable with variable.
+                            <b>Commutative Law</b> - The commutative law states that the order of numbers in an
+                            arithmetic operation does not affect the result. For example, a + b = b + a.
+                        </p>
+                    </li>
+
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            <b>Associative Law</b> - The associative law states that the grouping of numbers in an
+                            arithmetic operation does not affect the result. For example, (a + b) + c = a + (b + c).
+                        </p>
+                    </li>
+
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            <b>Distributive Law</b> - The distributive law states that the product of a number and the
+                            sum of two numbers is equal to the sum of the products of the number and each of the two
+                            numbers. For example, a * (b + c) = a * b + a * c.
+                        </p>
+                    </li>
+
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            <b>Identity Law</b> - The identity law states that the sum of any number and zero is the
+                            number itself. For example, a + 0 = a.
                         </p>
                     </li>
                 </ul>
 
                 <center>
-                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image__9_.png" />
+                    <img class="diagram"
+                        src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter1/C1.2_Diagram3.png?t=2024-05-31T09%3A59%3A36.207Z" />
 
-                    <p><b><i>Figure 6.2.3.1: Determine the Possible Solutions of Linear Equations in Two
-                        Variables</i></b></p>
+                    <p><b><i>Figure 1.2.3.1: Laws of Arithmetic Operations</i></b></p>
                 </center>
             </div>
 
-            <!-- Subsection 6.2.3 Question Example -->
+            <!-- Subsection 1.2.3 Question Example -->
             <div class="question">
                 <p><b><u>Example</u></b></p>
 
-                <p style="text-align: justify; padding-right: 35px;">(a) Let's consider a scenario where you're
-                    managing a community garden project.
-                    One volunteer spends twice as much time as another volunteer planting flowers. The first
-                    volunteer spends (y) hours planting flowers,
-                    while the second volunteer spends (x) hours. If the total time spent planting flowers by both
-                    volunteers is 6 hours, how would you determine
-                    the possible solutions to this situation?</p>
+                <p style="text-align: justify; padding-right: 35px;">(a) Let's apply the Laws of Arithmetic Operations to
+                    solve the expression (5 + 3) * 2.</p>
 
-                <div id="gardenProjectExplanation">
-                    <p><b>Step 1: Identify the Components:</b></p>
+                <div id="arithmeticExplanation">
+                    <p><b>Step 1: Initial Expression:</b></p>
 
                     <ul>
                         <li>
-                            The total time spent planting flowers is the sum of the time spent by each volunteer,
-                            with the constraint that the total time must be 6 hours.
+                            Start with the given expression: (5 + 3) * 2.
                         </li>
                     </ul>
 
-                    <p><b>Step 2: Formulate the Equation:</b></p>
+                    <p><b>Step 2: Apply the Commutative Law:</b></p>
 
                     <ul>
                         <li>
-                            Write the equation representing the constraint: 2y + x = 6.
+                            According to the Commutative Law, the order of numbers in multiplication does not affect the
+                            result.
+                        </li>
+                        <li>
+                            We can rearrange the expression: (3 + 5) * 2.
                         </li>
                     </ul>
 
-                    <p><b>Step 3: Determine the Possible Solutions using Substitution:</b></p>
+                    <p><b>Step 3: Apply the Associative Law:</b></p>
 
                     <ul>
                         <li>
-                            When x = 0,<br>
-                            2y + 0 = 6,<br>
-                            2y = 6,<br>
-                            y =3
+                            The Associative Law states that the grouping of numbers in an arithmetic operation does not
+                            affect the result.
+                        </li>
+                        <li>
+                            We can group the numbers differently: 3 + (5 * 2).
                         </li>
                     </ul>
 
-                    <ul>
-                        <li>
-                            When x = 1,<br>
-                            2y + 1 = 6,<br>
-                            2y = 5,<br>
-                            y = 2.5
-                        </li>
-                    </ul>
+                    <p><b>Step 4: Perform the Operations:</b></p>
 
                     <ul>
                         <li>
-                            When x = 3,<br>
-                            2y + 3 = 6,<br>
-                            2y = 3,<br>
-                            y = 1.5
+                            Calculate the expressions: (3 + 5) = 8, and (5 * 2) = 10.
+                        </li>
+                        <li>
+                            Multiply the result of the addition by 2: 8 * 2 = 16.
                         </li>
                     </ul>
 
+                    <p><b>Step 5: Final Result:</b></p>
+
                     <ul>
                         <li>
-                            Thus, the three possible pair of solutions are<br>
-                            (0, 3), (1, 2.5), and (3, 1.5).
+                            The final result of the expression (5 + 3) * 2 is 16.
                         </li>
                     </ul>
                 </div>
 
-                <div class="radio-icon" onclick="handleRadioClick(event, 'gardenProjectExplanation')">
+                <div class="radio-icon" onclick="handleRadioClick(event, 'arithmeticExplanation')">
                     <i class='fas fa-volume-up'></i> Click here!
                 </div>
                 <br>
@@ -727,266 +476,74 @@
 
         <!-- Subtopic 1.3 Header -->
         <h3><i class="material-icons" onclick="toggleSubTopic(this)">keyboard_arrow_right</i> 1.3 Positive and
-        Negative Fractions </h3>
+            Negative Fractions </h3>
 
         <!-- Subsection 1.3.1 box -->
         <div class="SubSection-box">
 
-            <!-- Subsection 6.3.1 Header -->
-            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 6.3.1 How do you
-                form
-                simultaneous linear equations and represent them graphically?
+            <!-- Subsection 1.3.1 Header -->
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 1.3.1 How do you
+                perform computations involving combined basic arithmetic operations of positive and negative fractions?
             </h3>
 
-            <!-- Subsection 6.3.1 Notes -->
+            <!-- Subsection 1.3.1 Notes -->
             <div class="content">
                 <p><b><u>Smart Tips</u></b></p>
 
                 <ul>
                     <li>
                         <p style="text-align: justify; padding-right: 35px;">
-                            To form simultaneous linear equations and represent them graphically, you express
-                            multiple
-                            linear equations with common variables and coefficients and then plot them on a
-                            coordinate
-                            plane to find their intersection points, which denote the solutions to the system.
+                            Perform computations involving combined basic arithmetic operations of positive and negative
+                            fractions by following the order of operations.
                         </p>
                     </li>
                 </ul>
 
                 <center>
-                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image__12_.png" />
+                    <img class="diagram"
+                        src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter1/C1.3_Diagram.png?t=2024-05-31T10%3A18%3A11.798Z" />
 
-                    <p><b><i>Figure 6.3.1.1: Ways to Form Simultaneous Linear Equations</i></b></p>
+                    <p><b><i>Figure 1.3.1.1: Arithmetic Operations of Positive and Negative Fractions</i></b></p>
                 </center>
             </div>
 
-            <!-- Subsection 6.3.1 Question Example -->
+            <!-- Subsection 1.3.1 Question Example -->
             <div class="question">
-                <p><b><u>Example</u></b></p>
-
-                <p style="text-align: justify; padding-right: 35px;">(a)
-                    A manufacturing company produces two types of products: Product A and Product B. Let's denote
-                    the number of
-                    units of Product A produced as (x) and the number of units of Product B produced as (y). The
-                    company
-                    aims to optimize its production process while minimizing costs. Formulate a system of two
-                    simultaneous linear
-                    equations to represent the relationship between the production quantities and associated costs.
-                </p>
-
-                <div id="productionExplanation">
-                    <p><b>Step 1: Identify the quantities:</b></p>
-
+                <p><b><u>Scenario</u></b></p>
+            
+                <p style="text-align: justify; padding-right: 35px;">(a) Imagine you're planning a recipe for a special dish. You need to combine different ingredients in specific quantities. However, you want to adjust the recipe to make it suitable for a larger group of guests. Let's say you need to calculate the total quantity of one particular ingredient by performing some arithmetic operations.</p>
+            
+                <div id="cupExplanation">
+                    <p><b>Step 1: Calculate the Total Quantity:</b></p>
+            
                     <ul>
-                        <li>Quantity 1: Number of units of Product A produced (x).</li>
-                        <li>Quantity 2: Number of units of Product B produced (y).</li>
+                        <li>You start with 2/3 cup of the ingredient.</li>
+                        <li>Next, you add 1/6 cup more to enhance the flavor.</li>
+                        <li>Then, you realize you've added too much, so you decide to subtract 5/2 cups from the total.</li>
                     </ul>
-
-                    <p><b>Step 2: Define the variables:</b></p>
-
+            
+                    <p><b>Step 2: Perform Arithmetic Operations:</b></p>
+            
                     <ul>
-                        <li>Let (x) represent the number of units of Product A produced.</li>
-                        <li>Let (y) represent the number of units of Product B produced.</li>
+                        <li>First, add 2/3 and 1/6 together: 2/3 + 1/6 = 4/6 + 1/6 = 5/6.</li>
+                        <li>Next, subtract 5/2 from the result: 5/6 - 5/2.</li>
+                        <li>Convert 5/2 to a fraction with a denominator of 6: 5/2 = 15/6.</li>
+                        <li>Subtract 15/6 from 5/6: 5/6 - 15/6 = -10/6.</li>
+                        <li>Simplify -10/6 to its simplest form: -10/6 = -5/3.</li>
                     </ul>
-
-                    <p><b>Step 3: Formulate simultaneous linear equations:</b></p>
-
+            
+                    <p><b>Step 3: Final Result:</b></p>
+            
                     <ul>
-                        <li>
-                            The relationship between production quantities and costs can be represented by the
-                            following
-                            equations:<br><br>
-                            2x + 3y = Total cost of producing Product A<br>
-                            5x + 2y = Total cost of producing Product B
-                        </li>
+                        <li>The final quantity of the ingredient is -5/3 cups.</li>
                     </ul>
                 </div>
-
-                <div class="radio-icon" onclick="handleRadioClick(event, 'productionExplanation')">
+            
+                <div class="radio-icon" onclick="handleRadioClick(event, 'cupExplanation')">
                     <i class='fas fa-volume-up'></i> Click here!
                 </div>
                 <br>
-            </div>
-        </div>
-
-        <!-- Subsection 6.3.2 box -->
-        <div class="SubSection-box">
-
-            <!-- Subsection 6.3.2 Header -->
-            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 6.3.2 How do you
-                solve
-                simultaneous linear equations in two variables?
-            </h3>
-
-            <!-- Subsection 6.3.2 Notes -->
-            <div class="content">
-                <p><b><u>Three Methods to Solve Simultaneous Linear Equations in Two Variables</u></b></p>
-
-                <ul>
-                    <li>
-                        <p style="text-align: justify; padding-right: 35px;"><b>Graphical Method</b> - The graphical
-                            method involves plotting
-                            the equations on a graph to locate the intersection point(s), which represent the
-                            solutions to the system
-                            of equations.
-                        </p>
-                    </li>
-
-                    <li>
-                        <p style="text-align: justify; padding-right: 35px;"><b>Substitution Method</b> - The
-                            substitution method requires solving
-                            one equation for one variable, substituting this expression into the other equation, and
-                            solving for the remaining variable.
-                        </p>
-                    </li>
-
-                    <li>
-                        <p style="text-align: justify; padding-right: 35px;"><b>Elimination Method</b> - The
-                            elimination method entails adding or subtracting
-                            equations to eliminate one variable, then solving the resulting equation for the
-                            remaining variable.
-                        </p>
-                    </li>
-                </ul>
-
-                <center>
-                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image__10_.png" />
-
-                    <p><b><i>Figure 6.3.2.1: Graphical Method</i></b></p>
-                </center>
-
-                <br>
-
-                <center>
-                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image__8_.png" />
-
-                    <p><b><i>Figure 6.3.2.2: Substitution Method</i></b></p>
-                </center>
-
-                <br>
-
-                <center>
-                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image__1_.png" />
-
-                    <p><b><i>Figure 6.3.2.3: Elimination Method</i></b></p>
-                </center>
-            </div>
-
-            <!-- Subsection 6.3.2 Question Example -->
-            <div class="question">
-                <p><b><u>Example</u></b></p>
-
-                <p style="text-align: justify; padding-right: 35px;">(a)
-                    You're managing your daily expenses and need to balance your budget between two categories:
-                    groceries and
-                    transportation. Let's denote the amount spent on groceries as (G) and the amount spent on
-                    transportation
-                    as (T). Formulate a system of two simultaneous linear equations to represent the relationship
-                    between
-                    your expenses and your budget constraints. Then, solve the system using graphical, substitution,
-                    and elimination methods.
-                </p>
-
-                <div id="expensesExplanation">
-                    <p><b>Step 1: Identify the quantities:</b></p>
-
-                    <ul>
-                        <li>Quantity 1: Amount spent on groceries (G).</li>
-                        <li>Quantity 2: Amount spent on transportation (T).</li>
-                    </ul>
-
-                    <p><b>Step 2: Define the variables:</b></p>
-
-                    <ul>
-                        <li>Let (G) represent the amount spent on groceries.</li>
-                        <li>Let (T) represent the amount spent on transportation.</li>
-                    </ul>
-
-                    <p><b>Step 3: Formulate simultaneous linear equations:</b></p>
-
-                    <ul>
-                        <li>
-                            We can represent the relationship between expenses and budget constraints with the
-                            following
-                            equations:<br><br>
-                            [4G + 3T = 100] (Equation 1: Budget constraint for groceries and transportation)
-                            <br>[2G - T = 20] (Equation 2: Relation between groceries and transportation expenses)
-                        </li>
-                    </ul>
-
-                    <p><b>Step 4: Solve the system of equations using different methods:</b></p>
-
-                    <ul>
-                        <li>
-                            <b>Graphical Method:</b><br>
-                            Plot the equations on a graph and find the intersection point(s) to determine the solution.
-                            <pre>
-                                    Equation 1: 4G + 3T = 100
-                                    Equation 2: 2G - T = 20
-
-                                    Solve for T:
-                                    T1 = (100 - 4G) / 3
-                                    T2 = 2G - 20
-
-                                    Plot these equations and find the intersection point.
-                                    Intersection point: (G, T) = (16, 12)
-                                </pre>
-                        </li>
-                    </ul>
-
-                    <ul>
-                        <li>
-                            <b>Substitution Method:</b><br>
-                            From Equation 2 (2G - T = 20), solve for (T):
-                            <pre>
-                                    T = 2G - 20
-
-                                    Substitute T into Equation 1 (4G + 3T = 100):
-                                    4G + 3(2G - 20) = 100
-                                    4G + 6G - 60 = 100
-                                    10G - 60 = 100
-                                    10G = 160
-                                    G = 16
-
-                                    Substitute G back into Equation 2:
-                                    2(16) - T = 20
-                                    32 - T = 20
-                                    T = 12
-
-                                    Solution: (G, T) = (16, 12)
-                                </pre>
-                        </li>
-                    </ul>
-
-                    <ul>
-                        <li>
-                            <b>Elimination Method:</b><br>
-                            Multiply Equation 2 by 3 to eliminate (T):
-                            <pre>
-                                    3 * (2G - T) = 3 * 20
-                                    6G - 3T = 60
-
-                                    Add this modified Equation 2 to Equation 1 (4G + 3T = 100):
-                                    4G + 3T + 6G - 3T = 100 + 60
-                                    10G = 160
-                                    G = 16
-
-                                    Substitute G back into Equation 2:
-                                    2(16) - T = 20
-                                    32 - T = 20
-                                    T = 12
-
-                                    Solution: (G, T) = (16, 12)
-                                </pre>
-                        </li>
-                    </ul>
-                </div>
-                <div class="radio-icon" onclick="handleRadioClick(event, 'expensesExplanation')">
-                    <i class='fas fa-volume-up'></i> Click here!
-                </div>
-                <br>
-            </div>
+            </div>            
         </div>
     </div>
 
@@ -995,302 +552,84 @@
 
         <!-- Subtopic 1.4 Header -->
         <h3><i class="material-icons" onclick="toggleSubTopic(this)">keyboard_arrow_right</i> 1.4 Positive and
-        and Negative Decimals</h3>
+            and Negative Decimals</h3>
 
         <!-- Subsection 1.4.1 box -->
         <div class="SubSection-box">
 
-            <!-- Subsection 1.1.1 Header -->
-            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 6.1.1 What are
-                linear
-                equations in one variable?
+            <!-- Subsection 1.4.1 Header -->
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 1.4.1 How do you
+                perform computations involving combined basic arithmetic operations of positive and negative decimals?
             </h3>
 
-            <!-- Subsection 6.1.1 Notes -->
+            <!-- Subsection 1.4.1 Notes -->
             <div class="content">
                 <p><b><u>Smart Tips</u></b></p>
 
                 <ul>
                     <li>
                         <p style="text-align: justify; padding-right: 35px;">
-                            Linear equations in one variable are algebraic equations of the form ax + b = c, where a
-                            and b
-                            constants, and x is the variable. The solution to such an equation is the value of x
-                            that makes
-                            the equation true.
+                            Perform computations involving combined basic arithmetic operations of positive and negative
+                            decimals by following the order of operations.
                         </p>
                     </li>
                 </ul>
 
                 <center>
-                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image.png" />
+                    <img class="diagram"
+                        src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter1/C1.4_Diagram.png?t=2024-05-31T10%3A32%3A09.688Z" />
 
-                    <p><b><i>Figure 6.1.1.1: Linear Equation in One Variable (Part 1)</i></b></p>
-                </center>
-
-                <br>
-
-                <center>
-                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image__7_.png" />
-
-                    <p><b><i>Figure 6.1.1.2: Linear Equation in One Variable (Part 2)</i></b></p>
+                    <p><b><i>Figure 1.4.1.1: Arithmetic Operations of Positive and Negative Decimals</i></b></p>
                 </center>
             </div>
 
-            <!-- Subsection 6.1.1 Question Example -->
+            <!-- Subsection 1.4.1 Question Example -->
             <div class="question">
                 <p><b><u>Example</u></b></p>
-
-                <p style="text-align: justify; padding-right: 35px;">(a)
-                    You're organizing a fundraising event and need to sell tickets. Each ticket costs $10, and you
-                    have already spent $50 on preparations. Define a variable to represent the number of tickets you
-                    need to sell to cover your costs and break even.
-                </p>
-
+            
+                <p style="text-align: justify; padding-right: 35px;">(a) Suppose you are planning a small event and need to manage your expenses and income. You have already spent $50.75 on preparations. Each ticket you sell generates $3.50. How many tickets do you need to sell to cover your costs?</p>
+            
                 <div id="fundraisingExplanation">
-                    <p><b>Step 1: Identify the quantities:</b></p>
-
+                    <p><b>Step 1: Calculate Total Income from Tickets:</b></p>
+            
                     <ul>
-                        <li>Quantity: Number of tickets to be sold.</li>
-                        <li>Fixed cost: $50.</li>
-                        <li>Cost per ticket: $10.</li>
+                        <li>If you sell 10 tickets, the income would be 10 * $3.50 = $35.00.</li>
+                        <li>If you sell 20 tickets, the income would be 20 * $3.50 = $70.00.</li>
                     </ul>
-
-                    <p><b>Step 2: Define the variable and equation:</b></p>
-
+            
+                    <p><b>Step 2: Determine if the Income Covers the Costs:</b></p>
+            
                     <ul>
-                        <li>Let t represent the number of tickets you'll need to sell.</li>
-                        <li>The equation to cover your costs is: 10t - 50 = 0.</li>
+                        <li>Check if $35.00 (from 10 tickets) covers $50.75 in costs. No, it does not.</li>
+                        <li>Check if $70.00 (from 20 tickets) covers $50.75 in costs. Yes, it does.</li>
+                    </ul>
+            
+                    <p><b>Step 3: Calculate the Exact Number of Tickets:</b></p>
+            
+                    <ul>
+                        <li>Start by finding the minimum number of tickets where income exceeds costs: $50.75 / $3.50 = approximately 14.5.</li>
+                        <li>Since you can't sell half a ticket, round up to the next whole number: 15 tickets.</li>
+                    </ul>
+            
+                    <p><b>Step 4: Confirm the Result:</b></p>
+            
+                    <ul>
+                        <li>Calculate the income from selling 15 tickets: 15 * $3.50 = $52.50.</li>
+                        <li>Since $52.50 is more than $50.75, selling 15 tickets will cover your costs.</li>
+                    </ul>
+            
+                    <p><b>Final Answer:</b></p>
+            
+                    <ul>
+                        <li>You need to sell at least 15 tickets to cover your costs.</li>
                     </ul>
                 </div>
-
+            
                 <div class="radio-icon" onclick="handleRadioClick(event, 'fundraisingExplanation')">
                     <i class='fas fa-volume-up'></i> Click here!
                 </div>
                 <br>
-            </div>
-        </div>
-
-        <!-- Subsection 6.1.2 box -->
-        <div class="SubSection-box">
-
-            <!-- Subsection 6.1.2 Header -->
-            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 6.1.2 How do you
-                form linear equations based on a given situation and vice versa?
-            </h3>
-
-            <!-- Subsection 6.1.2 Notes -->
-            <div class="content">
-                <p><b><u>Smart Tips</u></b></p>
-
-                <ul>
-                    <li>
-                        <p style="text-align: justify; padding-right: 35px;">
-                            Each term in a linear equation must have a same unit.
-                        </p>
-                    </li>
-
-                    <li>
-                        <p style="text-align: justify; padding-right: 35px;">
-                            It is unnecessary to write the unit while forming linear equation.
-                        </p>
-                    </li>
-                </ul>
-
-                <center>
-                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image__3_.png" />
-
-                    <p><b><i>Figure 6.1.2.1: Method to Form Linear Equations</i></b></p>
-                    <br>
-                </center>
-            </div>
-
-            <!-- Subsection 6.1.2 Question Example -->
-            <div class="question">
-                <p><b><u>Example</u></b></p>
-
-                <p style="text-align: justify; padding-right: 35px;">(a)
-                    You are planning a road trip and need to calculate the total distance you will travel. Let's say
-                    the distance to your first destination is "d" miles. The distance to your second destination is
-                    20 miles more than twice the distance to the first destination. Finally, the distance to your
-                    third destination is 30 miles less than three times the distance to the second destination.
-                    Write an algebraic expression to represent the total distance you will travel in terms of "d".
-                </p>
-
-                <div id="distanceExplanation">
-                    <p><b>Step 1: Define the variables:</b></p>
-
-                    <ul>
-                        <li>Let (d) represent the distance to the first destination in miles.</li>
-                        <li>The second destination is (2d + 20) miles away (20 miles more than twice the first
-                            distance).</li>
-                        <li>The third destination is (3 × (2d + 20) - 30) miles away (30 miles less than three times
-                            the second distance).</li>
-                    </ul>
-
-                    <p><b>Step 2: Write the algebraic expression for the total distance:</b></p>
-
-                    <ul>
-                        <li>The total distance is the sum of the distances to all three destinations.</li>
-                        <li>So, the expression is [d + (2d + 20) + (3 × (2d + 20) - 30)].</li>
-                        <li>Simplifying, we get [d + 2d + 20 + 6d + 60 - 30].</li>
-                        <li>Combining like terms, the expression becomes (9d + 50).</li>
-                    </ul>
-
-                    <p><b>Step 3: Final expression:</b></p>
-
-                    <ul>
-                        <li>The final algebraic expression representing the total distance you will travel is (9d +
-                            50).</li>
-                        <li>This expression gives us the total distance based on the distance to the first
-                            destination represented by (d).</li>
-                    </ul>
-                </div>
-
-                <div class="radio-icon" onclick="handleRadioClick(event, 'distanceExplanation')">
-                    <i class='fas fa-volume-up'></i> Click here!
-                </div>
-                <br>
-            </div>
-        </div>
-
-        <!-- Subsection 6.1.3 box -->
-        <div class="SubSection-box">
-
-            <!-- Subsection 6.1.3 Header -->
-            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 6.1.3 How do you
-                solve linear equations in one variable?
-            </h3>
-
-            <!-- Subsection 6.1.3 Notes -->
-            <div class="content">
-                <p><b><u>Three Methods to Solve Linear Equations</u></b></p>
-
-                <ul>
-                    <li>
-                        <p style="text-align: justify; padding-right: 35px;"><b>Trial and Improvement Method:</b>
-                            Making educated guesses and refining them until the correct solution is found.
-                        </p>
-                    </li>
-
-                    <li>
-                        <p style="text-align: justify; padding-right: 35px;"><b>Application of Equality Concept:</b>
-                            Using operations to both sides of an equation equally to isolate and solve for the
-                            variable.
-                        </p>
-                    </li>
-
-                    <li>
-                        <p style="text-align: justify; padding-right: 35px;"><b>Backtracking Method:</b>
-                            Starting from a guessed solution and working backward to verify if it satisfies the
-                            equation, adjusting as needed.
-                        </p>
-                    </li>
-                </ul>
-
-                <center>
-                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image__2_.png" />
-
-                    <p><b><i>Figure 6.1.3.1: Questions</i></b></p>
-                </center>
-
-                <br>
-
-                <center>
-                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image__11_.png " />
-
-                    <p><b><i>Figure 6.1.3.2: Trial and Improvement Method</i></b></p>
-                </center>
-
-                <br>
-
-                <center>
-                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image__4_.png" />
-
-                    <p><b><i>Figure 6.1.3.3: Application of Equality Concept</i></b></p>
-                </center>
-
-                <br>
-
-                <center>
-                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image__5_.png" />
-
-                    <p><b><i>Figure 6.1.3.4: Backtracking Method</i></b></p>
-                </center>
-            </div>
-
-            <!-- Subsection 6.1.3 Question Example -->
-            <div class="question">
-                <p><b><u>Example</u></b></p>
-
-                <p style="text-align: justify; padding-right: 35px;">(a)
-                    You're planning a community bake sale and need to calculate the total profit from selling
-                    cookies and muffins. Define two variables to represent the number of cookies and the number of
-                    muffins you'll sell, respectively.
-                </p>
-
-                <div id="bakeSaleExplanation">
-                    <p><b>Step 1: Identify the quantities:</b></p>
-
-                    <ul>
-                        <li>Quantity 1: Number of cookies.</li>
-                        <li>Quantity 2: Number of muffins.</li>
-                    </ul>
-
-                    <p><b>Step 2: Define the variables:</b></p>
-
-                    <ul>
-                        <li>Let c represent the number of cookies you'll sell.</li>
-                        <li>Let m represent the number of muffins you'll sell.</li>
-                    </ul>
-
-                    <p><b>Step 3: Define the algebraic expression:</b></p>
-
-                    <ul>
-                        <li>Suppose the profit from one cookie is $2.00 and the profit from one muffin is $3.00.
-                        </li>
-                        <li>The total profit (P) can be represented as: P = 2.00c + 3.00m.</li>
-                    </ul>
-
-                    <p><b>Step 4: Determine the total profit using three methods:</b></p>
-
-                    <ul>
-                        <li>
-                            <b>Trial and Improvement Method:</b><br>
-                            Guess and check different values for c and m until the desired profit is achieved.<br>
-                            Example: If you aim for a profit of $50, try c = 10 and m = 10.<br>
-                            P = 2.00(10) + 3.00(10) = 20 + 30 = $50. The guess is correct.
-                        </li>
-
-                        <br>
-
-                        <li>
-                            <b>Application of Equality Concept:</b><br>
-                            Set up an equation and solve for one variable in terms of the other.<br>
-                            Example: If the desired profit is $50 and you know you will sell 10 cookies, find m.<br>
-                            50 = 2.00(10) + 3.00m<br>
-                            50 = 20 + 3.00m<br>
-                            30 = 3.00m<br>
-                            m = 10. Thus, you need to sell 10 muffins.
-                        </li>
-
-                        <br>
-
-                        <li>
-                            <b>Backtracking Method:</b><br>
-                            Start with an assumed solution and check if it satisfies the equation.<br>
-                            Example: Assume you sell 8 cookies and 11 muffins, check the total profit.<br>
-                            P = 2.00(8) + 3.00(11) = 16 + 33 = $49, which is close but not the target. Adjust and
-                            try again.
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="radio-icon" onclick="handleRadioClick(event, 'bakeSaleExplanation')">
-                    <i class='fas fa-volume-up'></i> Click here!
-                </div>
-                <br>
-            </div>
+            </div>            
         </div>
     </div>
 
@@ -1303,293 +642,143 @@
         <!-- Subsection 1.5.1 box -->
         <div class="SubSection-box">
 
-            <!-- Subsection 1.1.1 Header -->
-            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 6.1.1 What are
-                linear
-                equations in one variable?
+            <!-- Subsection 1.5.1 Header -->
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 1.5.1 What are
+                rational numbers?
             </h3>
 
-            <!-- Subsection 6.1.1 Notes -->
+            <!-- Subsection 1.5.1 Notes -->
+            <div class="content">
+                <p><b><u>Rational Numbers</u></b></p>
+
+                <ul>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            <b>Rational Numbers</b> - A rational number is a number that can be expressed as a fraction
+                            where the numerator and denominator are integers, and the denominator is not zero. Rational
+                            numbers include integers, fractions, and decimals that terminate or repeat.
+                            
+                        </p>
+                    </li>
+                </ul>
+
+                <center>
+                    <img class="diagram"
+                        src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter1/C1.5_Diagram.png?t=2024-05-31T11%3A43%3A13.107Z" />
+
+                    <p><b><i>Figure 1.5.1.1: Recognize and Describe Rational Numbers</i></b></p>
+                </center>
+            </div>
+
+            <!-- Subsection 1.5.1 Question Example -->
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+            
+                <p style="text-align: justify; padding-right: 35px;">(a) Imagine you're helping to organize a food fair. You have different types of snacks priced in fractions and decimals. You want to check if the prices of these snacks are rational numbers. How would you do this?</p>
+            
+                <div id="recognizingRationalNumbersExplanation">
+                    <p><b>Step 1: Identify the Snack Prices:</b></p>
+            
+                    <ul>
+                        <li>Snack 1 costs $2.75.</li>
+                        <li>Snack 2 costs $1/3 (one-third of a dollar).</li>
+                        <li>Snack 3 costs $4.50.</li>
+                        <li>Snack 4 costs $0.333... (repeating decimal).</li>
+                    </ul>
+            
+                    <p><b>Step 2: Determine if Each Price is a Rational Number:</b></p>
+            
+                    <ul>
+                        <li>Price $2.75: This is a decimal that terminates, so it is a rational number.</li>
+                        <li>Price $1/3: This is a fraction, so it is a rational number.</li>
+                        <li>Price $4.50: This is a decimal that terminates, so it is a rational number.</li>
+                        <li>Price $0.333...: This is a repeating decimal, so it is a rational number.</li>
+                    </ul>
+            
+                    <p><b>Step 3: Conclusion:</b></p>
+            
+                    <ul>
+                        <li>All the prices ($2.75, $1/3, $4.50, and $0.333...) are rational numbers because they can be expressed as either a fraction or a terminating/repeating decimal.</li>
+                    </ul>
+                </div>
+            
+                <div class="radio-icon" onclick="handleRadioClick(event, 'recognizingRationalNumbersExplanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>            
+        </div>
+
+        <!-- Subsection 1.5.2 box -->
+        <div class="SubSection-box">
+
+            <!-- Subsection 1.5.2 Header -->
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 1.5.2 How do you
+                perform computations involving combined basic arithmetic operations of rational numbers?
+            </h3>
+
+            <!-- Subsection 1.5.2 Notes -->
             <div class="content">
                 <p><b><u>Smart Tips</u></b></p>
 
                 <ul>
                     <li>
                         <p style="text-align: justify; padding-right: 35px;">
-                            Linear equations in one variable are algebraic equations of the form ax + b = c, where a
-                            and b
-                            constants, and x is the variable. The solution to such an equation is the value of x
-                            that makes
-                            the equation true.
+                            Perform computations involving combined basic arithmetic operations of rational numbers by following the order of operations.
                         </p>
                     </li>
                 </ul>
 
                 <center>
-                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image.png" />
+                    <img class="diagram"
+                        src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter1/C1.5_Diagram2.png?t=2024-05-31T12%3A12%3A30.468Z" />
 
-                    <p><b><i>Figure 6.1.1.1: Linear Equation in One Variable (Part 1)</i></b></p>
-                </center>
-
-                <br>
-
-                <center>
-                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image__7_.png" />
-
-                    <p><b><i>Figure 6.1.1.2: Linear Equation in One Variable (Part 2)</i></b></p>
+                    <p><b><i>Figure 1.5.2.1: Arithmetic Operations of Rational Numbers</i></b></p>
                 </center>
             </div>
 
-            <!-- Subsection 6.1.1 Question Example -->
             <div class="question">
                 <p><b><u>Example</u></b></p>
-
+            
                 <p style="text-align: justify; padding-right: 35px;">(a)
-                    You're organizing a fundraising event and need to sell tickets. Each ticket costs $10, and you
-                    have already spent $50 on preparations. Define a variable to represent the number of tickets you
-                    need to sell to cover your costs and break even.
+                    You are planning a recipe and need to calculate the total amount of ingredients you will use. Let's say
+                    the amount of flour required is 2/3 cup. The amount of sugar required is 1/4 cup more than half the amount
+                    of flour. Finally, the amount of butter required is 1/2 cup less than twice the amount of sugar.
+                    Calculate the total amount of ingredients you will use in cups.
                 </p>
-
-                <div id="fundraisingExplanation">
-                    <p><b>Step 1: Identify the quantities:</b></p>
-
+            
+                <div id="ingredientsExplanation">
+                    <p><b>Step 1: Define the quantities:</b></p>
+            
                     <ul>
-                        <li>Quantity: Number of tickets to be sold.</li>
-                        <li>Fixed cost: $50.</li>
-                        <li>Cost per ticket: $10.</li>
+                        <li>The amount of flour required is 2/3 cup.</li>
+                        <li>The amount of sugar required is (1/2 × 2/3 + 1/4) cup.</li>
+                        <li>The amount of butter required is (2 × (1/2 × 2/3 + 1/4) - 1/2) cup.</li>
                     </ul>
-
-                    <p><b>Step 2: Define the variable and equation:</b></p>
-
+            
+                    <p><b>Step 2: Calculate each amount:</b></p>
+            
                     <ul>
-                        <li>Let t represent the number of tickets you'll need to sell.</li>
-                        <li>The equation to cover your costs is: 10t - 50 = 0.</li>
+                        <li>The amount of sugar is (1/2 × 2/3 + 1/4) = (1/3 + 1/4) = 4/12 + 3/12 = 7/12 cup.</li>
+                        <li>The amount of butter is (2 × 7/12 - 1/2) = 14/12 - 6/12 = 8/12 = 2/3 cup.</li>
                     </ul>
-                </div>
-
-                <div class="radio-icon" onclick="handleRadioClick(event, 'fundraisingExplanation')">
-                    <i class='fas fa-volume-up'></i> Click here!
-                </div>
-                <br>
-            </div>
-        </div>
-
-        <!-- Subsection 6.1.2 box -->
-        <div class="SubSection-box">
-
-            <!-- Subsection 6.1.2 Header -->
-            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 6.1.2 How do you
-                form linear equations based on a given situation and vice versa?
-            </h3>
-
-            <!-- Subsection 6.1.2 Notes -->
-            <div class="content">
-                <p><b><u>Smart Tips</u></b></p>
-
-                <ul>
-                    <li>
-                        <p style="text-align: justify; padding-right: 35px;">
-                            Each term in a linear equation must have a same unit.
-                        </p>
-                    </li>
-
-                    <li>
-                        <p style="text-align: justify; padding-right: 35px;">
-                            It is unnecessary to write the unit while forming linear equation.
-                        </p>
-                    </li>
-                </ul>
-
-                <center>
-                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image__3_.png" />
-
-                    <p><b><i>Figure 6.1.2.1: Method to Form Linear Equations</i></b></p>
-                    <br>
-                </center>
-            </div>
-
-            <!-- Subsection 6.1.2 Question Example -->
-            <div class="question">
-                <p><b><u>Example</u></b></p>
-
-                <p style="text-align: justify; padding-right: 35px;">(a)
-                    You are planning a road trip and need to calculate the total distance you will travel. Let's say
-                    the distance to your first destination is "d" miles. The distance to your second destination is
-                    20 miles more than twice the distance to the first destination. Finally, the distance to your
-                    third destination is 30 miles less than three times the distance to the second destination.
-                    Write an algebraic expression to represent the total distance you will travel in terms of "d".
-                </p>
-
-                <div id="distanceExplanation">
-                    <p><b>Step 1: Define the variables:</b></p>
-
+            
+                    <p><b>Step 3: Calculate the total amount of ingredients:</b></p>
+            
                     <ul>
-                        <li>Let (d) represent the distance to the first destination in miles.</li>
-                        <li>The second destination is (2d + 20) miles away (20 miles more than twice the first
-                            distance).</li>
-                        <li>The third destination is (3 × (2d + 20) - 30) miles away (30 miles less than three times
-                            the second distance).</li>
+                        <li>The total amount is the sum of the amounts of flour, sugar, and butter.</li>
+                        <li>So, the total amount is (2/3 + 7/12 + 2/3).</li>
+                        <li>Converting to a common denominator: (2/3 = 8/12), so (8/12 + 7/12 + 8/12) = 23/12 cups.</li>
                     </ul>
-
-                    <p><b>Step 2: Write the algebraic expression for the total distance:</b></p>
-
+            
+                    <p><b>Step 4: Final calculation:</b></p>
+            
                     <ul>
-                        <li>The total distance is the sum of the distances to all three destinations.</li>
-                        <li>So, the expression is [d + (2d + 20) + (3 × (2d + 20) - 30)].</li>
-                        <li>Simplifying, we get [d + 2d + 20 + 6d + 60 - 30].</li>
-                        <li>Combining like terms, the expression becomes (9d + 50).</li>
-                    </ul>
-
-                    <p><b>Step 3: Final expression:</b></p>
-
-                    <ul>
-                        <li>The final algebraic expression representing the total distance you will travel is (9d +
-                            50).</li>
-                        <li>This expression gives us the total distance based on the distance to the first
-                            destination represented by (d).</li>
+                        <li>The total amount of ingredients you will use is 23/12 cups or 1 11/12 cups.</li>
                     </ul>
                 </div>
-
-                <div class="radio-icon" onclick="handleRadioClick(event, 'distanceExplanation')">
-                    <i class='fas fa-volume-up'></i> Click here!
-                </div>
-                <br>
-            </div>
-        </div>
-
-        <!-- Subsection 6.1.3 box -->
-        <div class="SubSection-box">
-
-            <!-- Subsection 6.1.3 Header -->
-            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 6.1.3 How do you
-                solve linear equations in one variable?
-            </h3>
-
-            <!-- Subsection 6.1.3 Notes -->
-            <div class="content">
-                <p><b><u>Three Methods to Solve Linear Equations</u></b></p>
-
-                <ul>
-                    <li>
-                        <p style="text-align: justify; padding-right: 35px;"><b>Trial and Improvement Method:</b>
-                            Making educated guesses and refining them until the correct solution is found.
-                        </p>
-                    </li>
-
-                    <li>
-                        <p style="text-align: justify; padding-right: 35px;"><b>Application of Equality Concept:</b>
-                            Using operations to both sides of an equation equally to isolate and solve for the
-                            variable.
-                        </p>
-                    </li>
-
-                    <li>
-                        <p style="text-align: justify; padding-right: 35px;"><b>Backtracking Method:</b>
-                            Starting from a guessed solution and working backward to verify if it satisfies the
-                            equation, adjusting as needed.
-                        </p>
-                    </li>
-                </ul>
-
-                <center>
-                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image__2_.png" />
-
-                    <p><b><i>Figure 6.1.3.1: Questions</i></b></p>
-                </center>
-
-                <br>
-
-                <center>
-                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image__11_.png " />
-
-                    <p><b><i>Figure 6.1.3.2: Trial and Improvement Method</i></b></p>
-                </center>
-
-                <br>
-
-                <center>
-                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image__4_.png" />
-
-                    <p><b><i>Figure 6.1.3.3: Application of Equality Concept</i></b></p>
-                </center>
-
-                <br>
-
-                <center>
-                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/Chapter6/image__5_.png" />
-
-                    <p><b><i>Figure 6.1.3.4: Backtracking Method</i></b></p>
-                </center>
-            </div>
-
-            <!-- Subsection 6.1.3 Question Example -->
-            <div class="question">
-                <p><b><u>Example</u></b></p>
-
-                <p style="text-align: justify; padding-right: 35px;">(a)
-                    You're planning a community bake sale and need to calculate the total profit from selling
-                    cookies and muffins. Define two variables to represent the number of cookies and the number of
-                    muffins you'll sell, respectively.
-                </p>
-
-                <div id="bakeSaleExplanation">
-                    <p><b>Step 1: Identify the quantities:</b></p>
-
-                    <ul>
-                        <li>Quantity 1: Number of cookies.</li>
-                        <li>Quantity 2: Number of muffins.</li>
-                    </ul>
-
-                    <p><b>Step 2: Define the variables:</b></p>
-
-                    <ul>
-                        <li>Let c represent the number of cookies you'll sell.</li>
-                        <li>Let m represent the number of muffins you'll sell.</li>
-                    </ul>
-
-                    <p><b>Step 3: Define the algebraic expression:</b></p>
-
-                    <ul>
-                        <li>Suppose the profit from one cookie is $2.00 and the profit from one muffin is $3.00.
-                        </li>
-                        <li>The total profit (P) can be represented as: P = 2.00c + 3.00m.</li>
-                    </ul>
-
-                    <p><b>Step 4: Determine the total profit using three methods:</b></p>
-
-                    <ul>
-                        <li>
-                            <b>Trial and Improvement Method:</b><br>
-                            Guess and check different values for c and m until the desired profit is achieved.<br>
-                            Example: If you aim for a profit of $50, try c = 10 and m = 10.<br>
-                            P = 2.00(10) + 3.00(10) = 20 + 30 = $50. The guess is correct.
-                        </li>
-
-                        <br>
-
-                        <li>
-                            <b>Application of Equality Concept:</b><br>
-                            Set up an equation and solve for one variable in terms of the other.<br>
-                            Example: If the desired profit is $50 and you know you will sell 10 cookies, find m.<br>
-                            50 = 2.00(10) + 3.00m<br>
-                            50 = 20 + 3.00m<br>
-                            30 = 3.00m<br>
-                            m = 10. Thus, you need to sell 10 muffins.
-                        </li>
-
-                        <br>
-
-                        <li>
-                            <b>Backtracking Method:</b><br>
-                            Start with an assumed solution and check if it satisfies the equation.<br>
-                            Example: Assume you sell 8 cookies and 11 muffins, check the total profit.<br>
-                            P = 2.00(8) + 3.00(11) = 16 + 33 = $49, which is close but not the target. Adjust and
-                            try again.
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="radio-icon" onclick="handleRadioClick(event, 'bakeSaleExplanation')">
+            
+                <div class="radio-icon" onclick="handleRadioClick(event, 'ingredientsExplanation')">
                     <i class='fas fa-volume-up'></i> Click here!
                 </div>
                 <br>
