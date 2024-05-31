@@ -4,5 +4,6 @@
     "codesnap.containerPadding": "",
     "codesnap.realLineNumbers": true,
     "codesnap.transparentBackground": false,
-    "codesnap.target": "window"
+    "codesnap.target": "window",
+    "java.configuration.updateBuildConfiguration": "interactive"
 }
