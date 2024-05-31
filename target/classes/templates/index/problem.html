@@ -54,12 +54,12 @@
                 <div th:if="${session.userId != null}">
                     <div th:if="${session.role.equals('admin')}">
                         <div class="login-signup-button">
-                            <a th:href="@{/admin/dashboard}" class="btn">Back to Dashboard</a>
+                            <a th:href="@{/admin/dashboard}" class="btn" style="padding: 5px;">Back to Dashboard</a>
                         </div>
                     </div>
                     <div th:if="${session.role.equals('student')}">
                         <div class="login-signup-button">
-                            <a th:href="@{/student/dashboard}" class="btn">Back to Dashboard</a>
+                            <a th:href="@{/student/dashboard}" class="btn" style="padding: 5px;">Back to Dashboard</a>
                         </div>
                     </div>
                 </div>
