@@ -177,10 +177,24 @@
 }
 
 .login-signup-button {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 2px 2px;
+    position: relative; /* Change absolute to relative */
+    margin-top: 15px; /* Add margin to separate it from other nav items */
+}
+
+.nav-item.nav-link.btn {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+    background-color: var(--primary);
+    color: var(--light); 
+    transition: .5s; 
+    padding: 5px; /* Add padding to match the padding in the expanded menu */
+    margin-right: 15px; /* Add margin between the buttons */
+}
+
+.nav-item.nav-link.btn:hover {
+    background-color: #6b3b99; 
+    color: var(--light); 
+    transform: translateY(-2px); 
 }
 
 /*** Header carousel ***/
