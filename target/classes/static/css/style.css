@@ -183,6 +183,10 @@
     padding: 2px 2px;
 }
 
+.login-signup-button .btn {
+    height: auto; /* Set height to auto to accommodate content */
+}
+
 /*** Header carousel ***/
 @media (max-width: 768px) {
     .header-carousel .owl-carousel-item {
