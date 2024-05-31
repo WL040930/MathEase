@@ -42,13 +42,28 @@ body {
     justify-content: center;
     margin-top: 20px;
     text-decoration: none;
+    color: inherit;
 }
 
 .center-link i {
     margin-right: 8px;
     font-size: 18px;
+    transition: color 0.3s ease;
 }
 
+.center-link h2 {
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+.center-link:hover i,
+.center-link:hover h2 {
+    color: #6b3b99;
+}
+
+.center-link:hover {
+    text-decoration: underline;
+}
 
 #right {
     flex: 1;
