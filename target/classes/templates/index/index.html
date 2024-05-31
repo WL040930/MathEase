@@ -20,122 +20,50 @@
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
     <link th:href="@{/css/style.css}" rel="stylesheet">
     <script th:src="@{/js/main.js}"></script>
-    <style>
-        /* Custom CSS for responsive menu */
-        #nav-toggle {
-            display: none;
-        }
-
-        #nav-toggle:checked+#menuBar .navbar-nav {
-            display: flex !important;
-            flex-direction: column;
-            padding-top: 10px;
-            background-color: #f8f9fa;
-            border-top: 1px solid #dee2e6;
-        }
-
-        #nav-toggle:checked+#menuBar .navbar-nav .nav-item {
-            margin-right: 0;
-        }
-
-        #nav-toggle:checked+#menuBar .login-signup-button {
-            display: block;
-            margin-top: 20px;
-        }
-
-        /* Hamburger Icon */
-        #nav-toggle-label {
-            display: none;
-            cursor: pointer;
-            padding: 10px 15px;
-            background-color: #fff;
-            border: 1px solid #ced4da;
-            border-radius: 5px;
-        }
-
-        #nav-toggle-label .burger-icon {
-            width: 30px;
-            height: 5px;
-            background-color: #333;
-            display: block;
-            transition: all 0.3s;
-        }
-
-        #nav-toggle:checked+#menuBar #nav-toggle-label .burger-icon {
-            transform: rotate(45deg);
-        }
-
-        #nav-toggle:checked+#menuBar #nav-toggle-label .burger-icon:before,
-        #nav-toggle:checked+#menuBar #nav-toggle-label .burger-icon:after {
-            top: 0;
-            transform: rotate(90deg);
-        }
-
-        #nav-toggle:checked+#menuBar #nav-toggle-label .burger-icon:before {
-            transform: translateY(10px);
-        }
-
-        #nav-toggle:checked+#menuBar #nav-toggle-label .burger-icon:after {
-            transform: translateY(-10px);
-        }
-
-        /* Show hamburger icon when browser is minimized */
-        @media (max-width: 991.98px) {
-            #nav-toggle-label {
-                display: block;
-            }
-
-            #menuBar .navbar-nav {
-                display: none;
-            }
-        }
-    </style>
 </head>
 
 <body>
 
     <!-- Navbar Start -->
     <div id="menuBar">
-        <input type="checkbox" id="nav-toggle">
-        <label for="nav-toggle" id="nav-toggle-label">
-            <span class="burger-icon"></span>
-        </label>
         <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-            <a id="nav-title" href="/"
-                style="margin-right: 30px; margin-bottom: 10px; padding-top: 5px; padding-left: 10px;">
-                <img src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/picture/mathease+.png"
-                    alt="" style="height:50px;"></a>
-
-            <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a th:href="@{/}" class="nav-item nav-link active">Home</a>
-                <a th:href="@{/problem}" class="nav-item nav-link">Problems</a>
-                <a th:href="@{/solution}" class="nav-item nav-link">Solutions</a>
-            </div>
-
-            <div th:if="${session.userId != null}">
-                <div th:if="${session.role.equals('admin')}">
-                    <div class="login-signup-button">
-                        <a th:href="@{/admin/dashboard}" class="btn" style="padding: 5px;">Back to Dashboard</a>
+            <a id="nav-title" href="/" style="margin-right: 30px; margin-bottom: 10px; padding-top: 5px; padding-left: 10px;">
+                <img src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/picture/mathease+.png" alt="" style="height:50px;"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav ms-auto p-4 p-lg-0">
+                    <a th:href="@{/}" class="nav-item nav-link active">Home</a>
+                    <a th:href="@{/problem}" class="nav-item nav-link">Problems</a>
+                    <a th:href="@{/solution}" class="nav-item nav-link">Solutions</a>
+                </div>
+                <div th:if="${session.userId != null}">
+                    <div th:if="${session.role.equals('admin')}">
+                        <div class="login-signup-button">
+                            <a th:href="@{/admin/dashboard}" class="btn" style="padding: 5px;">Back to Dashboard</a>
+                        </div>
+                    </div>
+                    <div th:if="${session.role.equals('student')}">
+                        <div class="login-signup-button">
+                            <a th:href="@{/student/dashboard}" class="btn" style="padding: 5px;">Back to Dashboard</a>
+                        </div>
                     </div>
                 </div>
-                <div th:if="${session.role.equals('student')}">
+                <div th:if="${session.userId == null}">
                     <div class="login-signup-button">
-                        <a th:href="@{/student/dashboard}" class="btn" style="padding: 5px;">Back to Dashboard</a>
+                        <button class="btn" onclick="redirectToLogin()">Login/Sign Up</button>
+                        <script>
+                            function redirectToLogin() {
+                                window.location.href = "/login";
+                            }
+                        </script>
                     </div>
-                </div>
-            </div>
-            <div th:if="${session.userId == null}">
-                <div class="login-signup-button">
-                    <button class="btn" onclick="redirectToLogin()">Login/Sign Up</button>
-                    <script>
-                        function redirectToLogin() {
-                            window.location.href = "/login";
-                        }
-                    </script>
                 </div>
             </div>
         </nav>
-    </div>
+    </div>    
     <!-- Navbar End -->
 
     <!-- Carousel Start -->
