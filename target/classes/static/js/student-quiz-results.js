@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                         <div style="clear: both"></div>
                     </div>
                     <div class="table-panel">
-                        <p>No questions for this chapter.</p>
+                        <p>No questions are completed for this chapter.</p>
                     </div>
                     <div class="controller">
                         <button class="control-button view-button" onclick="openViewModel()">View</button>
