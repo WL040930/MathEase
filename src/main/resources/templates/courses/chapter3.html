@@ -1,11 +1,881 @@
 <section class="content-header" id="content" th:fragment="chapter3">
-    <link rel="stylesheet" th:href="@{/css/speak.css}">
-    <script th:src="@{/js/speak.js}"></script>
+    <div class="header-box">
+        <h1>Form 1 Chapter 3 - Squares, Square Roots, Cubes and Cube Roots</h1>
+    </div>
 
-    <!--    TODO: CHAPTER 3 HERE-->
+    <div class="SubTopic1-box subtopic-section">
 
+        <h3><i class="material-icons" onclick="toggleSubTopic(this)">keyboard_arrow_right</i> 3.1 Squares and Square Roots</h3>
 
-    <div style="margin-top: 20px; width: 100%"></div>
-    <button id="speakButton">Speak</button>
-    <button id="stopButton">Stop</button>
+        <div class="SubSection-box">
+
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 3.1.1 What are squares and perfect squares?</h3>
+            <div class="content">
+                <p><b><u>Smart Tips</u></b></p>
+                <ul>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            A square of a number is the result of multiplying the number by itself. For example, the square of 5 is 25 because 5 x 5 = 25. The process of squaring a number is also called raising the number to the power of 2, or simply "squared."
+                        </p>
+                    </li>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            Perfect squares are the squares of whole numbers. For instance, 1, 4, 9, 16, and 25 are perfect squares because they can be expressed as 1^2, 2^2, 3^2, 4^2, and 5^2 respectively.
+                        </p>
+                    </li>
+                </ul>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter3/chapter_3_image_1.png" alt="Example of a Perfect Square" />
+                    <p><b><i>Figure 3.1.1.1: Example of a Perfect Square</i></b></p>
+                </center>
+
+                <p><b>Properties of Perfect Squares:</b></p>
+                <ul>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            The square of any positive integer is always a positive integer. Similarly, the square of any negative integer is also a positive integer because the product of two negative numbers is positive.
+                        </p>
+                    </li>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            Perfect squares have an odd number of total divisors. For example, 36 is a perfect square and its divisors are 1, 2, 3, 4, 6, 9, 12, 18, and 36, making a total of 9 divisors.
+                        </p>
+                    </li>
+                </ul>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter3/chapter_3_image_2.jpg" alt="Properties of Perfect Squares" />
+                    <p><b><i>Figure 3.1.1.2: Properties of Perfect Squares</i></b></p>
+                </center>
+            </div>
+
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+                <p style="text-align: justify; padding-right: 35px;">
+                    (a) Calculate the square of 7 and determine if it is a perfect square.
+                </p>
+
+                <div id="squareExampleExplanation">
+                    <p><b>Step 1: Calculation:</b></p>
+                    <ul>
+                        <li>Square of 7: 7 x 7 = 49.</li>
+                    </ul>
+
+                    <p><b>Step 2: Determine if it is a perfect square:</b></p>
+                    <ul>
+                        <li>Since 49 is the result of 7 x 7, it is a perfect square.</li>
+                    </ul>
+
+                    <br>
+                    <p><b>Additional Practice:</b></p>
+                    <p style="text-align: justify; padding-right: 35px;">
+                        Calculate the squares of the following numbers and verify if they are perfect squares:
+                    <ul>
+                        <li>3</li>
+                        <li>10</li>
+                        <li>15</li>
+                        <li>20</li>
+                    </ul>
+                    </p>
+
+                    <p><b>Explanation:</b></p>
+                    <ul>
+                        <li>Square of 3: 3 x 3 = 9, which is a perfect square (3^2).</li>
+                        <li>Square of 10: 10 x 10 = 100, which is a perfect square (10^2).</li>
+                        <li>Square of 15: 15 x 15 = 225, which is a perfect square (15^2).</li>
+                        <li>Square of 20: 20 x 20 = 400, which is a perfect square (20^2).</li>
+                    </ul>
+                </div>
+
+                <div class="radio-icon" onclick="handleRadioClick(event, 'squareExampleExplanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+
+        <div class="SubSection-box">
+
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 3.1.2 How do you determine whether a number is a perfect square?</h3>
+            <div class="content">
+                <p><b><u>Smart Tips</u></b></p>
+                <ul>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            A number is a perfect square if it can be expressed as the product of an integer with itself. For example, 36 is a perfect square because it can be written as 6 x 6.
+                        </p>
+                    </li>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            To determine if a number is a perfect square, you can find its square root and check if the result is an integer. For instance, the square root of 36 is 6, which is an integer, so 36 is a perfect square.
+                        </p>
+                    </li>
+                </ul>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter3/chapter_3_image_3.png" alt="Determining Perfect Squares" />
+                    <p><b><i>Figure 3.1.2.1: Finding the Square Root to Determine Perfect Squares</i></b></p>
+                </center>
+
+                <br>
+
+                <p><b>Methods to Determine Perfect Squares:</b></p>
+                <ul>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            <b>Prime Factorization:</b> Break down the number into its prime factors. If all prime factors appear in pairs, then the number is a perfect square. For example, the prime factorization of 36 is 2 x 2 x 3 x 3, which confirms it as a perfect square.
+                        </p>
+                    </li>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            <b>Last Digit Check:</b> A perfect square will end in 0, 1, 4, 5, 6, or 9 in base 10. For example, the number 49 ends in 9, so it could be a perfect square.
+                        </p>
+                    </li>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            <b>Digital Root Method:</b> The digital root of a perfect square can only be 0, 1, 4, 7, or 9. The digital root is found by repeatedly summing the digits of the number until a single digit is obtained. For example, the digital root of 49 is 4 + 9 = 13, and 1 + 3 = 4, which is valid for a perfect square.
+                        </p>
+                    </li>
+                </ul>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter3/chapter_3_image_4.png" alt="Methods to Identify Perfect Squares" />
+                    <p><b><i>Figure 3.1.2.2: Methods to Identify Perfect Squares</i></b></p>
+                </center>
+            </div>
+
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+                <p style="text-align: justify; padding-right: 35px;">
+                    (a) Determine if 144 is a perfect square using the prime factorization method.
+                </p>
+
+                <div id="primeFactorizationExplanation">
+                    <p><b>Step-by-Step Solution:</b></p>
+                    <ul>
+                        <li>
+                            <p style="text-align: justify; padding-right: 35px;">
+                                Find the prime factors of 144: 144 = 2 x 2 x 2 x 2 x 3 x 3.
+                            </p>
+                        </li>
+                        <li>
+                            <p style="text-align: justify; padding-right: 35px;">
+                                Group the prime factors into pairs: (2 x 2), (2 x 2), (3 x 3).
+                            </p>
+                        </li>
+                        <li>
+                            <p style="text-align: justify; padding-right: 35px;">
+                                Since all prime factors are paired, 144 is a perfect square (12 x 12).
+                            </p>
+                        </li>
+                    </ul>
+
+                    <br>
+
+                    <p><b>Additional Practice:</b></p>
+                    <p style="text-align: justify; padding-right: 35px;">
+                        Determine if the following numbers are perfect squares:
+                    <ul>
+                        <li>81</li>
+                        <li>121</li>
+                        <li>200</li>
+                        <li>256</li>
+                    </ul>
+                    </p>
+
+                    <p><b>Explanation:</b></p>
+                    <ul>
+                        <li>81 = 9 x 9, so 81 is a perfect square.</li>
+                        <li>121 = 11 x 11, so 121 is a perfect square.</li>
+                        <li>200 is not a perfect square because its prime factorization (2 x 2 x 2 x 5 x 5) does not have all pairs.</li>
+                        <li>256 = 16 x 16, so 256 is a perfect square.</li>
+                    </ul>
+                </div>
+
+                <div class="radio-icon" onclick="handleRadioClick(event, 'primeFactorizationExplanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+
+        <div class="SubSection-box">
+
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 3.1.3 What is the relationship between squares and square roots?</h3>
+            <div class="content">
+                <p><b><u>Smart Tips</u></b></p>
+                <ul>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            The square of a number is the result of multiplying that number by itself. For example, the square of 4 is 16 because 4 x 4 = 16.
+                        </p>
+                    </li>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            The square root of a number is a value that, when multiplied by itself, gives the original number. For example, the square root of 16 is 4 because 4 x 4 = 16.
+                        </p>
+                    </li>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            In mathematical notation, if x is a number, then its square is written as x², and its square root is written as √x. For instance, if x = 5, then 5² = 25 and √25 = 5.
+                        </p>
+                    </li>
+                </ul>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter3/chapter_3_image_5.jpg" alt="Relationship between Squares and Square Roots" />
+                    <p><b><i>Figure 3.1.3.1: Visualizing the Relationship between Squares and Square Roots</i></b></p>
+                </center>
+                <br>
+                <p><b>Properties of Squares and Square Roots:</b></p>
+                <ul>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            The square of any positive number is always positive, and the square of any negative number is also positive. For example, (-3)² = 9.
+                        </p>
+                    </li>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            Every positive number has two square roots: one positive (called the principal square root) and one negative. For instance, the square roots of 25 are 5 and -5.
+                        </p>
+                    </li>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            The square root of zero is zero. Zero is the only number with one square root.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+                <p style="text-align: justify; padding-right: 35px;">
+                    (a) If the square of a number is 49, what are its square roots?
+                </p>
+
+                <div id="squareRootExampleExplanation">
+                    <p><b>Step-by-Step Solution:</b></p>
+                    <ul>
+                        <li>
+                            <p style="text-align: justify; padding-right: 35px;">
+                                To find the square roots of 49, we look for numbers that multiply by themselves to give 49.
+                            </p>
+                        </li>
+                        <li>
+                            <p style="text-align: justify; padding-right: 35px;">
+                                Since 7 x 7 = 49 and (-7) x (-7) = 49, the square roots of 49 are 7 and -7.
+                            </p>
+                        </li>
+                    </ul>
+                    <br>
+                    <p><b>Additional Practice:</b></p>
+                    <p style="text-align: justify; padding-right: 35px;">
+                        Find the square roots of the following numbers:
+                    <ul>
+                        <li>64</li>
+                        <li>100</li>
+                        <li>144</li>
+                        <li>225</li>
+                    </ul>
+                    </p>
+
+                    <p><b>Explanation:</b></p>
+                    <ul>
+                        <li>The square roots of 64 are 8 and -8.</li>
+                        <li>The square roots of 100 are 10 and -10.</li>
+                        <li>The square roots of 144 are 12 and -12.</li>
+                        <li>The square roots of 225 are 15 and -15.</li>
+                    </ul>
+                </div>
+
+                <div class="radio-icon" onclick="handleRadioClick(event, 'squareRootExampleExplanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+
+        <div class="SubSection-box">
+
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 3.1.4 How do you determine the square of a number?</h3>
+            <div class="content">
+                <p><b><u>Smart Tips</u></b></p>
+                <ul>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            The square of a number is found by multiplying the number by itself. This operation is often called "squaring" the number.
+                        </p>
+                    </li>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            Mathematically, if x is a number, then the square of x is written as x², which means x times x.
+                        </p>
+                    </li>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            For example, to determine the square of 6, you calculate 6 times 6, which equals 36. Therefore, the square of 6 is 36.
+                        </p>
+                    </li>
+                </ul>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter3/chapter_3_image_6.jpg" alt="Calculating the Square of a Number" />
+                    <p><b><i>Figure 3.1.4.1: Calculating the Square of a Number</i></b></p>
+                </center>
+                <br>
+                <p><b>Steps to Determine the Square of a Number:</b></p>
+                <ol>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            Identify the number you want to square. Let's denote this number as x.
+                        </p>
+                    </li>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            Multiply the number by itself: x times x.
+                        </p>
+                    </li>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            The result of this multiplication is the square of the number.
+                        </p>
+                    </li>
+                </ol>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter3/chapter_3_image_7.jpg" alt="Example of Squaring a Number" />
+                    <p><b><i>Figure 3.1.4.2: Example of Squaring a Number</i></b></p>
+                </center>
+            </div>
+
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+                <p style="text-align: justify; padding-right: 35px;">
+                    (a) Determine the square of 8.
+                </p>
+
+                <div id="3.1.4Explanation">
+                    <p><b>Step-by-Step Solution:</b></p>
+                    <ul>
+                        <li>
+                            <p style="text-align: justify; padding-right: 35px;">
+                                Identify the number to be squared: 8.
+                            </p>
+                        </li>
+                        <li>
+                            <p style="text-align: justify; padding-right: 35px;">
+                                Multiply the number by itself: 8 times 8.
+                            </p>
+                        </li>
+                        <li>
+                            <p style="text-align: justify; padding-right: 35px;">
+                                Calculate the result: 8 times 8 equals 64.
+                            </p>
+                        </li>
+                        <li>
+                            <p style="text-align: justify; padding-right: 35px;">
+                                Therefore, the square of 8 is 64.
+                            </p>
+                        </li>
+                    </ul>
+                    <br>
+                    <p><b>Additional Practice:</b></p>
+                    <p style="text-align: justify; padding-right: 35px;">
+                        Determine the squares of the following numbers:
+                    <ul>
+                        <li>5</li>
+                        <li>12</li>
+                        <li>15</li>
+                        <li>20</li>
+                    </ul>
+                    </p>
+
+                    <p><b>Explanation:</b></p>
+                    <ul>
+                        <li>The square of 5 is 5 times 5, which equals 25.</li>
+                        <li>The square of 12 is 12 times 12, which equals 144.</li>
+                        <li>The square of 15 is 15 times 15, which equals 225.</li>
+                        <li>The square of 20 is 20 times 20, which equals 400.</li>
+                    </ul>
+                </div>
+
+                <div class="radio-icon" onclick="handleRadioClick(event, '3.1.4Explanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+
+        <div class="SubSection-box">
+
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 3.1.5 How do you determine the square root of a positive number using technological tools?</h3>
+            <div class="content">
+                <p><b><u>Smart Tips</u></b></p>
+                <ul>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            The square root of a positive number is a value that, when multiplied by itself, gives the original number. Technological tools like calculators, computer software, and online resources can be used to find square roots quickly and accurately.
+                        </p>
+                    </li>
+                </ul>
+                <br>
+                <p><b>Using a Calculator:</b></p>
+                <ol>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            Turn on your calculator and locate the square root button (√). It is often a secondary function on scientific calculators, accessed by pressing a "shift" or "2nd" key first.
+                        </p>
+                    </li>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            Enter the number for which you want to find the square root.
+                        </p>
+                    </li>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            Press the square root button (√). The calculator will display the square root of the entered number.
+                        </p>
+                    </li>
+                </ol>
+                <br>
+                <p><b>Using Computer Software:</b></p>
+                <ol>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            Open a software program that includes mathematical functions, such as Microsoft Excel, Google Sheets, or a specialized math software.
+                        </p>
+                    </li>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            Enter the formula for square root. For example, in Excel, you can use the formula =SQRT(number), where "number" is the cell reference or value you want the square root of.
+                        </p>
+                    </li>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            Press Enter. The software will calculate and display the square root of the specified number.
+                        </p>
+                    </li>
+                </ol>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter3/chapter_3_image_9.png" alt="Using Software to Find the Square Root" />
+                    <p><b><i>Figure 3.1.5.2: Using Software to Find the Square Root</i></b></p>
+                </center>
+                <br>
+                <p><b>Using Online Tools:</b></p>
+                <ol>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            Open your web browser and navigate to a reliable online calculator or math tool website.
+                        </p>
+                    </li>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            Locate the square root function on the website.
+                        </p>
+                    </li>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            Enter the number for which you want to find the square root and click the button to calculate.
+                        </p>
+                    </li>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            The website will display the square root of the entered number.
+                        </p>
+                    </li>
+                </ol>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter3/chapter_3_image_7.png" alt="Using an Online Tool to Find the Square Root" />
+                    <p><b><i>Figure 3.1.5.3: Using an Online Tool to Find the Square Root</i></b></p>
+                </center>
+            </div>
+
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+                <p style="text-align: justify; padding-right: 35px;">
+                    (a) Determine the square root of 49 using a calculator.
+                </p>
+
+                <div id="3.1.5Explanation">
+                    <p><b>Step-by-Step Solution:</b></p>
+                    <ul>
+                        <li>
+                            <p style="text-align: justify; padding-right: 35px;">
+                                Turn on your calculator and locate the square root button (√).
+                            </p>
+                        </li>
+                        <li>
+                            <p style="text-align: justify; padding-right: 35px;">
+                                Enter the number 49.
+                            </p>
+                        </li>
+                        <li>
+                            <p style="text-align: justify; padding-right: 35px;">
+                                Press the square root button (√).
+                            </p>
+                        </li>
+                        <li>
+                            <p style="text-align: justify; padding-right: 35px;">
+                                The calculator displays 7, which is the square root of 49.
+                            </p>
+                        </li>
+                    </ul>
+                    <br>
+                    <p><b>Additional Practice:</b></p>
+                    <p style="text-align: justify; padding-right: 35px;">
+                        Determine the square roots of the following numbers using any technological tool:
+                    <ul>
+                        <li>16</li>
+                        <li>25</li>
+                        <li>36</li>
+                        <li>81</li>
+                    </ul>
+                    </p>
+
+                    <p><b>Explanation:</b></p>
+                    <ul>
+                        <li>The square root of 16 is 4.</li>
+                        <li>The square root of 25 is 5.</li>
+                        <li>The square root of 36 is 6.</li>
+                        <li>The square root of 81 is 9.</li>
+                    </ul>
+                </div>
+
+                <div class="radio-icon" onclick="handleRadioClick(event, '3.1.5Explanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+
+    <div class="SubTopic1-box subtopic-section">
+
+        <h3><i class="material-icons" onclick="toggleSubTopic(this)">keyboard_arrow_right</i> 3.2 Cubes and Cube Roots</h3>
+
+        <div class="SubSection-box">
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 3.2.1 What are cubes and perfect cubes?</h3>
+            <div class="content">
+                <p><b><u>Smart Tips</u></b></p>
+                <ul>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            Cubes and perfect cubes are fundamental concepts in mathematics related to the multiplication of numbers by themselves three times.
+                        </p>
+                    </li>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            A cube of a number is obtained by multiplying the number by itself twice. Mathematically, the cube of a number x is represented as x³.
+                        </p>
+                    </li>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            A perfect cube is a number that is the result of cubing an integer. In other words, it is the cube of an integer. For example, 8 is a perfect cube because 8 = 2³.
+                        </p>
+                    </li>
+                </ul>
+
+                <center>
+                    <img class="diagram" src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter3/chapter_3_image_10.jpg" alt="Cubes and Perfect Cubes Diagram" />
+                    <p><b><i>Figure 3.2.1: Cubes and Perfect Cubes Diagram</i></b></p>
+                </center>
+
+                <p><b>Examples:</b></p>
+                <ul>
+                    <li>The cube of 2 is 2 × 2 × 2 = 8, making 8 a perfect cube.</li>
+                    <li>The cube of 3 is 3 × 3 × 3 = 27, making 27 a perfect cube.</li>
+                    <li>The cube of 4 is 4 × 4 × 4 = 64, making 64 a perfect cube.</li>
+                </ul>
+
+                <p><b>Properties of Perfect Cubes:</b></p>
+                <ul>
+                    <li>Perfect cubes always have integer cube roots.</li>
+                    <li>The cube root of a perfect cube gives the original integer.</li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+                <p style="text-align: justify; padding-right: 35px;">
+                    (a) Find the cube of 5.
+                </p>
+
+                <div id="3.2Explanation">
+                    <p><b>Step-by-Step Solution:</b></p>
+                    <ul>
+                        <li>
+                            <p style="text-align: justify; padding-right: 35px;">
+                                Identify the number to be cubed: 5.
+                            </p>
+                        </li>
+                        <li>
+                            <p style="text-align: justify; padding-right: 35px;">
+                                Multiply the number by itself twice: 5 × 5 × 5.
+                            </p>
+                        </li>
+                        <li>
+                            <p style="text-align: justify; padding-right: 35px;">
+                                Calculate the result: 5 × 5 × 5 = 125.
+                            </p>
+                        </li>
+                        <li>
+                            <p style="text-align: justify; padding-right: 35px;">
+                                Therefore, the cube of 5 is 125.
+                            </p>
+                        </li>
+                    </ul>
+                    <br>
+                    <p><b>Additional Practice:</b></p>
+                    <p style="text-align: justify; padding-right: 35px;">
+                        Find the cubes of the following numbers:
+                    <ul>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                    </ul>
+                    </p>
+
+                    <p><b>Explanation:</b></p>
+                    <ul>
+                        <li>The cube of 2 is 2 × 2 × 2 = 8.</li>
+                        <li>The cube of 3 is 3 × 3 × 3 = 27.</li>
+                        <li>The cube of 4 is 4 × 4 × 4 = 64.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="SubSection-box">
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 3.2.2 How do you determine whether a number is a perfect cube?</h3>
+            <div class="content">
+                <p><b><u>Smart Tips</u></b></p>
+                <ul>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            To determine whether a number is a perfect cube, you need to check if it is the cube of an integer.
+                        </p>
+                    </li>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            You can use the cube root operation to find the cube root of the given number. If the result is an integer, then the number is a perfect cube.
+                        </p>
+                    </li>
+                </ul>
+
+                <p><b>Steps to Determine Whether a Number is a Perfect Cube:</b></p>
+                <ol>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            Find the cube root of the given number.
+                        </p>
+                    </li>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            If the cube root is an integer, then the number is a perfect cube.
+                        </p>
+                    </li>
+                </ol>
+
+                <p><b>Example:</b></p>
+                <p style="text-align: justify; padding-right: 35px;">
+                    Determine whether 64 is a perfect cube.
+                </p>
+                <p style="text-align: justify; padding-right: 35px;">
+                    Solution:
+                </p>
+                <ol>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            Find the cube root of 64: <span style="font-size: larger;">∛</span>64 = 4.
+                        </p>
+                    </li>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">
+                            Since the cube root is an integer (4), 64 is a perfect cube.
+                        </p>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+                <p style="text-align: justify; padding-right: 35px;">
+                    (a) Determine whether 125 is a perfect cube.
+                </p>
+
+                <div id="3.2.2Explanation">
+                    <p><b>Step-by-Step Solution:</b></p>
+                    <ol>
+                        <li>
+                            <p style="text-align: justify; padding-right: 35px;">
+                                Find the cube root of 125: <span style="font-size: larger;">∛</span>125 = 5.
+                            </p>
+                        </li>
+                        <li>
+                            <p style="text-align: justify; padding-right: 35px;">
+                                Since the cube root is an integer (5), 125 is a perfect cube.
+                            </p>
+                        </li>
+                    </ol>
+                </div>
+                <div class="radio-icon" onclick="handleRadioClick(event, '3.2.2Explanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+            </div>
+        </div>
+
+        <div class="SubSection-box">
+
+            <!-- Subsection 3.2.3 Header -->
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 3.2.3 What is the relationship between cubes and cube roots?</h3>
+
+            <!-- Subsection 3.2.3 Notes -->
+            <div class="content">
+                <p><b><u>Understanding Cubes and Cube Roots</u></b></p>
+
+                <p>Cubes and cube roots are fundamental concepts in mathematics, particularly in algebra and arithmetic. Let's delve deeper into their relationship:</p>
+
+                <p><b>Cubes:</b> Cubes are the result of multiplying a number by itself twice. When a number x is cubed, it is raised to the power of 3, denoted as x³, which is equal to x * x * x.</p>
+
+                <p><b>Cube Roots:</b> On the other hand, cube roots are the inverse operation of cubes. The cube root of a number x, denoted as ∛x, is a value that, when multiplied by itself twice, results in x.</p>
+
+                <p><b>Relationship:</b> The relationship between cubes and cube roots is inverse. If a number x is cubed to get x³, then the cube root of x³ is x. In mathematical terms:</p>
+
+                <p>If y = x³, then ∛y = x</p>
+
+                <p>This relationship illustrates how cubes and cube roots are interconnected. When we cube a number, we are finding its volume in a cubic space, while finding the cube root is akin to determining the length of a side of a cube with that volume.</p>
+
+                <p>Cubes and cube roots are extensively used in various mathematical problems, including geometry, algebraic equations, and calculus. They provide insights into spatial relationships, patterns, and solutions to complex equations.</p>
+            </div>
+
+            <!-- Subsection 3.2.3 Question Example -->
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+
+                <p>Let's explore a practical example to understand the relationship between cubes and cube roots:</p>
+
+                <p>Calculate the cube of 5 and find its cube root.</p>
+
+                <div id="cubeRootExplanation">
+                    <p><b>Step 1: Calculate the cube of 5:</b></p>
+                    <p>5³ = 5 * 5 * 5 = 125</p>
+
+                    <p><b>Step 2: Find the cube root of 125:</b></p>
+                    <p>∛125 = 5</p>
+                </div>
+
+                <div class="radio-icon" onclick="handleRadioClick(event, 'cubeRootExplanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+
+        <div class="SubSection-box">
+
+            <!-- Subsection 3.2.4 Header -->
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 3.2.4 How do you determine the cube root of a number?</h3>
+
+            <!-- Subsection 3.2.4 Notes -->
+            <div class="content">
+                <p><b><u>Understanding Cube Roots</u></b></p>
+
+                <p>Calculating the cube root of a number is the inverse operation of cubing a number. Let's explore the process:</p>
+
+                <p><b>Definition:</b> The cube root of a number x is a value that, when multiplied by itself twice, results in x. It is denoted by ∛x.</p>
+
+                <p><b>Process:</b> To determine the cube root of a number, you can use various methods, including:</p>
+
+                <ol>
+                    <li><b>Estimation:</b> Make an educated guess and refine it using trial and error.</li>
+                    <li><b>Prime Factorization:</b> Decompose the number into its prime factors and use properties of exponents to find the cube root.</li>
+                    <li><b>Newton's Method:</b> Use iterative approximation techniques to find an accurate estimate of the cube root.</li>
+                </ol>
+
+                <p><b>Examples:</b> Let's consider a few examples to illustrate the process of determining cube roots using different methods.</p>
+            </div>
+
+            <!-- Subsection 3.2.4 Question Example -->
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+
+                <p>Calculate the cube root of 64 using estimation and prime factorization methods.</p>
+
+                <div id="3.2.4Explanation">
+                    <p><b>Estimation Method:</b></p>
+                    <p>Start with an estimate, such as 4, and cube it: 4³ = 64. Since 64 matches the target, the cube root is 4.</p>
+
+                    <p><b>Prime Factorization Method:</b></p>
+                    <p>Prime factorize 64: 64 = 2² * 2² * 2². Since each factor appears three times, the cube root is 2 * 2 * 2 = 8.</p>
+                </div>
+
+                <div class="radio-icon" onclick="handleRadioClick(event, '3.2.4Explanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+
+        <div class="SubSection-box">
+
+            <!-- Subsection 3.2.5 Header -->
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 3.2.5 How do you determine the cube root of a number using technological tools?</h3>
+
+            <!-- Subsection 3.2.5 Notes -->
+            <div class="content">
+                <p><b><u>Utilizing Technological Tools for Cube Root Calculation</u></b></p>
+
+                <p>Modern technology provides several efficient methods for determining the cube root of a number. Let's explore these methods:</p>
+
+                <ol>
+                    <li><b>Calculator Applications:</b> Scientific calculators and graphing calculators commonly feature a built-in cube root function. Users can input the number and access the cube root instantly. This method is straightforward and suitable for quick calculations.
+                        <br></li>
+
+                    <li><b>Online Calculators:</b> Numerous websites and online tools offer dedicated cube root calculators. Users can input the number into an online form, and the website computes and displays the cube root. Online calculators provide accessibility and convenience, especially for users without access to physical calculators.
+                        <br></li>
+
+                    <li><b>Spreadsheets:</b> Spreadsheet software like Microsoft Excel and Google Sheets includes functions for cube root calculation. Users can utilize formulas such as =CUBEROOT(number) to find the cube root of a given number. This method is advantageous for handling large datasets and performing repetitive calculations within a spreadsheet environment.
+                        <br></li>
+
+                    <li><b>Programming Languages:</b> Programming languages such as Python, MATLAB, and R offer built-in functions or libraries for mathematical computations, including cube root calculation. Developers can write scripts to calculate cube roots programmatically, providing flexibility and customization options. This method is suitable for integrating cube root calculations into larger software applications or analysis workflows.
+                        <br></li>
+                </ol>
+
+                <p>These technological tools offer diverse options for determining cube roots, catering to different preferences and requirements. Whether it's a quick calculation on a calculator or integrating cube root calculations into complex software systems, technology streamlines the process and enhances efficiency.</p>
+            </div>
+
+            <!-- Subsection 3.2.5 Question Example -->
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+
+                <p>Let's demonstrate the process of determining the cube root of a number using a calculator application.</p>
+
+                <div id="3.2.5Explanation">
+                    <p><b>Steps:</b></p>
+                    <ol>
+                        <li>Access the calculator application on your device.</li>
+                        <li>Locate the cube root function, usually denoted as ∛ or labeled "cube root."</li>
+                        <li>Input the number for which you want to find the cube root.</li>
+                        <li>Retrieve the result displayed on the calculator screen.</li>
+                    </ol>
+                    <p>For example, to find the cube root of 729:</p>
+                    <ol>
+                        <li>Access the calculator application.</li>
+                        <li>Locate the cube root function.</li>
+                        <li>Input 729.</li>
+                        <li>Retrieve the result: ∛729 ≈ 9</li>
+                    </ol>
+                </div>
+
+                <div class="radio-icon" onclick="handleRadioClick(event, '3.2.5Explanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+
+    </div>
 </section>
