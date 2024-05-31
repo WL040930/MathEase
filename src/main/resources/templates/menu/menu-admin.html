@@ -315,6 +315,11 @@
         border-radius: 16px;
     }
 
+    .active {
+        background-color: var(--navbar-hover-color);
+        color: var(--navbar-light-primary); 
+    }
+
     .modal {
         display: none;
         position: fixed;
@@ -487,6 +492,15 @@
 </div>
 
 <script th:inline="javascript">
+     function handleNavButtonClick(button) {
+        var navButtons = document.querySelectorAll('.nav-button');
+        navButtons.forEach(function(btn) {
+            btn.classList.remove('active');
+        });
+        
+        button.classList.add('active');
+    }
+
     function openModal() {
         var modal = document.getElementById('logoutModal');
         modal.classList.add('active');
