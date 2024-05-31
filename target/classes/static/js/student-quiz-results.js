@@ -178,7 +178,7 @@ function displayQuestionDetails(questionDetails) {
             <p><strong>Correct Answer:</strong> <span style="color: #32CD32">${questionDetails.correctOptions}</span></p>
             <p><strong>Wrong Answers:</strong><span style="color: red">${questionDetails.wrongOptions}</span></p>
             <p><strong>User Answer:</strong>${questionDetails.userAnswer}</p>
-            ${questionDetails.filePath ? `<img style="width: 90%; margin: 0 auto;" src="/data/${questionDetails.filePath}" alt="question image">` : ''}
+            ${questionDetails.filePath ? `<img style="width: 90%; margin: 0 auto; max-width: 100%; overflow-x: auto" src="/data/${questionDetails.filePath}" alt="question image">` : ''}
         </div>
     `;
 }
