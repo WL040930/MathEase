@@ -315,11 +315,6 @@
         border-radius: 16px;
     }
 
-    .active {
-        background-color: var(--navbar-hover-color);
-        color: var(--navbar-light-primary); 
-    }
-
     .modal {
         display: none;
         position: fixed;
@@ -453,13 +448,13 @@
     </div>
 
     <div id="nav-content">
-        <a th:href="@{/admin/dashboard}"><div class="nav-button" onclick="handleNavButtonClick(this)"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></div></a>
-        <a th:href="@{/admin/courses}"><div class="nav-button" onclick="handleNavButtonClick(this)"><i class="fas fa-book"></i><span>Courses</span></div></a>
-        <a th:href="@{/admin/questions}"><div class="nav-button" onclick="handleNavButtonClick(this)"><i class="fas fa-question-circle"></i><span>Question</span></div></a>
+        <a th:href="@{/admin/dashboard}"><div class="nav-button"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></div></a>
+        <a th:href="@{/admin/courses}"><div class="nav-button"><i class="fas fa-book"></i><span>Courses</span></div></a>
+        <a th:href="@{/admin/questions}"><div class="nav-button"><i class="fas fa-question-circle"></i><span>Question</span></div></a>
         <hr>
-        <a th:href="@{/admin/results}"><div class="nav-button" onclick="handleNavButtonClick(this)"><i class="fas fa-heartbeat"></i><span>Results</span></div></a>
-        <a th:href="@{/admin/link}"><div class="nav-button" onclick="handleNavButtonClick(this)"><i class="fas fa-link"></i><span>Links</span></div></a>
-        <a th:href="@{/admin/account}"><div class="nav-button" onclick="handleNavButtonClick(this)"><i class="fas fa-user-circle"></i><span>Account</span></div></a>
+        <a th:href="@{/admin/results}"><div class="nav-button"><i class="fas fa-heartbeat"></i><span>Results</span></div></a>
+        <a th:href="@{/admin/link}"><div class="nav-button"><i class="fas fa-link"></i><span>Links</span></div></a>
+        <a th:href="@{/admin/account}"><div class="nav-button"><i class="fas fa-user-circle"></i><span>Account</span></div></a>
     </div>
 
 
@@ -492,15 +487,6 @@
 </div>
 
 <script th:inline="javascript">
-     function handleNavButtonClick(button) {
-        var navButtons = document.querySelectorAll('.nav-button');
-        navButtons.forEach(function(btn) {
-            btn.classList.remove('active');
-        });
-        
-        button.classList.add('active');
-    }
-
     function openModal() {
         var modal = document.getElementById('logoutModal');
         modal.classList.add('active');
