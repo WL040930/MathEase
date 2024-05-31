@@ -157,10 +157,12 @@
     padding: 5px;
     border-radius: 5px;
     color: var(--primary);
+    background-color: var(--light); /* Set background color */
+    transition: background-color 0.5s; /* Add transition effect */
 }
 
 .navbar-toggler-icon:hover {
-    background-color: var(--primary);
+    background-color: var(--primary); /* Change background color on hover */
     color: var(--light);
 }
 
