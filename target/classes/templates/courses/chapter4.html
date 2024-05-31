@@ -1,12 +1,497 @@
 <section class="content-header" id="content" th:fragment="chapter4">
-    <link rel="stylesheet" th:href="@{/css/speak.css}">
-    <script th:src="@{/js/speak.js}"></script>
+    <div class="header-box">
+        <h1>Form 1 Chapter 4 - Ratios, Rates and Proportions</h1>
+    </div>
 
-    <!--    TODO: CHAPTER 4 HERE-->
+    <div class="SubTopic1-box subtopic-section">
 
+        <!-- Subtopic 5.1 Header -->
+        <h3><i class="material-icons" onclick="toggleSubTopic(this)">keyboard_arrow_right</i> 4.1 Ratios</h3>
 
+        <div class="SubSection-box">
 
-    <div style="margin-top: 20px; width: 100%"></div>
-    <button id="speakButton">Speak</button>
-    <button id="stopButton">Stop</button>
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 4.1.1 How do you derive an algebraic expression from a situation?</h3>
+
+            <div class="content">
+                <p><b><u>Understanding Algebraic Expressions</u></b></p>
+
+                <p>An algebraic expression is a mathematical phrase that consists of variables, numbers, and arithmetic operations. It represents a relationship or rule without knowing specific values. Here are some key points about algebraic expressions:</p>
+
+                <ul>
+                    <li><b>Variables:</b> Represented by letters, variables can stand for unknown or changing quantities.</li>
+                    <li><b>Coefficients:</b> Numbers multiplied by variables are coefficients.</li>
+                    <li><b>Terms:</b> Parts of an expression separated by addition or subtraction.</li>
+                    <li><b>Operations:</b> Common operations include addition, subtraction, multiplication, and division.</li>
+                </ul>
+
+                <p>Algebraic expressions are fundamental in mathematics, used to model real-world situations, formulate equations, and solve problems.</p>
+            </div>
+
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+
+                <p style="text-align: justify; padding-right: 35px;">Consider a scenario where you have 3 bags of marbles. Let's call the number of marbles in the first bag "x", the second bag contains 5 more marbles than the first bag, and the third bag has twice the number of marbles in the second bag. Write an algebraic expression to represent the total number of marbles you have in terms of "x".</p>
+
+                <div id="marblesExplanation">
+                    <p><b>Step 1: Define the variables:</b></p>
+
+                    <ul>
+                        <li>Let (x) represent the number of marbles in the first bag.</li>
+                        <li>The second bag contains (x + 5) marbles (5 more than the first bag).</li>
+                        <li>The third bag has 2 times (x + 5) marbles (twice the number in the second bag).</li>
+                    </ul>
+
+                    <p><b>Step 2: Write the algebraic expression for the total number of marbles:</b></p>
+
+                    <ul>
+                        <li>The total number of marbles is the sum of marbles in all three bags.</li>
+                        <li>So, the expression is [x + (x + 5) + 2 × (x + 5)].</li>
+                        <li>Simplifying, we get (x + x + 5 + 2x + 10).</li>
+                        <li>Combining like terms, the expression becomes (4x + 15).</li>
+                    </ul>
+
+                    <p><b>Step 3: Final expression:</b></p>
+
+                    <ul>
+                        <li>The final algebraic expression representing the total number of marbles is (4x + 15).</li>
+                        <li>This expression gives us the total number of marbles based on the number of marbles in the first bag represented by (x).</li>
+                    </ul>
+                </div>
+
+                <div class="radio-icon" onclick="handleRadioClick(event, 'marblesExplanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+        <!-- Subsection 4.1.2 box -->
+        <div class="SubSection-box">
+
+            <!-- Subsection 4.1.2 Header -->
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 4.1.2 How do you
+                express ratios in their simplest form?
+            </h3>
+
+            <!-- Subsection 4.1.2 Notes -->
+            <div class="content">
+                <p><b><u>Expressing Ratios</u></b></p>
+
+                <ul>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;"><b>Ratios</b> - Ratios express the relationship
+                            between two or more quantities. They can be written in the form a:b, where a and b are numbers
+                            representing the quantities being compared.</p>
+                    </li>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">To express ratios in their simplest form, it's
+                            necessary to divide both parts of the ratio by their greatest common divisor (GCD). This ensures
+                            that the ratio cannot be further simplified.</p>
+                    </li>
+                </ul>
+
+                <center>
+                    <img class="diagram"
+                         src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter4/chapter_4_image_1.png" />
+
+                    <p><b><i>Figure 4.1.2.1: Illustration of Simplifying Ratios</i></b></p>
+                    <br>
+                </center>
+            </div>
+
+            <!-- Subsection 4.1.2 Question Example -->
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+
+                <p style="text-align: justify; padding-right: 35px;">(a)
+                    You have a bag of marbles with a ratio of blue marbles to red marbles of 3:5. Express this ratio in its
+                    simplest form.
+                </p>
+
+                <div id="ratiosExplanation">
+                    <p><b>Step 1: Write the ratio:</b></p>
+
+                    <ul>
+                        <li>The given ratio is 3:5.</li>
+                    </ul>
+
+                    <p><b>Step 2: Find the greatest common divisor (GCD):</b></p>
+
+                    <ul>
+                        <li>The GCD of 3 and 5 is 1, as there are no common factors other than 1.</li>
+                    </ul>
+
+                    <p><b>Step 3: Divide both parts of the ratio by the GCD:</b></p>
+
+                    <ul>
+                        <li>Dividing 3 by 1 and 5 by 1, we get the simplest form of the ratio, which is 3:5.</li>
+                    </ul>
+                </div>
+
+                <div class="radio-icon" onclick="handleRadioClick(event, 'ratiosExplanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+
+    <div class="SubTopic2-box subtopic-section">
+
+        <h3><i class="material-icons" onclick="toggleSubTopic(this)">keyboard_arrow_right</i> 4.2 Rates</h3>
+
+        <!-- Subsection 4.2.1 box -->
+        <div class="SubSection-box">
+
+            <!-- Subsection 4.2.1 Header -->
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 4.2.1 What is the
+                relationship between ratios and rates?
+            </h3>
+
+            <!-- Subsection 4.2.1 Notes -->
+            <div class="content">
+                <p><b><u>Relationship between Ratios and Rates</u></b></p>
+
+                <ul>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;"><b>Ratios</b> - Ratios express the relationship
+                            between two or more quantities. They are typically written in the form a:b.</p>
+                    </li>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;"><b>Rates</b> - Rates are special kinds of ratios
+                            that involve a comparison of two different kinds of quantities. They are often expressed in the form
+                            of a ratio where one quantity is measured against another with different units, such as miles per
+                            hour or dollars per pound.</p>
+                    </li>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">The relationship between ratios and rates lies in
+                            the fact that rates are essentially a specific type of ratio. Ratios compare similar quantities,
+                            while rates compare quantities with different units or measures.</p>
+                    </li>
+                </ul>
+
+                <center>
+                    <img class="diagram"
+                         src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter4/chapter_4_image_2.jpg" />
+
+                    <p><b><i>Figure 4.2.1.1: Illustration of Relationship between Ratios and Rates</i></b></p>
+                    <br>
+                </center>
+            </div>
+
+            <!-- Subsection 4.2.1 Question Example -->
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+
+                <p style="text-align: justify; padding-right: 35px;">(a)
+                    You travel 200 miles in 4 hours. What is your rate of travel in miles per hour?
+                </p>
+
+                <div id="ratesExplanation">
+                    <p><b>Step 1: Write the ratio:</b></p>
+
+                    <ul>
+                        <li>The ratio of distance traveled to time taken is 200:4.</li>
+                    </ul>
+
+                    <p><b>Step 2: Calculate the rate:</b></p>
+
+                    <ul>
+                        <li>To find the rate, divide the distance traveled (200 miles) by the time taken (4 hours).</li>
+                        <li>So, the rate of travel is 200 miles ÷ 4 hours = 50 miles per hour.</li>
+                    </ul>
+                </div>
+
+                <div class="radio-icon" onclick="handleRadioClick(event, 'ratesExplanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+
+    <div class="SubTopic3-box subtopic-section">
+
+        <h3><i class="material-icons" onclick="toggleSubTopic(this)">keyboard_arrow_right</i> 4.3 Proportions</h3>
+
+        <!-- Subsection 4.3.1 box -->
+        <div class="SubSection-box">
+
+            <!-- Subsection 4.3.1 Header -->
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 4.3.1 What is the
+                relationship between ratios and proportions?
+            </h3>
+
+            <!-- Subsection 4.3.1 Notes -->
+            <div class="content">
+                <p><b><u>Relationship between Ratios and Proportions</u></b></p>
+
+                <ul>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;"><b>Ratios</b> - Ratios express the relationship
+                            between two or more quantities. They are typically written in the form a:b.</p>
+                    </li>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;"><b>Proportions</b> - Proportions are statements
+                            that two ratios are equal. They are typically written in the form a:b = c:d.</p>
+                    </li>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">The relationship between ratios and proportions
+                            lies in the fact that proportions are essentially a comparison of ratios. In a proportion, the
+                            relationship between the terms of one ratio is equal to the relationship between the terms of
+                            another ratio.</p>
+                    </li>
+                </ul>
+
+                <center>
+                    <img class="diagram"
+                         src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter4/chapter_4_image_3.png" />
+
+                    <p><b><i>Figure 4.3.1.1: Illustration of Relationship between Ratios and Proportions</i></b></p>
+                    <br>
+                </center>
+            </div>
+
+            <!-- Subsection 4.3.1 Question Example -->
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+
+                <p style="text-align: justify; padding-right: 35px;">(a)
+                    If 2 oranges cost $3, how much do 5 oranges cost?
+                </p>
+
+                <div id="proportionsExplanation">
+                    <p><b>Step 1: Set up the proportion:</b></p>
+
+                    <ul>
+                        <li>2 oranges cost $3, so the ratio of oranges to cost is 2:3.</li>
+                        <li>We need to find the cost of 5 oranges.</li>
+                        <li>So, the proportion is 2:3 = 5:x.</li>
+                    </ul>
+
+                    <p><b>Step 2: Solve for x:</b></p>
+
+                    <ul>
+                        <li>To solve for x, cross multiply: 2 * x = 3 * 5.</li>
+                        <li>This gives us 2x = 15.</li>
+                        <li>Divide both sides by 2: x = 7.5.</li>
+                    </ul>
+
+                    <p><b>Step 3: Final answer:</b></p>
+
+                    <ul>
+                        <li>The cost of 5 oranges is $7.5.</li>
+                    </ul>
+                </div>
+
+                <div class="radio-icon" onclick="handleRadioClick(event, 'proportionsExplanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+
+        <!-- Subsection 4.3.2 box -->
+        <div class="SubSection-box">
+
+            <!-- Subsection 4.3.2 Header -->
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 4.3.2 How do you
+                determine the unknown value in a proportion?
+            </h3>
+
+            <!-- Subsection 4.3.2 Notes -->
+            <div class="content">
+                <p><b><u>Determining Unknown Values in Proportions</u></b></p>
+
+                <ul>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;"><b>Proportions</b> - Proportions are statements
+                            that two ratios are equal. They are typically written in the form a:b = c:d.</p>
+                    </li>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">To determine the unknown value in a proportion,
+                            you can use the method of cross multiplication.</p>
+                    </li>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">Cross multiplication involves multiplying the
+                            numerator of one ratio by the denominator of the other ratio, and vice versa.</p>
+                    </li>
+                </ul>
+
+                <center>
+                    <img class="diagram"
+                         src="https://gktdpgoodfnlqwfrttqs.supabase.co/storage/v1/object/public/chapter4/chapter_4_image_4.jpg" />
+
+                    <p><b><i>Figure 4.3.2.1: Illustration of Determining Unknown Values in Proportions</i></b></p>
+                    <br>
+                </center>
+            </div>
+
+            <!-- Subsection 4.3.2 Question Example -->
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+
+                <p style="text-align: justify; padding-right: 35px;">(a)
+                    If 4 apples cost $2, how much do 6 apples cost?
+                </p>
+
+                <div id="unknownValueExplanation">
+                    <p><b>Step 1: Set up the proportion:</b></p>
+
+                    <ul>
+                        <li>For the given proportion, 4 apples cost $2, so the ratio of apples to cost is 4:2.</li>
+                        <li>We need to find the cost of 6 apples.</li>
+                        <li>So, the proportion is 4:2 = 6:x.</li>
+                    </ul>
+
+                    <p><b>Step 2: Solve for x using cross multiplication:</b></p>
+
+                    <ul>
+                        <li>Cross multiply: 4 * x = 2 * 6.</li>
+                        <li>This gives us 4x = 12.</li>
+                        <li>Divide both sides by 4: x = 3.</li>
+                    </ul>
+
+                    <p><b>Step 3: Final answer:</b></p>
+
+                    <ul>
+                        <li>The cost of 6 apples is $3.</li>
+                    </ul>
+                </div>
+
+                <div class="radio-icon" onclick="handleRadioClick(event, 'unknownValueExplanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+
+    <div class="SubTopic3-box subtopic-section">
+
+        <h3><i class="material-icons" onclick="toggleSubTopic(this)">keyboard_arrow_right</i> 4.4 Ratios, Rates and Proportions</h3>
+
+        <!-- Subsection 4.4.1 box -->
+        <div class="SubSection-box">
+
+            <!-- Subsection 4.4.1 Header -->
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 4.4.1 How do you
+                determine the ratio of three quantities when two or more ratios of two quantities are given?
+            </h3>
+
+            <!-- Subsection 4.4.1 Notes -->
+            <div class="content">
+                <p><b><u>Determining Ratio of Three Quantities from Ratios of Two Quantities</u></b></p>
+
+                <ul>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">When two or more ratios of two quantities are
+                            given, and you need to determine the ratio of three quantities, you can use a method called
+                            "equating the products of the means and extremes."</p>
+                    </li>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">This method involves setting up equations where
+                            the product of the means (the inner terms) of the given ratios is equal to the product of the
+                            extremes (the outer terms) of the required ratio.</p>
+                    </li>
+                </ul>
+
+            </div>
+
+            <!-- Subsection 4.4.1 Question Example -->
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+
+                <p style="text-align: justify; padding-right: 35px;">(a)
+                    If the ratio of the number of apples to oranges is 3:4 and the ratio of oranges to bananas is 5:2, what is
+                    the ratio of apples to oranges to bananas?
+                </p>
+
+                <div id="threeQuantitiesRatioExplanation">
+                    <p><b>Step 1: Equate the products of the means and extremes:</b></p>
+
+                    <ul>
+                        <li>Given the ratios: Apples to Oranges = 3:4 and Oranges to Bananas = 5:2.</li>
+                        <li>Setting up the equations, we have: (Apples) * (Bananas) = (Oranges) * (Oranges).</li>
+                    </ul>
+
+                    <p><b>Step 2: Solve the equations:</b></p>
+
+                    <ul>
+                        <li>From the given ratios, we find that the product of means in the first ratio (3 * 2) equals the
+                            product of extremes in the second ratio (4 * 5).</li>
+                        <li>Therefore, the ratio of Apples to Oranges to Bananas is 3:4:5.</li>
+                    </ul>
+                </div>
+
+                <div class="radio-icon" onclick="handleRadioClick(event, 'threeQuantitiesRatioExplanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+
+        <!-- Subsection 4.4.2 box -->
+        <div class="SubSection-box">
+
+            <!-- Subsection 4.4.2 Header -->
+            <h3><i class="material-icons" onclick="toggleSubSection(this)">keyboard_arrow_right</i> 4.4.2 How do you
+                determine the ratio or the related value?
+            </h3>
+
+            <!-- Subsection 4.4.2 Notes -->
+            <div class="content">
+                <p><b><u>Determining Ratio or Related Value</u></b></p>
+
+                <ul>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">To determine a ratio or a related value, you
+                            first need to identify the quantities you are comparing or calculating.</p>
+                    </li>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">If you're determining a ratio, express the
+                            relationship between the quantities in the form of a ratio, which compares the quantities in
+                            terms of their relative sizes or amounts.</p>
+                    </li>
+                    <li>
+                        <p style="text-align: justify; padding-right: 35px;">If you're determining a related value, such as
+                            the cost, distance, or time, you may need to use proportions, equations, or other mathematical
+                            methods depending on the context of the problem.</p>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Subsection 4.4.2 Question Example -->
+            <div class="question">
+                <p><b><u>Example</u></b></p>
+
+                <p style="text-align: justify; padding-right: 35px;">(a)
+                    You have a bag of marbles containing red, blue, and green marbles. If the ratio of red to blue marbles
+                    is 2:3 and the ratio of blue to green marbles is 5:4, determine the ratio of red to green marbles.
+                </p>
+
+                <div id="relatedValueExplanation">
+                    <p><b>Step 1: Determine the intermediate ratio:</b></p>
+
+                    <ul>
+                        <li>First, determine the ratio of blue marbles to act as an intermediary between red and green
+                            marbles.</li>
+                        <li>From the given ratios, we have 2:3 for red to blue marbles and 5:4 for blue to green marbles.</li>
+                    </ul>
+
+                    <p><b>Step 2: Calculate the combined ratio:</b></p>
+
+                    <ul>
+                        <li>Multiply the ratios of red to blue and blue to green to get the ratio of red to green marbles.</li>
+                        <li>Perform the calculations to determine the final ratio.</li>
+                    </ul>
+                </div>
+
+                <div class="radio-icon" onclick="handleRadioClick(event, 'relatedValueExplanation')">
+                    <i class='fas fa-volume-up'></i> Click here!
+                </div>
+                <br>
+            </div>
+        </div>
+
+    </div>
 </section>
