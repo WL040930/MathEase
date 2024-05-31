@@ -47,17 +47,28 @@
                 <a th:href="@{/solution}" class="nav-item nav-link active">Solutions</a>
                 <div th:if="${session.userId != null}">
                     <div th:if="${session.role.equals('admin')}">
-                        <a th:href="@{/admin/dashboard}" class="nav-item nav-link">Back to Dashboard</a>
+                        <div class="login-signup-button">
+                            <a th:href="@{/admin/dashboard}" class="btn" style="padding: 5px;">Back to Dashboard</a>
+                        </div>
                     </div>
                     <div th:if="${session.role.equals('student')}">
-                        <a th:href="@{/student/dashboard}" class="nav-item nav-link">Back to Dashboard</a>
+                        <div class="login-signup-button">
+                            <a th:href="@{/student/dashboard}" class="btn" style="padding: 5px;">Back to Dashboard</a>
+                        </div>
                     </div>
                 </div>
                 <div th:if="${session.userId == null}">
-                    <button class="nav-item nav-link btn" onclick="redirectToLogin()">Login/Sign Up</button>
+                    <div class="login-signup-button">
+                        <button class="btn" onclick="redirectToLogin()">Login/Sign Up</button>
+                        <script>
+                            function redirectToLogin() {
+                                window.location.href = "/login";
+                            }
+                        </script>
+                    </div>
                 </div>
             </div>
-        </div>        
+        </div>
     </nav>
 </div>
 <!-- Navbar End -->
