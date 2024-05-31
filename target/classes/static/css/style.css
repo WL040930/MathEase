@@ -152,6 +152,18 @@
     }
 }
 
+.navbar-toggler-icon {
+    border: 1px solid var(--primary);
+    padding: 5px;
+    border-radius: 5px;
+    color: var(--primary);
+}
+
+.navbar-toggler-icon:hover {
+    background-color: var(--primary);
+    color: var(--light);
+}
+
 .login-signup-button {
     position: absolute;
     top: 0;
