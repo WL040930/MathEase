@@ -176,15 +176,19 @@
     }
 }
 
-.login-signup-button {
-    position: absolute;
-    top: 0;
-    right: 0;
+.login-signup-button,
+.login-signup-button a.btn {
+    position: relative;
     padding: 2px 2px;
 }
 
-.login-signup-button .btn {
-    height: auto; /* Set height to auto to accommodate content */
+/* Update the positioning of the button within the expanded menu */
+@media (max-width: 991.98px) {
+    .login-signup-button {
+        position: static;
+        margin-top: 15px; /* Adjust top margin as needed */
+        margin-right: 15px; /* Adjust right margin as needed */
+    }
 }
 
 /*** Header carousel ***/
