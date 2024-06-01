@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Math Chat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            line-height: 1.6;
+        }
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 600px;
+            height: 80vh;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .chat-header {
+            padding: 20px;
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            font-size: 24px;
+        }
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .chat-input-container {
+            display: flex;
+            padding: 20px;
+            border-top: 1px solid #ddd;
+        }
+        .chat-input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .chat-submit {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-left: 10px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .chat-submit:hover {
+            background-color: #0056b3;
+        }
+        .message {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .user-message {
+            background-color: #e9e9e9;
+            text-align: left;
+        }
+        .ai-message {
+            background-color: #d1e7dd;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<div class="chat-container">
+    <div class="chat-header">
+        AI Math Chat
+    </div>
+    <div class="chat-messages" id="chat-messages">
+        <!-- Messages will appear here -->
+    </div>
+    <div class="chat-input-container">
+        <input type="text" class="chat-input" id="chat-input" placeholder="Type your math question here..." onkeypress="handleKeyPress(event)">
+        <button class="chat-submit" onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+<script>
+    function handleKeyPress(event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            sendMessage();
+        }
+    }
+
+    async function sendMessage() {
+        const input = document.getElementById('chat-input');
+        const messages = document.getElementById('chat-messages');
+        const userMessage = input.value.trim();
+
+        if (userMessage !== "") {
+            displayMessage(userMessage, 'user-message');
+
+            input.value = '';
+
+            try {
+                const response = await fetchAIResponse(userMessage);
+                // Display AI's response
+                displayMessage(response, 'ai-message');
+            } catch (error) {
+                console.error('Error fetching AI response:', error);
+            }
+
+            messages.scrollTop = messages.scrollHeight;
+        }
+    }
+
+    function displayMessage(text, className) {
+        const messages = document.getElementById('chat-messages');
+        const message = document.createElement('div');
+        message.innerHTML = formatMessage(text);
+        message.className = `message ${className}`;
+        messages.appendChild(message);
+    }
+
+    function formatMessage(text) {
+        text = text.replace(/\n/g, '<br>');
+        text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        text = text.replace(/\*(.*?)\*/g, '<em>$1</em>');
+        text = text.replace(/(\* .+?)(?=(\n\*|$))/g, function(match) {
+            return '<li>' + match.substring(2) + '</li>';
+        });
+        text = text.replace(/(<li>.*<\/li>)/g, '<ul>$1</ul>');
+
+        return text;
+    }
+
+    async function fetchAIResponse(userMessage) {
+        const apiKey = 'AIzaSyBjeaYuk6W9yQTffItHXYwdZtxBwmWrby4';
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`;
+        const payload = {
+            contents: [{
+                parts: [{
+                    text: userMessage
+                }]
+            }]
+        };
+
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+
+        const data = await response.json();
+        return data.candidates[0].content.parts[0].text;
+    }
+</script>
+</body>
+</html>
