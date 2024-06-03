@@ -1,9 +1,6 @@
 # Use a base image that contains JDK 21
 FROM openjdk:21-jdk-slim
 
-# Set the working directory inside the container
-WORKDIR /app
-
 # Copy the Spring Boot jar to the working directory
 COPY target/*.jar app.jar
 
