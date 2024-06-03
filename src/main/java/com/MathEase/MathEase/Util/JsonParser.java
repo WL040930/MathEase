@@ -13,11 +13,13 @@ public class JsonParser {
      */
     public static String extractUsername(String jsonString) {
         try {
-
+            //  Create an ObjectMapper object
             ObjectMapper objectMapper = new ObjectMapper();
 
+            // Read the JSON string into a JsonNode object
             JsonNode jsonNode = objectMapper.readTree(jsonString);
 
+            // Get the "username" field from the JSON object
             JsonNode usernameNode = jsonNode.get("username");
             if (usernameNode != null && usernameNode.isTextual()) {
                 return usernameNode.asText();
@@ -28,13 +30,18 @@ public class JsonParser {
         return null;
     }
 
+    // Extracts the password value from a JSON string.
     public static String extractPassword(String jsonString) {
         try {
+            // Create an ObjectMapper object
             ObjectMapper objectMapper = new ObjectMapper();
 
+            // Read the JSON string into a JsonNode object
             JsonNode jsonNode = objectMapper.readTree(jsonString);
 
+            // Get the "password" field from the JSON object
             JsonNode passwordNode = jsonNode.get("password");
+            // Check if the "password" field is present and is a string
             if (passwordNode != null && passwordNode.isTextual()) {
                 return passwordNode.asText();
             }

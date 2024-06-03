@@ -45,10 +45,14 @@ public class AdminDashboardController {
             return "redirect:/login";
         }
 
+        // get all topic
         List<Topic> topics = topicService.getAllTopics();
 
+        // new array list resultdto
         List<ResultDTO> resultDTOS = new ArrayList<>();
 
+        // loop through all topics
+        // insert information into resultdto
         for (Topic topic : topics) {
             ResultDTO resultDTO = new ResultDTO();
             resultDTO.setChapter(topic.getTopicId().toString());
@@ -58,13 +62,15 @@ public class AdminDashboardController {
                 score = 0;
             }
             resultDTO.setScore(score);
+            // append resultdto to resultdtos
             resultDTOS.add(resultDTO);
         }
 
+        // calculate overall percentage
         double overallPercentage = userAnswerService.calculateOverallResult();
 
+        // set attributes
         model.addAttribute("overallResult", overallPercentage);
-
         model.addAttribute("resultDTOs", resultDTOS);
         model.addAttribute("totalUser", userRepository.count());
         model.addAttribute("totalQuestion", questionRepository.count());

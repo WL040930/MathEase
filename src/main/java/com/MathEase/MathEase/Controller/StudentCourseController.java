@@ -63,6 +63,7 @@ public class StudentCourseController {
         Long userId = (Long) session.getAttribute("userId");
         User user = userService.getUserById(userId);
 
+        // check if the topic is fully answered
         boolean isCompleted = answerService.isTopicFullyAnswered(topic, user);
 
         return ResponseEntity.ok(isCompleted);

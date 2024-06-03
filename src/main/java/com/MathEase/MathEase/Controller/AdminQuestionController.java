@@ -104,6 +104,7 @@ public class AdminQuestionController {
                 questionDTO.setQuestion(questions.getQuestion());
                 questionDTO.setCorrectAnswer(optionService.getCorrectOption(questions).getOption());
 
+                // Set wrong answers
                 ArrayList<Options> wrongOptions = optionService.getWrongOptions(questions);
                 questionDTO.setWrongAnswer1(wrongOptions.get(0).getOption());
                 questionDTO.setWrongAnswer2(wrongOptions.get(1).getOption());

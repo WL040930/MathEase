@@ -11,6 +11,7 @@ public class DataStorage {
 
     public static final String UPLOAD_DIRECTORY = "src/main/resources/static/data/";
 
+    // Save the file
     public static String saveFile(MultipartFile file, String directory) throws IOException {
         // Get the file bytes
         byte[] bytes = file.getBytes();

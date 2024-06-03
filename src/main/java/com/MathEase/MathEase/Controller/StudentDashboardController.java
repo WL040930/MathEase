@@ -76,6 +76,8 @@ public class StudentDashboardController {
         List<ResultDTO> resultDTOS = new ArrayList<>();
         List<Topic> allTopics = topicService.getAllTopics();
 
+        // loop through all topics
+        // insert topic name, topic id, and average score into resultDTO
         for (Topic topic : allTopics) {
             ResultDTO resultDTO = new ResultDTO();
             resultDTO.setChapter(topic.getTopicId().toString());
@@ -88,6 +90,7 @@ public class StudentDashboardController {
             resultDTOS.add(resultDTO);
         }
 
+        // set model attributes
         model.addAttribute("resultDTOs", resultDTOS);
         model.addAttribute("overallResult", formattedAverageMarks);
         model.addAttribute("completion", completion);
