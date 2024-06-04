@@ -4,6 +4,7 @@ import com.MathEase.MathEase.Model.Options;
 import com.MathEase.MathEase.Model.QuestionDTO;
 import com.MathEase.MathEase.Model.Questions;
 import com.MathEase.MathEase.Model.Topic;
+import com.MathEase.MathEase.Model.Options;
 import com.MathEase.MathEase.Repository.QuestionRepository;
 import com.MathEase.MathEase.Service.OptionService;
 import com.MathEase.MathEase.Service.QuestionAttachmentService;
