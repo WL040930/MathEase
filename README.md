@@ -20,10 +20,3 @@
 2. Go to the "templates" folder
 3. Go to the "courses" folder
 4. Edit the html file
-
-## Findings 
-### 1. Intellij IDEA issue 
-After submitting the picture, the user require to open the IDE again to 
-load the picture, which might be a bug in the IDE. This issue can be solved
-if the user use VS Code instead of Intellij IDEA. (VS Code only require to 
-reload the page only)
