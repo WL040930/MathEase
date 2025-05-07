@@ -21,14 +21,6 @@
 3. Go to the "courses" folder
 4. Edit the html file
 
-
-
-# Weird Bug
-
-In the update user profile page, the website will send an ajax 
-requsts to the system once the user clicks on save button. However,
-image is not displayed. 
-
 ## Findings 
 ### 1. Intellij IDEA issue 
 After submitting the picture, the user require to open the IDE again to 
